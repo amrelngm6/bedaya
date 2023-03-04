@@ -21,13 +21,13 @@
                         <div class="block w-full">
                             <div class="w-full flex" style="  margin: 2rem -0.5rem 0 -0.5rem;">
                                 <div style="flex-grow: 1; padding: 0 0.5rem;">
-                                    <span class="media-library-field__selected__inner__details__button font-semibold" @click="showManager = true">Edit</span>
+                                    <span class="media-library-field__selected__inner__details__button font-semibold" @click="content = null, showManager = true">Edit</span>
                                 </div>
                                 <div style="flex-grow: 1; padding: 0 0.5rem;">
                                     <a :href="file.download_url" class="media-library-field__selected__inner__details__button">Download</a>
                                 </div>
                                 <div style="flex-grow: 1; padding: 0 0.5rem;">
-                                    <button @click="clear" class="media-library-field__selected__inner__details__button media-library-field__selected__inner__details__button--delete">Remove</button>
+                                    <span @click="clear" class="media-library-field__selected__inner__details__button media-library-field__selected__inner__details__button--delete cursor-pointer">Remove</span>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@
         mounted() {
             this.content = this.value ? this.value : this.content;
             if (this.content ) {
-                // this.file = this.content;
+                this.file = this.content;
             } else {
                 this.content = null;
             }

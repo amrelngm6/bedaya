@@ -1,0 +1,61 @@
+
+.lg-custom-scroll-container
+{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+
+.lg-custom-scroll-list
+{
+    width: max-content;
+}
+
+.lg-custom-scroll-item
+{
+    max-width: 350px;
+    display: inline-block;
+}
+
+@media screen and (max-width: 767px) 
+{
+    body .curve-doctor
+    {
+        position: relative;
+        top: 50px;
+    }
+    body .home-bg {
+/*        height: 120%;*/
+    }
+}
+
+@media screen and (max-width: 991px) 
+{
+
+    .custom-scroll-container
+    {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+    }
+
+
+    .custom-scroll-list
+    {
+        width: max-content;
+    }
+    
+    .custom-scroll-item
+    {
+        max-width: 350px;
+        display: inline-block;
+    }
+
+    .crossed:after {
+        left: -50px;
+        bottom: -45%;
+    }
+}

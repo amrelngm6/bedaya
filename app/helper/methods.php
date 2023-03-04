@@ -44,6 +44,7 @@ function render($path, $data)
     $data['startdate'] = !empty($app->request()->get('start')) ? $app->request()->get('start') : date('Y-m-d');
     $data['enddate'] = !empty($app->request()->get('end')) ? $app->request()->get('end') : date('Y-m-d');
     $data['lang'] = new Langs;
+    $data['lang_key'] = (new Langs)->__('lang');
     
     echo $app->template()->render($path, $data);
 } 

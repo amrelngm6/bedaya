@@ -35,7 +35,10 @@ class Langs
 
 		$LANG_ARRAY = array(
 
-			 'DIR' => 'ltr'
+			'lang' => 'en'
+			,'ar' => 'المحتوي العربي'
+			,'en' => 'English content'
+			,'DIR' => 'ltr'
 			,'HOMEPAGE' => 'Home'
 			,'HOMEPAGE_TITLE' => 'Homepage'
 			,'MAINPAGE' => 'Main page'
@@ -481,8 +484,8 @@ class Langs
 			,'SIGNUP_DONE_MSG' => 'You can login after reviewing your profile.'
 			,'ABOUT' => 'About'
 			,'CONTACT' => 'Contact'
-			,'AR' => 'Arabic'
-			,'EN' => 'English'
+			,'Arabic' => 'Arabic'
+			,'ENglish' => 'English'
 			,'CHANGE_LANG' => 'Change Language'
 				
 			,'AGENT' => 'Company'

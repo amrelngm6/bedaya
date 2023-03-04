@@ -4,29 +4,34 @@ namespace Medians\Domain\Categories;
 
 use Shared\dbaser\CustomController;
 
-use Medians\Domain\Devices\Device;
-use Medians\Domain\Products\Product;
 
 class Category extends CustomController
 {
 
-	/*
-	/ @var String
+	/**
+	* @var String
 	*/
 	protected $table = 'categories';
 
+	/**
+	* @var Array
+	*/
 	public $fillable = [
-		'name',
-		'branch_id',
-		'model',
-		'status',
+		'name', 
+		'notes', 
+		'parent_id', 
+		'model', 
+		'status', 
+		'picture', 
+		'inserted_by'
 	];
+
 
 
 	/**
 	 * Disable create & update times fields
 	 */ 
-	public $timestamps = false;
+	public $timestamps = true;
 
 
 	public function getFields()
@@ -40,14 +45,5 @@ class Category extends CustomController
 	}
 
 
-	public function devices()
-	{
-		return $this->hasMany(Device::class, 'type', 'id');
-	}
-
-	public function products()
-	{
-		return $this->hasMany(Product::class, 'type', 'id');
-	}
 
 }

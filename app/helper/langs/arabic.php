@@ -15,8 +15,11 @@ class Langs
 
 				
 		$LANG_ARRAY = array(
-
-			'DIR' => 'rtl'
+		
+		'lang' => 'ar'
+		,'ar' => 'المحتوي العربي'
+		,'en' => 'English content'
+		,'DIR' => 'rtl'
 		,'HOMEPAGE' => 'الرئيسية'
 		,'HOMEPAGE_TITLE' => 'الصفحة الرئيسية'
 		,'MAINPAGE' => 'الرئيسية'
@@ -133,7 +136,7 @@ class Langs
 		,'VIEWS' => 'المشاهدات'
 		,'U_MY_LIKE' => 'May also like'
 		,'MORE_FROM' => 'More from'
-		,'PICTURE' => 'Picture'
+		,'PICTURE' => 'الصورة'
 		,'CREATE_ALBUM' => 'Create new album'
 		,'ADD_ALBUM' => 'Add new album'
 		,'ALBUM_COVER' => 'Album cover'
@@ -453,8 +456,8 @@ class Langs
 		,'SIGNUP_DONE_MSG' => 'يمكنك الدخول بعد مراجعة حسابك.'
 		,'ABOUT' => 'من نحن'
 		,'CONTACT' => 'اتصل بنا'
-		,'AR' => 'عربي'
-		,'EN' => 'English'
+		,'Arabic' => 'عربي'
+		,'English' => 'English'
 		,'CHANGE_LANG' => 'English'
 		,'CUSTOM_FIELDS' => 'Custom fields'
 		,'CUSTOMERS' => 'العملاء'
@@ -659,7 +662,7 @@ class Langs
 		,'BOOKING_PAGE' => 'صفحة الحجز'
 		,'BOOKING_DATE' => 'موعد الحجز'
 		,'BOOK_NOW' => 'احجز الان'
-		,'CHANGE_PICTURE' => 'تغيير الصورة الشخصية'
+		,'CHANGE_PICTURE' => 'تغيير الصورة '
 		,'LOCATION' => 'Location'
 		,'LOCATIONS' => 'Locations'
 		,'SHARE' => 'نشر'
@@ -1003,6 +1006,8 @@ class Langs
 		,'connected_devices' => 'الأجهزة  المرتبطة'
 		,'related_items' => 'الأجهزة  المرتبطة'
 		,'CHECK_DATABASE_CONNECTION' => 'تأكد من بيانات قاعدة البيانات'
+		,'latest_articles' => 'أحدث المقالات'
+		,'our_experts' => 'تعرف على خبراء المستشفى'
 
 		,'COPYRIGHTS' => 'Copyrights are reserved'
 		);

@@ -9,8 +9,6 @@ class CategoryRepository
 {
 
 
-
-
 	function __construct()
 	{
 		$this->app = new \config\APP;
@@ -33,11 +31,15 @@ class CategoryRepository
 		switch ($model) 
 		{
 			case 'Medians\Domain\Products\Product':
-				return Category::withCount('products')->where('model', $model)->where('branch_id', $this->app->branch->id)->limit($limit)->get();
+				return Category::withCount('products')->where('model', $model)->limit($limit)->get();
 				break;
 			
 			case 'Medians\Domain\Devices\Device':
-				return Category::withCount('devices')->where('model', $model)->where('branch_id', $this->app->branch->id)->limit($limit)->get();
+				return Category::withCount('devices')->where('model', $model)->limit($limit)->get();
+				break;
+				
+			default:
+				return Category::where('model', $model)->limit($limit)->get();
 				break;
 		}
 	}

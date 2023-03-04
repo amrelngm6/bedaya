@@ -1,0 +1,34 @@
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">{{lang.__(lang_key)}}</h5>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="settings-form">
+                                <div class="form-group">
+                                    <label class="block pb-3">
+                                        <span class="text-gray-700">{{lang.__('title')}} <span class="star-red">*</span></span>
+                                        <input required name="langs[{{lang_key}}][name]" type="text" class="h-10 mt-3 rounded w-full border px-3 text-gray-400  focus:border-blue-400 " placeholder="{{lang.__('title')}}" value="{{item[lang_key].title}}">
+                                    </label>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="block pb-3">
+                                                <span class="text-gray-700">{{lang.__('SEO_title')}} </span>
+                                                <input  name="langs[{{lang_key}}][seo_title]" type="text" class="h-10 mt-3 rounded w-full border px-3 text-gray-400  focus:border-blue-400 " placeholder="{{lang.__('seo_title')}}" value="{{item[lang_key].seo_title}}">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="block pb-3">
+                                                <span class="text-gray-700">{{lang.__('SEO_DESC')}}</span>
+                                                <input  name="langs[{{lang_key}}][seo_desc]" type="text" class="h-10 mt-3 rounded w-full border px-3 text-gray-400  focus:border-blue-400 " placeholder="{{lang.__('seo_desc')}}" value="{{item[lang_key].seo_desc}}">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>

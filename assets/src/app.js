@@ -13,26 +13,12 @@ import VueSimpleAlert from "vue-simple-alert";
 import DatePicker from 'vue2-datepicker';
 import 'vue2-datepicker/index.css';
 // import {Kalendar} from 'kalendar-vue';
-import {Kalendar as medians_calendar}  from 'medians-calendar';
-import PortalVue from "portal-vue";
 
 window.Vue = require('vue');
 
 Vue.use(VueSimpleAlert);
-Vue.use(PortalVue);
 Vue.use(axios);
 
-
-
-/**
- * Calendar components
- */ 
-Vue.component('calendar_products', () => import('./components/calendar-products-list.vue'));
-Vue.component('calendar_products_selected', () => import('./components/calendar-products-selected.vue'));
-Vue.component('calendar_active_item', () => import('./components/calendar-active-item.vue'));
-Vue.component('calendar_new_item', () => import('./components/calendar-new-item.vue'));
-Vue.component('calendar_modal', () => import('./components/calendar-booking-modal.vue'));
-Vue.component('calendar_component', () => import('./calendar-component.vue'));
 
 
 
@@ -42,19 +28,12 @@ Vue.component('calendar_component', () => import('./calendar-component.vue'));
 Vue.component('date_picker', () => DatePicker);
 Vue.component('login-dashboard', () => import('./login-dashboard.vue'));
 Vue.component('side-menu', () => import('./side-menu.vue'));
-Vue.component('side_cart', () => import('./side_cart.vue'));
 Vue.component('customers_form', () => import('./customers_form.vue'));
 Vue.component('users_form', () => import('./users_form.vue'));
 Vue.component('user_modal', () => import('./user_modal.vue'));
 Vue.component('forms', () => import('./forms.vue'));
 Vue.component('vue-medialibrary-manager', () => import('./components/Manager.vue'));
 Vue.component('vue-medialibrary-field', () => import('./components/Field.vue'));
-
-/**
- * Animate CSS
- */ 
-import VAnimateCss from 'v-animate-css';
-Vue.use(VAnimateCss);
 
 const VueApp = new Vue(
 {
@@ -97,7 +76,6 @@ const VueApp = new Vue(
     components: {
         DatePicker,
         axios,
-        medians_calendar
     },
     beforeCreate: function() {
 

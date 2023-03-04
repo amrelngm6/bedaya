@@ -5,6 +5,7 @@ namespace Shared\dbaser;
 use \Illuminate\Database\Eloquent\Model;
 
 use Medians\Domain\Users\User;
+use Medians\Domain\Content\Content;
 
 class CustomController extends Model
 {
@@ -36,6 +37,28 @@ class CustomController extends Model
 
 	    return null;
 	}
+
+	
+	public function user()
+	{
+		return $this->hasOne(User::class, 'id', 'inserted_by');
+	}
+
+	public function content()
+	{
+		return $this->morphOne(Content::class, 'item')->where('lang', __('lang'));
+	}
+
+	public function en()
+	{
+		return $this->morphOne(Content::class, 'item')->where('lang', 'en');
+	}
+
+	public function ar()
+	{
+		return $this->morphOne(Content::class, 'item')->where('lang', 'ar');
+	}
+
 
 }
 

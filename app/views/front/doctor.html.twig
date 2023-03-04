@@ -1,0 +1,105 @@
+{% include 'views/front/includes/header.html.twig' %}
+    
+    <div class="w-full py-10 cyan-bg relative mb-10 ">
+        <div class="w-full overflow-hidden h-full cyan-bg absolute top-0 left-0">        
+            <img src="/img/light-network.png" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
+            <img src="/img/circles-bg.png" class="absolute left-0 bottom-0 w-full" style="opacity: .3;" />
+        </div>
+        <div class="container mx-auto relative">
+            <h1 class="text-2xl pb-10  mx-auto w-72 text-center font-bold purple-color" >فريق نجاح بداية</h1>
+            <div class="mx-auto w-full relative z-10 mb-8">
+                <div class="relative top-0  left-0 right-0 px-6 pt-2 pb-6  " >
+                    <div class="lg:flex block w-full  gap-3 gap">
+                        <div class="lg:w-8/12 w-full mb-32  bg-white border-1 border border-gray-100 rounded-lg lg:p-10 p-2">
+         
+
+                            <div id="brief"  class="relative my-6 p-6 lightcyan-bg  rounded-lg overflow-hidden">
+                                <img src="./img/light-network.png" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
+                                <div class="relative">
+                                    <span class="block w-full text-lg font-bold pb-2 purple-color">نبذة عن الدكتور</span>
+                                    <hr class="border-gray-400 my-4" />
+                                    {{item.content.short | raw}}
+                                </div>
+                            </div>
+
+                            <img src="{{item.picture}}" alt="Doctor" class="w-full" />
+
+                            <div id="brief"  class="relative my-6 p-6 lightcyan-bg  rounded-lg overflow-hidden">
+                                <img src="./img/light-network.png" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
+                                <div class="relative">
+                                    <span class="block w-full text-lg font-bold pb-2 purple-color">{{lang.__('Basic Details')}}</span>
+                                    <hr class="border-gray-400 my-4" />
+                                    
+                                    
+                                    {{item.content.content | raw}}
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="w-full lg:w-4/12">
+                            <div class="relative border-1 border border-gray-100 text-center bg-white rounded-lg pt-36 pb-6">
+                                <img src="{{item.picture}}" style="top:-100px" class="rounded-full p-1 border-purple-800 border-1 w-56 h-56 mx-auto left-0 right-0 absolute" alt="Doctor" />
+
+                                <h2 class="text-xl pb-2 font-bold purple-color" >{{item.content.title}}</h2>
+                                <p class="text-lg pb-10 font-bold cyan-color" >{{item.fields.short_name_ar}}</p>
+                                <a class="mx-auto py-3 px-4 cyan-bg purple-color rounded-lg  inline-block font-semibold " href="#!">حجز موعد </a>
+                            </div>
+
+                            <div class="cyan-gradient45 rounded-lg py-2 mt-10 pl-40 pr-6 purple-color font-semibold text-lg  " >
+                                عروض  مميزة
+                            </div>
+                            <div class="relative border-1 border border-gray-100  bg-white rounded-tl-2xl rounded-br-2xl p-6 pb-6 my-6">
+                                <a href="#!" class="text-xl font-semibold py-2 mb-2 block">عرض الحقن المجهري</a>
+                                <p class="text-sm py-2">، التقنية الأكثر تقدماً وتطوراً على مستوى العالم، وهي تقنية تسمح للزوجين بإختيار جنس المولود. العرض يشمل تحديد النوع مع تكلفة الحقن المجهري </p>
+
+                                <ul class="pt-2 pb-6 font-semibold purple-color">
+                                    <li class="py-1">تحضير ما قبل السحب -</li>
+                                    <li class="py-1">سحب البويضات -</li>
+                                    <li class="py-1">تقشير البويضات -</li>
+                                    <li class="py-1">حقن البويضات -</li>
+                                    <li class="py-1">تحضير قبل الارجاع -</li>
+                                </ul>
+
+                                <div class="w-full text-center ">
+                                    <a class="mx-auto my-2 py-3 px-4 cyan-bg purple-color rounded-lg  inline-block font-semibold  " href="#!">التفاصيل</a>
+                                </div>
+
+                            </div>
+
+
+                            <div class="cyan-gradient45 rounded-lg py-2 mt-10 pl-40 pr-6 purple-color font-semibold text-lg  " >
+                                أطباء مميزون
+                            </div>
+
+                            <div class="relative border-1 border border-gray-100 text-center bg-white rounded-lg mt-20 pt-20 pb-6">
+                                <img src="./img/dr-2.jpg" style="top:-60px" class="rounded-full p-1 border-purple-800 border-1 w-32 mx-auto left-0 right-0 absolute" alt="Doctor" />
+
+                                <h2 class="text-lg pb-2 font-bold purple-color" >أ.د / ماجد عادل عزيز</h2>
+                                <p class="text-base pb-10 font-bold cyan-color" >أستشاذ دكتور طب النساء والتوليد</p>
+                                <div class=" w-full text-center gap-6">
+                                    <a class="mx-auto py-3 px-4 purple-bg text-white rounded-lg  inline-block " href="#!">السيرة الذاتية </a>
+                                    <a class="mx-auto py-3 px-4 cyan-bg purple-color font-semibold rounded-lg  inline-block " href="#!">حجز موعد </a>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="blog-content container mx-auto">
+
+        <div class="cairo mx-auto  pt-20 pb-10   purple-color font-semibold text-2xl mx-auto text-center w-72">
+            فريق عمل مستشفي بداية
+            <span class="mx-auto my-4 w-20 border border-b-1  border-gray-300 block"></span>
+        </div>
+
+    </div>
+    
+
+{% include 'views/front/includes/footer.html.twig' %}

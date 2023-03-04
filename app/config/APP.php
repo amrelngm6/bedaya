@@ -109,17 +109,10 @@ class APP
 	                array('title'=>__('Paid bookings'),  'icon'=>'fa-dashboard', 'link'=>'devices/orders?status=paid'),
 				]
 			),
-			array('title'=>__('Devices'),  'icon'=>'fa-desktop', 'link'=>'', 'sub'=>
-				[
-	                array('title'=>__('manage devices'),  'icon'=>'fa-dashboard', 'link'=>'devices/manage'),
-	                array('title'=>__('categories'),  'icon'=>'fa-dashboard', 'link'=>'devices/categories'),
-	                array('title'=>__('games'),  'icon'=>'fa-dashboard', 'link'=>'games'),
-				]
-			),
-	        array('title'=>__('Products'),  'icon'=>'fa-shopping-cart', 'link'=>'', 'sub'=>
+	        array('title'=>__('Blog'),  'icon'=>'fa-shopping-cart', 'link'=>'', 'sub'=>
 	            [
-	                array('title'=>__('Products list'),  'icon'=>'fa-dashboard', 'link'=>'products/index'),
-	                array('title'=>__('categories'),  'icon'=>'fa-dashboard', 'link'=>'products/categories'),
+	                array('title'=>__('Blog'),  'icon'=>'fa-dashboard', 'link'=>'blog/index'),
+	                array('title'=>__('categories'),  'icon'=>'fa-dashboard', 'link'=>'blog/categories'),
 	            ]
 	        ),
 	        array('title'=>__('Stock'),  'icon'=>'fa-warehouse', 'link'=>'', 'sub'=>

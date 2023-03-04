@@ -22,16 +22,20 @@ if(empty($app->auth()->id))
  * @return  Login page in case if not authorized 
 */
 
-Macaw::get('/', apps\Auth\AuthService::class.'@loginPage'); 
+Macaw::get('/', apps\HomeController::class.'@index'); 
 Macaw::get('/login', apps\Auth\AuthService::class.'@loginPage');
 Macaw::post('/login', apps\Auth\AuthService::class.'@userLogin');
+Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
+Macaw::get('(:all)', apps\HomeController::class.'@pages'); 
 
 } else {
 
 
 Macaw::get('/dashboard', apps\DashboardController::class.'@index'); 
-Macaw::get('/', apps\DashboardController::class.'@index'); 
+Macaw::get('/', apps\HomeController::class.'@index'); 
 
+Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
+Macaw::get('(:all)', apps\HomeController::class.'@pages'); 
 
 Macaw::post('/api/create', apps\APIController::class.'@create');
 Macaw::post('/api/update', apps\APIController::class.'@update');
@@ -88,6 +92,18 @@ Macaw::get('/categories/edit/(:num)', apps\Categories\CategoryController::class.
 Macaw::get('/games/edit/(:num)', apps\Games\GameController::class.'@edit');
 Macaw::get('/games/index', apps\Games\GameController::class.'@index');
 Macaw::get('/games', apps\Games\GameController::class.'@index');
+
+
+/**
+* @return Blog
+*/
+Macaw::get('/admin/blog/create', Medians\Blog\Application\BlogController::class.'@create');
+Macaw::get('/admin/blog/edit/(:all)', Medians\Blog\Application\BlogController::class.'@edit');
+Macaw::get('/admin/blog/index', Medians\Blog\Application\BlogController::class.'@index');
+Macaw::get('/admin/blog', Medians\Blog\Application\BlogController::class.'@index');
+Macaw::get('/admin/blog/categories', function ()  {
+    return (new apps\Categories\CategoryController())->index('Medians\Blog\Domain\Blog');
+});
 
 
 /**
