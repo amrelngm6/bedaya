@@ -8,6 +8,10 @@ jQuery(document).ready(function (e) {
 		jQuery('#mobile-menu').removeClass('show');
 	});
 
+	jQuery(document).on('click', '.switch-accordion', function(e){
+		jQuery(this).find('ul').toggleClass('hidden');
+	});
+
 	jQuery(document).on('click', '#switch-cat>div', function(e){
 		var html = '';
 		var arr = JSON.parse(jQuery(this).attr('data-childs'));
@@ -17,11 +21,15 @@ jQuery(document).ready(function (e) {
 			{
 				let title = arr[i].content ? arr[i].content.title : arr[i];
 				let link = arr[i].content ? arr[i].content.prefix : 'javascript:;';
-				html += '<a class="lg:inline-block block mx-2 my-2 py-2 px-4 lightcyan-bg font-semibold purple-color border border-purple-400 rounded-lg" href="'+link+'">'+title+'</a>';
+				html += '<a class="lg:inline-block block lg:mx-2 my-2 py-2 px-4 lightcyan-bg font-semibold purple-color border border-purple-400 rounded-lg" href="'+link+'">'+title+'</a>';
 			}
 		}
 
 		jQuery('#cat-content').html(html)
+	});
+
+	jQuery(document).on('click', '.switch-child-ul', function(e){
+		jQuery(this).find('ul').toggleClass('hidden');
 	});
 
 });

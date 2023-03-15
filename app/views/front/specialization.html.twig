@@ -1,19 +1,19 @@
 {% include 'views/front/includes/header.html.twig' %}
 
-    <div class="w-full py-10 cyan-bg relative mb-10">
+    <div class="w-full py-2 cyan-bg relative mb-10">
         <div class="w-full overflow-hidden h-full cyan-bg absolute top-0 left-0">
             <img src="./img/light-network.png" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
             <img src="./img/circles-bg.png" class="absolute left-0 bottom-0 w-full" style="opacity: .3;" />
         </div>
-        <div class="container mx-auto relative">
-            <p class="text-sm pb-10 flex gap-2 font-bold text-gray-600">
-            <span>{{lang.__('homepage')}} </span> | 
+        <div class="container mx-auto relative px-1">
+            <p class="text-sm pb-2 flex gap-2 font-bold text-gray-600">
+            <a href="/">{{lang.__('homepage')}} </a> | 
             <span>{{lang.__('SPECIALIZATIONS')}} </span> | <span class="purple-color">{{item.content.title}}</span></p>
 
             <div class="mx-auto w-full relative z-10 mb-8">
-                <div class="relative top-0  left-0 right-0 px-6 pt-2 pb-6  ">
+                <div class="relative top-0  left-0 right-0 px-0 pt-2 pb-6  ">
                     <div class="lg:flex block w-full  gap-3 gap">
-                        <div class="lg:w-8/12 w-full bg-white border-1 border border-gray-100 rounded-lg p-10">
+                        <div class="lg:w-8/12 w-full bg-white border-1 border border-gray-100 rounded-lg px-4">
                             <h1 class="text-xl purple-color font-bold mb-4">{{item.content.title}}</h1>
                             <hr class="pb-2" />
                             <img src="{{item.picture}}" alt="Doctor" class="w-full" />
@@ -22,57 +22,12 @@
 
                             </div>
                         </div>
-                        <div class="w-full lg:w-4/12">
-                            <div class="    relative border-1 border border-gray-100 gap-3 bg-white rounded-lg mb-6 p-2 flex">
-                                <div class=" p-6  w-full">
-                                    <ul class="accordion-menu">
-                                        <li class="py-3 border-b-1 border-b border-gray-200">
-                                            <a href="#!" class="flex gap gap-4 font-bold text-lg">
-                                                <svg class="Shape" viewBox="0 0 8.5 17" style="width:10px">
-                                                    <path fill="rgba(0,0,0,0)" stroke="rgba(78,42,115,1)" stroke-width="1.5px" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="10" shape-rendering="auto" id="Shape" d="M 8.5 17 L 0 8.5 L 8.5 0"></path>
-                                                </svg>
-                                                <span>الإخصاب المساعد</span>
-                                            </a>
-                                            <ul class="hidden sub-content text-gray-600 w-full px-7 block text-lg">
-                                                <li class="w-full block my-3 gap gap-4 font-bold text-lg">
-                                                    <a class="w-full block my-3 gap gap-4 font-bold text-lg" href="#www.bedayahospitals.com/اطفال-الانابيب/" >
-                                                        
-                                                        <span>اطفال الانابيب </span>
-                                                    </a>
-                                                </li>
-                                                
-                                            </ul>
-                                        </li>
-                                        <li class="normal-text ">
-                                        <li class="w-full block my-3 gap gap-4 font-bold text-lg">
-                                            <a class="w-full block my-3 gap gap-4 font-bold text-lg" href="#www.bedayahospitals.com/عيادة-الصحة-الجنسية/" class="normal-text">عيادة الصحة الجنسية</a> </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="cyan-gradient45 rounded-lg py-2  pl-40 pr-6 purple-color font-semibold text-lg  ">
-                                مقالات ذات صلة
-                            </div>
-                            <div class="relative border-1 border border-gray-100 gap-3 bg-white rounded-lg my-6 p-2 flex">
-                                <img src="./img/article-2.png" class="rounded-full p-1 border-purple-800 border-1 w-24 h-24 " alt="Doctor" />
-                                <div class="w-full pt-4">
-                                    <a href="#!" class="text-normal block mb-2 font-bold purple-color">خطوات ونسب نجاح الحقن المجهري </a>
-                                    <p class="text-sm pb-2 font-bold cyan-color">صحة المرأة</p>
-                                </div>
-                            </div>
-                            <div class="relative border-1 border border-gray-100 gap-3 bg-white rounded-lg my-6 p-2 flex">
-                                <img src="./img/article-3.jpg" class="rounded-full p-1 border-purple-800 border-1 w-24 h-24 " alt="Doctor" />
-                                <div class="w-full pt-4">
-                                    <a href="#!" class="text-normal block pb-2 font-bold purple-color">13 سبب لتأخر الحمل ونصائح لزيادة الخصوبة </a>
-                                    <p class="text-sm  font-bold cyan-color">صحة المرأة</p>
-                                </div>
-                            </div>
-                            <div class="relative border-1 border border-gray-100 gap-3 bg-white rounded-lg my-6 p-2 flex">
-                                <img src="./img/article-4.jpg" class="rounded-full p-1 border-purple-800 border-1 w-24 h-24 " alt="Doctor" />
-                                <div class="w-full pt-4">
-                                    <a href="#!" class="text-normal block lg pb-2 font-bold purple-color">أطعمة تمنحك الطاقة أثناء الحمل</a>
-                                    <p class="text-base  font-bold cyan-color">صحة المرأة</p>
-                                </div>
-                            </div>
+                        <div class="w-full lg:w-4/12" id="app">
+                            
+                            {% include 'views/front/side_specializations.html.twig' %}
+
+                            {% include 'views/front/side_similar_items.html.twig' %}
+                            
                             <div class="cyan-gradient45 rounded-lg py-2 mt-10 pl-40 pr-6 purple-color font-semibold text-lg  ">
                                 عروض مميزة
                             </div>
@@ -99,26 +54,7 @@
     <div class="relative pb-20  w-full overflow-hidden px-1">
         <img src="./img/circles-bg.png" class="absolute left-0 top-0 w-full" style="opacity: 0.05;" />
         <div class="container mx-auto relative z-10">
-            <h4 class="title-gradient rounded-lg py-2 mt-12 my-2 pl-40 pr-6 purple-color font-semibold text-xl " style="width: max-content;">
-                {{lang.__('SIMILAR_ITEMS')}}
-            </h4>
-            <div class="flex gap-3 gap row">
-                {% for similar_item in similar_items %}
-                <div class="blog-main-item lg:flex block w-full">
-                    <div class="blog-item-img lg:w-5/12">
-                        <img src="{{similar_item.picture}}" class="rounded-lg w-full py-4 lg:py-6">
-                    </div>
-                    <div class="blog-item-content lg:w-7/12">
-                        <div class="py-2 lg:py-6 lg:pr-6 lg:px-10 px-2">
-
-                            <a href="/{{similar_item.content.prefix}}" class="block  font-semibold text-sm cyan-color">{{similar_item.created_at | date('Y-m-d')}}</a>
-                            <a href="/{{similar_item.content.prefix}}" class="lg:py-4 py-2 block font-bold purple-color lg:text-xl md:text-lg text-base">{{similar_item.content.title}}</a>
-                            <p class=" font-semibold text-gray-600 lg:text-base text-sm">{{similar_item.content.content |striptags|slice(0, 100) }}</p>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
+            {% include 'views/front/side_specs_similar_items.html.twig' %}
         </div>
     </div>
 

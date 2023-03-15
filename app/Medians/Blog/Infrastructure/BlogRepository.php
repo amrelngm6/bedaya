@@ -24,7 +24,7 @@ class BlogRepository
 
 	public function find($id)
 	{
-		return Blog::with('ar','en')->find($id);
+		return Blog::with('content')->find($id);
 	}
 
 	public function get($limit = 100)
@@ -32,16 +32,35 @@ class BlogRepository
 		return Blog::with('content','user')->limit($limit)->orderBy('id', 'DESC')->get();
 	}
 
-
-	public function similar($id, $limit = 3)
+	public function getByCategory($id, $limit = 100)
 	{
-		$title = str_replace([' ','-'], '%', $this->find($id)->content->prefix);
+		return Blog::with('content','user')->where('category_id', $id)->limit($limit)->orderBy('id', 'DESC')->get();
+	}
+
+	public function getFeatured($limit = 1)
+	{
+		return Blog::with('content','user')->orderBy('updated_at', 'DESC')->first();
+	}
+
+	public function search($request, $limit = 20)
+	{
+		$title = $request->get('search');
+		$arr =  json_decode(json_encode(['id'=>0, 'content'=>['title'=>$title]]));
+
+		return $this->similar( $arr, $limit);
+	}
+
+
+	public function similar($item, $limit = 3)
+	{
+		$title = str_replace([' ','-'], '%', $item->content->title);
+
 		return Blog::whereHas('content', function($q) use ($title){
 			foreach (explode('%', $title) as $i) {
 				$q->where('title', 'LIKE', '%'.$i.'%')->orWhere('content', 'LIKE', '%'.$i.'%');
 			}
 		})
-		->where('id', '!=', $id)
+		->where('id', '!=', $item->id)
 		->with('category', 'content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
 	}
 

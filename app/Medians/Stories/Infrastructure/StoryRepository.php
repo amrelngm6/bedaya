@@ -30,7 +30,6 @@ class StoryRepository
 	public function get($limit = 100)
 	{
 		return Story::with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
-
 	}
 
 

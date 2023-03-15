@@ -32,13 +32,13 @@ class SpecializationRepository
 		return Specialization::with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
 	}
 
-	public function similar($id, $limit = 3)
+	public function similar($item, $limit = 3)
 	{
-		$title = str_replace(' ', '%', $this->find($id)->content->title);
+		$title = str_replace(' ', '%', $item->content->title);
 		return Specialization::whereHas('content', function($q) use ($title){
 			$q->where('title', 'LIKE', '%'.$title.'%')->orWhere('content', 'LIKE', '%'.$title.'%');
 		})
-		->where('id', '!=', $id)
+		->where('id', '!=', $item->id)
 		->with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
 	}
 

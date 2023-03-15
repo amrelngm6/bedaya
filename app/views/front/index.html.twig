@@ -4,19 +4,19 @@
         <img src="./img/light-network.png" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
         <img src="./img/header-bg.png" class="w-auto h-full home-bg" style="max-width: none;" />
         <div class="w-full slider-text  absolute left-0 top-0 ">
-            <div class="container mx-auto lg:pt-40 pt-20 ">
-                <div class="lg:w-1/2 text-right lg:pt-32 pt-20">
+            <div class="container mx-auto lg:pt-40 pt-10 ">
+                <div class="lg:w-1/2 lg:text-right text-center lg:pt-32 ">
                     <h1 class="text-4xl lg:text-4xl font-bold pb-4 purple-color">مستشفي بداية</h1>
                     <h2 class="text-white text-2xl  lg:text-3xl font-semibold pb-0">متخصصون فى علاج العقم</h2>
                     <p class="text-white lg:text-lg ">وأمراض الذكورة وأطفال الانابيب وأمراض الجهاز التناسلي</p>
-                    <div class="flex w-full gap-3 gap text-right   mt-4 " style="direction:rtl;">
-                         <a href="./offers.php" class="py-1 px-3 rounded-lg purple-bg text-white flex gap gap-3">
+                    <div class="flex w-full gap-3 gap text-right  px-1 mt-4 " style="direction:rtl;">
+                         <a href="/offers" class="py-1 px-3 rounded-lg purple-bg text-white flex gap gap-3">
                              <span><i class="fa fa-gift my-1"></i></span>
-                             <span>عروض مستشفيات بداية</span>
+                             <span>{{lang.__('Bedaya Offers')}}</span>
                          </a>
                          <a href="#!" class="py-1 px-3 rounded-lg purple-bg text-white flex gap gap-3">
                              <span><i class="fa fa-calendar my-1"></i></span>
-                             <span>حاسبة فترة الولادة</span>
+                             <span>{{lang.__('Pregnancy period Calculator')}}</span>
                          </a>
                          <a href="./srevice.php" class="py-1 px-3 rounded-lg purple-bg text-white flex gap gap-3">
                              <span><i class="fa fa-file my-1"></i></span>
@@ -58,15 +58,15 @@
         <img src="./img/circles-bg.png" class="absolute left-0 top-0 w-full" style="opacity: 0.1;" />
         <div class="container grid mx-auto relative z-10">
             <div class="title-gradient rounded-lg py-2 pl-40 pr-6 purple-color font-semibold text-xl " style="width: max-content;">
-                الأقسام
+                {{lang.__('CATS_LIST')}}
             </div>
         </div>
         <span :set="childs = []"></span>
         <div class="container mx-auto relative lg:block flex z-10">
             <div class="grid lg:grid-cols-5  custom-scroll lg:overflow-hidden overflow-auto h-64 lg:h-auto md:h-full sm:h-full md:grid-cols-3 grid-cols-1 lg:w-full w-64 lg:gap-10 lg:px-10 px-2 py-2 content-center mt-4" style="align-content:baseline" id="switch-cat">
 
-                {% for item in specializations %}
-                <div data-childs="{{item.childs}}" class="block border-1  text-center border border-purple-300 cursor-pointer rounded-tl-2xl rounded-br-2xl bg-white  hover:bg-blue-400 lg:px-6 px-2 py-2 lg:pt-6 text-black hover:text-white switch-hover">
+                {% for (item, index) in specializations %}
+                <div data-childs="{{item.childs}}" class="block border-1  text-center border border-purple-300 cursor-pointer rounded-tl-2xl rounded-br-2xl bg-white   hover:bg-blue-400 lg:px-6 px-2 py-2 lg:pt-6 text-black hover:text-white switch-hover">
                     <img src="./img/injection-dark.png" class="mx-auto pic-1 lg:w-auto w-10">
                     <img src="./img/injection.png" class="mx-auto mx-auto pic-2 lg:w-auto w-10">
                     <p class="pt-4 lg:text-xl text-base font-semibold lg:font-bold">{{item.content.title}}</p>
@@ -74,8 +74,12 @@
                 {% endfor %}
 
             </div>
-            <div class="w-full block text-center mx-auto lg:mt-0 lg:ml-auto mt-10 ml-2 px-4 ">
-                <div class="gap-6 w-full block" id="cat-content"></div>
+            <div class="w-full block text-center mx-auto lg:mt-0 lg:ml-auto mt-2 ml-2 px-4 ">
+                <div class="gap-4 w-full block" id="cat-content">
+                    {% for child in specializations[0].childs %}
+                    <a class="lg:inline-block block lg:mx-2 my-2 py-2 px-4 lightcyan-bg font-semibold purple-color border border-purple-400 rounded-lg" href="">{{child.content.title}}</a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
@@ -83,7 +87,7 @@
         <img src="./img/light-network.png" class="absolute left-0 top-0 w-full" style="opacity: .5;" />
         <div class="container grid mx-auto relative z-10 lg:block hidden">
             <div class="title-gradient rounded-lg py-2 pl-40 pr-6 purple-color font-semibold text-xl " style="width: max-content;">
-                تواريخ تعني لنا الكثير
+                {{lang.__('important dates')}}
             </div>
             <div class="grid grid-cols-8 mt-20 dates-grid ">
                 {% for story_date in story_dates %}
@@ -152,38 +156,22 @@
             </div>
         </div>
     </div>
-    <div class="relative py-10  w-full  cyan-gradient45 overflow-hidden">
-        <img src="./img/light-network.png" class="absolute left-0 top-0 w-full" style="opacity: .5;" />
-        <div class="container  mx-auto relative z-10">
-            <div class="lg:w-1/3 float-right relative  top-20 ">
-                <h3 class="pr-28 text-3xl font-semibold text-white">
-                    <span class="absolute right-3 top-4 font-bold" style=" font-size: 82px;">25</span>
-                    عام من الخبرة العملية والنتائج الايجابية
-                </h3>
-                <p class="pr-4 py-6 text-white text-xl">
-                    تم تأسيس مستشفي بداية بهدف توفير جميع الخدمات والعلاج لكل ما يتعلق بتأخر الحمل والعقم وهذا ما قمنا بتحقيقه بالفعل. حيث تمتلك المستشفى وحدات وعيادات لكافة تخصصات أمراض النساء والتوليد والذكورة والعقم عند الرجال والوراثة , كما تعرض خيارات متعددة لعمليات الإخصاب المساعد مثل اطفال الانابيب, الحقن المجهري و التلقيح الصناعي
-                </p>
-            </div>
-            <div class="lg:w-2/3 inline-block curve-doctor">
-                <img src="./img/doctor.png" style="max-width:none;" class="float-left" width="140%" />
-            </div>
-        </div>
-        <div class="crossed">
-        </div>
-    </div>
-    <div class="relative py-10  w-full overflow-hidden " style="z-index: 9999;">
+    
+    {% include 'views/front/center_block.html.twig' %}
+
+    <div class="relative pt-6 lg:pb-4 w-full overflow-hidden " style="z-index: 9991;" id="app">
         <img src="./img/circles-bg.png" class="absolute left-0 top-0 w-full" alt="" style="opacity: 0.1;" />
         <div class="container grid mx-auto relative z-10 ">
             <div class="title-gradient rounded-lg py-2 pl-40 pr-6 purple-color font-semibold text-xl " style="width: max-content;">
-                قصص نجاح بداية
+                {{lang.__('Bedaya SUCCESS_STORIES')}}
             </div>
         </div>
-        <div class="custom-scroll-container custom-scroll container grid mx-auto relative z-10 ">
-            <div class="custom-scroll-list block lg:grid my-10 lg:grid-cols-3 sm:grid-cols-2 w-full success-stories-grid">
+        <div class="custom-scroll-container custom-scroll container grid mx-auto relative z-10 " >
+            <div class="custom-scroll-list block lg:grid lg:my-10 lg:grid-cols-3 sm:grid-cols-2 w-full success-stories-grid pb-20 lg:pb-0">
 
                 {% for item in stories %}
                 <div class=" relative custom-scroll-item">
-                    <div class="play-icon absolute z-10 right-0 left-0 top-0 w-12 rounded-full border-4 border border-white mx-auto bg-white">
+                    <div class="play-icon absolute z-10 right-0 left-0 top-0 w-12 rounded-full border-4 border border-white mx-auto bg-white" @click="showVideo('{{item.field.video_link}}')">
                         <img src="./img/play-button_ex.png"  />
                     </div>
                     <div class="relative rounded-tl-2xl rounded-br-2xl m-6 cyan-gradient-vertical p-10">
@@ -199,10 +187,12 @@
                     </div>
                 </div>
                 {% endfor %}
+
             </div>
         </div>
+        <modal :items="[]" ref="modal"></modal>
     </div>
-    <div class="relative py-10 cyan-gradient45 w-full overflow-hidden " style="z-index: 9999;">
+    <div class="relative py-10 cyan-gradient45 w-full overflow-hidden " style="z-index: 999;">
         <img src="./img/light-network.png" class="absolute left-0 top-0 w-full" style="opacity: .5;" />
         <div class="container grid mx-auto relative z-10 ">
             <div class="title-gradient rounded-lg py-2 pl-40 pr-6 purple-color font-semibold text-xl " style="width: max-content;">
@@ -229,7 +219,7 @@
             </div>
         </div>
     </div>
-    <div class="relative py-10  w-full overflow-hidden " style="z-index: 9999;">
+    <div class="relative py-10  w-full overflow-hidden " style="z-index: 999;">
         <img src="./img/circles-bg.png" class="absolute left-0 top-0 w-full" alt="" style="opacity: 0.1;" />
         <div class=" container grid mx-auto relative z-10 ">
             <div class="title-gradient rounded-lg py-2 pl-40 pr-6 purple-color font-semibold text-xl " style="width: max-content;">

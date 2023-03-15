@@ -31,7 +31,7 @@ class DoctorRepository
 	public function get($limit = 100)
 	{
 
-		return Doctor::with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		return Doctor::with('content','user')->limit($limit)->orderBy('id', 'ASC')->get();
 
 	}
 

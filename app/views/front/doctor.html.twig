@@ -1,22 +1,22 @@
 {% include 'views/front/includes/header.html.twig' %}
     
-    <div class="w-full py-10 cyan-bg relative mb-10 ">
+    <div class="w-full py-2 cyan-bg relative mb-10 ">
         <div class="w-full overflow-hidden h-full cyan-bg absolute top-0 left-0">        
             <img src="/img/light-network.png" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
             <img src="/img/circles-bg.png" class="absolute left-0 bottom-0 w-full" style="opacity: .3;" />
         </div>
         <div class="container mx-auto relative">
-            <h1 class="text-2xl pb-10  mx-auto w-72 text-center font-bold purple-color" >فريق نجاح بداية</h1>
+            <h1 class="text-2xl lg:pb-10  mx-auto w-72 text-center font-bold purple-color" >{{item.content.title}}</h1>
             <div class="mx-auto w-full relative z-10 mb-8">
-                <div class="relative top-0  left-0 right-0 px-6 pt-2 pb-6  " >
+                <div class="relative top-0  left-0 right-0 px-1 pt-2 pb-6  " >
                     <div class="lg:flex block w-full  gap-3 gap">
-                        <div class="lg:w-8/12 w-full mb-32  bg-white border-1 border border-gray-100 rounded-lg lg:p-10 p-2">
+                        <div class="overflow-auto lg:w-8/12 w-full mb-32  bg-white border-1 border border-gray-100 rounded-lg lg:p-10 p-2">
          
 
                             <div id="brief"  class="relative my-6 p-6 lightcyan-bg  rounded-lg overflow-hidden">
                                 <img src="./img/light-network.png" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
                                 <div class="relative">
-                                    <span class="block w-full text-lg font-bold pb-2 purple-color">نبذة عن الدكتور</span>
+                                    <span class="block w-full text-lg font-bold pb-2 purple-color">{{lang.__('summary')}}</span>
                                     <hr class="border-gray-400 my-4" />
                                     {{item.content.short | raw}}
                                 </div>
@@ -42,7 +42,7 @@
                                 <img src="{{item.picture}}" style="top:-100px" class="rounded-full p-1 border-purple-800 border-1 w-56 h-56 mx-auto left-0 right-0 absolute" alt="Doctor" />
 
                                 <h2 class="text-xl pb-2 font-bold purple-color" >{{item.content.title}}</h2>
-                                <p class="text-lg pb-10 font-bold cyan-color" >{{item.fields.short_name_ar}}</p>
+                                <p class="text-lg pb-10 font-bold cyan-color" >{{ lang.__('lang') == 'en' ? item.field.short_name_en : item.field.short_name_ar}}</p>
                                 <a class="mx-auto py-3 px-4 cyan-bg purple-color rounded-lg  inline-block font-semibold " href="#!">حجز موعد </a>
                             </div>
 
@@ -92,14 +92,7 @@
     </div>
 
 
-    <div class="blog-content container mx-auto">
+{% include 'views/front/services_bottom.html.twig' %}
 
-        <div class="cairo mx-auto  pt-20 pb-10   purple-color font-semibold text-2xl mx-auto text-center w-72">
-            فريق عمل مستشفي بداية
-            <span class="mx-auto my-4 w-20 border border-b-1  border-gray-300 block"></span>
-        </div>
-
-    </div>
-    
 
 {% include 'views/front/includes/footer.html.twig' %}

@@ -4,8 +4,8 @@ namespace Shared\dbaser;
 
 use \Illuminate\Database\Eloquent\Model;
 
-use Medians\Domain\Users\User;
-use Medians\Domain\Content\Content;
+use Medians\Users\Domain\User;
+use Medians\Content\Domain\Content;
 
 class CustomController extends Model
 {
@@ -61,7 +61,6 @@ class CustomController extends Model
 
 
 }
-
 
 
 

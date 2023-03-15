@@ -23,10 +23,10 @@ class Doctor extends CustomController
 	];
 
 
-	public $appends = ['photo', 'fields'];
+	public $appends = ['photo', 'field'];
 
 
-	public function getFieldsAttribute() 
+	public function getFieldAttribute() 
 	{
 		return !empty($this->custom_fields) ? array_column($this->custom_fields->toArray(), 'value', 'code') : [];
 	}

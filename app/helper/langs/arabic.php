@@ -2,6 +2,9 @@
 
 
 
+/**
+ * Langs Class
+*/ 
 class Langs
 {
 	
@@ -200,7 +203,7 @@ class Langs
 		,'OLD_WITHDRWAL' => 'Old withdrawals'
 		,'ID' => 'ID'
 		,'CATS_PAGE' => 'Categories page'
-		,'CATS_LIST' => 'Categories list'
+		,'CATS_LIST' => 'الأقسام'
 		,'ITEMS_LIST' => 'Items list'
 		,'ABT_AUTHOR' => 'About Author'
 		,'ARTIST' => 'Artist'
@@ -698,6 +701,7 @@ class Langs
 		,'SPECIALITY' => 'التخصص'
 		,'CLONE' => 'نسخ'
 		,'SUCCESS_STORIES' => 'قصص النجاح'
+		,'Bedaya SUCCESS_STORIES' => 'قصص  نجاح بداية '
 		,'WATCH_VIDEO' => 'مشاهدة  الفيديو'
 		,'MEDIA_PRESS' => 'الوسائط'
 		,'DOCTORS' => 'الاطباء'
@@ -1008,7 +1012,14 @@ class Langs
 		,'CHECK_DATABASE_CONNECTION' => 'تأكد من بيانات قاعدة البيانات'
 		,'latest_articles' => 'أحدث المقالات'
 		,'our_experts' => 'تعرف على خبراء المستشفى'
-
+		,'important dates' => 'تواريخ تعني لنا الكثير'
+		,'Successful team' => 'فريق نجاح بداية'
+		,'Profile CV' => 'الصفحة الشخصية'
+		,'summary' => 'نبذة  مختصرة '
+		,'Bedaya success stories' => 'قصص نجاح بداية'
+		,'Pregnancy period Calculator' => 'حاسبة فترة الولادة'
+		,'Bedaya Offers' => 'عروض بداية'
+	
 		,'COPYRIGHTS' => 'Copyrights are reserved'
 		);
 	
@@ -1081,4 +1092,3 @@ class Langs
 	}
 
 }
-

@@ -3,7 +3,8 @@
 namespace Medians\Specializations\Application;
 
 use Medians\Specializations\Infrastructure\SpecializationRepository;
-use Medians\Infrastructure\Categories\CategoryRepository;
+use Medians\Blog\Infrastructure\BlogRepository;
+use Medians\Categories\Infrastructure\CategoryRepository;
 
 
 class SpecializationController
@@ -22,6 +23,7 @@ class SpecializationController
 		$this->app = new \config\APP;
 
 		$this->repo = new SpecializationRepository();
+		$this->blogRepo = new BlogRepository();
 		$this->categoryRepo = new CategoryRepository();
 	}
 
@@ -177,10 +179,11 @@ class SpecializationController
 	{
 
 		try {
-				
+			
+			$item = $this->repo->find($id);
 			return render('views/front/specialization.html.twig', [
-		        'item' => $this->repo->find($id),
-		        'similar_items' => $this->repo->similar($id, 2),
+		        'item' => $item,
+		        'similar_articles' => $this->blogRepo->similar($item, 3),
 		    ]);
 
 		} catch (\Exception $e) {

@@ -26,8 +26,14 @@ class Blog extends CustomController
 	];
 
 
-	public $appends = ['photo'];
+	public $appends = ['photo','field'];
 
+
+
+	public function getFieldAttribute() 
+	{
+		return !empty($this->custom_fields) ? array_column($this->custom_fields->toArray(), 'value', 'code') : [];
+	}
 
 	public function getPhotoAttribute() : ?String
 	{
@@ -49,6 +55,12 @@ class Blog extends CustomController
 	{
 		return $this->hasOne(Category::getClass(), 'id', 'category_id')->with('content');
 	}
+
+	public function custom_fields()
+	{
+		return $this->morphMany(CustomFields::class, 'item')->with('field');
+	}
+
 
 
 

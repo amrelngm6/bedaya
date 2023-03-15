@@ -2,18 +2,18 @@
 
 use \NoahBuscher\Macaw\Macaw;
 
-use Medians\Application as apps;
-// use Medians\Application\DashboardController;
-use Shared\dbaser;
-use Medians\Infrastructure as Repo;
-use Medians\Infrastructure\Administrators\AdminRepository;
-use Medians\Infrastructure\Users\UserRepository;
 
 $app = new \config\APP;
 
 /**
 * Return Dashboard 
 */
+
+Macaw::get('/', \Medians\HomeController::class.'@index'); 
+Macaw::get('/stories', \Medians\Stories\Application\StoryController::class.'@index'); 
+Macaw::get('/doctors', \Medians\Doctors\Application\DoctorController::class.'@list'); 
+
+
 if(empty($app->auth()->id))
 {
     
@@ -22,20 +22,17 @@ if(empty($app->auth()->id))
  * @return  Login page in case if not authorized 
 */
 
-Macaw::get('/', apps\HomeController::class.'@index'); 
 Macaw::get('/login', apps\Auth\AuthService::class.'@loginPage');
 Macaw::post('/login', apps\Auth\AuthService::class.'@userLogin');
 Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
-Macaw::get('(:all)', apps\HomeController::class.'@pages'); 
+Macaw::get('(:all)', \Medians\HomeController::class.'@pages'); 
 
 } else {
 
 
 Macaw::get('/dashboard', apps\DashboardController::class.'@index'); 
-Macaw::get('/', apps\HomeController::class.'@index'); 
-
 Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
-Macaw::get('(:all)', apps\HomeController::class.'@pages'); 
+Macaw::get('(:all)', \Medians\HomeController::class.'@pages'); 
 
 Macaw::post('/api/create', apps\APIController::class.'@create');
 Macaw::post('/api/update', apps\APIController::class.'@update');

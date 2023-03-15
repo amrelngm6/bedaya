@@ -2,8 +2,9 @@
 
 namespace Medians\Blog\Application;
 
+use Medians\Specializations\Infrastructure\SpecializationRepository;
 use Medians\Blog\Infrastructure\BlogRepository;
-use Medians\Infrastructure\Categories\CategoryRepository;
+use Medians\Categories\Infrastructure\CategoryRepository;
 
 
 class BlogController
@@ -22,6 +23,7 @@ class BlogController
 		$this->app = new \config\APP;
 
 		$this->repo = new BlogRepository();
+		$this->specsRepo = new SpecializationRepository();
 		$this->categoryRepo = new CategoryRepository();
 	}
 
@@ -177,10 +179,13 @@ class BlogController
 	{
 
 		try {
-				
+			
+			$item = $this->repo->find($id);
+
 			return render('views/front/article.html.twig', [
-		        'item' => $this->repo->find($id),
-		        'similar_items' => $this->repo->similar($id),
+		        'item' => $item,
+		        'similar_items' => $this->specsRepo->similar($item, 3),
+		        'similar_articles' => $this->repo->similar($item, 3),
 		    ]);
 
 		} catch (\Exception $e) {
@@ -194,14 +199,17 @@ class BlogController
 	 */
 	public function list()
 	{
+		$request =  $this->app->request();
 
 		try {
 				
 			return render('views/front/blog.html.twig', [
-		        'first_item' => $this->repo->get(1),
+		        'first_item' => $this->repo->getFeatured(1),
+		        'search_items' => $request->get('search') ?  $this->repo->search($request, 10) : [],
+		        'search_text' => $request->get('search'),
 		        'items' => $this->repo->get(4),
-		        'cat_her' => $this->repo->get(),
-		        'cat_him' => $this->repo->get(),
+		        'cat_her' => $this->repo->getByCategory(6, 4),
+		        'cat_him' => $this->repo->getByCategory(7, 4),
 		    ]);
 
 		} catch (\Exception $e) {

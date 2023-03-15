@@ -22,18 +22,12 @@ class Story extends CustomController
 	];
 
 
-	public $appends = ['photo'];
+	public $appends = ['field'];
 
 
-	public function getPhotoAttribute() : ?String
+	public function getFieldAttribute() 
 	{
-		return $this->photo();
-	}
-
-
-	public function photo() : String
-	{
-		return !empty($this->picture) ? $this->picture : '/uploads/images/default_profile.jpg';
+		return !empty($this->custom_fields) ? array_column($this->custom_fields->toArray(), 'value', 'code') : [];
 	}
 
 	public function getFields()
@@ -44,6 +38,11 @@ class Story extends CustomController
 	public function category()
 	{
 		return $this->hasOne(Category::class, 'id', 'category_id');
+	}
+
+	public function custom_fields()
+	{
+		return $this->morphMany(CustomFields::class, 'item')->with('field');
 	}
 
 

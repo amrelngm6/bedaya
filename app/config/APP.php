@@ -8,9 +8,7 @@ use \NoahBuscher\Macaw\Macaw;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-use \Medians\Application as apps;
-
-use \Medians\Infrastructure\Settings\SettingsRepository;
+use Medians\Settings\Infrastructure\SettingsRepository;
 
 
 
@@ -33,15 +31,20 @@ class APP
 	{
 		$this->currentPage = $this->request()->getPathInfo();
 
-		$this->CONF = (new apps\Configuration())->getCONFArray();
+		$this->CONF = (new \config\Configuration())->getCONFArray();
 
 		$this->branch = isset($this->auth()->branch) ? $this->auth()->branch : null;
 
 	}
 
+	public function specializations()
+	{
+		return  (new \Medians\Specializations\Infrastructure\SpecializationRepository())->get_root();
+	}
+
 	public function Settings()
 	{
-		return  (new apps\Settings\SettingsController())->getAll();
+		return  (new \Medians\Settings\Application\SettingsController())->getAll();
 	}
 
 	public function setting($code)
@@ -51,7 +54,7 @@ class APP
 
 	public function auth()
 	{
-		return (new apps\Auth\AuthService( new \Medians\Infrastructure\Users\UserRepository($this), $this ))->checkSession();
+		return (new \Medians\Auth\Application\AuthService( new \Medians\Users\Infrastructure\UserRepository($this), $this ))->checkSession();
 	}
 
 	public static function request()
@@ -105,23 +108,27 @@ class APP
 					array('title'=>__('Calendar'),  'icon'=>'fa-dashboard', 'link'=>'devices/calendar'),
 	                array('title'=>__('All bookings'),  'icon'=>'fa-dashboard', 'link'=>'devices/orders'),
 	                array('title'=>__('Active bookings'),  'icon'=>'fa-dashboard', 'link'=>'devices/orders?status=active'),
-	                array('title'=>__('Completed bookings'),  'icon'=>'fa-dashboard', 'link'=>'devices/orders?status=completed'),
+	                array('title'=>__('Completed bookings'), 'icon'=>'fa-dashboard','link'=>'devices/orders?status=completed'),
 	                array('title'=>__('Paid bookings'),  'icon'=>'fa-dashboard', 'link'=>'devices/orders?status=paid'),
+	                array('title'=>__('Canceled bookings'), 'icon'=>'fa-dashboard', 'link'=>'devices/orders?status=canceled'),
 				]
 			),
-	        array('title'=>__('Blog'),  'icon'=>'fa-shopping-cart', 'link'=>'', 'sub'=>
+			array('title'=>__('Devices'),  'icon'=>'fa-desktop', 'link'=>'', 'sub'=>
+				[
+	                array('title'=>__('manage devices'),  'icon'=>'fa-dashboard', 'link'=>'devices/manage'),
+	                array('title'=>__('categories'),  'icon'=>'fa-dashboard', 'link'=>'devices/categories'),
+	                array('title'=>__('games'),  'icon'=>'fa-dashboard', 'link'=>'games'),
+				]
+			),
+	        array('title'=>__('Products'),  'icon'=>'fa-shopping-cart', 'link'=>'', 'sub'=>
 	            [
-	                array('title'=>__('Blog'),  'icon'=>'fa-dashboard', 'link'=>'blog/index'),
-	                array('title'=>__('categories'),  'icon'=>'fa-dashboard', 'link'=>'blog/categories'),
-	            ]
-	        ),
-	        array('title'=>__('Stock'),  'icon'=>'fa-warehouse', 'link'=>'', 'sub'=>
-	            [
-	                array('title'=>__('Stock log'),  'icon'=>'fa-dashboard', 'link'=>'stock/index'),
+	                array('title'=>__('Products list'),  'icon'=>'fa-dashboard', 'link'=>'products/index'),
+	                array('title'=>__('categories'),  'icon'=>'fa-dashboard', 'link'=>'products/categories'),
 	                array('title'=>__('Stock alert products'),  'icon'=>'fa-dashboard', 'link'=>'products/stock_alert'),
 	                array('title'=>__('Stock out products'),  'icon'=>'fa-dashboard', 'link'=>'products/stock_out'),
 	            ]
 	        ),
+	        array('title'=>__('Stock'),  'icon'=>'fa-warehouse', 'link'=>'stock/index'),
 	        array('title'=>__('Orders'),  'icon'=>'fa-file-invoice', 'link'=>'', 'sub'=>
 	            [
 	                array('title'=>__('Orders'),  'icon'=>'fa-dashboard', 'link'=>'orders/index'),
