@@ -25,14 +25,14 @@ if(empty($app->auth()->id))
 Macaw::get('/login', \Medians\Auth\Application\AuthService::class.'@loginPage');
 Macaw::post('/login', \Medians\Auth\Application\AuthService::class.'@userLogin');
 Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
-Macaw::get('(:all)', \Medians\HomeController::class.'@pages'); 
+Macaw::get('/(:all)', \Medians\HomeController::class.'@pages'); 
 
 } else {
 
 
 Macaw::get('/dashboard', \Medians\DashboardController::class.'@index'); 
 Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
-Macaw::get('(:all)', \Medians\HomeController::class.'@pages'); 
+Macaw::get('/(:all)', \Medians\HomeController::class.'@pages'); 
 
 Macaw::post('/api/create', \Medians\APIController::class.'@create');
 Macaw::post('/api/update', \Medians\APIController::class.'@update');
