@@ -22,33 +22,28 @@ if(empty($app->auth()->id))
  * @return  Login page in case if not authorized 
 */
 
-Macaw::get('/login', apps\Auth\AuthService::class.'@loginPage');
-Macaw::post('/login', apps\Auth\AuthService::class.'@userLogin');
+Macaw::get('/login', \Medians\Auth\Application\AuthService::class.'@loginPage');
+Macaw::post('/login', \Medians\Auth\Application\AuthService::class.'@userLogin');
 Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
 Macaw::get('(:all)', \Medians\HomeController::class.'@pages'); 
 
 } else {
 
 
-Macaw::get('/dashboard', apps\DashboardController::class.'@index'); 
+Macaw::get('/dashboard', \Medians\DashboardController::class.'@index'); 
 Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
 Macaw::get('(:all)', \Medians\HomeController::class.'@pages'); 
 
-Macaw::post('/api/create', apps\APIController::class.'@create');
-Macaw::post('/api/update', apps\APIController::class.'@update');
-Macaw::post('/api/delete', apps\APIController::class.'@delete');
-Macaw::post('/api/updateStatus', apps\APIController::class.'@updateStatus');
-Macaw::post('/api/checkout', apps\Orders\OrderController::class.'@checkout');
-Macaw::post('/api/(:all)', apps\APIController::class.'@handle');
-Macaw::post('/api', apps\APIController::class.'@handle');
-
-Macaw::get('/api/calendar', apps\Devices\DeviceController::class.'@calendar');
-Macaw::get('/api/calendar_events', apps\Devices\DeviceController::class.'@events');
-Macaw::get('/api/(:all)', apps\Devices\DeviceController::class.'@handle');
+Macaw::post('/api/create', \Medians\APIController::class.'@create');
+Macaw::post('/api/update', \Medians\APIController::class.'@update');
+Macaw::post('/api/delete', \Medians\APIController::class.'@delete');
+Macaw::post('/api/updateStatus', \Medians\APIController::class.'@updateStatus');
+Macaw::post('/api/(:all)', \Medians\APIController::class.'@handle');
+Macaw::post('/api', \Medians\APIController::class.'@handle');
 
 Macaw::get('/logout', function () 
 {
-    (new apps\Auth\AuthService)->unsetSession();
+    (new \Medians\Auth\Application\AuthService)->unsetSession();
     echo (new \config\APP)->redirect('./');
 });
 
