@@ -72,7 +72,6 @@ class HomeController
 		        		break;
 		        	
 		        	case \Medians\Stories\Domain\Story::class:
-		        		echo 1;
 		        		return (new  \Medians\Stories\Application\StoryController)->page($item->item_id);
 		        		break;
 		        	
