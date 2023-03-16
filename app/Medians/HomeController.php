@@ -49,11 +49,25 @@ class HomeController
 	/**
 	 * Model object 
 	 */
+	public function find($prefix)
+	{
+	
+		$item = $this->contentRepo->find($prefix);
+
+		if ($item) { return $item;}
+
+		return $this->contentRepo->find(!empty($_SERVER['PATH_INFO']) ? str_replace('/', '', $_SERVER['PATH_INFO']) : null);
+	}
+
+	/**
+	 * Model object 
+	 */
 	public function pages($prefix)
 	{
 		try {
 
-			$item = $this->contentRepo->find(str_replace('/', '', !empty($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : $prefix));
+
+			$item = $this->find($prefix);
 			
 			if (isset($item->item_type))
 			{
