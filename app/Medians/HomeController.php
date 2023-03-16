@@ -55,7 +55,7 @@ class HomeController
 		$item = $this->contentRepo->find($prefix);
 		if ($item) { return $item;}
 
-		$newPrefix = !empty($_SERVER['SCRIPT_URL']) ? str_replace('/', '', $_SERVER['SCRIPT_URL']) : str_replace('/', '', $_SERVER['PATH_INFO']);
+		$newPrefix = !empty($_SERVER['SCRIPT_URL']) ? str_replace('/', '', $_SERVER['SCRIPT_URL']) : str_replace('/', '',  !empty($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : $_SERVER['REDIRECT_URL']);
 		return $this->contentRepo->find($newPrefix);
 	}
 
