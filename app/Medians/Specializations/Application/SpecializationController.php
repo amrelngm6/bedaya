@@ -179,7 +179,7 @@ class SpecializationController
 	{
 
 		try {
-			
+			echo $id;
 			$item = $this->repo->find($id);
 			return render('views/front/specialization.html.twig', [
 		        'item' => $item,
