@@ -4,7 +4,7 @@ try {
     
     $app = new \config\APP;
 
-    $lng = isset($app->auth()->branch->id) && !empty($app->setting('lang')) ? $app->setting('lang') : 'english';
+    $lng = isset($app->auth()->branch->id) && !empty($app->setting('lang')) ? $app->setting('lang') : $app->default_lang;
 
     include('app/helper/langs/'.$lng.'.php');
 

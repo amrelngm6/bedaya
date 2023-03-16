@@ -15,6 +15,7 @@ use Medians\Settings\Infrastructure\SettingsRepository;
 class APP 
 {
 
+	public $default_lang = 'arabic';
 	// public $auth;
 
 	public $branch;
