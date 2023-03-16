@@ -2,7 +2,7 @@
 
     <div class="w-full cyan-bg pb-6 pt-2 relative ">
         <div class="w-full overflow-hidden h-full absolute bottom-0 left-0">        
-            <img src="./img/light-network.png" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
+            <img  alt="{{app.settings['sitename']}}" src="./img/light-network.png" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
         </div>
         <div class="container mx-auto relative">
             <h1 class="text-2xl mx-auto w-32 text-center font-bold purple-color" >{{lang.__('blog')}}</h1>
@@ -52,7 +52,7 @@
                         <a href="{{first_item.content.prefix}}" class="py-6 block font-bold purple-color text-xl lg:text-3xl">{{first_item.content.title}}</a>
                         <p class="text-sm lg:text-lg font-semibold text-gray-600">{{first_item.content.content|striptags|raw|slice(0,400)|raw}} </p>
                         <div class="item-writer flex gap-3 gap my-12">
-                            <img src="/img/Ellipse_13_ia.png" class="rounded-full w-16 border-1 border border-purple-600"   >
+                            <img  alt="Doctor" src="/img/Ellipse_13_ia.png" class="rounded-full w-16 border-1 border border-purple-600"   >
                             <div class="w-full">
                                 <a class=" block cyan-color font-semibold" href="{{first_item.content.prefix}}">{{first_item.field.author_name}}</a>
                                 <Span class=" block text-gray-300 " >{{first_item.updated_at|date('Y-m-d')}}</Span>
@@ -85,7 +85,7 @@
     </div>
     
     <div class="relative pb-6   w-full overflow-hidden bg-gray-100">
-        <img src="./img/circles-bg.png" class="absolute left-0 top-0 w-full" style="opacity: 0.05;" />
+        <img alt="circle" src="./img/circles-bg.png" class="absolute left-0 top-0 w-full" style="opacity: 0.05;" />
         
         {% set catTitle = lang.__('Women health') %}
         {% set catItemsList = cat_her %}
@@ -95,7 +95,7 @@
 
 
     <div class="relative pb-24 pt-10  w-full  cyan-gradient45 overflow-hidden ">
-        <img src="./img/light-network.png" class="absolute left-0 top-0 w-full" style="opacity: .4;" />
+        <img alt="bg" src="./img/light-network.png" class="absolute left-0 top-0 w-full" style="opacity: .4;" />
         <div class="container  mx-auto relative z-10  px-2"  style="z-index:9999">
             <div class="lg:w-6/12 lg:float-right relative  lg:top-20 ">
                 <h3 class=" text-xl lg:text-3xl font-semibold text-white">الاستشارات الطبية الاونلاين. محادثات فعاله مع أطبائنا اينما كنت</h3>
@@ -107,7 +107,7 @@
         </div>
         <div class="absolute left-0 right-0 top-0 container  mx-auto relative z-10  px-2">
             <div class="lg:w-6/12 lg:inline-block hidden">
-                <img src="./img/doctor.png" style="max-width:none;" class="float-left" width="140%" />
+                <img alt="{{app.settings['sitename']}}" src="./img/doctor.png" style="max-width:none;" class="float-left" width="140%" />
             </div>
         </div>
         <div class="crossed lg:block hidden">
@@ -115,7 +115,7 @@
     </div>
 
     <div class="relative pb-6  w-full overflow-hidden ">
-        <img src="./img/circles-bg.png" class="absolute left-0 top-0 w-full" style="opacity: 0.05;" />
+        <img alt="{{app.settings['sitename']}}" src="./img/circles-bg.png" class="absolute left-0 top-0 w-full" style="opacity: 0.05;" />
         {% set catTitle = lang.__('Men health') %}
         {% set catItemsList = cat_him %}
         {% include 'views/front/blog_cat_items.html.twig' %}
