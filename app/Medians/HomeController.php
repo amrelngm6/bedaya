@@ -53,7 +53,7 @@ class HomeController
 	{
 		try {
 
-			$item = $this->contentRepo->find(str_replace('/', '', isset($_SERVER['PATH_INFO'] ? $_SERVER['PATH_INFO'] : '/')));
+			$item = $this->contentRepo->find(str_replace('/', '', isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/'));
 			
 			if (isset($item->item_type))
 			{
