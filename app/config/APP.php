@@ -34,7 +34,7 @@ class APP
 
 		$this->CONF = (new \config\Configuration())->getCONFArray();
 
-		$this->branch = isset($this->auth()->branch) ? $this->auth()->branch : null;
+		$this->branch =  (object) array('id'=>1);
 
 	}
 
