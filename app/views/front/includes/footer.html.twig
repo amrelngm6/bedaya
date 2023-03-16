@@ -52,11 +52,13 @@
                 <div class="w-full pt-6 lg:pr-20">
                     <h6 class="font-bold pb-2 block text-white">تخصصات المستشفي</h6>
                     <ul class="block text-white ">
-                        <li class="py-1"><a href="#!">أطفال الأنابيب</a></li>
-                        <li class="py-1"><a href="#!">التلقيح الصناعي</a></li>
-                        <li class="py-1"><a href="#!">الحقن المجهري</a></li>
-                        <li class="py-1"><a href="#!">أطفال الأنابيب</a></li>
-                        <li class="py-1"><a href="#!">التلقيح الصناعي</a></li>
+                        {% for cat in app.specializations %}
+                        {% if cat.id == 2 %}
+                        {% for item in cat.childs %}
+                        <li class="py-1"><a href="{{item.content.prefix}}">{{item.content.title}}</a></li>
+                        {% endfor  %}
+                        {% endif  %}
+                        {% endfor  %}
                     </ul>
                 </div>
                 <div class="w-full ">

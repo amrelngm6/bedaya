@@ -53,7 +53,7 @@ class HomeController
 	{
 		try {
 
-			$item = $this->contentRepo->find($prefix);
+			$item = $this->contentRepo->find(str_replace('/', '', !empty($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : $prefix));
 			
 			if (isset($item->item_type))
 			{
@@ -72,6 +72,7 @@ class HomeController
 		        		break;
 		        	
 		        	case \Medians\Stories\Domain\Story::class:
+		        		echo 1;
 		        		return (new  \Medians\Stories\Application\StoryController)->page($item->item_id);
 		        		break;
 		        	
