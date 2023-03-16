@@ -67,8 +67,8 @@
 
                 {% for item in specializations %}
                 <div data-childs="{{item.childs}}" class="block border-1  text-center border border-purple-300 cursor-pointer rounded-tl-2xl rounded-br-2xl bg-white   hover:bg-blue-400 lg:px-6 px-2 py-2 lg:pt-6 text-black hover:text-white switch-hover">
-                    <img src="./img/injection-dark.png" class="mx-auto pic-1 lg:w-auto w-10">
-                    <img src="./img/injection.png" class="mx-auto mx-auto pic-2 lg:w-auto w-10">
+                    <img src="./img/specialization-{{item.id}}-dark.png" class="mx-auto pic-1 lg:w-auto w-10">
+                    <img src="./img/specialization-{{item.id}}.png" class="mx-auto mx-auto pic-2 lg:w-auto w-10">
                     <p class="pt-4 lg:text-xl text-base font-semibold lg:font-bold">{{item.content.title}}</p>
                 </div>
                 {% endfor %}
