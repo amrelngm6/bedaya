@@ -93,6 +93,7 @@ Macaw::get('/admin/blog/create', Medians\Blog\Application\BlogController::class.
 Macaw::get('/admin/blog/edit/(:all)', Medians\Blog\Application\BlogController::class.'@edit');
 Macaw::get('/admin/blog/index', Medians\Blog\Application\BlogController::class.'@index');
 Macaw::get('/admin/blog', Medians\Blog\Application\BlogController::class.'@index');
+Macaw::get('/admin/blog/', Medians\Blog\Application\BlogController::class.'@index');
 Macaw::get('/admin/blog/categories', function ()  {
     return (new apps\Categories\CategoryController())->index('Medians\Blog\Domain\Blog');
 });
