@@ -1,5 +1,6 @@
 /node_modules
 /vendor
+/tailwind
 /app/config/database.php
 .env
 cookie.txt
