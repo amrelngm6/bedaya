@@ -16,6 +16,8 @@ class APP
 {
 
 	public $default_lang = 'arabic';
+
+	public $lang_code = 'ar';
 	// public $auth;
 
 	public $branch;
@@ -30,6 +32,7 @@ class APP
 
 	function __construct()
 	{
+		$_SESSION['lang'] = isset($_SESSION['site_lang']) ? $_SESSION['site_lang'] : $this->lang_code;
 		$this->currentPage = $this->request()->getPathInfo();
 
 		$this->CONF = (new \config\Configuration())->getCONFArray();

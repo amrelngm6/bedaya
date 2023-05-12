@@ -12,6 +12,8 @@ $app = new \config\APP;
 Macaw::get('/', \Medians\HomeController::class.'@index'); 
 Macaw::get('/stories', \Medians\Stories\Application\StoryController::class.'@index'); 
 Macaw::get('/doctors', \Medians\Doctors\Application\DoctorController::class.'@list'); 
+Macaw::get('/booking', \Medians\Pages\Application\PageController::class.'@booking'); 
+Macaw::post('/submit/booking', \Medians\FrontendController::class.'@booking'); 
 
 
 if(empty($app->auth()->id))

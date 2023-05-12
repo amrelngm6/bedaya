@@ -97,7 +97,7 @@ class Langs
 		,'ADD_TO_PLAYLIST' => 'Add to playlist'
 		,'ADD_NEW_PLAYLIST' => 'Add new playlist'
 		,'CREATE_PLAYLIST' => 'Create Playlist'
-		,'DONE' => 'All Done'
+		,'DONE' => 'تم بنجاح'
 		,'CONFIRMATION' => 'يرجى التأكد'
 		,'CANCEL' => 'إلغاء'
 		,'SAVE' => 'حفظ'
@@ -660,7 +660,7 @@ class Langs
 		,'BOOK' => 'حجز'
 		,'BOOKING_ID' => 'رقم الحجز '
 		,'BOOKING_INFO' => 'بيانات الحجز'
-		,'BOOKING_THANKS' => 'شكرا لاختيارك احد عروض  '
+		,'BOOKING_THANKS' => 'شكرا لاختيارك  خدمات بداية'
 		,'BOOKINGS' => 'الحجوزات'
 		,'BOOKING_PAGE' => 'صفحة الحجز'
 		,'BOOKING_DATE' => 'موعد الحجز'
@@ -1019,7 +1019,7 @@ class Langs
 		,'Bedaya success stories' => 'قصص نجاح بداية'
 		,'Pregnancy period Calculator' => 'حاسبة فترة الولادة'
 		,'Bedaya Offers' => 'عروض بداية'
-	
+		,'I Have notes' => 'لدي ملاحظات'
 		,'COPYRIGHTS' => 'Copyrights are reserved'
 		);
 	
@@ -1043,50 +1043,8 @@ class Langs
 
 	public static function vueLang()
 	{
-		$data = [];
 
-		$data['start'] = Langs::__('Start time');
-		$data['end'] = Langs::__('end time');
-		$data['date'] = Langs::__('date');
-		$data['pay'] = Langs::__('PAY_NOW');
-		$data['add_cart'] = Langs::__('ADD_CART');
-		$data['checkout'] = Langs::__('checkout');
-		$data['remove'] = Langs::__('remove');
-		$data['add_products'] = Langs::__('Add More Products');
-		$data['type'] = Langs::__('type');
-		$data['apply'] = Langs::__('apply');
-		$data['subtotal'] = Langs::__('Subtotal');
-		$data['total_amount'] = Langs::__('TOTAL');
-		$data['tax'] = Langs::__('Tax');
-		$data['game'] = Langs::__('Game');
-		$data['order_summary'] = Langs::__('Order Summary');
-		$data['start_playing'] = Langs::__('Start Playing');
-		$data['finish'] = Langs::__('finish');
-		$data['login'] = Langs::__('Login');
-		$data['login_page'] = Langs::__('Login page');
-		$data['password'] = Langs::__('password');
-		$data['purchased_products'] = Langs::__('Purchased Products');
-		$data['email'] = Langs::__('Email');
-		$data['single'] = Langs::__('Single');
-		$data['multi'] = Langs::__('Multi');
-		$data['update'] = Langs::__('update');
-		$data['duration'] = Langs::__('duration');
-		$data['information'] = Langs::__('info');
-		$data['price'] = Langs::__('price');
-		$data['cost'] = Langs::__('cost');
-		$data['alert'] = Langs::__('Alert');
-		$data['payment_method'] = Langs::__('PAYMENT_METHOD');
-		$data['order_status_is'] = Langs::__('order_status_is');
-		$data['promo_code'] = Langs::__('DISCOUNT_CODE');
-		$data['confirm_complete_booking'] = Langs::__('Are your sure you want to finish this booking');
-		$data['confirm'] = Langs::__('confirm');
-		$data['confirmation'] = Langs::__('confirmation');
-		$data['show_invoice'] = Langs::__('show_invoice');
-		$data['paid'] = Langs::__('paid');
-		$data['completed'] = Langs::__('completed');
-		$data['active'] = Langs::__('active');
-		$data['unpaid'] = Langs::__('unpaid');
-		$data['add_new'] = Langs::__('add new');
+		return array_change_key_case(Langs::get(), CASE_LOWER);
 
 		return $data;
 	}

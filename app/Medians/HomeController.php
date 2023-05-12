@@ -23,6 +23,7 @@ class HomeController
 		$this->specsRepo = new \Medians\Specializations\Infrastructure\SpecializationRepository;
 		$this->storiesRepo = new \Medians\Stories\Infrastructure\StoryRepository;
 		$this->storyDateRepo = new \Medians\StoryDates\Infrastructure\StoryDateRepository;
+		$this->pagesRepo = new \Medians\Pages\Infrastructure\PageRepository;
 	}
 
 	/**
@@ -88,6 +89,10 @@ class HomeController
 		        	case \Medians\Stories\Domain\Story::class:
 		        		echo 1;
 		        		return (new  \Medians\Stories\Application\StoryController)->page($item->item_id);
+		        		break;
+		        	
+		        	case \Medians\Pages\Domain\Page::class:
+		        		return (new  \Medians\Pages\Application\PageController)->page($item->item_id);
 		        		break;
 		        	
 		        	default:

@@ -12,6 +12,10 @@ jQuery(document).ready(function (e) {
 		jQuery(this).find('ul').toggleClass('hidden');
 	});
 
+	jQuery(document).on('click', '.switch-view', function(e){
+		jQuery('#'+jQuery(this).data('target')).toggleClass('hidden');
+	});
+
 	jQuery(document).on('click', '#switch-cat>div', function(e){
 		var html = '';
 		var arr = JSON.parse(jQuery(this).attr('data-childs'));
@@ -44,3 +48,36 @@ function shuffleArray(array)
     }
     return array;
 }
+
+jQuery(document).on('submit', 'form', function(){
+
+	// Get the form and submit button elements
+	const form = document.getElementById(jQuery(this).attr('id'));
+
+	  // Prevent the default form submission behavior
+	  event.preventDefault();
+
+	  // Get the form data as a FormData object
+	  const formData = new FormData(form);
+
+	  // Send the form data via AJAX
+	  const xhr = new XMLHttpRequest();
+	  xhr.open('POST', form.action, true);
+	  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	  xhr.onreadystatechange = function() {
+	    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+	      // Handle the successful response
+	    	let res = JSON.parse(xhr.responseText);
+	    	(res.error ) 
+	    		? Swal.fire('Error!',res.result, 'error')
+	    		: (Swal.fire(res.title,res.result,  'success'), form.reset());
+
+	    } else {
+	  		Swal.fire('Error!','Connection error','error')
+	    }
+	  };
+	  xhr.send(new URLSearchParams(formData).toString());
+
+
+
+})
