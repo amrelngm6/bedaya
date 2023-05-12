@@ -77,7 +77,7 @@
             <div class="w-full block text-center mx-auto lg:mt-0 lg:ml-auto mt-2 ml-2 px-4 ">
                 <div class="gap-4 w-full block" id="cat-content">
                     {% for child in specializations[0].childs %}
-                    <a class="lg:inline-block block lg:mx-2 my-2 py-2 px-4 lightcyan-bg font-semibold purple-color border border-purple-400 rounded-lg" href="">{{child.content.title}}</a>
+                    <a class="lg:inline-block block lg:mx-2 my-2 py-2 px-4 lightcyan-bg font-semibold purple-color border border-purple-400 rounded-lg" href="{{child.content.prefix}}">{{child.content.title}}</a>
                     {% endfor %}
                 </div>
             </div>
