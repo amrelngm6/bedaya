@@ -14,8 +14,8 @@
                         <div class="lg:w-8/12 w-full bg-white border-1 border border-gray-100 rounded-lg  p-2 mb-10" >
                             <h1 class="text-xl purple-color font-bold mb-4">{{item.content.title}}</h1>
                             <hr class="pb-2" />
-                            <p class="float-left"><span>الكاتب :</span> <span class="font-bold">دكتور مونيك مجدي</span> </p>
-                            <p><span>تم النشر:Sep 04, 2020</span> • <span>المشاهدات: 441</span></p>
+                            <p class="float-left"><span>{{lang.__('author')}} :</span> <span class="font-bold">{{item.field.author_name}}</span> </p>
+                            <p><span>{{lang.__('released_at')}}:{{item.created_at | date('M, d Y')}}</span> • <span>{{lang.__('views')}}: 441</span></p>
                             <img  alt="{{app.Settings['sitename']}}" src="{{item.picture}}" class="w-full" />
                             <div id="certificates" class="mt-10 relative mb-6 p-6 lightcyan-bg  rounded-lg overflow-hidden">
                                 <img  alt="{{app.Settings['sitename']}}" src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />

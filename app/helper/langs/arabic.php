@@ -1025,6 +1025,8 @@ class Langs
 		,'Men health' => 'صحة الرجل '
 		,'Women health' => 'صحة المرأة '
 		,'Bedaya services' => 'خدمات بداية '
+		,'released at' => 'تم النشر في '
+		,'author' => 'الكاتب'
 		,'COPYRIGHTS' => 'Copyrights are reserved'
 		);
 	
