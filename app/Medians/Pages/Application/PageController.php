@@ -184,6 +184,8 @@ class PageController
 			$item = $this->repo->find($id);
 			switch ($item->content->prefix) 
 			{
+				case 'اتصل-بنا':
+				case 'contactus':
 				case 'contact':
 					$template = 'contact';
 					break;

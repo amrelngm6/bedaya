@@ -9,7 +9,7 @@ class CustomField extends CustomController
 
 	protected $table = 'custom_fields';
 
-	public $fillable = ['item_type', 'userid', 'value', 'field_idd'];
+	public $fillable = ['title', 'code','item_type', 'item_id', 'value', 'field_id'];
 
 	public $timestamps = false;
 

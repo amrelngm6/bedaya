@@ -2,8 +2,10 @@
 
 use \NoahBuscher\Macaw\Macaw;
 
-
+use Medians\APIController;
+use Medians\DashboardController;
 $app = new \config\APP;
+
 
 /**
 * Return Dashboard 
@@ -13,9 +15,16 @@ Macaw::get('/', \Medians\HomeController::class.'@index');
 Macaw::get('/stories', \Medians\Stories\Application\StoryController::class.'@index'); 
 Macaw::get('/doctors', \Medians\Doctors\Application\DoctorController::class.'@list'); 
 Macaw::get('/booking', \Medians\Pages\Application\PageController::class.'@booking'); 
-Macaw::post('/submit/booking', \Medians\FrontendController::class.'@booking'); 
+Macaw::post('/submit/(:all)', \Medians\FrontendController::class.'@form_submit'); 
+Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
+Macaw::get('/offers/(:all)', \Medians\Offers\Application\OfferController::class.'@page'); 
 
 
+Macaw::get('/invoices/print/(:all)', \Medians\Orders\Application\OrderController::class.'@print');
+Macaw::get('/invoices/qr_code/(:all)', \Medians\Orders\Application\OrderController::class.'@qr_code');
+/**
+* Return Dashboard 
+*/
 if(empty($app->auth()->id))
 {
     
@@ -26,22 +35,28 @@ if(empty($app->auth()->id))
 
 Macaw::get('/login', \Medians\Auth\Application\AuthService::class.'@loginPage');
 Macaw::post('/login', \Medians\Auth\Application\AuthService::class.'@userLogin');
-Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
-Macaw::get('/(:all)', \Medians\HomeController::class.'@pages'); 
+Macaw::post('/', \Medians\Auth\Application\AuthService::class.'@userLogin');
 
 } else {
 
 
+Macaw::get('/json/dashboard', \Medians\DashboardController::class.'@json'); 
 Macaw::get('/dashboard', \Medians\DashboardController::class.'@index'); 
-Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
-Macaw::get('/(:all)', \Medians\HomeController::class.'@pages'); 
+
 
 Macaw::post('/api/create', \Medians\APIController::class.'@create');
 Macaw::post('/api/update', \Medians\APIController::class.'@update');
 Macaw::post('/api/delete', \Medians\APIController::class.'@delete');
 Macaw::post('/api/updateStatus', \Medians\APIController::class.'@updateStatus');
+Macaw::post('/api/checkout', \Medians\Orders\Application\OrderController::class.'@checkout');
+Macaw::post('/api/bug_report', \Medians\APIController::class.'@bug_report');
+Macaw::post('/api/search', \Medians\APIController::class.'@search');
 Macaw::post('/api/(:all)', \Medians\APIController::class.'@handle');
 Macaw::post('/api', \Medians\APIController::class.'@handle');
+
+Macaw::get('/api/calendar', \Medians\Devices\Application\DeviceController::class.'@calendar');
+Macaw::get('/api/calendar_events', \Medians\Devices\Application\DeviceController::class.'@events');
+Macaw::get('/api/(:all)', \Medians\APIController::class.'@handle');
 
 Macaw::get('/logout', function () 
 {
@@ -52,40 +67,10 @@ Macaw::get('/logout', function ()
 
 
 
-Macaw::post('/media-library-api/delete', apps\Media\MediaController::class.'@delete');
-Macaw::post('/media-library-api/(:all)', apps\Media\MediaController::class.'@upload');
-Macaw::get('/media-library-api/media', apps\Media\MediaController::class.'@media');
+Macaw::post('/media-library-api/delete', \Medians\Media\Application\MediaController::class.'@delete');
+Macaw::post('/media-library-api/(:all)', \Medians\Media\Application\MediaController::class.'@upload');
+Macaw::get('/media-library-api/media', \Medians\Media\Application\MediaController::class.'@media');
 
-
-
-/**
-* @return devices
-*/
-Macaw::get('/devices/create', apps\Devices\DeviceController::class.'@create');
-Macaw::get('/devices/edit/(:num)', apps\Devices\DeviceController::class.'@edit');
-Macaw::get('/devices/device/(:num)', apps\Devices\DeviceController::class.'@edit');
-Macaw::get('/devices/manage', apps\Devices\DeviceController::class.'@manage');
-Macaw::get('/devices/orders', apps\Devices\DeviceController::class.'@orders');
-Macaw::get('/devices/calendar', apps\Devices\DeviceController::class.'@index');
-Macaw::get('/devices/calendar2', apps\Devices\DeviceController::class.'@index2');
-Macaw::get('/devices/index', apps\Devices\DeviceController::class.'@index');
-
-Macaw::get('/devices/categories', function ()  {
-    try 
-    {
-        return (new apps\Categories\CategoryController)->index('Medians\Domain\Devices\Device');
-
-    } catch (Exception $e) {
-        return $e->getMessage();
-    }
-});
-Macaw::get('/categories/edit/(:num)', apps\Categories\CategoryController::class.'@edit');
-
-
-
-Macaw::get('/games/edit/(:num)', apps\Games\GameController::class.'@edit');
-Macaw::get('/games/index', apps\Games\GameController::class.'@index');
-Macaw::get('/games', apps\Games\GameController::class.'@index');
 
 
 /**
@@ -102,68 +87,48 @@ Macaw::get('/admin/blog/categories', function ()  {
 
 
 /**
-* @return Products
-*/
-Macaw::get('/products/create', apps\Products\ProductController::class.'@create');
-Macaw::get('/products/edit/(:all)', apps\Products\ProductController::class.'@edit');
-Macaw::get('/products/stock_alert', apps\Products\ProductController::class.'@stock_alert');
-Macaw::get('/products/stock_out', apps\Products\ProductController::class.'@stock_out');
-Macaw::get('/products/orders', apps\Products\ProductController::class.'@orders');
-Macaw::get('/products/index', apps\Products\ProductController::class.'@index');
-Macaw::get('/products/categories', function ()  {
-    return (new apps\Categories\CategoryController())->index('Medians\Domain\Products\Product');
-});
-
-
-/**
-* @return Stock
-*/
-Macaw::get('/stock/create', apps\Products\StockController::class.'@create');
-Macaw::get('/stock/edit/(:num)', apps\Products\StockController::class.'@edit');
-Macaw::get('/stock/index', apps\Products\StockController::class.'@index');
-
-/**
-* @return Payments
-*/
-Macaw::get('/payments/create', apps\Payments\PaymentController::class.'@create');
-Macaw::get('/payments/edit/(:num)', apps\Payments\PaymentController::class.'@edit');
-Macaw::get('/payments/index', apps\Payments\PaymentController::class.'@index');
-Macaw::get('/payments', apps\Payments\PaymentController::class.'@index');
-
-/**
-* @return Orders
-*/
-Macaw::get('/orders/create', apps\Orders\OrderController::class.'@create');
-Macaw::get('/orders/edit/(:all)', apps\Orders\OrderController::class.'@edit');
-Macaw::get('/orders/show/(:all)', apps\Orders\OrderController::class.'@show');
-Macaw::get('/orders/index', apps\Orders\OrderController::class.'@index');
-
-
-/**
 * @return Branches
 */
-Macaw::get('/branches/create', apps\Branches\BranchController::class.'@create');
-Macaw::get('/branches/edit/(:num)', apps\Branches\BranchController::class.'@edit');
-Macaw::get('/branches/show/(:num)', apps\Branches\BranchController::class.'@show');
-Macaw::get('/branches/index', apps\Branches\BranchController::class.'@index');
+Macaw::get('/branches/create', \Medians\Branches\Application\BranchController::class.'@create');
+Macaw::get('/branches/edit/(:num)', \Medians\Branches\Application\BranchController::class.'@edit');
+Macaw::get('/branches/show/(:num)', \Medians\Branches\Application\BranchController::class.'@show');
+Macaw::get('/branches/index', \Medians\Branches\Application\BranchController::class.'@index');
 
-Macaw::get('/settings', apps\Settings\SettingsController::class.'@index');
+Macaw::get('/settings', \Medians\Settings\Application\SettingsController::class.'@index');
 
 
 
 /**
-* @return Branches
+* @return Users
 */
-Macaw::get('/users/create', apps\Users\UserController::class.'@create');
-Macaw::get('/users/edit/(:num)', apps\Users\UserController::class.'@edit');
-Macaw::get('/users/show/(:num)', apps\Users\UserController::class.'@show');
-Macaw::get('/users/index', apps\Users\UserController::class.'@index');
-Macaw::get('/users/', apps\Users\UserController::class.'@index');
-Macaw::get('/users', apps\Users\UserController::class.'@index');
+Macaw::get('/users/create', \Medians\Users\Application\UserController::class.'@create');
+Macaw::get('/users/edit/(:num)', \Medians\Users\Application\UserController::class.'@edit');
+Macaw::get('/users/show/(:num)', \Medians\Users\Application\UserController::class.'@show');
+Macaw::get('/users/index', \Medians\Users\Application\UserController::class.'@index');
+Macaw::get('/users/', \Medians\Users\Application\UserController::class.'@index');
+Macaw::get('/users', \Medians\Users\Application\UserController::class.'@index');
+
+/**
+* @return customers
+*/
+Macaw::get('/customers/create', \Medians\Customers\Application\CustomerController::class.'@create');
+Macaw::get('/customers/edit/(:num)', \Medians\Customers\Application\CustomerController::class.'@edit');
+Macaw::get('/customers/show/(:num)', \Medians\Customers\Application\CustomerController::class.'@show');
+Macaw::get('/customers/index', \Medians\Customers\Application\CustomerController::class.'@index');
+Macaw::get('/customers/', \Medians\Customers\Application\CustomerController::class.'@index');
+Macaw::get('/customers', \Medians\Customers\Application\CustomerController::class.'@index');
+
+/**
+* @return customers
+*/
+Macaw::get('/reports/(:all)', \Medians\Reports\Application\ReportController::class.'@index');
 
 
-return $app->run();
+
 }
+
+Macaw::get('/(:all)', \Medians\HomeController::class.'@pages');
+Macaw::get('/(:all)/(:all)', \Medians\HomeController::class.'@page');
 
 
 /*

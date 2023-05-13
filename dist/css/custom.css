@@ -296,8 +296,9 @@ footer
 .list-icon li
 {
     position: relative;
-    padding-right: 20px;
-    padding-bottom: 15px;
+    padding: 0 20px;
+    margin: 5px 0;
+    text-align: initial;
 }
 .list-icon li::before
 {
@@ -322,3 +323,15 @@ footer
     width: 50px;
     margin-top: 15px;
 }    
+
+
+.list-icon ul 
+{
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+} 
+
+.offers-container {
+    text-align: initial;
+}

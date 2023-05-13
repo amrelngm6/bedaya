@@ -1,8 +1,8 @@
 <?php
 
-namespace Medians\Domain\Content;
+namespace Medians\Blog\Domain;
 
-use Medians\Blog\Domain\Content as Model;
+use Medians\Content\Domain\Content as Model;
 
 class Content extends Model
 {

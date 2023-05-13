@@ -2,9 +2,6 @@
 
 
 
-/**
- * Langs Class
-*/ 
 class Langs
 {
 	
@@ -18,7 +15,7 @@ class Langs
 
 				
 		$LANG_ARRAY = array(
-		
+
 		'lang' => 'ar'
 		,'ar' => 'المحتوي العربي'
 		,'en' => 'English content'
@@ -1020,9 +1017,18 @@ class Langs
 		,'Pregnancy period Calculator' => 'حاسبة فترة الولادة'
 		,'Bedaya Offers' => 'عروض بداية'
 		,'I Have notes' => 'لدي ملاحظات'
+		,'Sub-categories' => 'الأقسام الفرعية'
+		,'book_online_consultation' => 'حجز استشارة اونلاين'
+		,'book_with' => 'احجز مع '
+		,'more_details' => 'تفاضيل اكثر '
+		,'offer_content' => 'محتويات الباكدج '
+		,'Men health' => 'صحة الرجل '
+		,'Women health' => 'صحة المرأة '
+		,'Bedaya services' => 'خدمات بداية '
 		,'COPYRIGHTS' => 'Copyrights are reserved'
 		);
 	
+
 
 		return array_column(array_map(function($q, $key){
 			$key = strtoupper(str_replace([' ', '/', '&', '?','؟' , '@', '#', '$', '%', '(', ')', '-', '='], '_', $key)) ;
@@ -1050,3 +1056,4 @@ class Langs
 	}
 
 }
+

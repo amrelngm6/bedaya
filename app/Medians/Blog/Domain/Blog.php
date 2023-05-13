@@ -58,7 +58,7 @@ class Blog extends CustomController
 
 	public function custom_fields()
 	{
-		return $this->morphMany(CustomFields::class, 'item')->with('field');
+		return $this->morphMany(CustomFields::class, 'item');
 	}
 
 

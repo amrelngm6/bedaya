@@ -2,6 +2,8 @@
 
 namespace config;
 
+use Shared\dbaser as MysqliDb;
+
 class Configuration 
 {
 
@@ -95,5 +97,8 @@ class Configuration
 		return (array) $this;
 	}
 
+	public function checkDB() : MysqliDb
+	{
+	}
 	
 }

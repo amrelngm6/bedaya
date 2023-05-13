@@ -3,7 +3,7 @@
 
     <div class="w-full cyan-bg pb-6 pt-2 relative ">
         <div class="w-full overflow-hidden h-full absolute bottom-0 left-0">        
-            <img  alt="{{app.settings['sitename']}}" src="./img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
+            <img  alt="{{app.settings['sitename']}}" src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
         </div>
         <div class="container mx-auto relative">
             <h1 class="text-2xl mx-auto w-auto text-center font-bold purple-color" >{{item.content.title}}</h1>
@@ -52,7 +52,8 @@
                 </span>
             </div>
             <div class="w-full flex-auto p-4">
-                <h3 class="my-1 font-semibold text-xl dark:text-slate-200"><a class="cyan-color main-font" href="https://wa.me/201225368744" target="_blank"> (+20) 1225368744</a></h3>
+                <h3 class="my-1 font-semibold text-xl textarea dark:text-slate-200 text-default" style="direction:ltr" >
+                    <a class="cyan-color main-font" href="https://wa.me/201225368744" target="_blank" > (+20) 1225368744</a></h3>
                 <p class="text-gray-600 font-semibold dark:text-slate-400">{{lang.__('Start whatsapp chat')}}</p>
             </div><!--end card-body-->
         </div>
@@ -70,13 +71,24 @@
     </div>
     <div class="w-full md:w-2/3 lg:w-2/4 p-4">
         <h2 class="text-xl font-bold mb-4">{{lang.__('Contact info')}}</h2>
-        <form class="w-full max-w-lg">
+        <form id="contact-form" action="/submit/contact" class=" w-full max-w-lg">
+            <input type="hidden" name="params[itemid]" value="0">
+            <input type="hidden" name="params[class]" value="Contact">
+            <input type="hidden" name="params[status]" value="new">
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full px-3">
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
-                        {{lang.__('Name')}}
+                        {{lang.__('Name')}} *
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-first-name" type="text" placeholder="Jane">
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-first-name" type="text" placeholder="{{lang.__('ENTER_FULLNAME')}}" required name="params[custom_field][name]">
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full px-3">
+                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
+                        {{lang.__('Mobile')}} *
+                    </label>
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-email" type="tel" placeholder="01xxxxxxxxx" required name="params[custom_field][mobile]">
                 </div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-6">
@@ -84,15 +96,7 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
                         {{lang.__('email')}}
                     </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-email" type="email" placeholder="jane.doe@example.com">
-                </div>
-            </div>
-            <div class="flex flex-wrap -mx-3 mb-6">
-                <div class="w-full px-3">
-                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-email">
-                        {{lang.__('Mobile')}}
-                    </label>
-                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-email" type="tel" placeholder="jane.doe@example.com">
+                    <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-email" type="email" placeholder="email@example.com" name="params[custom_field][email]">
                 </div>
             </div>
             <div class="flex flex-wrap -mx-3 mb-6">
@@ -100,11 +104,11 @@
                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-message">
                         {{lang.__('Msg')}}
                     </label>
-                    <textarea class="no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none" id="grid-message" placeholder="Enter your message here"></textarea>
+                    <textarea class="no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-24 resize-none" id="grid-message" placeholder="{{msg}}"  name="params[custom_field][msg]"></textarea>
                 </div>
             </div>
             <div class="md:flex md:items-center">
-                <button class="py-3 px-4 purple-bg text-white rounded-tl-lg rounded-br-lg" type="button">
+                <button class="py-3 px-4 purple-bg text-white rounded-tl-lg rounded-br-lg" type="submit">
                     {{lang.__('Send')}}
                 </button>
             </div>

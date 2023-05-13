@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Langs class
+ * 
  */
 class Langs
 {
@@ -17,8 +17,6 @@ class Langs
 		$LANG_ARRAY = array(
 
 			'lang' => 'en'
-			,'ar' => 'المحتوي العربي'
-			,'en' => 'English content'
 			,'DIR' => 'ltr'
 			,'HOMEPAGE' => 'Home'
 			,'HOMEPAGE_TITLE' => 'Homepage'
@@ -28,6 +26,8 @@ class Langs
 			,'REGISTER' => 'Register'
 			,'CUR_CUSTOMERS' => 'Registered Customers'
 			,'NAME' => 'Name'
+			,'first_name' => 'First name'
+			,'last_name' => 'Last name'
 			,'ENTER_MAIL' => 'Email'
 			,'ENTER_PASS' => 'Password'
 			,'PASSWORD' => 'Password'
@@ -465,8 +465,8 @@ class Langs
 			,'SIGNUP_DONE_MSG' => 'You can login after reviewing your profile.'
 			,'ABOUT' => 'About'
 			,'CONTACT' => 'Contact'
-			,'Arabic' => 'Arabic'
-			,'ENglish' => 'English'
+			,'AR' => 'Arabic'
+			,'EN' => 'English'
 			,'CHANGE_LANG' => 'Change Language'
 				
 			,'AGENT' => 'Company'
@@ -893,7 +893,33 @@ class Langs
 			,'Stock alert products' => 'Stock alert products'
 			,'Stock out products' => 'Stock out products'
 			,'invoice_id' => 'Invoice id'
-
+			,'confirm_delete' => 'Please confirm to delete this item'
+			,'active_bookings' => 'Active bookings'
+			,'TODAY_REVENUE' => 'Today revenue'
+			,'Today orders' => 'Today orders'
+			,'TODAY_BOOKINGS' => 'Today Bookings'
+			,'TODAY_SOLD_PRODUCTS' => 'Today sold products'
+			,'TODAY_INCOME' => 'Today income'
+			,'today_payments' => 'Today payments'
+			,'Latest unpaid Bookings' => 'Latest unpaid Bookings'
+			,'Latest paid Bookings' => 'Latest paid Bookings'
+			,'Latest sold products' => 'Latest sold products'
+			,'connected_devices' => 'Connected devices'
+			,'ADD_NEW_category' => 'Add new category'
+			,'ADD_NEW_game' => 'Add new game'
+			,'ADD_device' => 'Add device'
+			,'Purchase_amount' => 'Purchase amount'
+			,'Last_week_orders' => 'Last week orders'
+			,'Last_30_Days' => 'Last 30 days'
+			,'Invoice_Number' => 'Invoice number'
+			,'Basic_Details' => 'Basic Details'
+			,'Address_Details' => 'Address Details'
+			,'invoice_info' => 'Invoice info'
+			,'Invoice_terms___conditions' => 'Invoice terms & conditions'
+			,'Invoice_notes' => 'Invoice notes'
+			,'third_step' => 'Third step'
+			,'please_add_your_devices_first' => 'Please add your devices first'
+		
 			,'COPYRIGHTS' => 'Copyrights are reserved'
 		);
 	
@@ -913,7 +939,7 @@ class Langs
 
 	    $key = strtolower(str_replace([' ', '/', '&', '?','؟' , '@', '#', '$', '%', '(', ')', '-', '='], '_', $langkey)) ;
 		
-	    return isset($LANG_ARRAY[$key]) ? $LANG_ARRAY[$key] : $langkey;
+	    return !empty($LANG_ARRAY[$key]) ? $LANG_ARRAY[$key] : $langkey;
 	} 
 
 	public static function vueLang()
@@ -923,5 +949,5 @@ class Langs
 
 		return $data;
 	}
-
 }
+

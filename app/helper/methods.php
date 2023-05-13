@@ -1,13 +1,12 @@
 <?php
-    
+
 try {
     
     $app = new \config\APP;
-
-    $lng = isset($app->auth()->branch->id) && !empty($app->setting('lang')) ? $app->setting('lang') : $app->default_lang;
+    $lng = isset($app->auth()->branch->id) && !empty($app->setting('lang')) ? $app->setting('lang') : (isset($_SESSION['site_lang']) ? $_SESSION['site_lang'] : 'arabic');
 
     include('app/helper/langs/'.$lng.'.php');
-
+    
 
 } catch (\Exception $e) {
     throw new Exception($e->getMessage(), 1);    
@@ -21,7 +20,7 @@ try {
  * @param String twig file path
  * @param [] List of data
  */
-function render($path, $data)
+function render($path, $data, $responseType = 'html')
 {
 
     try {
@@ -36,6 +35,22 @@ function render($path, $data)
         die();
     }
 
+    /**
+     * Check if response is required in JSON
+     */  
+    if (!empty($app->request()->get('load')) && $app->request()->get('load') == 'json' )
+    {
+        echo json_encode($data);
+        return true;
+    }
+
+    /**
+     * While request is not required in JSON
+     * Response will be override only
+     * In case the system works In Vue APP
+     */ 
+    $path = isset($data['load_vue']) ? 'views/admin/vue.html.twig' : $path;
+
     $app = new \config\APP;
     $data['app'] = $app;
     $data['app']->auth = $app->auth();
@@ -45,9 +60,9 @@ function render($path, $data)
     $data['enddate'] = !empty($app->request()->get('end')) ? $app->request()->get('end') : date('Y-m-d');
     $data['lang'] = new Langs;
     $data['lang_key'] = (new Langs)->__('lang');
-
+    
     echo $app->template()->render($path, $data);
-} 
+ } 
 
 
 

@@ -15,15 +15,9 @@ class Page extends CustomController
 	protected $table = 'pages';
 
 	public $fillable = [
-		'name', 
-		'category_id', 
-		'picture', 
-		'insertedby', 
-		'prefix', 
-		'status', 
-		'author_name', 
-		'author_picture',
-		'inserted_by'
+		'title', 
+		'order', 
+		'home', 
 	];
 
 

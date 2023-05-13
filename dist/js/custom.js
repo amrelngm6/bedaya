@@ -12,6 +12,14 @@ jQuery(document).ready(function (e) {
 		jQuery(this).find('ul').toggleClass('hidden');
 	});
 
+	jQuery(document).on('click', '.switch-icons-border', function(e){
+		// jQuery(this).find('img').removeClass('border-purple-400');
+		// jQuery(this).parent('div').find('label').find('img').removeClass('border-purple-400');
+		jQuery(this).parent().find('img').removeClass('border-purple-400');
+		jQuery(this).find('img').addClass('border-purple-400');
+		console.log(jQuery(this).find('img').attr('class'))
+	});
+
 	jQuery(document).on('click', '.switch-view', function(e){
 		jQuery('#'+jQuery(this).data('target')).toggleClass('hidden');
 	});
@@ -54,6 +62,8 @@ jQuery(document).on('submit', 'form', function(){
 	// Get the form and submit button elements
 	const form = document.getElementById(jQuery(this).attr('id'));
 
+	if (!form)
+		return null;
 	  // Prevent the default form submission behavior
 	  event.preventDefault();
 

@@ -52,7 +52,6 @@ class BlogController
 
 
 
-
 	/**
 	 * Create new item
 	 * 

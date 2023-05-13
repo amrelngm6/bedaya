@@ -37,7 +37,7 @@ class HomeController
 	        	'blog'=> $this->blogRepo->get(3),
 	        	'doctors'=> $this->doctorRepo->get(3),
 	        	'specializations'=> $this->specsRepo->get_root(),
-	        	'stories'=> $this->storiesRepo->get(3),
+	        	// 'stories'=> $this->storiesRepo->get(3),
 	        	'story_dates'=> $this->storyDateRepo->get(10)
 	        ]);
 	        
@@ -63,13 +63,32 @@ class HomeController
 	/**
 	 * Model object 
 	 */
-	public function pages($prefix)
+	public function page($prefix, $id)
 	{
 		try {
+	        switch ($prefix) 
+	        {
+	        	case '%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%88%D9%86%D9%84%D8%A7%D9%8A%D9%86':
+	        	case 'استشارات-اونلاين':
+	        		return (new  \Medians\OnlineConsultations\Application\OnlineConsultationController)->page($id);
+	        		break;
+			}
 
+		} catch (\Exception $e) {
+			throw new \Exception( $e->getMessage(), 1);
+		}
+	}
+
+	/**
+	 * Model object 
+	 */
+	public function pages($prefix)
+	{
+		try 
+		{
 
 			$item = $this->find($prefix);
-			
+
 			if (isset($item->item_type))
 			{
 		        switch ($item->item_type) 
@@ -87,12 +106,19 @@ class HomeController
 		        		break;
 		        	
 		        	case \Medians\Stories\Domain\Story::class:
-		        		echo 1;
 		        		return (new  \Medians\Stories\Application\StoryController)->page($item->item_id);
 		        		break;
 		        	
 		        	case \Medians\Pages\Domain\Page::class:
 		        		return (new  \Medians\Pages\Application\PageController)->page($item->item_id);
+		        		break;
+		        	
+		        	case \Medians\OnlineConsultations\Domain\OnlineConsultation::class:
+		        		return (new  \Medians\OnlineConsultations\Application\OnlineConsultationController)->list($item);
+		        		break;
+		        	
+		        	case \Medians\Offers\Domain\Offer::class:
+		        		return (new  \Medians\Offers\Application\OfferController)->list($item);
 		        		break;
 		        	
 		        	default:

@@ -16,6 +16,8 @@ class FrontendController
 	function __construct()
 	{
 		$this->app = new \config\APP;
+
+		$this->repo = new \Medians\Bookings\Infrastructure\BookingRepository;
 	
 	}
 
@@ -24,14 +26,16 @@ class FrontendController
 	 * Model object 
 	 * 
 	 */
-	public function booking()
+	public function form_submit($type)
 	{
+
+		$request = $this->app->request()->get('params');
 
 		try {
 			
+			$Object = $this->repo->store($request);
 
-
-			$response = array('success'=>1, 'result'=> __('BOOKING_THANKS'), 'title'=>__('Done')) ;
+			$response = $Object ? array('success'=>1, 'result'=> __('BOOKING_THANKS'), 'title'=>__('Done')) : 'error' ;
 
 		} catch (Exception $e) {
 			$response  = array('error'=>$e->getMessage()) ;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="rtl" lang="ar">
+<html dir="{{lang.__('dir')}}" lang="{{lang_key}}">
 
 <head>
     <meta charset="utf-8">
@@ -22,26 +22,26 @@
     <meta property="twitter:description" content="{{item.content.seo_desc ? item.content.seo_desc : app.setting('seo_desc')}}">
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./favicon.webp">
-    <link rel="icon" type="image.webp" sizes="32x32" href="./favicon.webp">
-    <link rel="icon" type="image.webp" sizes="16x16" href="./favicon.webp">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.webp">
+    <link rel="icon" type="image.webp" sizes="32x32" href="/favicon.webp">
+    <link rel="icon" type="image.webp" sizes="16x16" href="/favicon.webp">
 
     <!-- CSS -->
-    <link href="./dist/css/tailwind.min.css" rel="stylesheet">
-    <link href="./dist/owl/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="./dist/css/custom.css" rel="stylesheet">
-    <link href="./dist/css/responsive.css" rel="stylesheet">
-    <link href="./dist/fontawesome/css/all.min.css" rel="stylesheet">  
+    <link href="/dist/css/tailwind.min.css" rel="stylesheet">
+    <link href="/dist/owl/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/dist/css/custom.css" rel="stylesheet">
+    <link href="/dist/css/responsive.css" rel="stylesheet">
+    <link href="/dist/fontawesome/css/all.min.css" rel="stylesheet">  
 
     <!-- JS -->
-    <script src="./dist/js/jquery-3.5.1.min.js"></script>
+    <script src="/dist/js/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./dist/js/custom.js"></script>
+    <script src="/dist/js/custom.js"></script>
     <script type="text/javascript">
     var rootURL = 'https://bedaya.medianssolutions.com/';
     var imageURL = 'https://bedaya.medianssolutions.com/route/image.php?';
     </script>
-
+    <style>.text-default{text-align: {{lang.__('lang') == 'ar' ? 'right' : 'left'}} }</style>
     <!-- UA-89806532-4 -->
     <meta name="google-site-verification" content="-X2XHH_xRXPphZ-NG1_0ldtVIn2TQq5wHG8VRu9yZmY" />
 
@@ -51,17 +51,15 @@
 </head>
 
 <body class="p-0 m-0">
-    
-
 
     <div class="{{headerPosition ? headerPosition : 'relative cyan-bg' }} py-4 z-index9 head w-full" style="z-index: 999;">
         <div class="hidden container mx-auto  flex">
-            <div class="w-full gap-3 flex font-semibold"><img alt="{{app.Settings['sitename']}}" src="./img/pin.webp" />
+            <div class="w-full gap-3 flex font-semibold"><img alt="{{app.Settings['sitename']}}" src="/uploads/img/pin.webp" />
                 <span class="text-xs lg:text-sm"> رقم 2 شارع أحمد المليحي ميدان فيني, الدقي - الجيزة - مصر</span></div>
             <div class="flex lg:gap-6 gap-2 pl-1">
-                <a href="#"><img alt="{{app.Settings['sitename']}}" src="./img/facebook.webp" /></a>
-                <a href="#"><img alt="{{app.Settings['sitename']}}" src="./img/twitter-bird.webp" /></a>
-                <a href="#"><img alt="{{app.Settings['sitename']}}" src="./img/logo-instagram.webp" /></a>
+                <a href="#"><img alt="{{app.Settings['sitename']}}" src="/uploads/img/facebook.webp" /></a>
+                <a href="#"><img alt="{{app.Settings['sitename']}}" src="/uploads/img/twitter-bird.webp" /></a>
+                <a href="#"><img alt="{{app.Settings['sitename']}}" src="/uploads/img/logo-instagram.webp" /></a>
             </div>
         </div>
         <div class="container mx-auto  flex rtl">
@@ -85,7 +83,7 @@
                             </g>
                         </svg>
                     </a>
-                    <a class="p-1 lg:p-3 pb-1 mt-2 lg:mt-auto" href="{{app.CONF.url}}"><img alt="{{app.Settings['sitename']}}" src="./img/logo.webp" /></a>
+                    <a class="p-1 lg:p-3 pb-1 mt-2 lg:mt-auto" href="{{app.CONF.url}}"><img alt="{{app.Settings['sitename']}}" src="/uploads/img/logo.webp" /></a>
                     <ul class="lg:flex md:flex hidden gap-1 h-full font-semibold purple-color">
                         <li class="h-full"><a class="block px-2 h-full bg-blue-100" href="/"><span class="block pt-5">الرئيسية</span></a></li>
                         
@@ -94,7 +92,8 @@
                             <ul class="text-sm sub-menu w-48 absolute top-18 right-0 bg-white p-6">
                                 <li class="py-1"><a href="/about-us">{{lang.__('ABOUT')}} </a></li>
                                 <li class="py-1"><a href="/doctors">{{lang.__('our doctors')}}</a></li>
-                                <li class="py-1"><a href="/online">{{lang.__('ONLINE CONSULTATION')}}</a></li>
+                                <li class="py-1"><a href="/expatriates">{{lang.__('INTERNATIONAL_PATIENTS')}}</a></li>
+                                <li class="py-1"><a href="/استشارات-اونلاين">{{lang.__('ONLINE CONSULTATION')}}</a></li>
                                 <li class="py-1"><a href="/offers">{{lang.__('Offers')}}</a></li> 
                             </ul>
                         </li>
@@ -125,8 +124,8 @@
                 <div class="p-4  flex gap-3 ">
                     <a href="tel:19483" class="text-lg px-1 lg:px-2 my-1 pt-2 font-bold purple-color">19483</a>
                     <a href="/booking" class="rounded-lg lg:px-8 px-6 my-1 pt-2 bg-blue-200 font-bold">{{lang.__('BOOK')}}</a>
-                    <a href="#" class="text-center lg:w-8 w-8 pb-2 pt-3 px-1"><img alt="{{app.Settings['sitename']}}" src="./img/search-svgrepo-com.webp" /></a>
-                    <a href="#" class="text-center lg:w-8 w-8 pb-2 pt-3 px-1 "><img alt="{{app.Settings['sitename']}}" src="./img/lang.webp" /></a>
+                    <a href="#" class="text-center lg:w-8 w-8 pb-2 pt-3 px-1"><img alt="{{app.Settings['sitename']}}" src="/uploads/img/search-svgrepo-com.webp" /></a>
+                    <a href="#" class="text-center lg:w-8 w-8 pb-2 pt-3 px-1 "><img alt="{{app.Settings['sitename']}}" src="/uploads/img/lang.webp" /></a>
                 </div>
             </div>
         </div>
@@ -147,29 +146,30 @@
                             </g>
                         </svg>
                     </a>
-                    <a href="#!"><img alt="{{app.Settings['sitename']}}" width="60" src="./img/Logo_j.webp"></a>
+                    <a href="#!"><img alt="{{app.Settings['sitename']}}" width="60" src="/uploads/img/Logo_j.webp"></a>
                 </div>
                 <div class="gap-2 w-40 text-left flex">
                     <a href="#" class="text-base font-bold purple-color">19483</a>
-                    <a href="#!"><img alt="{{app.Settings['sitename']}}" width="23" src="./img/search-svgrepo-com.webp"></a>
-                    <a href="#!"><img alt="{{app.Settings['sitename']}}" width="24" src="./img/lang.webp"></a>
+                    <a href="#!"><img alt="{{app.Settings['sitename']}}" width="23" src="/uploads/img/search-svgrepo-com.webp"></a>
+                    <a href="#!"><img alt="{{app.Settings['sitename']}}" width="24" src="/uploads/img/lang.webp"></a>
                 </div>
             </div>
 
 
             <div class="mobile-menu relative " >
                 <img alt="{{app.Settings['sitename']}}" 
-                src="./img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .5;" />
+                src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .5;" />
                 <ul class="relative font-semibold py-2">
                     <li class="py-1 "><a href="/">الرئيسية</a></li>
                     <li class="py-1 flex">
                         <a class="w-full" href="javascript:;">عن المستشفى</a>
                         <div class="relative w-full sub-menu ">
                             <ul class="w-full absolute  bg-white p-2 rounded-lg z-10 ">
-                                <li class="py-1"><a href="about">{{lang.__('ABOUT')}} </a></li>
-                                <li class="py-1"><a href="doctors">{{lang.__('our doctors')}}</a></li>
-                                <li class="py-1"><a href="online">{{lang.__('ONLINE CONSULTATION')}}</a></li>
-                                <li class="py-1"><a href="offers">{{lang.__('Offers')}}</a></li> 
+                                <li class="py-1"><a href="/about-us">{{lang.__('ABOUT')}} </a></li>
+                                <li class="py-1"><a href="/doctors">{{lang.__('our doctors')}}</a></li>
+                                <li class="py-1"><a href="/expatriates">{{lang.__('INTERNATIONAL_PATIENTS')}}</a></li>
+                                <li class="py-1"><a href="/استشارات-اونلاين">{{lang.__('ONLINE CONSULTATION')}}</a></li>
+                                <li class="py-1"><a href="/offers">{{lang.__('Offers')}}</a></li> 
                             </ul>
                         </div>
                     </li>

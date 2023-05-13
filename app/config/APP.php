@@ -17,7 +17,7 @@ class APP
 
 	public $default_lang = 'arabic';
 
-	public $lang_code = 'ar';
+	public $lang_code = 'en';
 	// public $auth;
 
 	public $branch;
@@ -107,40 +107,7 @@ class APP
 	{
 		$data = array(
 			array('title'=>__('Dashboard'), 'icon'=>'fa-dashboard', 'link'=>'dashboard'),
-			array('title'=>__('Bookings'),  'icon'=>'fa-calendar', 'link'=>'', 'sub'=>
-				[
-					array('title'=>__('Calendar'),  'icon'=>'fa-dashboard', 'link'=>'devices/calendar'),
-	                array('title'=>__('All bookings'),  'icon'=>'fa-dashboard', 'link'=>'devices/orders'),
-	                array('title'=>__('Active bookings'),  'icon'=>'fa-dashboard', 'link'=>'devices/orders?status=active'),
-	                array('title'=>__('Completed bookings'), 'icon'=>'fa-dashboard','link'=>'devices/orders?status=completed'),
-	                array('title'=>__('Paid bookings'),  'icon'=>'fa-dashboard', 'link'=>'devices/orders?status=paid'),
-	                array('title'=>__('Canceled bookings'), 'icon'=>'fa-dashboard', 'link'=>'devices/orders?status=canceled'),
-				]
-			),
-			array('title'=>__('Devices'),  'icon'=>'fa-desktop', 'link'=>'', 'sub'=>
-				[
-	                array('title'=>__('manage devices'),  'icon'=>'fa-dashboard', 'link'=>'devices/manage'),
-	                array('title'=>__('categories'),  'icon'=>'fa-dashboard', 'link'=>'devices/categories'),
-	                array('title'=>__('games'),  'icon'=>'fa-dashboard', 'link'=>'games'),
-				]
-			),
-	        array('title'=>__('Products'),  'icon'=>'fa-shopping-cart', 'link'=>'', 'sub'=>
-	            [
-	                array('title'=>__('Products list'),  'icon'=>'fa-dashboard', 'link'=>'products/index'),
-	                array('title'=>__('categories'),  'icon'=>'fa-dashboard', 'link'=>'products/categories'),
-	                array('title'=>__('Stock alert products'),  'icon'=>'fa-dashboard', 'link'=>'products/stock_alert'),
-	                array('title'=>__('Stock out products'),  'icon'=>'fa-dashboard', 'link'=>'products/stock_out'),
-	            ]
-	        ),
-	        array('title'=>__('Stock'),  'icon'=>'fa-warehouse', 'link'=>'stock/index'),
-	        array('title'=>__('Orders'),  'icon'=>'fa-file-invoice', 'link'=>'', 'sub'=>
-	            [
-	                array('title'=>__('Orders'),  'icon'=>'fa-dashboard', 'link'=>'orders/index'),
-	                array('title'=>__('Paid orders'),  'icon'=>'fa-dashboard', 'link'=>'orders/index?status=paid'),
-	                array('title'=>__('Refund orders'),  'icon'=>'fa-dashboard', 'link'=>'orders/index?status=refund'),
-	            ]
-	        ),
-	        array('title'=>__('Payments'),  'icon'=>'fa-credit-card', 'link'=>'payments'),
+			
 	        array('title'=>__('Users'),  'icon'=>'fa-users', 'link'=>'', 'sub'=>
 	            [
 	                array('title'=>__('Users'),  'icon'=>'fa-dashboard', 'link'=>'users/'),
