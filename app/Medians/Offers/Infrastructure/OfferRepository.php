@@ -33,6 +33,11 @@ class OfferRepository
 		return Offer::with('content','user')->where('status', 'on')->limit($limit)->orderBy('updated_at', 'DESC')->get();
 	}
 
+	public function random($limit = 100)
+	{
+		return Offer::with('content','user')->where('status', 'on')->limit($limit)->inRandomOrder()	->get();
+	}
+
 	public function similar($item, $limit = 3)
 	{
 		if (empty($item->content->title))

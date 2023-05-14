@@ -4,6 +4,7 @@ namespace Medians\Doctors\Application;
 
 use Medians\Doctors\Infrastructure\DoctorRepository;
 use Medians\Specializations\Infrastructure\SpecializationRepository;
+use Medians\Offers\Infrastructure\OfferRepository;
 
 
 class DoctorController
@@ -23,6 +24,7 @@ class DoctorController
 
 		$this->repo = new DoctorRepository();
 		$this->specsRepo = new SpecializationRepository();
+		$this->offersRepo = new OfferRepository();
 	}
 
 
@@ -38,10 +40,11 @@ class DoctorController
 			
 			$item = $this->repo->find($id);
 			$specs = $this->specsRepo->similar($item, 2);
-
 			return render('views/front/doctor.html.twig', [
 		        'item' => $item,
+		        'offers' => $this->offersRepo->random(1),
 		        'specializations' => count($specs) ? $specs : $this->specsRepo->get(2),
+		        'similar' => $this->repo->similar($item, 1),
 		    ]);
 
 		} catch (\Exception $e) {

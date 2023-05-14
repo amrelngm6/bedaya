@@ -36,6 +36,34 @@ class DoctorRepository
 	}
 
 
+	public function search($request, $limit = 20)
+	{
+		$title = $request->get('search');
+		$arr =  json_decode(json_encode(['id'=>0, 'content'=>['title'=>$title]]));
+
+		return $this->similar( $arr, $limit);
+	}
+
+	public function random($limit = 100)
+	{
+		return Doctor::with('content','user')->where('status', 'on')->limit($limit)->inRandomOrder()->get();
+	}
+
+	public function similar($item, $limit = 3)
+	{
+		
+		$title = $item->content->title ? str_replace(' ', '%', $item->content->title) : '';
+		$return = Doctor::whereHas('content', function($q) use ($title){
+			$q->where('title', 'LIKE', '%'.$title.'%')->orWhere('content', 'LIKE', '%'.$title.'%');
+		})
+		->where('id', '!=', $item->id)
+		->with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
+
+
+		return count($return->toArray()) ? $return : $this->random($limit);
+
+	}
+
 
 
 

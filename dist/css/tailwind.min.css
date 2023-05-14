@@ -715,6 +715,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: grid;
 }
 
+.contents {
+  display: contents;
+}
+
 .hidden {
   display: none;
 }
@@ -757,10 +761,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .max-h-32 {
   max-height: 8rem;
-}
-
-.min-h-screen {
-  min-height: 100vh;
 }
 
 .w-full {
@@ -823,16 +823,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 3rem;
 }
 
-.w-3\/12 {
-  width: 25%;
-}
-
 .w-40 {
   width: 10rem;
 }
 
 .w-28 {
   width: 7rem;
+}
+
+.w-3\/12 {
+  width: 25%;
 }
 
 .w-24 {
@@ -853,6 +853,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-8 {
   width: 2rem;
+}
+
+.w-1\/4 {
+  width: 25%;
 }
 
 .max-w-full {
@@ -1309,6 +1313,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 2rem;
 }
 
+.pt-24 {
+  padding-top: 6rem;
+}
+
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -1319,10 +1327,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pb-60 {
   padding-bottom: 15rem;
-}
-
-.pt-24 {
-  padding-top: 6rem;
 }
 
 .pt-6 {
@@ -1389,11 +1393,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
 }
 
 .font-bold {
@@ -1529,11 +1528,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   bottom: 2.5rem;
 }
 
-.hover\:border-purple-800:hover {
-  --tw-border-opacity: 1;
-  border-color: rgb(107 33 168 / var(--tw-border-opacity));
-}
-
 .hover\:border-gray-400:hover {
   --tw-border-opacity: 1;
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
@@ -1542,6 +1536,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .hover\:border-purple-400:hover {
   --tw-border-opacity: 1;
   border-color: rgb(192 132 252 / var(--tw-border-opacity));
+}
+
+.hover\:border-purple-800:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(107 33 168 / var(--tw-border-opacity));
 }
 
 .hover\:bg-indigo-700:hover {
@@ -1738,6 +1737,11 @@ Ensure the default browser behavior of the `hidden` attribute.
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .md\:text-lg {
@@ -2068,6 +2072,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   .lg\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .lg\:text-4xl {

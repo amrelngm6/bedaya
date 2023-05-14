@@ -38,6 +38,7 @@ class HomeController
 	        	'doctors'=> $this->doctorRepo->get(3),
 	        	'specializations'=> $this->specsRepo->get_root(),
 	        	// 'stories'=> $this->storiesRepo->get(3),
+	        	'headerPosition'=> 'absolute',
 	        	'story_dates'=> $this->storyDateRepo->get(10)
 	        ]);
 	        

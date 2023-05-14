@@ -5,6 +5,8 @@ namespace Medians\Pages\Application;
 use Medians\Specializations\Infrastructure\SpecializationRepository;
 use Medians\Pages\Infrastructure\PageRepository;
 use Medians\Categories\Infrastructure\CategoryRepository;
+use Medians\Blog\Infrastructure\BlogRepository;
+use Medians\Doctors\Infrastructure\DoctorRepository;
 
 
 class PageController
@@ -25,6 +27,8 @@ class PageController
 		$this->repo = new PageRepository();
 		$this->specsRepo = new SpecializationRepository();
 		$this->categoryRepo = new CategoryRepository();
+		$this->blogRepo = new BlogRepository();
+		$this->doctorRepo = new DoctorRepository();
 	}
 
 
@@ -216,6 +220,28 @@ class PageController
 	
 			return render('views/front/booking.html.twig', [
 		        // 'item' => $item,
+		    ]);
+
+		} catch (\Exception $e) {
+			throw new \Exception($e->getMessage(), 1);
+		}
+	} 
+
+
+	/**
+	 * Front Search page 
+	 * @var Int
+	 */
+	public function search()
+	{
+		try {
+			$request = $this->app->request();
+
+			return render('views/front/search_results.html.twig', [
+		        'search_articles' => (!$request->get('for') || $request->get('for') == 'blog') ? $this->blogRepo->search($request, 10) : [],
+		        'search_doctors' => (!$request->get('for') || $request->get('for') == 'doctor') ? $this->doctorRepo->search($request, 10) : [],
+		        'search_specs' => (!$request->get('for') || $request->get('for') == 'specialization') ? $this->specsRepo->search($request, 10) : [],
+		        'search_text' => $request->get('search'),
 		    ]);
 
 		} catch (\Exception $e) {

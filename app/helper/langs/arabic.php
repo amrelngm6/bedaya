@@ -1027,6 +1027,10 @@ class Langs
 		,'Bedaya services' => 'خدمات بداية '
 		,'released at' => 'تم النشر في '
 		,'author' => 'الكاتب'
+		,'search_result_for' => 'نتيجة البحث عن : '
+		,'in' => 'في'
+		,'LOOKING_FOR_DOCTOR' => 'البحث عن طبيب'
+		,'DOCTOR_NAME' => 'إسم الطبيب'
 		,'COPYRIGHTS' => 'Copyrights are reserved'
 		);
 	

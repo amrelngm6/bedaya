@@ -32,6 +32,14 @@ class SpecializationRepository
 		return Specialization::with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
 	}
 
+	public function search($request, $limit = 20)
+	{
+		$title = $request->get('search');
+		$arr =  json_decode(json_encode(['id'=>0, 'content'=>['title'=>$title]]));
+
+		return $this->similar( $arr, $limit);
+	}
+
 	public function similar($item, $limit = 3)
 	{
 		if (empty($item->content->title))

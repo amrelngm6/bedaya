@@ -1,20 +1,20 @@
 {% include 'views/front/includes/header.html.twig' %}
 
-    <div class="min-h-screen relative w-full left-0 top-0 overflow-hidden ltr" >
+    <div class=" relative w-full left-0 top-0 overflow-hidden ltr" >
         <img alt="{{app.Settings['sitename']}}" src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
-        <img alt="{{app.Settings['sitename']}}" src="/uploads/img/header-bg.webp" class="w-auto h-full home-bg" style="max-width: none;" />
+        <img alt="{{app.Settings['sitename']}}" src="/uploads/img/header-bg.png" class="w-auto h-full home-bg" style="max-width: none;" />
         <div class="w-full slider-text  absolute left-0 top-0 ">
-            <div class="container mx-auto lg:pt-40 pt-10 ">
+            <div class="container mx-auto lg:pt-40 pt-24 ">
                 <div class="lg:w-1/2 lg:text-right text-center lg:pt-32 ">
-                    <h1 class="text-4xl lg:text-4xl font-bold pb-4 purple-color">مجموعة مستشفيات بداية</h1>
-                    <h2 class="text-white text-2xl  lg:text-3xl font-semibold pb-0">متخصصون فى علاج العقم</h2>
-                    <p class="text-white lg:text-lg ">وأمراض الذكورة وأطفال الانابيب وأمراض الجهاز التناسلي</p>
-                    <div class="flex w-full gap-3 gap text-right  px-1 mt-4 " style="direction:rtl;">
+                    <h1 class="text-2xl lg:text-4xl font-bold pb-4 purple-color">مجموعة مستشفيات بداية</h1>
+                    <h2 class="text-white text-xl  lg:text-3xl  md:text-2xl font-semibold pb-0">متخصصون فى علاج العقم</h2>
+                    <p class="text-white lg:text-lg text-sm">وأمراض الذكورة وأطفال الانابيب وأمراض الجهاز التناسلي</p>
+                    <div class="flex w-full gap-3 gap text-right  px-1 mt-4 text-xs lg:text-sm lg:text-sm" style="direction:rtl;">
                          <a href="/offers" class="py-1 px-3 rounded-lg purple-bg text-white flex gap gap-3">
                              <span><i class="fa fa-gift my-1"></i></span>
                              <span>{{lang.__('Bedaya Offers')}}</span>
                          </a>
-                         <a href="#!" class="py-1 px-3 rounded-lg purple-bg text-white flex gap gap-3">
+                         <a href="#!" class="py-1 px-3 rounded-lg purple-bg  text-white flex gap gap-3">
                              <span><i class="fa fa-calendar my-1"></i></span>
                              <span>{{lang.__('Pregnancy period Calculator')}}</span>
                          </a>
@@ -27,20 +27,24 @@
                 <div class="relative lg:hidden grid grid-cols-2 sm:grid sm:grid-cols-3">
                     <img alt="{{app.Settings['sitename']}}" src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .5;" />
                     <div class="text-center py-2">
-                        <img alt="{{app.Settings['sitename']}}" src="/uploads/img/online-04.webp" width="50" height="48" class="mx-auto my-2">
-                        <a href="#!" class="text-base font-semibold purple-color ">احجز موعد</a>
+                        <a href="/booking" class="text-base font-semibold purple-color ">
+                            <img alt="{{app.Settings['sitename']}}" src="/uploads/img/online-04.webp" width="50" height="48" class="mx-auto my-2">
+                        </a>
+                        <a href="/booking" class="text-base font-semibold purple-color ">{{lang.__('book_now')}}</a>
                     </div>
                     <div class="text-center py-2">
-                        <img alt="{{app.Settings['sitename']}}" src="/uploads/img/online-05.webp" width="50" height="48" class="mx-auto my-2">
-                        <a href="#!" class="text-base font-semibold purple-color ">احدث العروض</a>
+                        <a href="/bedaya-offers" class="text-base font-semibold purple-color ">
+                        <img alt="{{app.Settings['sitename']}}" src="/uploads/img/online-05.webp" width="50" height="48" class="mx-auto my-2"></a>
+                        <a href="/bedaya-offers" class="text-base font-semibold purple-color ">{{lang.__('offers')}}</a>
                     </div>
                     <div class="text-center py-2">
-                        <img alt="{{app.Settings['sitename']}}" src="/uploads/img/operator.webp" width="50" height="48" class="mx-auto my-2">
-                        <a href="#!" class="text-base font-semibold purple-color ">استشارة عبر الانترنت</a>
+                        <a href="/استشارات-اونلاين" class="text-base font-semibold purple-color ">
+                        <img alt="{{app.Settings['sitename']}}" src="/uploads/img/operator.webp" width="50" height="48" class="mx-auto my-2"></a>
+                        <a href="/استشارات-اونلاين" class="text-base font-semibold purple-color ">{{lang.__('online consultation')}}</a>
                     </div>
                     <div class="text-center py-2">
-                        <img alt="{{app.Settings['sitename']}}" src="/uploads/img/online-08.webp" width="50" height="48" class="mx-auto my-2">
-                        <a href="#!" class="text-base font-semibold purple-color ">موقع المستشفى</a>
+                        <a href="/contact" class="text-base font-semibold purple-color "><img alt="{{app.Settings['sitename']}}" src="/uploads/img/online-08.webp" width="50" height="48" class="mx-auto my-2"></a>
+                        <a href="/contact" class="text-base font-semibold purple-color ">{{lang.__('contact')}}</a>
                     </div>
                     <div class="text-center py-2">
                         <img alt="{{app.Settings['sitename']}}" src="/uploads/img/online-06.webp" width="50" height="48" class="mx-auto my-2">
