@@ -23,19 +23,13 @@ class Doctor extends CustomController
 	];
 
 
-	public $appends = ['photo', 'field'];
+	public $appends = ['field'];
 
 
 	public function getFieldAttribute() 
 	{
 		return !empty($this->custom_fields) ? array_column($this->custom_fields->toArray(), 'value', 'code') : [];
 	}
-
-	public function getPhotoAttribute() : ?String
-	{
-		return $this->photo();
-	}
-
 
 	public function photo() : String
 	{
@@ -57,6 +51,12 @@ class Doctor extends CustomController
 		return $this->morphMany(CustomFields::class, 'item');
 	}
 
+
+	public function thumbnail() 
+	{
+		$file = (is_file(str_replace('/images/', '/thumbnails/', $this->picture))) ? str_replace('/images/', '/thumbnails/', $this->picture) : $this->photo();
+		return $file;
+	}
 
 
 }
