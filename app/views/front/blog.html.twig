@@ -85,7 +85,7 @@
     </div>
     
     <div class="relative pb-6   w-full overflow-hidden bg-gray-100">
-        <img loading="lazy" alt="circle" src="/uploads/img/circles-bg.webp" class="absolute left-0 top-0 w-full" style="opacity: 0.05;" />
+        <img loading="lazy" alt="circle" src="/stream?image=/uploads/img/circles-bg.webp" class="absolute left-0 top-0 w-full" style="opacity: 0.05;" />
         
         {% set catTitle = lang.__('Women health') %}
         {% set catItemsList = cat_her %}
@@ -115,7 +115,7 @@
     </div>
 
     <div class="relative pb-6  w-full overflow-hidden ">
-        <img loading="lazy" alt="{{app.settings['sitename']}}" src="/uploads/img/circles-bg.webp" class="absolute left-0 top-0 w-full" style="opacity: 0.05;" />
+        <img loading="lazy" alt="{{app.settings['sitename']}}" src="/stream?image=/uploads/img/circles-bg.webp" class="absolute left-0 top-0 w-full" style="opacity: 0.05;" />
         {% set catTitle = lang.__('Men health') %}
         {% set catItemsList = cat_him %}
         {% include 'views/front/blog_cat_items.html.twig' %}
