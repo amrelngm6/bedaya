@@ -1,7 +1,7 @@
 {% include 'views/front/includes/header.html.twig' %}
 
     <div class=" relative w-full left-0 top-0 overflow-hidden ltr" >
-        <div class="w-full slider-text  absolute left-0 top-0 ">
+        <div class="w-full min-h-screen slider-text  absolute left-0 top-0 ">
             <div class="container mx-auto lg:pt-40 pt-24 ">
                 <div class="lg:w-1/2 lg:text-right text-center lg:pt-32 ">
                     <h1 class="text-2xl lg:text-4xl font-bold pb-4 purple-color">مجموعة مستشفيات بداية</h1>
@@ -55,8 +55,8 @@
                 </div>
             </div>
         </div>
-                <img alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
-        <img alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/header-bg.webp" height="627" width="1400" class="w-auto h-full home-bg" style="max-width: none;" />
+        <img alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/light-network.webp" class="hide-mobile absolute left-0 top-0 w-full" style="opacity: .3;" />
+        <img alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/header-bg.webp" height="627" width="1400" class="hide-mobile w-auto h-full home-bg" style="max-width: none;" />
 
     </div>
     <div class="relative py-10 w-full overflow-hidden bg-gray-100">
