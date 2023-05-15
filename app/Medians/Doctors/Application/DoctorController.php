@@ -33,12 +33,12 @@ class DoctorController
 	 * Front page 
 	 * @var Int
 	 */
-	public function page($id)
+	public function page($contentObject)
 	{
 
 		try {
 			
-			$item = $this->repo->find($id);
+			$item = $this->repo->find($contentObject->item_id);
 			$specs = $this->specsRepo->similar($item, 2);
 			return render('views/front/doctor.html.twig', [
 		        'item' => $item,

@@ -53,7 +53,7 @@ class Page extends CustomController
 
 	public function content()
 	{
-		return $this->hasOne(Content::class, 'item_id', 'id')->where('item_type', Page::class)->where('lang', $_SESSION['lang']);
+		return $this->hasOne(Content::class, 'item_id', 'id')->where('item_type', Page::class);
 	}
 
 	public function custom_fields()

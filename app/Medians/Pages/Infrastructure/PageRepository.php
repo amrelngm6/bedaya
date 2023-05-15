@@ -22,9 +22,11 @@ class PageRepository
 	}
 
 
-	public function find($id)
+	public function find($id, $prefix = null)
 	{
-		return Page::with('content')->find($id);
+		return Page::with(['content'=>function($q) use ($prefix){
+			$prefix ? $q->where('prefix', $prefix) : $q->where('lang', $_SESSION['lang']);
+		}])->find($id);
 	}
 
 	public function get($limit = 100)

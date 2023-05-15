@@ -23,6 +23,12 @@ Macaw::get('/search', \Medians\Pages\Application\PageController::class.'@search'
 
 Macaw::get('/invoices/print/(:all)', \Medians\Orders\Application\OrderController::class.'@print');
 Macaw::get('/invoices/qr_code/(:all)', \Medians\Orders\Application\OrderController::class.'@qr_code');
+Macaw::get('/switch-lang/(:all)', function ()  {
+    $_SESSION['site_lang'] = in_array($all, ['arabic', 'english']) ? $all : 'english';
+    echo (new \config\APP)->redirect('/');
+    return true;
+});
+
 /**
 * Return Dashboard 
 */
@@ -85,6 +91,7 @@ Macaw::get('/admin/blog/', Medians\Blog\Application\BlogController::class.'@inde
 Macaw::get('/admin/blog/categories', function ()  {
     return (new apps\Categories\CategoryController())->index('Medians\Blog\Domain\Blog');
 });
+
 
 
 /**

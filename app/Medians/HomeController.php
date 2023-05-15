@@ -95,23 +95,19 @@ class HomeController
 		        switch ($item->item_type) 
 		        {
 		        	case \Medians\Specializations\Domain\Specialization::class:
-		        		return (new  \Medians\Specializations\Application\SpecializationController)->page($item->item_id);
+		        		return (new  \Medians\Specializations\Application\SpecializationController)->page($item);
 		        		break;
 		        	
 		        	case \Medians\Doctors\Domain\Doctor::class:
-		        		return (new  \Medians\Doctors\Application\DoctorController)->page($item->item_id);
+		        		return (new  \Medians\Doctors\Application\DoctorController)->page($item);
 		        		break;
 		        	
 		        	case \Medians\Blog\Domain\Blog::class:
-		        		return (new  \Medians\Blog\Application\BlogController)->page($item->item_id);
-		        		break;
-		        	
-		        	case \Medians\Stories\Domain\Story::class:
-		        		return (new  \Medians\Stories\Application\StoryController)->page($item->item_id);
+		        		return (new  \Medians\Blog\Application\BlogController)->page($item);
 		        		break;
 		        	
 		        	case \Medians\Pages\Domain\Page::class:
-		        		return (new  \Medians\Pages\Application\PageController)->page($item->item_id);
+		        		return (new  \Medians\Pages\Application\PageController)->page($item);
 		        		break;
 		        	
 		        	case \Medians\OnlineConsultations\Domain\OnlineConsultation::class:

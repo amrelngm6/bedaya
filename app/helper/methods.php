@@ -3,7 +3,10 @@
 try {
     
     $app = new \config\APP;
-    $lng = isset($app->auth()->branch->id) && !empty($app->setting('lang')) ? $app->setting('lang') : (isset($_SESSION['site_lang']) ? $_SESSION['site_lang'] : 'arabic');
+
+    $lng = isset($_SESSION['site_lang']) 
+        ? $_SESSION['site_lang'] 
+        : (isset($app->auth()->branch->id) && !empty($app->setting('lang')) ? $app->setting('lang') : 'arabic');
 
     include('app/helper/langs/'.$lng.'.php');
     

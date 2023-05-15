@@ -174,12 +174,12 @@ class BlogController
 	 * Front page 
 	 * @var Int
 	 */
-	public function page($id)
+	public function page($contentObject)
 	{
 
 		try {
 			
-			$item = $this->repo->find($id);
+			$item = $this->repo->find($contentObject->item_id);
 
 			return render('views/front/article.html.twig', [
 		        'item' => $item,

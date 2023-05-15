@@ -179,13 +179,15 @@ class PageController
 	 * Front page 
 	 * @var Int
 	 */
-	public function page($id)
+	public function page($contentObject)
 	{
 
 		try {
 			
+			$item = $this->repo->find($contentObject->item_id, $contentObject->prefix);
+			
 			$template = 'page';
-			$item = $this->repo->find($id);
+
 			switch ($item->content->prefix) 
 			{
 				case 'اتصل-بنا':
