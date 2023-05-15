@@ -20,7 +20,7 @@ Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list');
 Macaw::get('/offers/(:all)', \Medians\Offers\Application\OfferController::class.'@page'); 
 Macaw::get('/search', \Medians\Pages\Application\PageController::class.'@search'); 
 Macaw::get('/stream', \Medians\Media\Application\MediaController::class.'@stream'); 
-Macaw::get('/assets', \Medians\Media\Application\MediaController::class.'@asset'); 
+Macaw::get('/assets', \Medians\Media\Application\MediaController::class.'@assets'); 
 
 
 Macaw::get('/invoices/print/(:all)', \Medians\Orders\Application\OrderController::class.'@print');
