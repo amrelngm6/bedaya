@@ -62,6 +62,11 @@ class Blog extends CustomController
 	}
 
 
+	public function thumbnail() 
+	{
+    	return str_replace('/images/', '/thumbnails/', str_replace(['.png','.jpg','.jpeg'],'.webp', $this->photo()));
+	}
+
 
 
 }

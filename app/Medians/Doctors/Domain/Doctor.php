@@ -54,11 +54,7 @@ class Doctor extends CustomController
 
 	public function thumbnail() 
 	{
-
     	return str_replace('/images/', '/thumbnails/', str_replace(['.png','.jpg','.jpeg'],'.webp', $this->photo()));
-
-
-		// return (is_file(str_replace('/images/', '/thumbnails/', $this->picture))) ? str_replace('/images/', '/thumbnails/', $this->picture) : $this->photo();
 	}
 
 

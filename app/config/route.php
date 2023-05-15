@@ -19,6 +19,7 @@ Macaw::post('/submit/(:all)', \Medians\FrontendController::class.'@form_submit')
 Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
 Macaw::get('/offers/(:all)', \Medians\Offers\Application\OfferController::class.'@page'); 
 Macaw::get('/search', \Medians\Pages\Application\PageController::class.'@search'); 
+Macaw::get('/stream', \Medians\Media\Application\MediaController::class.'@stream'); 
 
 
 Macaw::get('/invoices/print/(:all)', \Medians\Orders\Application\OrderController::class.'@print');
