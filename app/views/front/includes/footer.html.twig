@@ -100,6 +100,8 @@
         <div id="modal-content"  class="p-10 bg-white rounded-2xl m-auto absolute left-0 right-0 top-0 bottom-0 max-w-2xl my-10" style="z-index:9"></div>
     </div>
     <script src="/dist/owl/owl.carousel.min.js"></script>
+    <script src="/dist/js/sweetalert2@11.js"></script>
+    <script src="/dist/js/custom.js"></script>
     <script type="text/javascript">
     jQuery(document).ready(function (e) {
         jQuery(document).on('click', '#modal-bg', function(e) {
@@ -108,8 +110,6 @@
         })
         jQuery(document).on('click', '.show-modal-iframe', function(e) {
             jQuery('#modal-wrapper').removeClass('hidden')
-// <iframe width="560" height="315" src="https://www.youtube.com/embed/7vfsv6Vm7AA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
             var link = "https://www.youtube.com/embed/"+jQuery(this).data('youtube-link');
             var iframe = document.createElement('iframe');
             iframe.frameBorder=0;
