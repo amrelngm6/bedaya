@@ -24,7 +24,7 @@
                                 {% for similar_item in item.childs %}
                                 <div class="blog-main-item lg:flex block w-full">
                                     <div class="blog-item-img lg:w-5/12">
-                                        <img loading="lazy" src="{{similar_item.picture}}" class="rounded-lg w-full py-4 lg:py-6">
+                                        <img loading="lazy" src="/stream?image={{similar_item.picture}}" class="rounded-lg w-full py-4 lg:py-6">
                                     </div>
                                     <div class="blog-item-content lg:w-7/12">
                                         <div class="py-2 lg:py-6 lg:pr-6 lg:px-10 px-2">
@@ -38,7 +38,7 @@
                                 {% endfor %}
 
                             {% else %}
-                            <img loading="lazy" src="{{item.picture}}" alt="Doctor" class="w-full" />
+                            <img loading="lazy" src="/stream?image={{item.picture}}" alt="Doctor" class="w-full" />
 
                             <div class="relative my-10">
                                 {{item.content.content | raw }}

@@ -22,7 +22,7 @@
                                 </div>
                             </div>
 
-                            <img loading="lazy" src="{{item.picture}}" alt="Doctor" class="w-full" />
+                            <img loading="lazy" src="/stream?image={{item.picture}}" alt="Doctor" class="w-full" />
 
                             <div id="brief"  class="relative my-6 p-6 lightcyan-bg  rounded-lg overflow-hidden">
                                 <img loading="lazy" src="/stream?image=/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
@@ -39,7 +39,7 @@
                         </div>
                         <div class="w-full lg:w-4/12">
                             <div class="relative border-1 border border-gray-100 text-center bg-white rounded-lg pt-36 pb-6">
-                                <img loading="lazy" src="{{item.picture}}" style="top:-100px" class="rounded-full p-1 border-purple-800 border-1 w-56 h-56 mx-auto left-0 right-0 absolute" alt="Doctor" />
+                                <img loading="lazy" src="/stream?image={{item.picture}}" style="top:-100px" class="rounded-full p-1 border-purple-800 border-1 w-56 h-56 mx-auto left-0 right-0 absolute" alt="Doctor" />
 
                                 <h2 class="text-xl pb-2 font-bold purple-color" >{{item.content.title}}</h2>
                                 <p class="text-lg pb-10 font-bold cyan-color" >{{lang.__('lang') == 'en' ? item.field.short_name_en : item.field.short_name_ar}}</p>
@@ -72,7 +72,7 @@
                             </div>
                             {% for doctor in similar %}
                             <div class="relative border-1 border border-gray-100 text-center bg-white rounded-lg mt-20 pt-20 pb-6">
-                                <img loading="lazy" src="{{doctor.picture}}" width="150" height="150" style="top:-60px" class="rounded-full p-1 border-purple-800 border-1 w-32 mx-auto left-0 right-0 absolute" alt="Doctor" />
+                                <img loading="lazy" src="/stream?image={{doctor.picture}}" width="150" height="150" style="top:-60px" class="rounded-full p-1 border-purple-800 border-1 w-32 mx-auto left-0 right-0 absolute" alt="Doctor" />
 
                                 <h2 class="text-lg pb-2 font-bold purple-color" >{{doctor.content.title}}</h2>
                                 <p class="text-base pb-10 font-bold cyan-color" >{{lang.__('lang') == 'en' ? doctor.field.short_name_en : doctor.field.short_name_ar}}</p>
