@@ -52,7 +52,7 @@
                         <a href="{{first_item.content.prefix}}" class="py-6 block font-bold purple-color text-xl lg:text-3xl">{{first_item.content.title}}</a>
                         <p class="text-sm lg:text-lg font-semibold text-gray-600">{{first_item.content.content|striptags|raw|slice(0,400)|raw}} </p>
                         <div class="item-writer flex gap-3 gap my-12">
-                            <img loading="lazy"  alt="Doctor" src="/uploads/img/Ellipse_13_ia.webp" class="rounded-full w-16 border-1 border border-purple-600"   >
+                            <img loading="lazy"  alt="Doctor" src="/stream?image=/uploads/img/Ellipse_13_ia.webp" class="rounded-full w-16 border-1 border border-purple-600"   >
                             <div class="w-full">
                                 <a class=" block cyan-color font-semibold" href="{{first_item.content.prefix}}">{{first_item.field.author_name}}</a>
                                 <Span class=" block text-gray-300 " >{{first_item.updated_at|date('Y-m-d')}}</Span>
@@ -107,7 +107,7 @@
         </div>
         <div class="absolute left-0 right-0 top-0 container  mx-auto relative z-10  px-2">
             <div class="lg:w-6/12 lg:inline-block hidden">
-                <img loading="lazy" alt="{{app.settings['sitename']}}" src="/uploads/img/doctor.webp" style="max-width:none;" class="float-left" width="140%" />
+                <img loading="lazy" alt="{{app.settings['sitename']}}" src="/stream?image=/uploads/img/doctor.webp" style="max-width:none;" class="float-left" width="140%" />
             </div>
         </div>
         <div class="crossed lg:block hidden">

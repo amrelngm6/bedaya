@@ -2,7 +2,7 @@
 
     <div class=" relative w-full left-0 top-0 overflow-hidden ltr" >
         <img alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
-        <img alt="{{app.Settings['sitename']}}" src="/uploads/img/header-bg.webp" height="627" width="1400" class="w-auto h-full home-bg" style="max-width: none;" />
+        <img alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/header-bg.webp" height="627" width="1400" class="w-auto h-full home-bg" style="max-width: none;" />
         <div class="w-full slider-text  absolute left-0 top-0 ">
             <div class="container mx-auto lg:pt-40 pt-24 ">
                 <div class="lg:w-1/2 lg:text-right text-center lg:pt-32 ">
@@ -71,8 +71,8 @@
 
                 {% for item in specializations %}
                 <div data-childs="{{item.childs}}" class="block border-1  text-center border border-purple-300 cursor-pointer rounded-tl-2xl rounded-br-2xl bg-white   hover:bg-blue-400 lg:px-6 px-2 py-2 lg:pt-6 text-black hover:text-white switch-hover">
-                    <img loading="lazy" width="78" height="78" alt="{{item.content.title}}" src="/uploads/img/specialization-{{item.id}}-dark.webp" class="mx-auto pic-1 lg:w-auto w-10">
-                    <img loading="lazy" alt="{{item.content.title}}" src="/uploads/img/specialization-{{item.id}}.webp" class="mx-auto mx-auto pic-2 lg:w-auto w-10">
+                    <img loading="lazy" width="78" height="78" alt="{{item.content.title}}" src="/stream?image=/uploads/img/specialization-{{item.id}}-dark.webp" class="mx-auto pic-1 lg:w-auto w-10">
+                    <img loading="lazy" alt="{{item.content.title}}" src="/stream?image=/uploads/img/specialization-{{item.id}}.webp" class="mx-auto mx-auto pic-2 lg:w-auto w-10">
                     <p class="pt-4 lg:text-xl text-base font-semibold lg:font-bold">{{item.content.title}}</p>
                 </div>
                 {% endfor %}
@@ -109,21 +109,21 @@
             <div class="pb-60  pt-24">
                 <div class=" mx-auto left-0 right-0 absolute rounded-2xl">
                     <div class="video-center show-modal-iframe relative" data-youtube-link="WwG8CfBvnuc" >
-                        <img loading="lazy" alt="{{app.Settings['sitename']}}" width="680" height="385" width="auto" src="/uploads/thumbnails/video.webp" class="mx-auto lg:w-6/12 w-10/12">
-                        <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/play-button_en.webp" class=" cursor-pointer w-16 lg:w-24 bg-white rounded-full p-1 lg:p-3 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0">
+                        <img loading="lazy" alt="{{app.Settings['sitename']}}" width="680" height="385" width="auto" src="/stream?image=/uploads/thumbnails/video.webp" class="mx-auto lg:w-6/12 w-10/12">
+                        <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/play-button_en.webp" class=" cursor-pointer w-16 lg:w-24 bg-white rounded-full p-1 lg:p-3 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0">
                     </div>
                     <div class="mx-auto sm:w-full py-2 flex gap-3 gap lg:w-6/12 w-10/12">
                         <div class="video-center show-modal-iframe mx-auto rounded-2xl w-56 relative " data-youtube-link="dIr6zv2sQq0"  >
-                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/thumbnails/video2.webp" width="220" height="140" class="mx-auto rounded-lg w-56">
-                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/play-button_en.webp" class="cursor-pointer lg:w-12 w-6 bg-white opacity-90 hover:opacity-100 lg:opacity-70 rounded-full p-1 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0">
+                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/thumbnails/video2.webp" width="220" height="140" class="mx-auto rounded-lg w-56">
+                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/play-button_en.webp" class="cursor-pointer lg:w-12 w-6 bg-white opacity-90 hover:opacity-100 lg:opacity-70 rounded-full p-1 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0">
                         </div>
                         <div class="video-center show-modal-iframe mx-auto rounded-2xl w-56 relative" data-youtube-link="WnN4DwUVbMc" >
-                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/thumbnails/video3.webp" width="220" height="140"  class="mx-auto rounded-lg w-56">
-                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/play-button_en.webp" class="cursor-pointer lg:w-12 w-6 bg-white  opacity-90 hover:opacity-100 lg:opacity-70 rounded-full p-1 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0">
+                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/thumbnails/video3.webp" width="220" height="140"  class="mx-auto rounded-lg w-56">
+                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/play-button_en.webp" class="cursor-pointer lg:w-12 w-6 bg-white  opacity-90 hover:opacity-100 lg:opacity-70 rounded-full p-1 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0">
                         </div>
                         <div class="video-center show-modal-iframe mx-auto rounded-2xl w-56 relative" data-youtube-link="XE9aUJ9SDr8" >
-                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/thumbnails/video4.webp" width="220" height="140"  class="mx-auto rounded-lg w-56">
-                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/play-button_en.webp" class="cursor-pointer lg:w-12 w-6 bg-white opacity-90 hover:opacity-100 lg:opacity-70 rounded-full p-1 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0">
+                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/thumbnails/video4.webp" width="220" height="140"  class="mx-auto rounded-lg w-56">
+                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/play-button_en.webp" class="cursor-pointer lg:w-12 w-6 bg-white opacity-90 hover:opacity-100 lg:opacity-70 rounded-full p-1 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0">
                         </div>
                     </div>
                 </div>
@@ -140,19 +140,19 @@
                 <div class="lg:grid lg:grid-cols-3 md:grid-cols-3  lg:gap-20 gap-10 py-10 content-center custom-scroll-list" id="vision">
                     <div class="custom-scroll-item">
                         <a href="#!" class="relative">
-                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/Rectangle_31-1.webp" class="w-full rounded-2xl">
+                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/Rectangle_31-1.webp" class="w-full rounded-2xl">
                             <span class="w-full text-center h-32 pt-10 opacity-70 text-white bg-black m-auto absolute my-auto left-0 right-0 top-0 bottom-0 text-2xl">الدقة</span>
                         </a>
                     </div>
                     <div class="custom-scroll-item">
                         <a href="#!" class="relative">
-                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/Rectangle_32-1.webp" class="w-full rounded-2xl">
+                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/Rectangle_32-1.webp" class="w-full rounded-2xl">
                             <span class="w-full text-center h-32 pt-10 opacity-70 text-white bg-black m-auto absolute my-auto left-0 right-0 top-0 bottom-0 text-2xl">الجودة</span>
                         </a>
                     </div>
                     <div class="custom-scroll-item">
                         <a href="#!" class="relative">
-                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/Rectangle_30-2.webp" class="w-full rounded-2xl">
+                            <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/Rectangle_30-2.webp" class="w-full rounded-2xl">
                             <span class="w-full text-center h-32 pt-10 opacity-70 text-white bg-black m-auto absolute my-auto left-0 right-0 top-0 bottom-0 text-2xl">فريق العمل</span>
                         </a>
                     </div>
@@ -176,7 +176,7 @@
                 {% for item in stories %}
                 <div class=" relative custom-scroll-item">
                     <div class="show-modal-iframe play-icon absolute z-10 cursor-pointer right-0 left-0 top-0 w-12 rounded-full border-4 border border-white mx-auto bg-white" data-youtube-link="{{item.field.video_link}}">
-                        <img loading="lazy" alt="{{app.Settings['sitename']}}" width="46" height="46" src="/uploads/img/play-button_ex.webp"  />
+                        <img loading="lazy" alt="{{app.Settings['sitename']}}" width="46" height="46" src="/stream?image=/uploads/img/play-button_ex.webp"  />
                     </div>
                     <div class="relative rounded-tl-2xl rounded-br-2xl m-6 cyan-gradient-vertical p-10">
                         <div class="mb-4 text-white font-semibold custom-scroll h-32 p-2 overflow-auto">
