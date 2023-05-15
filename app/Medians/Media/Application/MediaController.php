@@ -82,4 +82,25 @@ class MediaController
 		} 
 	}
 
+
+	public function assets()
+	{
+		$this->app = new \config\APP;
+		$filepath = $this->app->request()->get('asset');
+
+		if (strpos($filepath, 'dist/') && is_file($_SERVER['DOCUMENT_ROOT'].$filepath))
+		{
+			// Set the caching headers
+			$expires = 60 * 60 * 24 * 7; // 1 week (in seconds)
+			header("Cache-Control: public, max-age=$expires");
+			header("Expires: " . gmdate("D, d M Y H:i:s", time() + $expires) . " GMT");
+
+			$type = "text/css";
+
+			// Serve the CSS file
+			header("Content-Type: $type");
+			readfile($_SERVER['DOCUMENT_ROOT'].$filepath);
+		} 
+	}
+
 }
