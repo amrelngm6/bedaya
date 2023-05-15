@@ -1,7 +1,7 @@
 {% include 'views/front/includes/header.html.twig' %}
 <div class="w-full cyan-bg pb-6 pt-2 relative ">
     <div class="w-full overflow-hidden h-full absolute bottom-0 left-0">
-        <img alt="{{app.settings['sitename']}}" src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
+        <img loading="lazy" alt="{{app.settings['sitename']}}" src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
     </div>
     <div class="container mx-auto relative">
         <h1 class="text-2xl mx-auto w-auto text-center font-bold purple-color">{{lang.__('online_consultation')}}</h1>
@@ -14,7 +14,7 @@
 </div>
 <hr />
 <div class="bg-gray-100 relative">
-    <img alt="{{app.Settings['sitename']}}" src="/uploads/img/light-network.webp" class="absolute left-0  w-full " style="top:100px; opacity: .3;" />
+    <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/light-network.webp" class="absolute left-0  w-full " style="top:100px; opacity: .3;" />
     <form action="/submit/booking" id="booking-form" class="max-w-xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <input type="hidden" name="params[itemid]" value="{{item.id}}">
         <input type="hidden" name="params[class]" value="OnlineConsultation">
@@ -30,7 +30,7 @@
                     </p>
                 </div>
                 <div class="w-40">
-                    <img src="{{item.doctor.picture}}" width="100" height="100" class="rounded-full p-2 w-28 h-28" />
+                    <img loading="lazy" src="{{item.doctor.picture}}" width="100" height="100" class="rounded-full p-2 w-28 h-28" />
                 </div>
             </div>
             <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
@@ -58,23 +58,23 @@
                 <div class=" flex justify-center items-center gap gap-3">
                     <label class="switch-icons-border inline-flex items-center mx-2 cursor-pointer">
                         <input type="radio" class="hidden" name="params[custom_field][communication]" value="skype">
-                        <img src="https://www.bedayahospitals.com/library/svg/skype.svg" class="border hover:border-gray-400  p-2" width="50" height="50" alt="Chat">
+                        <img loading="lazy" src="https://www.bedayahospitals.com/library/svg/skype.svg" class="border hover:border-gray-400  p-2" width="50" height="50" alt="Chat">
                     </label>
                     <label class="switch-icons-border inline-flex items-center mx-2 cursor-pointer">
                         <input type="radio" class="hidden" name="params[custom_field][communication]" value="zoom">
-                        <img src="https://www.bedayahospitals.com/library/svg/zoom.svg" class="border  hover:border-purple-400 p-2" width="50" height="50" alt="Chat">
+                        <img loading="lazy" src="https://www.bedayahospitals.com/library/svg/zoom.svg" class="border  hover:border-purple-400 p-2" width="50" height="50" alt="Chat">
                     </label>
                     <label class="switch-icons-border inline-flex items-center mx-2 cursor-pointer">
                         <input type="radio" class="hidden" name="params[custom_field][communication]" value="messenger">
-                        <img src="https://www.bedayahospitals.com/library/svg/messenger.svg" class="border hover:border-purple-400 p-2" width="50" height="50" alt="Chat">
+                        <img loading="lazy" src="https://www.bedayahospitals.com/library/svg/messenger.svg" class="border hover:border-purple-400 p-2" width="50" height="50" alt="Chat">
                     </label>
                     <label class="switch-icons-border inline-flex items-center mx-2 cursor-pointer">
                         <input type="radio" class="hidden" name="params[custom_field][communication]" value="facetime">
-                        <img src="https://www.bedayahospitals.com/library/svg/facetime.svg" class="border hover:border-purple-400 p-2" width="50" height="50" alt="Chat">
+                        <img loading="lazy" src="https://www.bedayahospitals.com/library/svg/facetime.svg" class="border hover:border-purple-400 p-2" width="50" height="50" alt="Chat">
                     </label>
                     <label class="switch-icons-border inline-flex items-center mx-2 cursor-pointer">
                         <input type="radio" class="hidden" name="params[custom_field][communication]" value="phone">
-                        <img src="https://www.bedayahospitals.com/library/svg/audio-call.svg" class="border hover:border-purple-400 p-2" width="50" height="50" alt="Chat">
+                        <img loading="lazy" src="https://www.bedayahospitals.com/library/svg/audio-call.svg" class="border hover:border-purple-400 p-2" width="50" height="50" alt="Chat">
                     </label>
                 </div>
             </div>

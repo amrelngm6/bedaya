@@ -34,7 +34,7 @@
                                 </div>
                             </td>
                             <td class="p-2  text-default border-1 border-t  border-gray-200">
-                                <img class="w-8 h-8 rounded inline-block " src="{{game.picture}}"> <span class="px-2"> {{game.name}}</span>
+                                <img loading="lazy" class="w-8 h-8 rounded inline-block " src="{{game.picture}}"> <span class="px-2"> {{game.name}}</span>
                             </td>
                             <td class="p-2 border-1 border-t  border-gray-200">
                                 {{game.cat.name}}
@@ -97,7 +97,7 @@
                     <input name="params[name]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" placeholder="{{lang.__('game')}}" v-model="activeItem.name">
                     <span class="block my-2" v-text="">{{lang.__('picture')}}</span>
                     <div v-if="activeItem.photo" class="w-full flex gap gap-6">
-                        <img :src="activeItem.photo" class="w-20">
+                        <img loading="lazy" :src="activeItem.photo" class="w-20">
                         <span @click="activeItem.photo = null">{{lang.__('change')}}</span>
                     </div>
                     <div v-else-if="!activeItem.photo">

@@ -37,7 +37,7 @@
                         <div class="album  transform transition duration-400 hover:scale-105">
                             <div class="album__cover {% if device.currentOrder.status %} active  {% endif %} ">
                                 <div class="relative">
-                                <img src="{{app.CONF.url}}assets/img/ps.png" alt="">
+                                <img loading="lazy" src="{{app.CONF.url}}assets/img/ps.png" alt="">
                                     
                                 <a data-ajax="true" href="{{app.CONF.url}}devices/{{device.id}}">
                                     <svg class="{% if device.currentOrder.status %} loading_arrow {% endif %}" width="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

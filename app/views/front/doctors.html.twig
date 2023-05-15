@@ -3,7 +3,7 @@
 
     <div class="w-full cyan-bg py-2 relative mb-10">
         <div class="w-full overflow-hidden h-full absolute bottom-0 left-0">        
-            <img src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
+            <img loading="lazy" src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
         </div>
         <div class="container mx-auto relative">
             <h1 class="text-2xl lg:pb-10  mx-auto w-72 text-center font-bold purple-color" >{{lang.__('Successful team')}}</h1>
@@ -38,7 +38,7 @@
         <div class="w-full lg:grid md:grid grid-cols-3 block gap-3 gap px-1">
             {% for item in items %}
             <div class="w-full block-overlay relative  h-auto my-2 rounded-xl overflow-hidden">
-                <img src="{{item.picture}}" class="rounded-lg w-full" />  
+                <img loading="lazy" src="{{item.picture}}" class="rounded-lg w-full" />  
                 <div class="shadow w-full h-full left-0 top-0 absolute z-10 rounder-lg"></div>
                 <div class="block-overlay-hover w-full absolute  left-0 bottom-8 hover:bottom-10 px-8 z-20">
                     <a href="{{item.content.prefix}}" class="text-white text-xl font-bold">{{item.content.title}}</a>

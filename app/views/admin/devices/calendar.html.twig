@@ -47,7 +47,7 @@
                         </div>
                         <div  >
                             <span class="w-full block pb-2 text-left" style="direction: ltr;">
-                                <img v-if="information.game" :src="information.game.picture" class="rounded-full w-8 h-8 mb-2" />
+                                <img loading="lazy" v-if="information.game" :src="information.game.picture" class="rounded-full w-8 h-8 mb-2" />
                                 <span class='font-xxs font-semibold text-left w-full' v-text="information.title"></span>
                             </span>
 

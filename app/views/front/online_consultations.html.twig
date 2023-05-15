@@ -2,7 +2,7 @@
 
 <div class="w-full cyan-bg pb-6 pt-2 relative ">
     <div class="w-full overflow-hidden h-full absolute bottom-0 left-0">        
-        <img  alt="{{app.settings['sitename']}}" src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
+        <img loading="lazy"  alt="{{app.settings['sitename']}}" src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
     </div>
     <div class="container mx-auto relative">
         <h1 class="text-2xl mx-auto w-auto text-center font-bold purple-color" >{{pageinfo.title ? pageinfo.title : lang.__('online consultation')}}</h1>
@@ -18,13 +18,13 @@
         <span class="mx-auto my-10 w-full border border-b-1  border-gray-100 block"></span>
         
         <div class="offers-container px-2 relative">
-            <img src="./uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
+            <img loading="lazy" src="./uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
             
             {% for item in items %}
 
             <div class="w-full lg:flex gap-6 mb-20 relative z-10">
                 <div class="w-3/12">
-                    <a href="#!"> <img width="400" width="auto" src="{{item.doctor.picture}}" class="p-2 border border-1 border-blue-300 hover:border-purple-800 rounded-2xl"></a>
+                    <a href="#!"> <img loading="lazy" width="400" width="auto" src="{{item.doctor.picture}}" class="p-2 border border-1 border-blue-300 hover:border-purple-800 rounded-2xl"></a>
                 </div>
                 <div class="lg:w-9/12 w-full  lg:p-7 p-2 bg-white rounded-lg">
                     <h4 class="mb-2 text-2xl font-semibold purple-color pb-4">{{item.doctor.content.title}}</h4>

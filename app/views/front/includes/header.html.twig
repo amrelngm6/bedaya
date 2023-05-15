@@ -46,16 +46,16 @@
 
 </head>
 
-<body class="p-0 m-0">
+<body class="p-0 m-0 {{lang.__('dir')}}">
 
     <div class="{{headerPosition ? headerPosition : 'relative cyan-bg' }} py-4 z-index9 head w-full" style="z-index: 999;">
         <div class="hidden container mx-auto  flex">
-            <div class="w-full gap-3 flex font-semibold"><img alt="{{app.Settings['sitename']}}" src="/uploads/img/pin.webp" />
+            <div class="w-full gap-3 flex font-semibold"><img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/pin.webp" />
                 <span class="text-xs lg:text-sm"> رقم 2 شارع أحمد المليحي ميدان فيني, الدقي - الجيزة - مصر</span></div>
             <div class="flex lg:gap-6 gap-2 pl-1">
-                <a href="#"><img alt="{{app.Settings['sitename']}}" src="/uploads/img/facebook.webp" /></a>
-                <a href="#"><img alt="{{app.Settings['sitename']}}" src="/uploads/img/twitter-bird.webp" /></a>
-                <a href="#"><img alt="{{app.Settings['sitename']}}" src="/uploads/img/logo-instagram.webp" /></a>
+                <a href="#"><img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/facebook.webp" /></a>
+                <a href="#"><img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/twitter-bird.webp" /></a>
+                <a href="#"><img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/logo-instagram.webp" /></a>
             </div>
         </div>
         <div class="container mx-auto  flex ">
@@ -79,7 +79,7 @@
                             </g>
                         </svg>
                     </a>
-                    <a class="p-1 lg:p-3 pb-1 mt-2 lg:mt-auto" href="{{app.CONF.url}}"><img alt="{{app.Settings['sitename']}}" src="/uploads/img/logo.webp" /></a>
+                    <a class="p-1 lg:p-3 pb-1 mt-2 lg:mt-auto" href="{{app.CONF.url}}"><img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/logo.webp" /></a>
                     <ul class="lg:flex md:flex hidden gap-1 h-full font-semibold purple-color">
                         <li class="h-full"><a class="block px-2 h-full bg-blue-100" href="/"><span class="block pt-5">{{lang.__('home')}}</span></a></li>
                         
@@ -120,8 +120,8 @@
                 <div class="p-4  flex gap-3 ">
                     <a href="tel:19483" class="text-lg px-1 lg:px-2 my-1 pt-2 font-bold purple-color">19483</a>
                     <a href="/booking" class="rounded-lg lg:px-8 px-6 my-1 pt-2 bg-blue-200 font-bold">{{lang.__('BOOK')}}</a>
-                    <a href="/search" class="text-center lg:w-8 w-8 pb-2 pt-3 px-1"><img alt="{{app.Settings['sitename']}}" src="/uploads/img/search-svgrepo-com.webp" /></a>
-                    <a href="/switch-lang/{{lang.__('lang') == 'ar' ? 'english' : 'arabic'}}" class="text-center lg:w-8 w-8 pb-2 pt-3 px-1 "><img alt="{{app.Settings['sitename']}}" src="/uploads/img/lang.webp" /></a>
+                    <a href="/search" class="text-center lg:w-8 w-8 pb-2 pt-3 px-1"><img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/search-svgrepo-com.webp" /></a>
+                    <a href="/switch-lang/{{lang.__('lang') == 'ar' ? 'english' : 'arabic'}}" class="text-center lg:w-8 w-8 pb-2 pt-3 px-1 "><img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/lang.webp" /></a>
                 </div>
             </div>
         </div>
@@ -142,18 +142,18 @@
                             </g>
                         </svg>
                     </a>
-                    <a href="/"><img alt="{{app.Settings['sitename']}}" width="60" src="/uploads/img/Logo_j.webp"></a>
+                    <a href="/"><img loading="lazy" alt="{{app.Settings['sitename']}}" width="60" src="/uploads/img/Logo_j.webp"></a>
                 </div>
                 <div class="gap-2 w-40 text-left flex">
                     <a href="tel:19483" class="text-base font-bold purple-color">19483</a>
-                    <a href="/search"><img alt="{{app.Settings['sitename']}}" width="23" src="/uploads/img/search-svgrepo-com.webp"></a>
-                    <a href="/switch-lang/{{lang.__('lang') == 'ar' ? 'english' : 'arabic'}}"><img alt="{{app.Settings['sitename']}}" width="24" src="/uploads/img/lang.webp"></a>
+                    <a href="/search"><img loading="lazy" alt="{{app.Settings['sitename']}}" width="23" src="/uploads/img/search-svgrepo-com.webp"></a>
+                    <a href="/switch-lang/{{lang.__('lang') == 'ar' ? 'english' : 'arabic'}}"><img loading="lazy" alt="{{app.Settings['sitename']}}" width="24" src="/uploads/img/lang.webp"></a>
                 </div>
             </div>
 
 
             <div class="mobile-menu relative " >
-                <img alt="{{app.Settings['sitename']}}" 
+                <img loading="lazy" alt="{{app.Settings['sitename']}}" 
                 src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .5;" />
                 <ul class="relative font-semibold py-2">
                     <li class="py-1 "><a href="/">الرئيسية</a></li>

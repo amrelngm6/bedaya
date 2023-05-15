@@ -1,6 +1,6 @@
 
     <div class="relative pb-20  w-full overflow-hidden px-1">
-        <img src="/uploads/img/circles-bg.webp" class="absolute left-0 top-0 w-full" style="opacity: 0.05;" />
+        <img loading="lazy" src="/uploads/img/circles-bg.webp" class="absolute left-0 top-0 w-full" style="opacity: 0.05;" />
 
         <div class="container mx-auto relative z-10">
         
@@ -13,7 +13,7 @@
                 {% for item in specializations %}
                 <div class="blog-main-item lg:flex block w-full">
                     <div class="blog-item-img lg:w-5/12">
-                        <a href="{{item.content.prefix}}"><img src="{{item.picture}}" class="rounded-lg w-full py-4 lg:py-6" alt="{{item.content.title}}"></a>
+                        <a href="{{item.content.prefix}}"><img loading="lazy" src="{{item.picture}}" class="rounded-lg w-full py-4 lg:py-6" alt="{{item.content.title}}"></a>
                     </div>
                     <div class="blog-item-content lg:w-7/12">
                         <div class="py-2 lg:py-6 lg:pr-6 lg:px-10 px-2">

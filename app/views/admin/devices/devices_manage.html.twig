@@ -22,7 +22,7 @@
                     <div class="col-6 col-sm-4 col-lg-2 {% if device.status == 0 %} opacity-50 {% endif %} ">
                         <div class="album  transform transition duration-400 hover:scale-105">
                             <div class="album__cover {% if device.playing %} active  {% endif %} ">
-                                <img src="{{app.CONF.url}}assets/img/ps.png" alt="">
+                                <img loading="lazy" src="{{app.CONF.url}}assets/img/ps.png" alt="">
                                     <!-- <a > -->
                                     <a @click="showEditSide = true; showAddSide = false" data-ajax="true" href="{{app.CONF.url}}devices/edit/{{device.id}}"  >
                                         <i class="text-gray-200 material-icons-outlined text-base">edit</i>
