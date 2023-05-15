@@ -132,8 +132,23 @@ class MediaRepository
     	}
     }
 
+    public function resize($file, $w=null, $h='-1')
+    {
+
+    	$filepath = $_SERVER['DOCUMENT_ROOT'].$file;
+    	$output = str_replace('/images/', '/thumbnails/', str_replace(['.png','.jpg','.jpeg'],'.webp', $filepath));
+
+    	if (is_file($filepath))
+    	{
+			$ffmpeg = enviroment == 'local' ? 'E:\Development\path\ffmpeg\bin\ffmpeg.exe' : 'ffmpeg';
+			shell_exec($ffmpeg.' -i '.$filepath.' -vf scale="'.$w.':'.$h.'" '.$output);
+    	}
+    }
+
     public static function slug($value)
     {
     	return str_replace(['&',' ','@', '!','#','(',')','+','?'], '_', $value);
     }
+
+
 }
