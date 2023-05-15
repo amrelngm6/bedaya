@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://bedaya.medianssolutions.com/{{item.content.prefix}}">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bedaya.medianssolutions.com/">
+    <meta property="og:url" content="{{ app.request.uri}}">
     <meta property="og:title" content="{{item.content.title ? item.content.title : app.setting('sitename')}}">
     <meta property="og:image" content="https://bedaya.medianssolutions.com/route/image.php?src=1253926083_1828277228_581308477.jpg&img=pic&w=800">
     <meta property="og:description" content="{{item.content.seo_desc ? item.content.seo_desc : app.setting('seo_desc')}}">
