@@ -1,7 +1,7 @@
 {% include 'views/front/includes/header.html.twig' %}
 
     <div class=" relative w-full left-0 top-0 overflow-hidden ltr" >
-        <img alt="{{app.Settings['sitename']}}" src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
+        <img alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
         <img alt="{{app.Settings['sitename']}}" src="/uploads/img/header-bg.webp" height="627" width="1400" class="w-auto h-full home-bg" style="max-width: none;" />
         <div class="w-full slider-text  absolute left-0 top-0 ">
             <div class="container mx-auto lg:pt-40 pt-24 ">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 <div class="relative lg:hidden grid grid-cols-2 sm:grid sm:grid-cols-3">
-                    <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .5;" />
+                    <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .5;" />
                     <div class="text-center py-2">
                         <a href="/booking" class="text-base font-semibold purple-color ">
                             <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/online-04.webp" width="50" height="48" class="mx-auto my-2">
@@ -88,7 +88,7 @@
         </div>
     </div>
     <div class="relative py-10  w-full  cyan-gradient45 z-10">
-        <img loading="lazy"  alt="{{app.Settings['sitename']}}" src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .5;" />
+        <img loading="lazy"  alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .5;" />
         <div class="container grid mx-auto relative z-10 lg:block hidden">
             <h3 class="title-gradient rounded-lg py-2 pl-40 pr-6 purple-color font-semibold text-xl " style="width: max-content;">
                 {{lang.__('important dates')}}
@@ -197,7 +197,7 @@
         <modal :items="[]" ref="modal"></modal>
     </div>
     <div class="relative py-10 cyan-gradient45 w-full overflow-hidden " style="z-index: 999;">
-        <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .5;" />
+        <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .5;" />
         <div class="container grid mx-auto relative z-10 ">
             <h3 class="title-gradient rounded-lg py-2 pl-40 pr-6 purple-color font-semibold text-xl " style="width: max-content;">
                 {{lang.__('our_experts')}}
