@@ -16,7 +16,7 @@ class StoryRepository
 		
 		foreach ($this->get(100) as $key => $value) 
 		{
-			(new \Medians\Media\Infrastructure\MediaRepository)->resize($value->picture, 72, 80);
+			// (new \Medians\Media\Infrastructure\MediaRepository)->resize($value->picture, 72, 80);
 		}
 	}
 
