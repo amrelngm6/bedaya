@@ -763,10 +763,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   max-height: 8rem;
 }
 
-.min-h-screen {
-  min-height: 100vh;
-}
-
 .w-full {
   width: 100%;
 }
@@ -1321,10 +1317,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-top: 6rem;
 }
 
-.pb-4 {
-  padding-bottom: 1rem;
-}
-
 .pb-0 {
   padding-bottom: 0px;
 }
@@ -1335,6 +1327,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .pt-6 {
   padding-top: 1.5rem;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
 }
 
 .pt-3 {
@@ -1646,6 +1642,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .sm\:h-full {
     height: 100%;
+  }
+
+  .sm\:min-h-screen {
+    min-height: 100vh;
   }
 
   .sm\:w-full {
@@ -2030,16 +2030,16 @@ Ensure the default browser behavior of the `hidden` attribute.
     padding-top: 8rem;
   }
 
+  .lg\:pb-4 {
+    padding-bottom: 1rem;
+  }
+
   .lg\:pt-6 {
     padding-top: 1.5rem;
   }
 
   .lg\:pt-80 {
     padding-top: 20rem;
-  }
-
-  .lg\:pb-4 {
-    padding-bottom: 1rem;
   }
 
   .lg\:pb-0 {
