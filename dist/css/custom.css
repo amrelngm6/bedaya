@@ -24,6 +24,66 @@
        url('../fonts/tajawal-v9-arabic_latin-500.svg#Tajawal') format('svg'); /* Legacy iOS */
 }
 
+.lg-custom-scroll-container
+{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+
+.lg-custom-scroll-list
+{
+    width: max-content;
+}
+
+.lg-custom-scroll-item
+{
+    max-width: 350px;
+    display: inline-block;
+}
+
+@media screen and (max-width: 767px) 
+{
+    body .curve-doctor
+    {
+        position: relative;
+        top: 50px;
+    }
+    body .home-bg {
+/*        height: 120%;*/
+    }
+}
+
+@media screen and (max-width: 991px) 
+{
+
+    .custom-scroll-container
+    {
+        overflow-x: scroll;
+        overflow-y: hidden;
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+    }
+
+
+    .custom-scroll-list
+    {
+        width: max-content;
+    }
+    
+    .custom-scroll-item
+    {
+        max-width: 350px;
+        display: inline-block;
+    }
+
+    .crossed:after {
+        left: -50px;
+        bottom: -45%;
+    }
+}
 body {
     font-family: 'Tajawal';
 }
@@ -84,11 +144,28 @@ p {
 {
     background-color: #DFF7FF;
 }
-.title-gradient
+.rtl .title-gradient
 {
     background: rgb(255,255,255);
     background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,212,255,.30) 100%);
 }
+.title-gradient
+{
+    background: rgb(255,255,255);
+    background: linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(0,212,255,.30) 100%);
+}
+
+.rtl h3.cyan-gradient45, .rtl .title-gradient 
+{
+    padding-right: 0rem;
+    padding-left: 2rem;
+}
+h3.cyan-gradient45, .title-gradient 
+{
+    padding-left: 2rem;
+    padding-right: 10rem;
+}
+
 .cyan-gradient
 {
     background: rgb(255,255,255);
@@ -99,10 +176,14 @@ p {
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(52,173,217,1) 0%, rgba(23,220,245,1) 100%);
 }
+.rtl .cyan-gradient45
+{
+    background: linear-gradient(225deg, rgba(52,173,217,1) 0%, rgba(23,220,245,1) 100%);
+}
 .cyan-gradient45
 {
     background: rgb(255,255,255);
-    background: linear-gradient(225deg, rgba(52,173,217,1) 0%, rgba(23,220,245,1) 100%);
+    background: linear-gradient(45deg, rgba(52,173,217,1) 0%, rgba(23,220,245,1) 100%);
 }
 .switch-hover:hover{
     background: linear-gradient(45deg, rgba(52,173,217,1) 0%, rgba(23,220,245,1) 100%);
@@ -368,4 +449,10 @@ footer
 
 .offers-container {
     text-align: initial;
+}
+
+
+.show-modal-iframe
+{
+    cursor: pointer;
 }

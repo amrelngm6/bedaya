@@ -23,8 +23,10 @@ Macaw::get('/search', \Medians\Pages\Application\PageController::class.'@search'
 
 Macaw::get('/invoices/print/(:all)', \Medians\Orders\Application\OrderController::class.'@print');
 Macaw::get('/invoices/qr_code/(:all)', \Medians\Orders\Application\OrderController::class.'@qr_code');
-Macaw::get('/switch-lang/(:all)', function ()  {
-    $_SESSION['site_lang'] = in_array($all, ['arabic', 'english']) ? $all : 'english';
+
+Macaw::get('/switch-lang/(:all)', function ($lang)  {
+
+    $_SESSION['site_lang'] = in_array($lang, ['arabic', 'english']) ? $lang : 'arabic';
     echo (new \config\APP)->redirect('/');
     return true;
 });

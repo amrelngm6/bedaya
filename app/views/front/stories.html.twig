@@ -29,7 +29,7 @@
                 
                 {% for item in items %}
                 <div class=" relative custom-scroll-item mb-20 ">
-                    <div @click="showVideo('{{item.field.video_link}}')" class="cursor-pointer play-icon absolute z-10 right-0 left-0 top-0 w-12 rounded-full border-4 border border-white mx-auto bg-white">
+                    <div data-youtube-link="{{item.field.video_link}}" class="cursor-pointer play-icon absolute z-10 right-0 left-0 top-0 w-12 rounded-full border-4 border border-white mx-auto bg-white show-modal-iframe">
                         <img src="/uploads/img/play-button_ex.webp">
                     </div>
                     <div class="relative rounded-tl-2xl rounded-br-2xl m-6 cyan-gradient-vertical p-10">

@@ -939,7 +939,7 @@ class Langs
 
 	    $key = strtolower(str_replace([' ', '/', '&', '?','؟' , '@', '#', '$', '%', '(', ')', '-', '='], '_', $langkey)) ;
 		
-	    return !empty($LANG_ARRAY[$key]) ? $LANG_ARRAY[$key] : $langkey;
+	    return isset($LANG_ARRAY[$key]) ? $LANG_ARRAY[$key] : (ucfirst(str_replace('_', ' ', $langkey)));
 	} 
 
 	public static function vueLang()

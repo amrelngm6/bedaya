@@ -96,9 +96,9 @@
             <div class="grid grid-cols-8 mt-20 dates-grid ">
                 {% for story_date in story_dates %}
                 <div class="m-2 mx-1  ">
-                    <span class="mx-auto relative  w-20 text-center block bg-white border-2 border-purple-600 my-4 rounded-lg py-1 px-2 font-bold purple-color">{{story_date.title}}</span>
+                    <span class="mx-auto relative w-20 text-center block bg-white border-2 border-purple-600 my-4 rounded-lg py-1 px-2 font-bold purple-color">{{story_date.title}}</span>
                     <div class="p-2 py-6 text-center rounded-2xl bg-white">
-                        <span class="font-bold text-xl">{{story_date.content.title}}</span>
+                        <span class="font-bold ">{{story_date.content.title}}</span>
                         <p class="my-2 text-sm max-h-32 custom-scroll overflow-auto">{{story_date.content.content}}</p>
                     </div>
                 </div>
@@ -108,21 +108,21 @@
         <div class="container mx-auto">
             <div class="pb-60  pt-24">
                 <div class=" mx-auto left-0 right-0 absolute rounded-2xl">
-                    <div class="video-center relative">
+                    <div class="video-center show-modal-iframe relative" data-youtube-link="WwG8CfBvnuc" >
                         <img alt="{{app.Settings['sitename']}}" width="800" width="auto" src="/uploads/img/video.webp" class="mx-auto lg:w-6/12 w-10/12">
-                        <img alt="{{app.Settings['sitename']}}" src="/uploads/img/play-button_en.webp" class="cursor-pointer w-16 lg:w-24 bg-white rounded-full p-1 lg:p-3 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0">
+                        <img alt="{{app.Settings['sitename']}}" src="/uploads/img/play-button_en.webp" class="show-modal-iframe cursor-pointer w-16 lg:w-24 bg-white rounded-full p-1 lg:p-3 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0">
                     </div>
-                    <div class="mx-auto sm:w-full flex gap-3 gap lg:w-6/12 w-10/12">
-                        <div class="video-center mx-auto rounded-2xl w-56 relative">
-                            <img alt="{{app.Settings['sitename']}}" src="/uploads/img/video.webp" width="220" height="40" class="mx-auto  w-56">
+                    <div class="mx-auto sm:w-full py-2 flex gap-3 gap lg:w-6/12 w-10/12">
+                        <div class="video-center show-modal-iframe mx-auto rounded-2xl w-56 relative " data-youtube-link="dIr6zv2sQq0"  >
+                            <img alt="{{app.Settings['sitename']}}" src="/uploads/img/video2.jpg" width="220" height="40" class="mx-auto rounded-lg w-56">
                             <img alt="{{app.Settings['sitename']}}" src="/uploads/img/play-button_en.webp" class="cursor-pointer lg:w-12 w-6 bg-white opacity-90 hover:opacity-100 lg:opacity-70 rounded-full p-1 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0">
                         </div>
-                        <div class="video-center mx-auto rounded-2xl w-56 relative">
-                            <img alt="{{app.Settings['sitename']}}" src="/uploads/img/video.webp" width="220" height="40"  class="mx-auto  w-56">
+                        <div class="video-center show-modal-iframe mx-auto rounded-2xl w-56 relative" data-youtube-link="WnN4DwUVbMc" >
+                            <img alt="{{app.Settings['sitename']}}" src="/uploads/img/video3.jpg" width="220" height="40"  class="mx-auto rounded-lg w-56">
                             <img alt="{{app.Settings['sitename']}}" src="/uploads/img/play-button_en.webp" class="cursor-pointer lg:w-12 w-6 bg-white  opacity-90 hover:opacity-100 lg:opacity-70 rounded-full p-1 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0">
                         </div>
-                        <div class="video-center mx-auto rounded-2xl w-56 relative">
-                            <img alt="{{app.Settings['sitename']}}" src="/uploads/img/video.webp" width="220" height="40"  class="mx-auto  w-56">
+                        <div class="video-center show-modal-iframe show-modal-iframemx-auto rounded-2xl w-56 relative" data-youtube-link="XE9aUJ9SDr8" >
+                            <img alt="{{app.Settings['sitename']}}" src="/uploads/img/video4.jpg" width="220" height="40"  class="mx-auto rounded-lg w-56">
                             <img alt="{{app.Settings['sitename']}}" src="/uploads/img/play-button_en.webp" class="cursor-pointer lg:w-12 w-6 bg-white opacity-90 hover:opacity-100 lg:opacity-70 rounded-full p-1 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0">
                         </div>
                     </div>
@@ -175,7 +175,7 @@
 
                 {% for item in stories %}
                 <div class=" relative custom-scroll-item">
-                    <div class="play-icon absolute z-10 cursor-pointer right-0 left-0 top-0 w-12 rounded-full border-4 border border-white mx-auto bg-white" @click="showVideo('{{item.field.video_link}}')">
+                    <div class="show-modal-iframe play-icon absolute z-10 cursor-pointer right-0 left-0 top-0 w-12 rounded-full border-4 border border-white mx-auto bg-white" data-youtube-link="{{item.field.video_link}}">
                         <img alt="{{app.Settings['sitename']}}" src="/uploads/img/play-button_ex.webp"  />
                     </div>
                     <div class="relative rounded-tl-2xl rounded-br-2xl m-6 cyan-gradient-vertical p-10">
@@ -183,10 +183,10 @@
                             <p>{{item.content.content}}</p>
                         </div>
                         <div style="bottom: -85px;" class="w-full absolute right-0 left-0 bottom-0 w-30  mx-auto">
-                            <div @click="showVideo('{{item.field.video_link}}')" class="rounded-full border-4 border border-white  bg-white w-20 mx-auto">
+                            <div data-youtube-link="{{item.field.video_link}}" class="rounded-full border-4 border border-white  bg-white w-20 mx-auto show-modal-iframe ">
                                 <img alt="{{item.content.title}}" src="{{item.picture}}" class="w-20 h-20 rounded-full" />
                             </div>
-                            <a @click="showVideo('{{item.field.video_link}}')" class="block mx-auto text-center w-64 font-semibold" href="javascript:;"><span>{{item.content.title}}</span></a>
+                            <a data-youtube-link="{{item.field.video_link}}" class="show-modal-iframe block mx-auto text-center w-64 font-semibold" href="javascript:;"><span>{{item.content.title}}</span></a>
                         </div>
                     </div>
                 </div>
