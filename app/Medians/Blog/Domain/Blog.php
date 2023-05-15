@@ -37,7 +37,7 @@ class Blog extends CustomController
 
 	public function getPhotoAttribute() : ?String
 	{
-		return $this->photo();
+		return $this->thumbnail();
 	}
 
 
@@ -64,7 +64,7 @@ class Blog extends CustomController
 
 	public function thumbnail() 
 	{
-    	return str_replace('/images/', '/thumbnails/', str_replace(['.png','.jpg','.jpeg'],'.webp', $this->photo()));
+    	return str_replace('/images/', '/thumbnails/', str_replace(['.png','.jpg','.jpeg'],'.webp', $this->picture));
 	}
 
 
