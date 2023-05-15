@@ -5,6 +5,7 @@ namespace Medians\Blog\Application;
 use Medians\Specializations\Infrastructure\SpecializationRepository;
 use Medians\Blog\Infrastructure\BlogRepository;
 use Medians\Categories\Infrastructure\CategoryRepository;
+use Medians\Offers\Infrastructure\OfferRepository;
 
 
 class BlogController
@@ -25,6 +26,9 @@ class BlogController
 		$this->repo = new BlogRepository();
 		$this->specsRepo = new SpecializationRepository();
 		$this->categoryRepo = new CategoryRepository();
+		$this->offersRepo = new OfferRepository();
+
+
 	}
 
 
@@ -185,6 +189,7 @@ class BlogController
 		        'item' => $item,
 		        'similar_items' => $this->specsRepo->similar($item, 3),
 		        'similar_articles' => $this->repo->similar($item, 3),
+		        'offers' => $this->offersRepo->random(1),
 		    ]);
 
 		} catch (\Exception $e) {
@@ -209,6 +214,7 @@ class BlogController
 		        'items' => $this->repo->get(4),
 		        'cat_her' => $this->repo->getByCategory(6, 4),
 		        'cat_him' => $this->repo->getByCategory(7, 4),
+		        'offers' => $this->offersRepo->random(1),
 		    ]);
 
 		} catch (\Exception $e) {

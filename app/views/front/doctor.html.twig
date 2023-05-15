@@ -46,42 +46,10 @@
 
                                 <a class="mx-auto py-3 px-4 cyan-bg purple-color rounded-lg  inline-block font-semibold " href="#!">حجز موعد </a>
                             </div>
+                            
+                            {% include 'views/front/side_offers.html.twig' %}
 
-                            {% if offers %}
-                            <div class="cyan-gradient45 rounded-lg py-2 mt-10 pl-40 pr-6 purple-color font-semibold text-lg  " >
-                                عروض  مميزة
-                            </div>
-                            {% endif %}
-                            {% for offer in offers %}
-                            <div class="relative border-1 border border-gray-100  bg-white rounded-tl-2xl rounded-br-2xl p-6 pb-6 my-6">
-                                <a href="#!" class="text-xl font-semibold py-2 mb-2 block">{{offer.content.title}}</a>
-                                <div>
-                                    {{offer.content.content | raw}}
-                                </div>
-
-                                <div class="w-full text-center ">
-                                    <a class="mx-auto my-2 py-3 px-4 cyan-bg purple-color rounded-lg  inline-block font-semibold  " href="/offers/{{offer.id}}">{{lang.__('more_details')}}</a>
-                                </div>
-
-                            </div>
-                            {% endfor %}
-
-
-                            <div class="cyan-gradient45 rounded-lg py-2 mt-10 pl-40 pr-6 purple-color font-semibold text-lg  " >
-                                <a href="/doctors">{{lang.__('VIEW_ALL_DOCTORS')}}</a>
-                            </div>
-                            {% for doctor in similar %}
-                            <div class="relative border-1 border border-gray-100 text-center bg-white rounded-lg mt-20 pt-20 pb-6">
-                                <img loading="lazy" src="/stream?image={{doctor.picture}}" width="150" height="150" style="top:-60px" class="rounded-full p-1 border-purple-800 border-1 w-32 mx-auto left-0 right-0 absolute" alt="Doctor" />
-
-                                <h2 class="text-lg pb-2 font-bold purple-color" >{{doctor.content.title}}</h2>
-                                <p class="text-base pb-10 font-bold cyan-color" >{{lang.__('lang') == 'en' ? doctor.field.short_name_en : doctor.field.short_name_ar}}</p>
-                                <div class=" w-full text-center gap-6">
-                                    <a class="mx-auto py-3 px-4 purple-bg text-white rounded-lg  inline-block " href="/{{doctor.content.prefix}}">{{lang.__('FULL_BIO')}} </a>
-                                    <a class="mx-auto py-3 px-4 cyan-bg purple-color font-semibold rounded-lg  inline-block " href="/booking">{{lang.__('BOOK_NOW')}} </a>
-                                </div>
-                            </div>
-                            {% endfor %}
+                            {% include 'views/front/side_doctors.html.twig.html.twig' %}
 
                         </div>
                     </div>
