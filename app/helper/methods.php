@@ -29,6 +29,7 @@ function setLang()
  */
 function render($path, $data, $responseType = 'html')
 {
+    !class_exists('Langs') ? setLang() : '';
 
     try {
         
