@@ -50,7 +50,7 @@ class BlogRepository
 	public function search($request, $limit = 20)
 	{
 		$title = $request->get('search');
-		$arr =  json_decode(json_encode(['id'=>0, 'content'=>['title'=>$title]]));
+		$arr =  json_decode(json_encode(['id'=>0, 'content'=>['title'=>$title ? $title : '-']]));
 
 		return $this->similar( $arr, $limit);
 	}
