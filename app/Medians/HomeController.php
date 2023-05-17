@@ -89,7 +89,7 @@ class HomeController
 		{
 
 			$item = $this->find($prefix);
-			
+
 			if (isset($item->item_type))
 			{
 		        switch ($item->item_type) 
@@ -127,6 +127,7 @@ class HomeController
 		        
 
 		} catch (\Exception $e) {
+			print_r($e);
 			throw new \Exception( $e->getMessage(), 1);
 		}
 	} 
