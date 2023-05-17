@@ -41,7 +41,7 @@
                             <img loading="lazy" src="/stream?image={{item.picture}}" alt="Doctor" class="w-full" />
 
                             <div class="relative my-10">
-                                {{item.content.content | raw }}
+                                {{app.renderTemplate(item.content.content, item)|raw}}
 
                             </div>
                             {% endif %}

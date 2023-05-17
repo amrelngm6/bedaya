@@ -1,18 +1,22 @@
 <?php
 
-try {
-    
-    $app = new \config\APP;
 
-    $lng = isset($_SESSION['site_lang']) 
-        ? $_SESSION['site_lang'] 
-        : (isset($app->auth()->branch->id) && !empty($app->setting('lang')) ? $app->setting('lang') : 'arabic');
+function setLang()
+{
+    try {
+        
+        $app = new \config\APP;
 
-    include('app/helper/langs/'.$lng.'.php');
-    
+        $lng = isset($_SESSION['site_lang']) 
+            ? $_SESSION['site_lang'] 
+            : (isset($app->auth()->branch->id) && !empty($app->setting('lang')) ? $app->setting('lang') : 'arabic');
 
-} catch (\Exception $e) {
-    throw new Exception($e->getMessage(), 1);    
+        include('app/helper/langs/'.$lng.'.php');
+        
+
+    } catch (\Exception $e) {
+        throw new Exception($e->getMessage(), 1);    
+    }
 }
 
 
@@ -121,7 +125,8 @@ function response($response)
 */ 
 function __($langkey = null)
 {
-    return Langs::__($langkey);
+    !class_exists('Langs') ? setLang() : '';
+    return class_exists('Langs') ? Langs::__($langkey) : $langkey;
 }
 
 

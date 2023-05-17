@@ -25,7 +25,7 @@
                                 </div>
                             </div>
                             <div class="relative my-10 text-lg">
-                                {{item.content.content|raw}}
+                                {{app.renderTemplate(item.content.content, item)|raw}}
                             </div>
                         </div>
                         <div class="w-full lg:w-4/12">

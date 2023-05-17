@@ -193,12 +193,12 @@ class PageController
 				case 'اتصل-بنا':
 				case 'contactus':
 				case 'contact':
-					$template = 'contact';
+					// $template = 'contact';
 					break;
 				
 				case 'من-نحن':
 				case 'about-us':
-					$template = 'about';
+					// $template = 'about';
 					break;
 				
 			}

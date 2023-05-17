@@ -456,3 +456,10 @@ footer
 {
     cursor: pointer;
 }
+.slider-text
+{
+    z-index: 999;
+}
+table {
+    width: 100%;
+}

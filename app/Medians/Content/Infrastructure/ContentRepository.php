@@ -20,7 +20,6 @@ class ContentRepository
 		return new Content();
 	}
 
-
 	public function find($prefix)
 	{
 		return Content::where('prefix', $prefix)->first();
@@ -32,7 +31,7 @@ class ContentRepository
 		{
 				
 			default:
-				return Category::where('model', $model)->limit($limit)->get();
+				return Content::where('model', $model)->limit($limit)->get();
 				break;
 		}
 	}
@@ -45,64 +44,5 @@ class ContentRepository
 
 
 
-
-
-	/**
-	* Save item to database
-	*/
-	public function store($data) 
-	{
-
-		$Model = new Category();
-		
-		foreach ($data as $key => $value) 
-		{
-			if (in_array($key, $this->getModel()->getFields()))
-			{
-				$dataArray[$key] = $value;
-			}
-		}	
-
-		$dataArray['status'] = isset($dataArray['status']) ? 'on' : 0;
-		// Return the FBUserInfo object with the new data
-    	$Object = Category::create($dataArray);
-    	$Object->update($dataArray);
-
-    	return $Object;
-    }
-    	
-    /**
-     * Update Lead
-     */
-    public function update($data)
-    {
-
-		$Object = Category::find($data['id']);
-		
-		// Return the FBUserInfo object with the new data
-    	$Object->update( (array) $data);
-
-    	return $Object;
-
-    } 
-
-
-	/**
-	* Delete item to database
-	*
-	* @Returns Boolen
-	*/
-	public function delete($id) 
-	{
-		try {
-			
-			return Category::find($id)->delete();
-
-		} catch (\Exception $e) {
-
-			throw new \Exception("Error Processing Request " . $e->getMessage(), 1);
-			
-		}
-	}
 
 }

@@ -98,6 +98,16 @@ class APP
 		return $twig;
 	}
 
+	/**
+	 * Template for Twig render 
+	 */
+	public function renderTemplate($code, $data=null)
+	{
+		$twig = $this->template()->createTemplate($code);
+
+		return $twig->render(['item'=> $data, 'app'=>$this, 'lang'=>new \Langs]);
+	}
+
 	
 	/**
 	* Return 

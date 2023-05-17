@@ -89,7 +89,7 @@ class HomeController
 		{
 
 			$item = $this->find($prefix);
-
+			
 			if (isset($item->item_type))
 			{
 		        switch ($item->item_type) 

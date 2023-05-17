@@ -14,7 +14,7 @@ $app = new \config\APP;
 Macaw::get('/', \Medians\HomeController::class.'@index'); 
 Macaw::get('/stories', \Medians\Stories\Application\StoryController::class.'@index'); 
 Macaw::get('/doctors', \Medians\Doctors\Application\DoctorController::class.'@list'); 
-Macaw::get('/booking', \Medians\Pages\Application\PageController::class.'@booking'); 
+// Macaw::get('/booking', \Medians\Pages\Application\PageController::class.'@booking'); 
 Macaw::post('/submit/(:all)', \Medians\FrontendController::class.'@form_submit'); 
 Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
 Macaw::get('/offers/(:all)', \Medians\Offers\Application\OfferController::class.'@page'); 
@@ -32,6 +32,12 @@ Macaw::get('/switch-lang/(:all)', function ($lang)  {
     echo (new \config\APP)->redirect('/');
     return true;
 });
+
+Macaw::get('/builder', \Medians\Builders\Application\BuilderController::class.'@index'); 
+Macaw::get('/builder/load', \Medians\Builders\Application\BuilderController::class.'@load'); 
+Macaw::get('/builder/meta', \Medians\Builders\Application\BuilderController::class.'@meta'); 
+Macaw::post('/builder', \Medians\Builders\Application\BuilderController::class.'@submit'); 
+Macaw::post('/builder/submit', \Medians\Builders\Application\BuilderController::class.'@submit'); 
 
 /**
 * Return Dashboard 
@@ -139,9 +145,18 @@ Macaw::get('/reports/(:all)', \Medians\Reports\Application\ReportController::cla
 
 }
 
-Macaw::get('/(:all)', \Medians\HomeController::class.'@pages');
-Macaw::get('/(:all)/(:all)', \Medians\HomeController::class.'@page');
+Macaw::get('/(:all)/(:all)', \Medians\HomeController::class.'@pages');
+Macaw::get('/(:all)', function ($a) 
+{
 
+    $item = (new \Medians\HomeController)->find($a);
+    if (empty($item->id)){
+        echo 404;return 404;
+    }
+
+    $_SESSION['site_lang'] = $item->lang == 'ar' ? 'arabic' : 'english';
+    (new \Medians\HomeController)->pages($a);
+});
 
 /*
 // Return list of device 
