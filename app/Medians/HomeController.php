@@ -33,6 +33,9 @@ class HomeController
 	{
 		try {
 
+			$item = $this->pagesRepo->homepage();
+    		return (new  \Medians\Pages\Application\PageController)->page($item->content);
+
 	        return  render('views/front/index.html.twig',[
 	        	'blog'=> $this->blogRepo->get(3),
 	        	'doctors'=> $this->doctorRepo->get(3),
@@ -61,24 +64,6 @@ class HomeController
 		return $this->contentRepo->find($newPrefix);
 	}
 
-	/**
-	 * Model object 
-	 */
-	public function page($prefix, $id)
-	{
-		try {
-	        switch ($prefix) 
-	        {
-	        	case '%D8%A7%D8%B3%D8%AA%D8%B4%D8%A7%D8%B1%D8%A7%D8%AA-%D8%A7%D9%88%D9%86%D9%84%D8%A7%D9%8A%D9%86':
-	        	case 'استشارات-اونلاين':
-	        		return (new  \Medians\OnlineConsultations\Application\OnlineConsultationController)->page($id);
-	        		break;
-			}
-
-		} catch (\Exception $e) {
-			throw new \Exception( $e->getMessage(), 1);
-		}
-	}
 
 	/**
 	 * Model object 

@@ -1,5 +1,6 @@
 {% include 'views/front/includes/header.html.twig' %}
-
+    
+    {% if item.home == 0 %}
     <div class="w-full cyan-bg pb-6 pt-2 relative ">
         <div class="w-full overflow-hidden h-full absolute bottom-0 left-0">        
             <img loading="lazy"  alt="{{app.settings['sitename']}}" src="/stream?image=/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
@@ -8,10 +9,12 @@
             <h1 class="text-2xl mx-auto w-auto text-center font-bold purple-color" >{{item.content.title}}</h1>
         </div>
     </div>
+    {% endif %}
 
     <div class="blog-content ">
         <div class="mx-auto ">
-        {{app.renderTemplate(item.content.content, item)|raw}}
+            {%  set params = {'item':item, 'app':app, 'lang':lang, 'specializations':specializations, 'story_dates':story_dates, 'stories':stories, 'doctors': doctors, 'blog': blog} %}
+        {{app.renderTemplate(item.content.content, item).render( params )|raw}}
         </div>
 
     </div>

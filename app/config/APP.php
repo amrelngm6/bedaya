@@ -105,7 +105,10 @@ class APP
 	{
 		$twig = $this->template()->createTemplate($code);
 
-		return $twig->render(['item'=> $data, 'app'=>$this, 'lang'=>new \Langs]);
+		return $twig;
+		return $twig->render([
+				'specializations' => (new \Medians\Specializations\Infrastructure\SpecializationRepository)->get_root(),
+			'item'=> $data, 'app'=>$this, 'lang'=>new \Langs]);
 	}
 
 	

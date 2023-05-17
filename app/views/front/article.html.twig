@@ -25,7 +25,8 @@
                                 </div>
                             </div>
                             <div class="relative my-10 text-lg">
-                                {{app.renderTemplate(item.content.content, item)|raw}}
+                                {% set params = {'item': item} %}
+                                {{app.renderTemplate(item.content.content, item).render(params)|raw}}
                             </div>
                         </div>
                         <div class="w-full lg:w-4/12">

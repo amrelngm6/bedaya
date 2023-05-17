@@ -29,6 +29,14 @@ class PageRepository
 		}])->find($id);
 	}
 
+
+	public function homepage()
+	{
+		return Page::where('home', 1)->with(['content'=>function($q) {
+			$q->where('lang', __('lang'));
+		}])->first();
+	}
+
 	public function get($limit = 100)
 	{
 		return Page::with('content','user')->limit($limit)->orderBy('id', 'DESC')->get();

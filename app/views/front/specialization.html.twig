@@ -41,8 +41,8 @@
                             <img loading="lazy" src="/stream?image={{item.picture}}" alt="Doctor" class="w-full" />
 
                             <div class="relative my-10">
-                                {{app.renderTemplate(item.content.content, item)|raw}}
-
+                                {% set params = {'item': item, 'lang': lang} %}
+                                {{app.renderTemplate(item.content.content, item).render(params)|raw}}
                             </div>
                             {% endif %}
                         </div>

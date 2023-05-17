@@ -7,6 +7,8 @@ use Medians\Pages\Infrastructure\PageRepository;
 use Medians\Categories\Infrastructure\CategoryRepository;
 use Medians\Blog\Infrastructure\BlogRepository;
 use Medians\Doctors\Infrastructure\DoctorRepository;
+use Medians\StoryDates\Infrastructure\StoryDateRepository;
+use Medians\Stories\Infrastructure\StoryRepository;
 
 
 class PageController
@@ -29,6 +31,8 @@ class PageController
 		$this->categoryRepo = new CategoryRepository();
 		$this->blogRepo = new BlogRepository();
 		$this->doctorRepo = new DoctorRepository();
+		$this->storyDateRepo = new StoryDateRepository();
+		$this->storyRepo = new StoryRepository();
 	}
 
 
@@ -56,41 +60,6 @@ class PageController
 
 
 
-
-	/**
-	 * Create new item
-	 * 
-	 */ 
-	public function create() 
-	{
-
-		return render('views/admin/page/create.html.twig', [
-	        'title' => __('add_new'),
-	        'langs_list' => ['ar','en'],
-	        'categories' => $this->categoryRepo->get('Medians\Page\Domain\Page'),
-	    ]);
-
-	}
-
-
-
-	public function edit($id ) 
-	{
-		try {
-				
-				// print_r($this->repo->find($id));
-			return render('views/admin/page/page.html.twig', [
-		        'title' => __('edit_page'),
-		        'langs_list' => ['ar','en'],
-		        'item' => $this->repo->find($id),
-		        'categories' => $this->categoryRepo->get('Medians\Page\Domain\Page'),
-		    ]);
-
-		} catch (\Exception $e) {
-			throw new \Exception($e->getMessage(), 1);
-			
-		}
-	}
 
 
 	public function store() 
@@ -186,42 +155,13 @@ class PageController
 			
 			$item = $this->repo->find($contentObject->item_id, $contentObject->prefix);
 			
-			$template = 'page';
-
-			switch ($item->content->prefix) 
-			{
-				case 'اتصل-بنا':
-				case 'contactus':
-				case 'contact':
-					// $template = 'contact';
-					break;
-				
-				case 'من-نحن':
-				case 'about-us':
-					// $template = 'about';
-					break;
-				
-			}
-
-			return render('views/front/'.$template.'.html.twig', [
+			return render('views/front/page.html.twig', [
+				'specializations' => $this->specsRepo->get_root(),
+				'story_dates' => $this->storyDateRepo->get(),
+				'stories' => $this->storyRepo->get(3),
+				'doctors' => $this->doctorRepo->get(3),
+				'blog' => $this->blogRepo->get(3),
 		        'item' => $item,
-		    ]);
-
-		} catch (\Exception $e) {
-			throw new \Exception($e->getMessage(), 1);
-		}
-	} 
-
-	/**
-	 * Front page 
-	 * @var Int
-	 */
-	public function booking()
-	{
-		try {
-	
-			return render('views/front/booking.html.twig', [
-		        // 'item' => $item,
 		    ]);
 
 		} catch (\Exception $e) {
