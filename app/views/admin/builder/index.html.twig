@@ -1429,10 +1429,10 @@
 		    <a href="javascript:void(null)" class="koBottomButton d-none" id="koBottomButton_draftModeLoading" data-balloon="Please wait" data-balloon-pos="upright"> <span class="badge badge-light koDemo_toolbarButton" style="font-size:14px;color:var(--ui-color-accent)">
 		            <div class="spinner-border spinner-border-sm"> </div>
 		        </span> </a>
-		    <a href="javascript:void(null)" class="koBottomButton" onclick="koPreviewFrame()"> <i class="fas fa-eye"> </i> <span> Preview</span> </a>
+		    <!-- <a href="javascript:void(null)" class="koBottomButton" onclick="koPreviewFrame()"> <i class="fas fa-eye"> </i> <span> Preview</span> </a> -->
+		    <a href="/{{page.prefix}}" class="koBottomButton" target="_blank"> <i class="fas fa-eye"> </i> <span> Preview</span> </a>
 
 		    <div class="float-right">
-		        <a href="javascript:void(null)" class="koBottomButton koToolbarLogout" onclick="koToolbar('hide');basicModal.show(modalExitEditor)" data-balloon="Exit Administrator Mode" data-balloon-pos="up"> <i class="fas fa-power-off"> </i> <span> Website Administrator Mode</span> </a>
 		        <a href="javascript:void(null)" class="koBottomButton" onclick="jQuery('#koLeftMenu').removeClass('activeBottomMenu')"> <i class="fas fa-chevron-left"> </i> <span> Hide</span> </a>
 		    </div>
 		</div>
@@ -1745,7 +1745,7 @@
                             <a id="koMenu_designButtonFonts" href="#tab_d-4" data-toggle="tab" data-bs-toggle="tab" data-title="Fonts"><i class="fas fa-font fa-fw"></i> Fonts</a>
                             <a id="koMenu_designButtonMore" href="#tab_d-5" data-toggle="tab" data-bs-toggle="tab" class="lg-only"><i class="fas fa-cogs fa-fw"></i> More settings</a>
                             <div id="koMenu_designButtonMenuSeparator" class="koMenuSeparator my-3 lg-only"></div>
-                            <a href="javascript:void(null)" class="button lg-only" onclick="koMenuOpen('menumaker');" id="koMenu_designButtonMenu"><i class="fas fa-magic fa-fw"></i> Menu Designer</a>
+                            <!-- <a href="javascript:void(null)" class="button lg-only" onclick="koMenuOpen('menumaker');" id="koMenu_designButtonMenu"><i class="fas fa-magic fa-fw"></i> Menu Designer</a> -->
                             <a href="javascript:void(null)" class="button lg-only" onclick="koMoreMenuOpen('themes')" id="koMenu_designButtonThemes"><i class="fas fa-star fa-fw"></i> Website Designs</a>
                             <div class="koMenuSeparator my-3 "></div>
                             <a id="koMenu_designButtonLogo" href="javascript:void(null)" onclick="koLogoMaker();" class="button buttonWhite" title="Create a Logo" data-title="Create a Logo"><i class="fas fa-fw fa-wand-magic-sparkles me-2"></i>Create a Logo</a>
@@ -5900,22 +5900,20 @@
 
 					jQuery('#kt_PreviewMode').val('0');
 					jQuery('#kt_PreviewStyle').val('');
-					u = 'index.php?p=1_1&preview=1';
 					jQuery("#kt_PreviewFrameHolder").addClass('koPlaceholder'); //.html(iframeCode);
 
 					// submit a preview in an IFRAME
 					//jQuery('#kt_PreviewStyle').val($kt_Style);
 
-					//koHideFrame();
 					jQuery('#koLeftMenu').removeClass('activeBottomMenu')
-					jQuery('#kt_PreviewForm').submit();
-
+					document.getElementById('kt_PreviewFrame').src = '/{{page.prefix}}';
 					jQuery('#koFrameOverlay').addClass('active');
 					jQuery('#kt_Frame').removeClass('previewMenu').addClass('previewZoom previewPage').show();
 					// add class to HTML tag,
 					// to hide scrollbars.
 					jQuery('html').addClass('previewActive');
 
+					koHideFrame();
 					
 
 				}
@@ -7144,7 +7142,7 @@
         </div>
         <div class="kt_FrameHolder">
             <div class="kt_FrameTop"><span class="kt_FrameTopDot1" onclick="kt_FrameHide()" style="cursor:pointer"></span><span class="kt_FrameTopDot2"></span><span class="kt_FrameTopDot3"></span></div>
-            <form id="kt_PreviewForm" action="index.php?p=1_1&noresize=1&preview=1" method="POST" target="kt_PreviewFrame"><input type="hidden" id="kt_PreviewStyle" name="kt_PreviewStyle"><input type="hidden" id="kt_PreviewMenuType" name="kt_PreviewMenuType"><input type="hidden" id="kt_PreviewMenuMobile" name="kt_PreviewMenuMobile"><input type="hidden" id="kt_PreviewMode" name="kt_PreviewMode" value="0" autocomplete="off"></form>
+            <form id="kt_PreviewForm" action="/{{page.prefix}}" method="get" target="kt_PreviewFrame"><input type="hidden" id="kt_PreviewStyle" name="kt_PreviewStyle"><input type="hidden" id="kt_PreviewMenuType" name="kt_PreviewMenuType"><input type="hidden" id="kt_PreviewMenuMobile" name="kt_PreviewMenuMobile"><input type="hidden" id="kt_PreviewMode" name="kt_PreviewMode" value="0" autocomplete="off"></form>
             <div id="kt_PreviewFrameHolder"><iframe src="" name="kt_PreviewFrame" id="kt_PreviewFrame"></iframe></div>
         </div>
         <!---->
