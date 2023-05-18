@@ -34,14 +34,14 @@ class HomeController
 		try {
 
 			$item = $this->pagesRepo->homepage();
-    		return (new  \Medians\Pages\Application\PageController)->page($item->content);
-
-	        return  render('views/front/index.html.twig',[
+			
+	        return  render('views/front/page.html.twig',[
 	        	'blog'=> $this->blogRepo->get(3),
 	        	'doctors'=> $this->doctorRepo->get(3),
 	        	'specializations'=> $this->specsRepo->get_root(),
 	        	'stories'=> $this->storiesRepo->get(3),
 	        	'headerPosition'=> 'absolute',
+		        'item' => $item,
 	        	'story_dates'=> $this->storyDateRepo->get(10)
 	        ]);
 	        

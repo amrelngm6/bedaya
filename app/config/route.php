@@ -11,6 +11,7 @@ $app = new \config\APP;
 * Return Dashboard 
 */
 
+Macaw::get('', \Medians\HomeController::class.'@index'); 
 Macaw::get('/', \Medians\HomeController::class.'@index'); 
 Macaw::get('/stories', \Medians\Stories\Application\StoryController::class.'@index'); 
 Macaw::get('/doctors', \Medians\Doctors\Application\DoctorController::class.'@list'); 
