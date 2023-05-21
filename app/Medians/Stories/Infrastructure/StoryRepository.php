@@ -3,7 +3,8 @@
 namespace Medians\Stories\Infrastructure;
 
 use Medians\Stories\Domain\Story;
-use Medians\Domain\Content\Content;
+use Medians\CustomFields\Domain\CustomField;
+use Medians\Content\Domain\Content;
 
 
 class StoryRepository 
@@ -34,7 +35,7 @@ class StoryRepository
 
 	public function get($limit = 100)
 	{
-		return Story::with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		return Story::with('ar','en','content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
 	}
 
 
@@ -61,6 +62,12 @@ class StoryRepository
     	$Object = Story::create($dataArray);
     	$Object->update($dataArray);
 
+    	// Store languages content
+    	$this->storeContent($data['content'], $Object->id);
+
+    	// Store Custom fields
+    	$this->storeCustomFields($data['field'], $Object->id);
+
     	return $Object;
     }
     	
@@ -74,6 +81,12 @@ class StoryRepository
 		
 		// Return the FBUserInfo object with the new data
     	$Object->update( (array) $data);
+
+    	// Store languages content
+    	$this->storeContent($data['content'], $data['id']);
+
+    	// Store Custom fields
+    	$this->storeCustomFields($data['field'], $data['id']);
 
     	return $Object;
 
@@ -89,7 +102,14 @@ class StoryRepository
 	{
 		try {
 			
-			return Story::find($id)->delete();
+			$delete = Story::find($id)->delete();
+
+			if ($delete){
+				$this->storeContent(null, $id);
+				$this->storeCustomFields(null, $id);
+			}
+
+			return true;
 
 		} catch (\Exception $e) {
 
@@ -107,7 +127,7 @@ class StoryRepository
 	*/
 	public function storeContent($data, $id) 
 	{
-		Content::where('item_type', Story::class)->where('model_id', $id)->delete();
+		Content::where('item_type', Story::class)->where('item_id', $id)->delete();
 		if ($data)
 		{
 			foreach ($data as $key => $value)
@@ -119,6 +139,33 @@ class StoryRepository
 				$fields['created_by'] = $this->app->auth()->id;
 
 				$Model = Content::create($fields);
+				$Model->update($fields);
+			}
+	
+			return $Model;		
+		}
+	}
+
+
+
+
+	/**
+	* Save related items to database
+	*/
+	public function storeCustomFields($data, $id) 
+	{
+		CustomField::where('item_type', Story::class)->where('item_id', $id)->delete();
+		if ($data)
+		{
+			foreach ($data as $key => $value)
+			{
+				$fields = [];
+				$fields['item_type'] = Story::class;	
+				$fields['item_id'] = $id;	
+				$fields['code'] = $key;	
+				$fields['value'] = $value;
+
+				$Model = CustomField::create($fields);
 				$Model->update($fields);
 			}
 	

@@ -79,7 +79,6 @@ class OfferController
         try {
 
         	$check = $this->repo->find($params['id']);
-            if ($check->devices)
 
 
             if ($this->repo->delete($params['id']))

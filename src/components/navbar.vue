@@ -5,7 +5,7 @@
                 <div class="inline-flex mx-4">
                     <!-- Logo -->
                     <div class="mx-auto h-16  py-2 w-auto ">
-                        <img style="max-height: 100%" :src="(conf.url ? conf.url : '/') + (setting.logo ? setting.logo : 'assets/img/logo.png')" height="40">
+                        <img style="max-height: 100%" :src="(conf.url ? conf.url : '/') + (setting.logo ? setting.logo : '/uploads/img/logo.png')" height="40">
                         <!--end logo -->
                     </div>
                 </div>
@@ -39,8 +39,8 @@
                     <span v-text="auth.name"></span>
                 </a>
                 <ul class="py-4 px-2 w-full bg-white border border-gray-300 rounded  absolute top-14 left-1 hidden dropped1" style="z-index: 9999;">
-                    <li class="py-2 border-b border-gray-300"><a href="/settings" v-text="lang.setting"></a></li>
-                    <li class="py-2"><a href="/logout" v-text="lang.logout"></a></li>
+                    <li class="py-2 border-b border-gray-300"><a href="/settings" v-text="__('setting')"></a></li>
+                    <li class="py-2"><a href="/logout" v-text="__('logout')"></a></li>
                 </ul>
             </li>
         </ul>
@@ -58,6 +58,13 @@ export default {
     lang:[Object, null],
     setting:[Object, null],
     conf:[Object, null]
+  },
+  methods:{
+    
+        __(i)
+        {
+            return this.$parent.__(i);
+        }
   }
 }
 </script>

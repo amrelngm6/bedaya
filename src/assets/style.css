@@ -604,3 +604,49 @@ body .hidden
 {
   display: none !important;
 }
+.rtl .data-table .data-table-export-data, .rtl .data-table .data-table-pagination, .rtl .data-table>.data-table-search-filter
+{
+  margin-right: auto;
+  margin-left: 0;
+}
+body .data-table > div
+{
+  max-height: none;
+}
+.page-item.active .page-link
+{
+  color: #7460ee;
+}
+body .data-table-table
+{
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+.data-table-per-page select,
+input.form-control,
+body .btn
+{
+  height: auto;
+  line-height: 1.5;
+  padding: 3px 10px;
+}
+
+
+/*
+  Enter and leave animations can use different
+  durations and timing functions.
+*/
+.slide-fade-enter-active {
+  transition: all 0.2s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(-500px);
+  opacity: 0;
+}

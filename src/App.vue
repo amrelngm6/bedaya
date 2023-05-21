@@ -6,56 +6,14 @@
                 <navbar class="w-full"  v-if="auth" style="z-index: 99999;" :setting="setting" :lang="lang" :conf="conf" :auth="auth"></navbar>
                 <a href="javascript:;" class="mainmenu-close w-6 text-lg absolute top-4 mx-3 block" style="z-index:99999" @click="showSide = !showSide"><i class="fa fa-bars"></i></a>
                 <div class="gap gap-6 h-full flex w-full overflow-hidden py-4 pb-10 ">
-                    <div v-if="auth && showSide" class="sidebar mx-1" id="sidebar" style="z-index:999">
-                        <div class="sidebar-inner slimscroll">
-                            <div id="sidebar-menu" class="sidebar-menu">
-                                <ul>
-                                    <li class="nav-item nav-profile">
-                                        <a href="#" class="nav-link">
-                                            <div class="nav-profile-image">
-                                                <img :src="auth.photo" alt="profile">
-                                            </div>
-                                            <div class="nav-profile-text d-flex flex-column">
-                                                <span class="font-weight-bold mb-2" v-text="auth.name"></span>
-                                                <span class="text-white text-xs" v-text="auth.Role ? auth.Role.name : ''"></span>
-                                            </div>
-                                            <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <side-menu :samepage="activeTab" :url="conf.url ? conf.url : '/'" :menus="main_menu"></side-menu>
-                            </div>
-                        </div>
-                    </div>
+                    <side-menu :samepage="activeTab" :auth="auth" :url="conf.url ? conf.url : '/'" :menus="main_menu" v-if="auth && showSide" class="sidebar mx-1" id="sidebar" style="z-index:999">
+                    </side-menu>
 
                     <div v-if="auth" class="w-full flex overflow-auto" style="height: 85vh; z-index: 9999;">
                         <div class="w-full">
-                            <dashboard v-if="activeTab == 'dashboard'" :setting="setting" :lang="lang" :conf="conf" :auth="auth"></dashboard>
-                            <settings v-if="activeTab == 'settings'" :setting="setting" :lang="lang" :conf="conf" :auth="auth"></settings>
-
-                            <categories :path="activeTab" :key="activeTab" v-if="
-                            activeTab == 'categories' 
-                            || activeTab == 'devices/categories' 
-                            || activeTab == 'products/categories'" 
-                            :setting="setting" :lang="lang" :conf="conf" :auth="auth"></categories>
-
-                            <users :path="activeTab" v-if="
-                            activeTab == 'users'" 
-                            :key="activeTab" :setting="setting" :lang="lang" :conf="conf" :auth="auth"></users>
-                            
-                            <customers :path="activeTab" v-if="
-                            activeTab == 'customers'" 
-                            :key="activeTab" :setting="setting" :lang="lang" :conf="conf" :auth="auth"></customers>
-                            
-                            <reports v-if="
-                                    activeTab == 'reports/games' 
-                                    || activeTab == 'reports/orders'
-                                    || activeTab == 'reports/devices'
-                                    || activeTab == 'reports/products'
-                                    " 
-                                :path="activeTab"
-                                :key="activeTab" 
-                                :setting="setting" :lang="lang" :conf="conf" :auth="auth"></reports>
+                            <transition   :duration="550">
+                                <component ref="activeTab" :path="activeTab" :setting="setting" :lang="lang" :conf="conf" :auth="auth" :is="component"></component>
+                            </transition>
 
                         </div>
                     </div>
@@ -80,6 +38,10 @@ import settings from './components/settings.vue'
 import users from './components/users.vue'
 import customers from './components/customers.vue'
 import reports from './components/reports.vue'
+import blog from './components/blog.vue'
+import specialization from './components/specialization.vue'
+import doctors from './components/doctors.vue'
+import success_stories from './components/success_stories.vue'
 
 export default {
     name: 'app',
@@ -92,6 +54,10 @@ export default {
         users,
         customers,
         reports,
+        blog,
+        specialization,
+        doctors,
+        success_stories,
         navbar
     },
     data() {
@@ -102,6 +68,7 @@ export default {
             showAddSide: false,
             showEditSide: false,
             showTab: true,
+            component: {},
             activeTab: 'dashboard',
             status: null,
             lang: {},
@@ -135,6 +102,10 @@ export default {
         this.notify()
     },
     methods: {
+        /**
+         * Check notifications permission
+         * Send welcome notification
+         */ 
         notify (title, body) {
 
             if ("Notification" in window) 
@@ -150,9 +121,12 @@ export default {
                     });
                 }
             }
-
         },
 
+
+        /**
+         * Get the props for App root
+         */
         setProps()
         {
             const mountEl = document.querySelector("#root-parent");
@@ -163,19 +137,26 @@ export default {
             this.setting = props ? JSON.parse(props.setting) : {};
             this.conf = props ? JSON.parse(props.conf) : {};
             this.activeTab = (props && props.page) ? props.page : 'dashboard';
+            this.component = (props && props.component) ? props.component : 'dashboard';
             this.typesList = (props && props.typesList) ? props.typesList : [];
             this.show = true
-
         },
+
+
+        /**
+         * Switch between Tabs
+         */ 
         switchTab(tab) {
             if (!tab.sub)
             {
                 this.show = false
                 this.activeTab = (tab && tab.link) ? tab.link : 'dashboard';
+                this.component = (tab && tab.component) ? tab.component : this.activeTab;
                 this.show = true
                 history.pushState({menu: tab}, '', this.conf.url+this.activeTab);
             }
         },
+        
         checkIsInvoice()
         {
             return this.activeTab.includes('invoices/show') ? true : null;
@@ -258,7 +239,7 @@ export default {
             let k = i.replaceAll('_', ' ');
             let un_key = k.charAt(0).toUpperCase() + k.slice(1);
 
-            return this.lang[key] ? this.lang[key] : un_key;
+              return this.lang[key] ? this.lang[key] : un_key;
 
         }
     }

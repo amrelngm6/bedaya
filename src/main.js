@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import "@andresouzaabreu/vue-data-table/dist/DataTable.css";
 
 import VueSimpleAlert from "vue-simple-alert";
 Vue.use(VueSimpleAlert);
@@ -11,6 +12,8 @@ import VueNativeNotification from 'vue-native-notification'
 Vue.use(VueNativeNotification, {requestOnNotify: false})
 
 
+import DataTable from "@andresouzaabreu/vue-data-table";
+Vue.component("data-table", DataTable);
 
 Vue.component('moment', () => import ('moment'));
 Vue.component('login-dashboard', () => import('./components/login-dashboard'));
@@ -49,6 +52,7 @@ Vue.config.errorHandler = function (err, vm, info)  {
       pushScreenshotToServer(canvas.toDataURL(), err, info); 
   });
 };
+
 
 new Vue({
   render: h => h(App),

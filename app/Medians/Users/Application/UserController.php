@@ -31,8 +31,9 @@ class UserController
 	 */
 	public function index()
 	{
-		return render('views/admin/users/list.html.twig', [
-			'items' =>   $this->repo->get(),
+		return render('users', [
+	        'load_vue' => true,
+			'users' =>   $this->repo->get(),
 	        'title' => __('Users'),
 	    ]);
 	} 

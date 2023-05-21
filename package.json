@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@andresouzaabreu/vue-data-table": "^3.3.3",
     "@vueform/multiselect": "^2.6.1",
     "@vuepic/vue-datepicker": "^4.2.2",
     "chart.js": "^4.3.0",

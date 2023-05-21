@@ -32,12 +32,27 @@ class APP
 
 	function __construct()
 	{
-		$_SESSION['lang'] = isset($_SESSION['site_lang']) ? $_SESSION['site_lang'] : $this->lang_code;
+
+		$this->setLang();
 		$this->currentPage = $this->request()->getPathInfo();
 
 		$this->CONF = (new \config\Configuration())->getCONFArray();
 
 		$this->branch =  (object) array('id'=>1);
+
+	}
+
+	public function setLang()
+	{
+		if (isset($_SERVER['HTTP_REFERER']))
+		{
+			$arr = explode('/', $_SERVER['HTTP_REFERER']);
+
+			$_SESSION['site_lang'] = end($arr);
+			$_SESSION['lang'] = end($arr);
+		}
+		
+		$_SESSION['lang'] = isset($_SESSION['site_lang']) ? $_SESSION['site_lang'] : $this->lang_code;
 
 	}
 
@@ -106,9 +121,6 @@ class APP
 		$twig = $this->template()->createTemplate($code);
 
 		return $twig;
-		return $twig->render([
-				'specializations' => (new \Medians\Specializations\Infrastructure\SpecializationRepository)->get_root(),
-			'item'=> $data, 'app'=>$this, 'lang'=>new \Langs]);
 	}
 
 	
@@ -121,15 +133,19 @@ class APP
 		$data = array(
 			array('title'=>__('Dashboard'), 'icon'=>'fa-dashboard', 'link'=>'dashboard'),
 			
-	        array('title'=>__('Users'),  'icon'=>'fa-users', 'link'=>'', 'sub'=>
-	            [
-	                array('title'=>__('Users'),  'icon'=>'fa-dashboard', 'link'=>'users/'),
-	                array('title'=>__('add_User'),  'icon'=>'fa-dashboard', 'link'=>'users/create'),
-	            ]
-	        ),
+            array('title'=>__('Users'),  'icon'=>'fa-users', 'link'=>'admin/users', 'component'=>'users'),
+	        // array('title'=>__('Users'),  'icon'=>'fa-users', 'link'=>'', 'sub'=>
+	        //     [
+	        //         array('title'=>__('Users'),  'icon'=>'fa-dashboard', 'link'=>'users'),
+	        //         // array('title'=>__('add_User'),  'icon'=>'fa-dashboard', 'link'=>'users/create'),
+	        //     ]
+	        // ),
 
 
+			array('title'=> __('Specializations'),  'icon'=>'fa-puzzle-piece', 'link'=>'admin/specialization', 'component'=>'specialization'),
+			array('title'=> __('success stories'),  'icon'=>'fa-video', 'link'=>'admin/success_stories', 'component'=>'success_stories'),
 			array('title'=> __('Settings'),  'icon'=>'fa-cogs', 'link'=>'settings'),
+			array('title'=> __('blog'),  'icon'=>'fa-newspaper', 'link'=>'admin/blog', 'component'=>'blog'),
 			array('title'=> __('Logout'),  'icon'=>'fa-sign-out', 'link'=>'logout'),
 		);
 

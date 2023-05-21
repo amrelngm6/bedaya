@@ -88,7 +88,7 @@ class MediaController
 		$this->app = new \config\APP;
 		$filepath = $this->app->request()->get('asset');
 
-		if (strpos($filepath, 'dist/') && is_file($_SERVER['DOCUMENT_ROOT'].$filepath))
+		if (!strpos($filepath, '..') && is_file($_SERVER['DOCUMENT_ROOT'].$filepath))
 		{
 			// Set the caching headers
 			$expires = 60 * 60 * 24 * 7; // 1 week (in seconds)

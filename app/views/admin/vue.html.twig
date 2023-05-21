@@ -7,7 +7,8 @@
     <link href="/dist/css/app.css" rel="stylesheet" type="text/css" >
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp|Cairo:wght@300;500;700;900">
     <script type="text/javascript">
-        var enable_debug = {{app.Settings.enable_debug ? 1 : 0}};
+        const enable_debug = {{app.Settings.enable_debug ? 1 : 0}};
+        const url = '{{app.CONF.url}}';
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -26,13 +27,15 @@
         data-lang="{{lang.vueLang()|json_encode}}"
         data-setting="{{app.Settings|json_encode}}"
         data-conf="{{app.CONF|json_encode}}"
+        data-active-tab="{{component}}"
+        data-component="{{component}}"
         data-types-list="{{typesList|json_encode}}"
         ></div>
 
     </div>
                  
     <style type="text/css">
-        .text-default{ text-align:  {{app.Settings.lang == 'arabic' ? 'right' : 'left'}} }
+        .text-default{ text-align:  {{lang.__('lang') == 'ar' ? 'right' : 'left'}} }
     </style>
 
     <script type="text/javascript" src="/dist/js/app.js"></script>

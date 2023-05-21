@@ -79,7 +79,6 @@ class OnlineConsultationController
         try {
 
         	$check = $this->repo->find($params['id']);
-            if ($check->devices)
 
 
             if ($this->repo->delete($params['id']))
@@ -114,6 +113,11 @@ class OnlineConsultationController
 	{
 
 		try {
+
+			$explode = explode('/',  !empty($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : $_SERVER['REDIRECT_URL']);
+
+			if (!empty($explode[2]))
+				return $this->page($explode[2]);
 
 			$items = $this->repo->get();
 

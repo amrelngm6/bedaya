@@ -42,15 +42,6 @@ class APIController
 			case 'User':
 				$controller = new UserRepository();
 				break;
-			case 'OrderDevice':
-				$controller = new OrderDevicesRepository();
-				break;
-			case 'Devices':
-				return json_encode((new DevicesRepository())->getApi());
-				break;
-			case 'Products':
-				$return = (new ProductsRepository())->getItems(['stock'=>true, 'status'=>true]);
-				break;
 			
 		}
 
@@ -74,31 +65,16 @@ class APIController
 			$return = [];
 			switch ($request->get('type')) 
 			{
-				case 'Device.create':
-					$return = (new Devices\Application\DeviceController())->store();
-					break;
 				case 'Category.create':
 					$return = (new Categories\Application\CategoryController())->store();
 					break;
-				case 'Game.create':
-					$return = (new Games\Application\GameController())->store();
+
+				case 'Blog.create':
+					$return = (new Blog\Application\BlogController())->store();
 					break;
-				case 'Product.create':
-					$return = (new Products\Application\ProductController())->store();
-					break;
-				case 'OrderDevice.addProduct':
-					$return = (new Devices\Application\DeviceController())->addProduct();
-					break;
-				case 'Stock.create':
-					$return = (new Products\Application\StockController())->store();
-					break;
-				case 'Payment.create':
-					$return = (new Payments\Application\PaymentController())->store();
-					break;
-				case 'Event.create':
-					$params = (array)  json_decode($request->get('params')['event']);
-					$check = (new DevicesRepository())->storeOrder($params);
-					$return = isset($check->id) ? ['result'=>'Created'] : ['result'=>'Error'];
+
+				case 'Story.create':
+	                $return =  (new Stories\Application\StoryController())->store(); 
 					break;
 
 	            case 'User.create':
@@ -126,30 +102,11 @@ class APIController
 		$return = [];
 		switch ($request->get('type')) 
 		{
-			case 'Device.update':
-                $return =  (new Devices\Application\DeviceController())->update(); 
+			case 'Story.update':
+                $return =  (new Stories\Application\StoryController())->update(); 
 				break;
 			case 'Category.update':
 				$return = (new Categories\Application\CategoryController)->update($request);
-				break;
-			case 'Game.update':
-				$return = (new Games\Application\GameController())->update($request);
-				break;
-			case 'Product.update':
-				$return = (new Products\Application\ProductController())->update();
-				break;
-			case 'Payment.update':
-				$return = (new Payments\Application\PaymentController())->update();
-				break;
-			case 'Event.update':
-				$params = (array)  json_decode($request->get('params')['event']);
-				$check = (new DevicesRepository())->updateOrder($params);
-				$return = isset($check->id) ? ['result'=>__('Updated')] : ['result'=>'Error'];
-				break;
-			case 'Event.cancel':
-				$params = (array)  json_decode($request->get('params')['event']);
-				$check = (new DevicesRepository())->cancelOrder($params);
-				$return = isset($check->id) ? ['result'=>__('Updated')] : ['result'=>'Error'];
 				break;
             case 'Settings.update':
                 $return = (new Settings\Application\SettingsController())->update(); 
@@ -178,8 +135,8 @@ class APIController
 			$return = [];
 			switch ($request->get('type')) 
 			{
-				case 'OrderDevice.removeProduct':
-					$return = (new Devices\Application\DeviceController())->removeProduct();
+				case 'Story.delete':
+					$return = (new Stories\Application\StoryController())->delete();
 					break;
 
 				case 'Category.delete':
@@ -192,6 +149,10 @@ class APIController
 					
 				case 'Game.delete':
 					return response((new Games\Application\GameController())->delete());
+					break;
+
+				case 'Blog.delete':
+					return response((new Blog\Application\BlogController())->delete());
 					break;
 
 				case 'Stock.delete':

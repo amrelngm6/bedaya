@@ -29,7 +29,7 @@ class SpecializationRepository
 
 	public function get($limit = 100)
 	{
-		return Specialization::with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		return Specialization::with('content','user')->withCount('childs')->limit($limit)->orderBy('updated_at', 'DESC')->get();
 	}
 
 	public function search($request, $limit = 20)

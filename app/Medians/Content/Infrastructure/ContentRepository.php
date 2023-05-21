@@ -25,6 +25,12 @@ class ContentRepository
 		return Content::where('prefix', $prefix)->first();
 	}
 
+	public function switch_lang($item)
+	{
+		$lang = $item->lang == 'ar' ? 'en' : 'ar';
+		return Content::where('item_id', $item->item_id)->where('item_type', $item->item_type)->where('lang', $lang)->first();
+	}
+
 	public function get($model, $limit = 100)
 	{
 		switch ($model) 

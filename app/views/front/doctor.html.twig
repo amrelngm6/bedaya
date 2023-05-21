@@ -44,12 +44,12 @@
                                 <h2 class="text-xl pb-2 font-bold purple-color" >{{item.content.title}}</h2>
                                 <p class="text-lg pb-10 font-bold cyan-color" >{{lang.__('lang') == 'en' ? item.field.short_name_en : item.field.short_name_ar}}</p>
 
-                                <a class="mx-auto py-3 px-4 cyan-bg purple-color rounded-lg  inline-block font-semibold " href="#!">حجز موعد </a>
+                                <a class="mx-auto py-3 px-4 cyan-bg purple-color rounded-lg  inline-block font-semibold " href="/book/{{item.id}}">{{lang.__('book_now')}} </a>
                             </div>
                             
                             {% include 'views/front/side_offers.html.twig' %}
 
-                            {% include 'views/front/side_doctors.html.twig.html.twig' %}
+                            {% include 'views/front/side_doctors.html.twig' %}
 
                         </div>
                     </div>

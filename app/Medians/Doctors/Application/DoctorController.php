@@ -64,7 +64,7 @@ class DoctorController
 			
 			return render('views/front/doctors.html.twig', [
 		        'items' => $this->repo->get(9),
-		        'specializations' => $this->specsRepo->get(2),
+		        'specializations' => $this->specsRepo->get(),
 		    ]);
 
 		} catch (\Exception $e) {

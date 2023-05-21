@@ -32,6 +32,40 @@ class BlogController
 	}
 
 
+
+
+	/**
+	 * Columns list to view at DataTable 
+	 *  
+	 */ 
+	public function columns( ) 
+	{
+
+		return [
+            [
+                'key'=> "id",
+                'title'=> "#",
+            ],
+            [
+                'key'=> "title",
+                'title'=> __('title'),
+                'sortable'=> true,
+            ],
+            [
+                'key'=> "category_name",
+                'title'=> __('category'),
+                'sortable'=> false,
+            ],
+            [
+                'key'=> "date",
+                'title'=> __('Date'),
+                'sortable'=> true,
+            ]
+        ];
+	}
+
+	
+
 	/**
 	 * Admin index items
 	 * 
@@ -44,9 +78,12 @@ class BlogController
 		
 		try {
 			
-		    return render('views/admin/blog/list.html.twig', [
+		    return render('blog', [
+		        'load_vue' => true,
 		        'title' => __('blog'),
-		        'blog' => $this->repo->get(),
+		        'columns' => $this->columns(),
+		        'items' => $this->repo->get(),
+		        'categories' => $this->categoryRepo->get('Medians\Blog\Domain\Blog'),
 		    ]);
 		} catch (\Exception $e) {
 			throw new \Exception($e->getMessage(), 1);
@@ -100,7 +137,6 @@ class BlogController
         try {	
 
         	$params['created_by'] = $this->app->auth()->id;
-        	$params['branch_id'] = $this->app->branch->id;
         	
         	$this->validate($params);
 
@@ -147,7 +183,6 @@ class BlogController
         try {
 
         	$check = $this->repo->find($params['id']);
-            if ($check->devices)
 
 
             if ($this->repo->delete($params['id']))
@@ -166,7 +201,7 @@ class BlogController
 	public function validate($params) 
 	{
 
-		if (empty($params['name']))
+		if (empty($params['content']['ar']['title']))
 		{
         	throw new \Exception(json_encode(array('result'=>__('NAME_EMPTY'), 'error'=>1)), 1);
 		}

@@ -1,11 +1,10 @@
     <footer class="w-full footer-bg relative">
         <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/light-network.webp" class="absolute left-0 top-10 w-full " style="opacity: .08;" />
-
         <div class="mx-auto container py-10 px-2 lg:px-0 relative"  style="z-index:99">
             <div class="flex w-full">
                 <div class="w-full"><a class="w-40 block py-2 px-6 bg-white rounded-lg" href="#!"><img loading="lazy" alt="{{app.Settings['sitename']}}" width="110" height="65" src="/stream?image=/uploads/img/Logo_j.webp"></a></div>
                 <div class="w-64">
-                    <a href="#!" class="font-semibold block mx-auto w-32 py-2 px-6 cyan-bg text-center rounded-lg">احجز موعدا</a>
+                    <a href="/booking" class="font-semibold block mx-auto w-32 py-2 px-6 cyan-bg text-center rounded-lg">{{lang.__('book now')}}</a>
                 </div>
             </div>
             <div class="block lg:flex w-full gap gap-3">
@@ -50,7 +49,7 @@
                     </ul>
                 </div>
                 <div class="w-full pt-6 lg:pr-20">
-                    <div class="font-bold pb-2 block text-white">تخصصات المستشفي</div>
+                    <div class="font-bold pb-2 block text-white">{{lang.__('bedaya_specializations')}}</div>
                     <ul class="block text-white ">
                         {% for cat in app.specializations %}
                         {% if cat.id == 2 %}
@@ -62,11 +61,11 @@
                     </ul>
                 </div>
                 <div class="w-full ">
-                    <p class="py-6 font-bold pb-2 block text-white">روابط هامة</p>
+                    <p class="py-6 font-bold pb-2 block text-white">{{lang.__('important links')}}</p>
                     <ul class="block text-white ">
                         <li class="py-1"><a href="/contact">{{lang.__('contact us')}}</a></li>
                         <li class="py-1"><a href="#!">{{lang.__('Pregnancy period Calculator')}}</a></li>
-                        <li class="py-1"><a href="#!">حساب فترة التبويض</a></li>
+                        <li class="py-1"><a href="#!">{{lang.__('OVULATION_CALCULATOR')}}</a></li>
                         <li>
                             <div class="py-6 text-blue-500">
                                 <a title="Bedaya facebook" href="https://www.facebook.com/bedayaivf" class="inline-block bg-white rounded-lg p-2 w-10 text-center mx-2">
@@ -99,9 +98,9 @@
         <div id="modal-bg" style="background:rgba(0, 0, 0, .5);" class="absolute w-full h-full left-0"></div>
         <div id="modal-content"  class="p-10 bg-white rounded-2xl m-auto absolute left-0 right-0 top-0 bottom-0 max-w-2xl my-10" style="z-index:9"></div>
     </div>
-    <script src="/assets?asset=/dist/owl/owl.carousel.min.js"></script>
-    <script src="/assets?asset=/dist/js/sweetalert2@11.js"></script>
-    <script src="/assets?asset=/dist/js/custom.js"></script>
+    <script src="/assets?asset=/src/front/owl/owl.carousel.min.js"></script>
+    <script src="/assets?asset=/src/front/js/sweetalert2@11.js"></script>
+    <script src="/assets?asset=/src/front/js/custom.js"></script>
     <script type="text/javascript">
     jQuery(document).ready(function (e) {
         jQuery(document).on('click', '#modal-bg', function(e) {

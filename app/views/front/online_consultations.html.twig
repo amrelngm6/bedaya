@@ -13,35 +13,10 @@
 <div class="py-10">
 
     <div class="blog-content container mx-auto">
-        <div class="mx-auto text-center  pb-2 w-10/12 lg:w-6/12">{{pageinfo.content|raw}}</div>
         
-        <span class="mx-auto my-10 w-full border border-b-1  border-gray-100 block"></span>
-        
-        <div class="offers-container px-2 relative">
-            <img loading="lazy" src="./uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
-            
-            {% for item in items %}
-
-            <div class="w-full lg:flex gap-6 mb-20 relative z-10">
-                <div class="w-3/12">
-                    <a href="#!"> <img loading="lazy" width="400" width="auto" src="/stream?image={{item.doctor.picture}}" class="p-2 border border-1 border-blue-300 hover:border-purple-800 rounded-2xl"></a>
-                </div>
-                <div class="lg:w-9/12 w-full  lg:p-7 p-2 bg-white rounded-lg">
-                    <h4 class="mb-2 text-2xl font-semibold purple-color pb-4">{{item.doctor.content.title}}</h4>
-                    <h4 class="mb-2 text-lg font-semibold purple-color pb-4">{{item.doctor.field.short_name_ar}}</h4>
-                    <p>{{item.content.content|raw}}</p>
-                    <p class="font-big flex gap-3 pt-3"><img loading="lazy" alt="العرض الاول" src="https://www.bedayahospitals.com/library/svg/session.svg"> {{item.doctor.field.afternoon_booking}}</p>
-                    <a href="/{{pageinfo.prefix}}/{{item.id}}" class="inline-block hover:bg-gray-800 my-4 purple-bg py-3 px-4 rounded-lg text-white ">{{lang.__('book_online_consultation')}}</a>
-                    <a href="/{{item.doctor.content.prefix}}" class="inline-block  my-4  py-3 px-4 rounded-lg text-purple ">{{lang.__('Profile CV')}}</a>
-                </div>
-            </div>
-
-            {% endfor %}
-
-        </div>
+        {{app.renderTemplate(pageinfo.content, pageinfo).render( {'items':items, 'pageinfo':pageinfo, 'app':app, 'lang':lang, } )|raw}}
 
     </div>
-
 
 </div>
 

@@ -559,11 +559,12 @@ table.dataTable thead>tr>td.sorting {
 	border: 1px solid #482fe9;
 }
 
-.btn-primary {
+body .page-item.active .page-link,
+body .btn-primary {
 	background-color: #9a55ff;
 	border: 1px solid #9a55ff;
 }
-.btn-primary:focus {
+body .btn-primary:focus {
 	background-color: #9a55ff;
 	border: 1px solid #9a55ff;
 }

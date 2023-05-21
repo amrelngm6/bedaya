@@ -32,7 +32,8 @@ class SettingsController
 	public function index()
 	{
 
-		return render('views/admin/forms/settings_form.html.twig', [
+		return render('settings', [
+			'load_vue' => true,
 	        'title' => __('Settings'),
 	    ]);
 	} 

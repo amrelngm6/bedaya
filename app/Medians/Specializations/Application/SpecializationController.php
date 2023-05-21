@@ -28,6 +28,33 @@ class SpecializationController
 	}
 
 
+
+	/**
+	 * Columns list to view at DataTable 
+	 *  
+	 */ 
+	public function columns( ) 
+	{
+
+			return [
+                [
+                    'key'=> "id",
+                    'title'=> "#",
+                    'sortable'=> false,
+                ],
+                [
+                    'key'=> "title",
+                    'title'=> __('title'),
+                    'sortable'=> false,
+                ],
+                [
+                    'key'=> "childs_count",
+                    'title'=> __('Sub-categories'),
+                    'sortable'=> false,
+                ]
+            ];
+	}
+
 	/**
 	 * Admin index items
 	 * 
@@ -40,9 +67,11 @@ class SpecializationController
 		
 		try {
 			
-		    return render('views/admin/specialization/list.html.twig', [
+		    return render('specialization', [
+		        'load_vue' => true,
+		        'columns' => $this->columns(),
 		        'title' => __('specialization'),
-		        'specialization' => $this->repo->get(),
+		        'items' => $this->repo->get(),
 		    ]);
 		} catch (\Exception $e) {
 			throw new \Exception($e->getMessage(), 1);
@@ -144,7 +173,6 @@ class SpecializationController
         try {
 
         	$check = $this->repo->find($params['id']);
-            if ($check->devices)
 
 
             if ($this->repo->delete($params['id']))

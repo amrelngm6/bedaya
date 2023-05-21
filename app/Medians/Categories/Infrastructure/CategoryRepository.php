@@ -32,13 +32,10 @@ class CategoryRepository
 	{
 		switch ($model) 
 		{
-			case 'Medians\Products\Domain\Product':
-				return Category::withCount('products')->where('model', $model)->where('branch_id', $this->app->branch->id)->limit($limit)->get();
+			case 'Medians\Blog\Domain\Blog':
+				return Category::withCount('blog')->where('model', $model)->limit($limit)->get();
 				break;
 			
-			case 'Medians\Devices\Domain\Device':
-				return Category::withCount('devices')->where('model', $model)->where('branch_id', $this->app->branch->id)->limit($limit)->get();
-				break;
 		}
 	}
 

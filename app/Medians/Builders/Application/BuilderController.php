@@ -27,6 +27,7 @@ class BuilderController
 
 			$request = $this->app->request();
 			$check = $this->contentRepo->find($request->get('prefix'));
+			$check->switch_lang = $this->contentRepo->switch_lang($check);
 
 			return render('views/admin/builder/index.html.twig', [
 				'page' => $check, 
@@ -54,14 +55,14 @@ class BuilderController
 			switch ($page) {
 				case 'blocks':
 					echo json_encode($this->repo->get());
-					$blocks = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/dist/builder/assets/blocks.json');
-					foreach (json_decode($blocks) as $k => $row) 
-					{
-						foreach ($row as $value) 
-						{
-							// $k != 'columns' ? '' : $this->repo->store(['category'=>$k, 'content'=>$value->html]);
-						}
-					}
+					// $blocks = file_get_contents($_SERVER['DOCUMENT_ROOT'].'/src/builder/assets/blocks.json');
+					// foreach (json_decode($blocks) as $k => $row) 
+					// {
+					// 	foreach ($row as $value) 
+					// 	{
+					// 		// $k != 'columns' ? '' : $this->repo->store(['category'=>$k, 'content'=>$value->html]);
+					// 	}
+					// }
 					// echo $blocks;
 					break;
 			}
@@ -96,6 +97,53 @@ class BuilderController
 	/**
 	 * Submit builder requests
 	 */ 
+	public function updateContent()
+	{	
+
+		$request = $this->app->request();
+		
+		if (!$request->get('contentJSON') || !$request->get('prefix'))			
+			return true;
+
+		$contentJSON = json_decode($request->get('contentJSON'));
+		$check = $this->contentRepo->find($request->get('prefix'));
+		$check->content = str_replace('data-src', 'src', $contentJSON->contentArea);
+		$check->update(['content' => $check->content]);
+		// file_put_contents($_SERVER['DOCUMENT_ROOT'].'/app/views/admin/builder/templates/home.html.twig', $contentJSON->contentArea);
+		echo $check->content;
+	}
+
+
+
+	/**
+	 * Update meta tags
+	 */ 
+	public function updateMeta()
+	{	
+
+		$request = $this->app->request();
+		
+		if (!$request->get('title') || !$request->get('prefix'))			
+			return true;
+
+		$check = $this->contentRepo->find($request->get('prefix'));
+		$check->title = $request->get('title');
+		$check->seo_title = $request->get('seo_title');
+		$check->seo_keywords = $request->get('seo_keywords');
+		$check->seo_desc = $request->get('seo_desc');
+		$save = $check->save();
+		if ($save)
+		{
+			echo __('Done');
+		}
+	}
+
+
+
+
+	/**
+	 * Submit builder requests
+	 */ 
 	public function submit()
 	{
 
@@ -104,35 +152,29 @@ class BuilderController
 			
 			$request = $this->app->request();
 			$supermode = $request->get('supermode');
-			if ($supermode == 'configUpdate' && $request->get('contentJSON') && $request->get('prefix'))
+			switch ($supermode) 
 			{
-				$contentJSON = json_decode($request->get('contentJSON'));
-				$check = $this->contentRepo->find($request->get('prefix'));
-				$check->content = str_replace('data-src', 'src', $contentJSON->contentArea);
-				$check->update(['content' => $check->content]);
-				// file_put_contents($_SERVER['DOCUMENT_ROOT'].'/app/views/admin/builder/templates/home.html.twig', $contentJSON->contentArea);
-				echo $check->content;
-			}
-
-			if ($request->get('id') && $supermode == 'insertContent')
-			{
-				$check = $this->repo->find($request->get('id'));
-				echo $check->content;
+				case 'configUpdate':
+					return $this->updateContent();		
+					break;
+				
+				case 'updateMeta':
+					return $this->updateMeta();		
+					break;
+				
+				case 'insertContent':
+					echo $this->repo->find($request->get('id'))->content;
+					return true;		
+					break;
+				
+				default:
+					// code...
+					break;
 			}
 
 			if ($request->get('prefix') && $supermode == 'updateMeta')
 			{
 
-				$check = $this->contentRepo->find($request->get('prefix'));
-				$check->title = $request->get('title');
-				$check->seo_title = $request->get('seo_title');
-				$check->seo_keywords = $request->get('seo_keywords');
-				$check->seo_desc = $request->get('seo_desc');
-				$save = $check->save();
-				if ($save)
-				{
-					echo __('ALL_Done');
-				}
 			}
 
 		} catch (\Exception $e) {

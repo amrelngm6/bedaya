@@ -5,6 +5,7 @@ namespace Medians\Bookings\Application;
 use Medians\Bookings\Infrastructure\BookingRepository;
 use Medians\Blog\Infrastructure\BlogRepository;
 use Medians\Categories\Infrastructure\CategoryRepository;
+use Medians\Doctors\Infrastructure\DoctorRepository;
 
 
 class BookingController
@@ -25,6 +26,7 @@ class BookingController
 		$this->repo = new BookingRepository();
 		$this->blogRepo = new BlogRepository();
 		$this->categoryRepo = new CategoryRepository();
+		$this->doctorRepo = new DoctorRepository();
 	}
 
 
@@ -143,7 +145,6 @@ class BookingController
         try {
 
         	$check = $this->repo->find($params['id']);
-            if ($check->devices)
 
 
             if ($this->repo->delete($params['id']))
@@ -156,8 +157,8 @@ class BookingController
         	throw new \Exception("Error Processing Request", 1);
         	
         }
-
 	}
+
 
 	public function validate($params) 
 	{
@@ -166,7 +167,6 @@ class BookingController
 		{
         	throw new \Exception(json_encode(array('result'=>__('NAME_EMPTY'), 'error'=>1)), 1);
 		}
-
 	}
 
 
@@ -179,10 +179,10 @@ class BookingController
 
 		try {
 
-			$item = $this->repo->find($id);
+			$item = $this->doctorRepo->find($id);
+			
 			return render('views/front/booking.html.twig', [
-		        'item' => $item,
-		        'similar_articles' => $this->blogRepo->similar($item, 3),
+		        'doctor' => $item,
 		    ]);
 
 		} catch (\Exception $e) {

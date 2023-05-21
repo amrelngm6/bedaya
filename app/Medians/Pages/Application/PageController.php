@@ -9,6 +9,7 @@ use Medians\Blog\Infrastructure\BlogRepository;
 use Medians\Doctors\Infrastructure\DoctorRepository;
 use Medians\StoryDates\Infrastructure\StoryDateRepository;
 use Medians\Stories\Infrastructure\StoryRepository;
+use Medians\Content\Infrastructure\ContentRepository;
 
 
 class PageController
@@ -27,6 +28,7 @@ class PageController
 		$this->app = new \config\APP;
 
 		$this->repo = new PageRepository();
+		$this->contentRepo = new ContentRepository();
 		$this->specsRepo = new SpecializationRepository();
 		$this->categoryRepo = new CategoryRepository();
 		$this->blogRepo = new BlogRepository();
@@ -117,7 +119,6 @@ class PageController
         try {
 
         	$check = $this->repo->find($params['id']);
-            if ($check->devices)
 
 
             if ($this->repo->delete($params['id']))
@@ -171,6 +172,30 @@ class PageController
 
 
 	/**
+	 * Front page 
+	 * @var Int
+	 */
+	public function calculator()
+	{
+
+		try {
+			
+			return render('views/front/includes/calculator.html.twig', [
+				'specializations' => $this->specsRepo->get_root(),
+				'story_dates' => $this->storyDateRepo->get(),
+				'stories' => $this->storyRepo->get(3),
+				'doctors' => $this->doctorRepo->get(3),
+				'blog' => $this->blogRepo->get(3),
+				'blog' => $this->blogRepo->get(3),
+		    ]);
+
+		} catch (\Exception $e) {
+			throw new \Exception($e->getMessage(), 1);
+		}
+	} 
+
+
+	/**
 	 * Front Search page 
 	 * @var Int
 	 */
@@ -191,28 +216,75 @@ class PageController
 		}
 	} 
 
-	/**
-	 * Front page 
-	 * @var Int
-	 */
-	public function list()
-	{
-		$request =  $this->app->request();
 
-		try {
-				
-			return render('views/front/page.html.twig', [
-		        'first_item' => $this->repo->getFeatured(1),
-		        'search_items' => $request->get('search') ?  $this->repo->search($request, 10) : [],
-		        'search_text' => $request->get('search'),
-		        'items' => $this->repo->get(4),
-		        'cat_her' => $this->repo->getByCategory(6, 4),
-		        'cat_him' => $this->repo->getByCategory(7, 4),
-		    ]);
+	/**
+	 * Model object 
+	 */
+	public function find($prefix)
+	{
+	
+		$item = $this->contentRepo->find($prefix);
+		if ($item) { return $item;}
+
+		$newPrefix = !empty($_SERVER['SCRIPT_URL']) ? explode('/', $_SERVER['SCRIPT_URL']) : explode('/',  !empty($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : $_SERVER['REDIRECT_URL']);
+
+		return $this->contentRepo->find($newPrefix[1]);
+	}
+
+
+
+	/**
+	 * Model object 
+	 */
+	public function pages($prefix, $id = 0)
+	{
+		try 
+		{
+			$item = $this->find($prefix);
+			if ($prefix && empty($item->home))
+			{
+			    $_SESSION['site_lang'] = (isset($item->lang) && $item->lang == 'ar') ? 'arabic' : 'english';
+			}
+
+			if (isset($item->item_type))
+			{
+		        switch ($item->item_type) 
+		        {
+		        	case \Medians\Specializations\Domain\Specialization::class:
+		        		return (new  \Medians\Specializations\Application\SpecializationController)->page($item);
+		        		break;
+		        	
+		        	case \Medians\Doctors\Domain\Doctor::class:
+		        		return (new  \Medians\Doctors\Application\DoctorController)->page($item);
+		        		break;
+		        	
+		        	case \Medians\Blog\Domain\Blog::class:
+		        		return (new  \Medians\Blog\Application\BlogController)->page($item);
+		        		break;
+		        	
+		        	case \Medians\Pages\Domain\Page::class:
+		        		return (new  \Medians\Pages\Application\PageController)->page($item);
+		        		break;
+		        	
+		        	case \Medians\OnlineConsultations\Domain\OnlineConsultation::class:
+		        		return (new  \Medians\OnlineConsultations\Application\OnlineConsultationController)->list($item);
+		        		break;
+		        	
+		        	case \Medians\Offers\Domain\Offer::class:
+		        		return (new  \Medians\Offers\Application\OfferController)->list($item);
+		        		break;
+		        	
+		        	default:
+		        		// code...
+		        		break;
+		        }
+			}
+
+		        
 
 		} catch (\Exception $e) {
-			throw new \Exception($e->getMessage(), 1);
-			
+			print_r($e);
+			throw new \Exception( $e->getMessage(), 1);
 		}
 	} 
 

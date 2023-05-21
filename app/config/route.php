@@ -11,11 +11,11 @@ $app = new \config\APP;
 * Return Dashboard 
 */
 
-Macaw::get('', \Medians\HomeController::class.'@index'); 
+// Macaw::get('', \Medians\HomeController::class.'@index'); 
 Macaw::get('/', \Medians\HomeController::class.'@index'); 
-Macaw::get('/stories', \Medians\Stories\Application\StoryController::class.'@index'); 
+Macaw::get('/stories', \Medians\Stories\Application\StoryController::class.'@list'); 
 Macaw::get('/doctors', \Medians\Doctors\Application\DoctorController::class.'@list'); 
-// Macaw::get('/booking', \Medians\Pages\Application\PageController::class.'@booking'); 
+Macaw::get('/book/(:all)', \Medians\Bookings\Application\BookingController::class.'@page'); 
 Macaw::post('/submit/(:all)', \Medians\FrontendController::class.'@form_submit'); 
 Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
 Macaw::get('/offers/(:all)', \Medians\Offers\Application\OfferController::class.'@page'); 
@@ -120,12 +120,12 @@ Macaw::get('/settings', \Medians\Settings\Application\SettingsController::class.
 /**
 * @return Users
 */
-Macaw::get('/users/create', \Medians\Users\Application\UserController::class.'@create');
-Macaw::get('/users/edit/(:num)', \Medians\Users\Application\UserController::class.'@edit');
-Macaw::get('/users/show/(:num)', \Medians\Users\Application\UserController::class.'@show');
-Macaw::get('/users/index', \Medians\Users\Application\UserController::class.'@index');
-Macaw::get('/users/', \Medians\Users\Application\UserController::class.'@index');
-Macaw::get('/users', \Medians\Users\Application\UserController::class.'@index');
+Macaw::get('/admin/users/create', \Medians\Users\Application\UserController::class.'@create');
+Macaw::get('/admin/users/edit/(:num)', \Medians\Users\Application\UserController::class.'@edit');
+Macaw::get('/admin/users/show/(:num)', \Medians\Users\Application\UserController::class.'@show');
+Macaw::get('/admin/users/index', \Medians\Users\Application\UserController::class.'@index');
+Macaw::get('/admin/users/', \Medians\Users\Application\UserController::class.'@index');
+Macaw::get('/admin/users', \Medians\Users\Application\UserController::class.'@index');
 
 /**
 * @return customers
@@ -138,26 +138,48 @@ Macaw::get('/customers/', \Medians\Customers\Application\CustomerController::cla
 Macaw::get('/customers', \Medians\Customers\Application\CustomerController::class.'@index');
 
 /**
-* @return customers
+* @return specialization
+*/
+Macaw::get('/admin/specialization/create', \Medians\Specializations\Application\SpecializationController::class.'@create');
+Macaw::get('/admin/specialization/edit/(:num)', \Medians\Specializations\Application\SpecializationController::class.'@edit');
+Macaw::get('/admin/specialization/show/(:num)', \Medians\Specializations\Application\SpecializationController::class.'@show');
+Macaw::get('/admin/specialization/index', \Medians\Specializations\Application\SpecializationController::class.'@index');
+Macaw::get('/admin/specialization/', \Medians\Specializations\Application\SpecializationController::class.'@index');
+Macaw::get('/admin/specialization', \Medians\Specializations\Application\SpecializationController::class.'@index');
+
+/**
+* @return Success stories
+*/
+Macaw::get('/admin/success_stories/create', \Medians\Stories\Application\StoryController::class.'@create');
+Macaw::get('/admin/success_stories/edit/(:num)', \Medians\Stories\Application\StoryController::class.'@edit');
+Macaw::get('/admin/success_stories/show/(:num)', \Medians\Stories\Application\StoryController::class.'@show');
+Macaw::get('/admin/success_stories/index', \Medians\Stories\Application\StoryController::class.'@index');
+Macaw::get('/admin/success_stories/', \Medians\Stories\Application\StoryController::class.'@index');
+Macaw::get('/admin/success_stories', \Medians\Stories\Application\StoryController::class.'@index');
+
+/**
+* @return Reports
 */
 Macaw::get('/reports/(:all)', \Medians\Reports\Application\ReportController::class.'@index');
 
-
-
 }
 
-Macaw::get('/(:all)/(:all)', \Medians\HomeController::class.'@pages');
-Macaw::get('/(:all)', function ($a) 
-{
 
-    $item = (new \Medians\HomeController)->find($a);
-    if (empty($item->id)){
-        echo 404;return 404;
-    }
+// Macaw::get('/استشارات-اونلاين/(:num)', \Medians\OnlineConsultations\Application\OnlineConsultationController::class.'@page');
+Macaw::get('/pregnancy-calculator', \Medians\Pages\Application\PageController::class.'@calculator');
+Macaw::get('/(:all)', \Medians\Pages\Application\PageController::class.'@pages');
+// Macaw::get('/(:all)', \Medians\Pages\Application\PageController::class.'@pages');
+// Macaw::get('/(:all)', function ($a) 
+// {
 
-    $_SESSION['site_lang'] = $item->lang == 'ar' ? 'arabic' : 'english';
-    (new \Medians\HomeController)->pages($a);
-});
+//     $item = (new \Medians\Pages\Application\PageController)->find($a);
+//     if (empty($item->id)){
+//         echo 404;return 404;
+//     }
+
+//     $_SESSION['site_lang'] = $item->lang == 'ar' ? 'arabic' : 'english';
+//     (new \Medians\Pages\Application\PageController)->pages($a);
+// });
 
 /*
 // Return list of device 

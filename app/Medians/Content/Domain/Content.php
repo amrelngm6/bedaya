@@ -39,4 +39,14 @@ class Content extends CustomController
 	 */ 
 	public $timestamps = null;
 
+
+	public static function generatePrefix($text)
+	{
+		$text = str_replace(array(' ', '/', '\\', '"', "'", '&', '@', '#', '$', '(', ')', '=', '+'), '_', $text);
+		$check = Content::where('prefix', $text)->first();
+
+		return isset($check->id) ? $text.date('Ymd') : $text;
+
+	}
+
 }

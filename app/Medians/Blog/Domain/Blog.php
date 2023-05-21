@@ -14,21 +14,26 @@ class Blog extends CustomController
 	protected $table = 'blog';
 
 	public $fillable = [
-		'name', 
 		'category_id', 
 		'picture', 
-		'insertedby', 
-		'prefix', 
 		'status', 
-		'author_name', 
-		'author_picture',
-		'inserted_by'
+		'created_by'
 	];
 
 
-	public $appends = ['photo','field'];
+	public $appends = ['title','photo','field','category_name','date'];
 
 
+
+	public function getTitleAttribute() 
+	{
+		return !empty($this->content->title) ? $this->content->title : '';
+	}
+
+	public function getCategoryNameAttribute() 
+	{
+		return !empty($this->category->name) ? $this->category->name : '';
+	}
 
 	public function getFieldAttribute() 
 	{
@@ -38,6 +43,11 @@ class Blog extends CustomController
 	public function getPhotoAttribute() : ?String
 	{
 		return $this->thumbnail();
+	}
+
+	public function getDateAttribute() : ?String
+	{
+		return date('Y-m-d', strtotime($this->created_at));
 	}
 
 

@@ -3,8 +3,9 @@
 namespace Medians\Blog\Infrastructure;
 
 use Medians\Blog\Domain\Blog;
+use Medians\Blog\Domain\Content;
+use Medians\CustomFields\Domain\CustomField;
 
-use Medians\Domain\Content\Content;
 
 class BlogRepository 
 {
@@ -34,7 +35,9 @@ class BlogRepository
 
 	public function get($limit = 100)
 	{
-		return Blog::with('content','user')->limit($limit)->orderBy('id', 'DESC')->get();
+		return Blog::with('content','user')->with(['category'=>function($q){
+			return $q->with('content');
+		}])->limit($limit)->orderBy('id', 'DESC')->get();
 	}
 
 	public function getByCategory($id, $limit = 100)
@@ -92,6 +95,12 @@ class BlogRepository
     	$Object = Blog::create($dataArray);
     	$Object->update($dataArray);
 
+    	// Store languages content
+    	$this->storeContent($data['content'], $Object->id);
+
+    	// Store Custom fields
+    	$this->storeCustomFields($data['field'], $Object->id);
+
     	return $Object;
     }
     	
@@ -105,6 +114,12 @@ class BlogRepository
 		
 		// Return the FBUserInfo object with the new data
     	$Object->update( (array) $data);
+
+    	// Store languages content
+    	$this->storeContent($data['content'], $data['id']);
+
+    	// Store Custom fields
+    	$this->storeCustomFields($data['field'], $data['id']);
 
     	return $Object;
 
@@ -120,7 +135,14 @@ class BlogRepository
 	{
 		try {
 			
-			return Blog::find($id)->delete();
+			$delete = Blog::find($id)->delete();
+
+			if ($delete){
+				$this->storeContent(null, $id);
+				$this->storeCustomFields(null, $id);
+			}
+
+			return true;
 
 		} catch (\Exception $e) {
 
@@ -138,7 +160,7 @@ class BlogRepository
 	*/
 	public function storeContent($data, $id) 
 	{
-		Content::where('item_type', Blog::class)->where('model_id', $id)->delete();
+		Content::where('item_type', Blog::class)->where('item_id', $id)->delete();
 		if ($data)
 		{
 			foreach ($data as $key => $value)
@@ -147,6 +169,7 @@ class BlogRepository
 				$fields['item_type'] = Blog::class;	
 				$fields['item_id'] = $id;	
 				$fields['lang'] = $key;	
+				$fields['prefix'] = isset($value['prefix']) ? $value['prefix'] : Content::generatePrefix($value['title']);	
 				$fields['created_by'] = $this->app->auth()->id;
 
 				$Model = Content::create($fields);
@@ -157,6 +180,29 @@ class BlogRepository
 		}
 	}
 
+	/**
+	* Save related items to database
+	*/
+	public function storeCustomFields($data, $id) 
+	{
+		CustomField::where('item_type', Blog::class)->where('item_id', $id)->delete();
+		if ($data)
+		{
+			foreach ($data as $key => $value)
+			{
+				$fields = [];
+				$fields['item_type'] = Blog::class;	
+				$fields['item_id'] = $id;	
+				$fields['code'] = $key;	
+				$fields['value'] = $value;
+
+				$Model = CustomField::create($fields);
+				$Model->update($fields);
+			}
+	
+			return $Model;		
+		}
+	}
 
 
  

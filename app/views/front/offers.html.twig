@@ -13,38 +13,7 @@
 <div class="py-10">
 
     <div class="blog-content container mx-auto">
-        <div class="mx-auto text-center  pb-2 w-10/12 lg:w-6/12">{{pageinfo.content|raw}}</div>
-        
-        <span class="mx-auto my-10 w-full border border-b-1  border-gray-100 block"></span>
-        
-        <div class="offers-container px-2 relative">
-            <img loading="lazy" src="./uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
-            
-            {% for item in items %}
-
-            {% set contents = item.content.content|split('محتويات الباكدج') %}
-            {% set contents = contents[1] ? contents :  item.content.content|split('محتويات الباكدج') %}
-
-            <div class="list-icon grid grid-cols-1 lg:grid-cols-2 gap-6 mb-20 relative bg-white">
-                <div class="w-full  p-7 pt-10 ">
-                    <h2 class="mb-2 text-2xl font-semibold purple-color pb-4">{{item.content.title}}</h2>
-                    <div class="py-2">
-                        {{contents[0]|raw}}
-                    </div>
-                    <a href="/offers/{{item.id}}" class="inline-block hover:bg-gray-800 purple-bg py-3 px-4 rounded-lg text-white ">{{lang.__('more_details')}}</a>
-                </div>
-                <div class="w-full bg-gray-100 rounded-xl p-6 pt-10">
-                    <p class="text-lg font-semibold purple-color pb-4">{{lang.__('offer_content')}}</p>
-                    <span class="mb-2 w-20 border border-b-1  border-gray-200 block"></span>
-                        {{contents[1]|raw}}
-                </div>
-            </div>
-
-            {% endfor %}
-
-
-        </div>
-
+        {{app.renderTemplate(pageinfo.content, pageinfo).render( {'offers':items, 'pageinfo':pageinfo, 'app':app, 'lang':lang, } )|raw}}
     </div>
 
 

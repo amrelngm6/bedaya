@@ -9,18 +9,18 @@
             <div v-if="lang && !showLoader" class="w-full overflow-y-auto overflow-x-hidden px-2" >
                 <div class="mb-6">
                     <div class="row pt-2">
-                        <dashboard_card  classes="bg-gradient-danger" :title="lang.active_bookings" :value="content.active_order_devices_count"></dashboard_card>
-                        <dashboard_card  classes="bg-gradient-info" :title="lang.today_bookings" :value="content.today_order_devices_count"></dashboard_card>
-                        <dashboard_card  classes="bg-gradient-warning" :title="lang.today_sold_products" :value="content.today_order_products_count"></dashboard_card>
-                        <dashboard_card  classes="bg-gradient-success" :title="lang.today_income" :value="content.today_income"></dashboard_card>
-                        <dashboard_card  classes="bg-gradient-purple" :title="lang.today_payments" :value="content.today_payments"></dashboard_card>
-                        <dashboard_card  classes="bg-gradient-primary" :title="lang.today_revenue" :value="content.today_revenue" classes="bg-gradient-danger"></dashboard_card>
+                        <dashboard_card  classes="bg-gradient-danger" :title="__('active_bookings')" :value="content.active_order_devices_count"></dashboard_card>
+                        <dashboard_card  classes="bg-gradient-info" :title="__('today_bookings')" :value="content.today_order_devices_count"></dashboard_card>
+                        <dashboard_card  classes="bg-gradient-warning" :title="__('today_sold_products')" :value="content.today_order_products_count"></dashboard_card>
+                        <dashboard_card  classes="bg-gradient-success" :title="__('today_income')" :value="content.today_income"></dashboard_card>
+                        <dashboard_card  classes="bg-gradient-purple" :title="__('today_payments')" :value="content.today_payments"></dashboard_card>
+                        <dashboard_card  classes="bg-gradient-primary" :title="__('today_revenue')" :value="content.today_revenue" classes="bg-gradient-danger"></dashboard_card>
 
                     </div>
                 </div>
                 <div class="w-full lg:flex gap gap-6 ">
                     <div class="card mb-0 w-full">
-                        <h4 class="p-4 ml-4" v-text="lang.latest_unpaid_bookings"></h4>
+                        <h4 class="p-4 ml-4" v-text="__('latest_unpaid_bookings')"></h4>
                         <hr />
                         <div class="card-body w-full">
                             <div class="col-md-12">
@@ -29,9 +29,9 @@
                                         <thead>
                                             <tr>
                                                 <th class="w-10">#</th>
-                                                <th v-text="lang.name"></th>
-                                                <th v-text="lang.duration"></th>
-                                                <th v-text="lang.game"></th>
+                                                <th v-text="__('name')"></th>
+                                                <th v-text="__('duration')"></th>
+                                                <th v-text="__('game')"></th>
                                             </tr>
                                         </thead>
                                         <tbody v-if="content.latest_unpaid_order_devices">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div class="card mb-0 w-full">
-                        <h4 class="p-4 ml-4" v-text="lang.latest_paid_bookings"></h4>
+                        <h4 class="p-4 ml-4" v-text="__('latest_paid_bookings')"></h4>
                         <hr />
                         <div class="card-body w-full">
                             <div class="col-md-12">
@@ -61,9 +61,9 @@
                                         <thead>
                                             <tr>
                                                 <th class="w-10">#</th>
-                                                <th v-text="lang.name"></th>
-                                                <th v-text="lang.duration"></th>
-                                                <th v-text="lang.game"></th>
+                                                <th v-text="__('name')"></th>
+                                                <th v-text="__('duration')"></th>
+                                                <th v-text="__('game')"></th>
                                             </tr>
                                         </thead>
                                         <tbody v-if="content.latest_paid_order_devices">
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="card my-10 w-full ">
-                    <h4 class="p-4 ml-4" v-text="lang.latest_sold_products"></h4>
+                    <h4 class="p-4 ml-4" v-text="__('latest_sold_products')"></h4>
                     <hr />
                     <div class="card-body w-full">
                         <div class="col-md-12">
@@ -94,11 +94,11 @@
                                     <thead>
                                         <tr>
                                             <th class="w-10">#</th>
-                                            <th v-text="lang.name"></th>
-                                            <th v-text="lang.price"></th>
-                                            <th v-text="lang.date"></th>
-                                            <th v-text="lang.invoice"></th>
-                                            <th v-text="lang.by"></th>
+                                            <th v-text="__('name')"></th>
+                                            <th v-text="__('price')"></th>
+                                            <th v-text="__('date')"></th>
+                                            <th v-text="__('invoice')"></th>
+                                            <th v-text="__('by')"></th>
                                         </tr>
                                     </thead>
                                     <tbody v-if="content.latest_order_products">
@@ -191,7 +191,7 @@ export default
         },
         __(i)
         {
-            return this.$root.$children[0].__(i);
+            return this.$parent.__(i);
         }
     }
 };
