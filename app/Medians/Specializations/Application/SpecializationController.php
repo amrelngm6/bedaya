@@ -48,8 +48,13 @@ class SpecializationController
                     'sortable'=> false,
                 ],
                 [
+                    'key'=> "parent_name",
+                    'title'=> __('parent_category'),
+                    'sortable'=> false,
+                ],
+                [
                     'key'=> "childs_count",
-                    'title'=> __('Sub-categories'),
+                    'title'=> __('Sub_categories'),
                     'sortable'=> false,
                 ]
             ];

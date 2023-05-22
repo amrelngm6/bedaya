@@ -30,6 +30,39 @@ class BookingController
 	}
 
 
+
+	/**
+	 * Columns list to view at DataTable 
+	 *  
+	 */ 
+	public function columns( ) 
+	{
+
+		return [
+            [
+                'key'=> "id",
+                'title'=> "#",
+            ],
+            [
+                'key'=> "title",
+                'title'=> __('title'),
+                'sortable'=> true,
+            ],
+            [
+                'key'=> "class",
+                'title'=> __('Type'),
+                'sortable'=> true,
+            ],
+            [
+                'key'=> "status",
+                'title'=> __('status'),
+                'sortable'=> true,
+            ]
+        ];
+	}
+
+	
+
 	/**
 	 * Admin index items
 	 * 
@@ -37,14 +70,16 @@ class BookingController
 	 * @param \Twig\Environment $twig
 	 * 
 	 */ 
-	public function index( ) 
+	public function index( $type = 'Booking') 
 	{
 		
 		try {
 			
-		    return render('views/admin/booking/list.html.twig', [
-		        'title' => __('booking'),
-		        'booking' => $this->repo->get(),
+		    return render('bookings', [
+		        'load_vue' => true,
+		        'title' => __('bookings'),
+		        'columns' => $this->columns(),
+		        'items' => $this->repo->get($type),
 		    ]);
 		} catch (\Exception $e) {
 			throw new \Exception($e->getMessage(), 1);
@@ -56,39 +91,67 @@ class BookingController
 
 
 	/**
-	 * Create new item
+	 * Admin index items
+	 * 
+	 * @param Silex\Application $app
+	 * @param \Twig\Environment $twig
 	 * 
 	 */ 
-	public function create() 
+	public function index_offers() 
 	{
-
-		return render('views/admin/booking/create.html.twig', [
-	        'title' => __('add_new'),
-	        'langs_list' => ['ar','en'],
-	        'categories' => $this->categoryRepo->get('Medians\Booking\Domain\Booking'),
-	    ]);
-
-	}
-
-
-
-	public function edit($id ) 
-	{
+		
 		try {
-				
-				// print_r($this->repo->find($id));
-			return render('views/admin/booking/booking.html.twig', [
-		        'title' => __('edit_booking'),
-		        'langs_list' => ['ar','en'],
-		        'item' => $this->repo->find($id),
-		        'categories' => $this->categoryRepo->get('Medians\Booking\Domain\Booking'),
-		    ]);
+			
+		    return $this->index('Offers');
 
 		} catch (\Exception $e) {
 			throw new \Exception($e->getMessage(), 1);
 			
 		}
 	}
+
+
+	/**
+	 * Admin index items
+	 * 
+	 * @param Silex\Application $app
+	 * @param \Twig\Environment $twig
+	 * 
+	 */ 
+	public function index_consultation() 
+	{
+		
+		try {
+			
+		    return $this->index('OnlineConsultation');
+
+		} catch (\Exception $e) {
+			throw new \Exception($e->getMessage(), 1);
+			
+		}
+	}
+
+	/**
+	 * Admin index items
+	 * 
+	 * @param Silex\Application $app
+	 * @param \Twig\Environment $twig
+	 * 
+	 */ 
+	public function index_contact() 
+	{
+		
+		try {
+			
+		    return $this->index('Contact');
+
+		} catch (\Exception $e) {
+			throw new \Exception($e->getMessage(), 1);
+			
+		}
+	}
+
+
 
 
 	public function store() 

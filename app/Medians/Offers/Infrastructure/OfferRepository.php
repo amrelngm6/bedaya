@@ -30,7 +30,7 @@ class OfferRepository
 
 	public function get($limit = 100)
 	{
-		return Offer::with('content','user')->where('status', 'on')->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		return Offer::with('content','user', 'speciality')->where('status', 'on')->limit($limit)->orderBy('updated_at', 'DESC')->get();
 	}
 
 	public function random($limit = 100)
@@ -73,8 +73,9 @@ class OfferRepository
     	$Object = Offer::create($dataArray);
     	$Object->update($dataArray);
 
-    	$this->storeCustomFields($data['custom_field'] ,$Object->id);
-    	$this->storeContent($data['lang'] ,$Object->id);
+    	$this->storeCustomFields($data['field'] ,$Object->id);
+    	
+    	$this->storeContent($data['content'] ,$Object->id);
 
     	return $Object;
     }
@@ -90,6 +91,12 @@ class OfferRepository
 		// Return the FBUserInfo object with the new data
     	$Object->update( (array) $data);
 
+    	// Store languages content
+    	!empty($data['content']) ? $this->storeContent($data['content'], $data['id']) : '';
+
+    	// Store Custom fields
+    	!empty($data['field']) ? $this->storeCustomFields($data['field'], $data['id']) : '';
+
     	return $Object;
 
     }
@@ -104,7 +111,14 @@ class OfferRepository
 	{
 		try {
 			
-			return Offer::find($id)->delete();
+			$delete = Offer::find($id)->delete();
+
+			if ($delete){
+				$this->storeContent(null, $id);
+				$this->storeCustomFields(null, $id);
+			}
+
+			return true;
 
 		} catch (\Exception $e) {
 
@@ -117,21 +131,23 @@ class OfferRepository
 
 
 
+
 	/**
 	* Save related items to database
 	*/
 	public function storeContent($data, $id) 
 	{
-		Content::where('item_type', Offer::class)->where('model_id', $id)->delete();
+		Content::where('item_type', Offer::class)->where('item_id', $id)->delete();
 		if ($data)
 		{
 			foreach ($data as $key => $value)
 			{
-				$fields = [];
+				$fields = $value;
 				$fields['item_type'] = Offer::class;	
 				$fields['item_id'] = $id;	
-				$fields['code'] = $key;	
-				$fields['value'] = $value;	
+				$fields['lang'] = $key;	
+				$fields['prefix'] = isset($value['prefix']) ? $value['prefix'] : Content::generatePrefix($value['title']);	
+				$fields['created_by'] = $this->app->auth()->id;
 
 				$Model = Content::create($fields);
 				$Model->update($fields);
@@ -140,10 +156,6 @@ class OfferRepository
 			return $Model;		
 		}
 	}
-
-
-
-
 
 	/**
 	* Save related items to database
@@ -159,7 +171,7 @@ class OfferRepository
 				$fields['item_type'] = Offer::class;	
 				$fields['item_id'] = $id;	
 				$fields['code'] = $key;	
-				$fields['value'] = $value;	
+				$fields['value'] = $value;
 
 				$Model = CustomField::create($fields);
 				$Model->update($fields);
@@ -168,7 +180,6 @@ class OfferRepository
 			return $Model;		
 		}
 	}
-
 
 
  

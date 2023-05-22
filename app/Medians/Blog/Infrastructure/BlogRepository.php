@@ -116,10 +116,10 @@ class BlogRepository
     	$Object->update( (array) $data);
 
     	// Store languages content
-    	$this->storeContent($data['content'], $data['id']);
+    	!empty($data['content']) ? $this->storeContent($data['content'], $data['id']) : '';
 
     	// Store Custom fields
-    	$this->storeCustomFields($data['field'], $data['id']);
+    	!empty($data['field']) ? $this->storeCustomFields($data['field'], $data['id']) : '';
 
     	return $Object;
 

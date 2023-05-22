@@ -65,6 +65,14 @@ class APIController
 			$return = [];
 			switch ($request->get('type')) 
 			{
+				case 'Page.create':
+					$return = (new Pages\Application\PageController())->store();
+					break;
+
+				case 'Doctor.create':
+					$return = (new Doctors\Application\DoctorController())->store();
+					break;
+
 				case 'Category.create':
 					$return = (new Categories\Application\CategoryController())->store();
 					break;
@@ -75,6 +83,22 @@ class APIController
 
 				case 'Story.create':
 	                $return =  (new Stories\Application\StoryController())->store(); 
+					break;
+
+				case 'StoryDate.create':
+	                $return =  (new StoryDates\Application\StoryDateController())->store(); 
+					break;
+
+				case 'Offer.create':
+	                $return =  (new Offers\Application\OfferController())->store(); 
+					break;
+
+				case 'OnlineConsultation.create':
+	                $return =  (new OnlineConsultations\Application\OnlineConsultationController())->store(); 
+					break;
+
+				case 'Specialization.create':
+	                $return =  (new Specializations\Application\SpecializationController())->store(); 
 					break;
 
 	            case 'User.create':
@@ -102,14 +126,36 @@ class APIController
 		$return = [];
 		switch ($request->get('type')) 
 		{
+
 			case 'Story.update':
                 $return =  (new Stories\Application\StoryController())->update(); 
 				break;
+
+			case 'StoryDate.update':
+                $return =  (new StoryDates\Application\StoryDateController())->update(); 
+				break;
+				
 			case 'Category.update':
 				$return = (new Categories\Application\CategoryController)->update($request);
 				break;
             case 'Settings.update':
                 $return = (new Settings\Application\SettingsController())->update(); 
+                break;
+
+            case 'OnlineConsultation.update':
+                $return = (new OnlineConsultations\Application\OnlineConsultationController())->update(); 
+                break;
+
+            case 'Blog.update':
+                $return = (new Blog\Application\BlogController())->update(); 
+                break;
+
+            case 'Doctor.update':
+                $return = (new Doctors\Application\DoctorController())->update(); 
+                break;
+
+            case 'Specialization.update':
+                $return = (new Specializations\Application\SpecializationController())->update(); 
                 break;
 
             case 'User.update':
@@ -135,8 +181,16 @@ class APIController
 			$return = [];
 			switch ($request->get('type')) 
 			{
+				case 'Page.delete':
+					return response((new Pages\Application\PageController())->delete());
+					break;
+
 				case 'Story.delete':
 					$return = (new Stories\Application\StoryController())->delete();
+					break;
+
+				case 'StoryDate.delete':
+					$return = (new StoryDates\Application\StoryDateController())->delete();
 					break;
 
 				case 'Category.delete':
@@ -153,6 +207,14 @@ class APIController
 
 				case 'Blog.delete':
 					return response((new Blog\Application\BlogController())->delete());
+					break;
+
+				case 'Offer.delete':
+					return response((new Offers\Application\OfferController())->delete());
+					break;
+
+				case 'Doctor.delete':
+					return response((new Doctors\Application\DoctorController())->delete());
 					break;
 
 				case 'Stock.delete':

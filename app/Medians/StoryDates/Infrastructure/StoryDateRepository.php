@@ -3,7 +3,7 @@
 namespace Medians\StoryDates\Infrastructure;
 
 use Medians\StoryDates\Domain\StoryDate;
-use Medians\Domain\Content\Content;
+use Medians\Content\Domain\Content;
 
 
 class StoryDateRepository 
@@ -29,13 +29,12 @@ class StoryDateRepository
 
 	public function get($limit = 100)
 	{
-		return StoryDate::with(['content'=>function($q) 
+		return StoryDate::with('ar','en')->with(['content'=>function($q) 
 		{
 			$q->where('lang', __('lang'));
 		}])
 		->with('user')->limit($limit)->orderBy('id', 'ASC')->get();
 	}
-
 
 
 
@@ -60,6 +59,9 @@ class StoryDateRepository
     	$Object = StoryDate::create($dataArray);
     	$Object->update($dataArray);
 
+    	// Store Custom fields
+    	$this->storeContent($data['content'], $Object->id);
+
     	return $Object;
     }
     	
@@ -73,6 +75,9 @@ class StoryDateRepository
 		
 		// Return the FBUserInfo object with the new data
     	$Object->update( (array) $data);
+
+    	// Store Custom fields
+    	!empty($data['content']) ? $this->storeContent($data['content'], $data['id']) : '';
 
     	return $Object;
 
@@ -88,7 +93,13 @@ class StoryDateRepository
 	{
 		try {
 			
-			return StoryDate::find($id)->delete();
+			$delete = StoryDate::find($id)->delete();
+
+			if ($delete){
+				$this->storeContent(null, $id);
+			}
+
+			return true;
 
 		} catch (\Exception $e) {
 
@@ -100,13 +111,12 @@ class StoryDateRepository
 
 
 
-
 	/**
 	* Save related items to database
 	*/
 	public function storeContent($data, $id) 
 	{
-		Content::where('item_type', StoryDate::class)->where('model_id', $id)->delete();
+		Content::where('item_type', StoryDate::class)->where('item_id', $id)->delete();
 		if ($data)
 		{
 			foreach ($data as $key => $value)
@@ -115,6 +125,7 @@ class StoryDateRepository
 				$fields['item_type'] = StoryDate::class;	
 				$fields['item_id'] = $id;	
 				$fields['lang'] = $key;	
+				$fields['prefix'] = isset($value['prefix']) ? $value['prefix'] : Content::generatePrefix($value['title']);	
 				$fields['created_by'] = $this->app->auth()->id;
 
 				$Model = Content::create($fields);

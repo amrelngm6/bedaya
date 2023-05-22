@@ -1,10 +1,11 @@
 <?php
 
-namespace Medians\Offers\Application;
+namespace Medians\StoryDates\Application;
 
-use Medians\Offers\Infrastructure\OfferRepository;
+use Medians\StoryDates\Infrastructure\StoryDateRepository;
 
-class OfferController
+
+class StoryDateController
 {
 
 	/**
@@ -19,31 +20,10 @@ class OfferController
 
 		$this->app = new \config\APP;
 
-		$this->repo = new OfferRepository();
+		$this->repo = new StoryDateRepository();
 	}
 
 
-	/**
-	 * Columns list to view at DataTable 
-	 *  
-	 */ 
-	public function columns( ) 
-	{
-
-		return [
-            [
-                'key'=> "id",
-                'title'=> "#",
-            ],
-            [
-                'key'=> "title",
-                'title'=> __('title'),
-                'sortable'=> true,
-            ]
-        ];
-	}
-
-	
 
 	/**
 	 * Admin index items
@@ -57,10 +37,9 @@ class OfferController
 		
 		try {
 			
-		    return render('offers', [
-		        'load_vue' => true,
-		        'title' => __('Offers'),
-		        'columns' => $this->columns(),
+		    return render('story_date', [
+		    	'load_vue' => true,
+		        'title' => __('story_dates'),
 		        'items' => $this->repo->get(),
 		    ]);
 		} catch (\Exception $e) {
@@ -72,15 +51,16 @@ class OfferController
 
 
 
+
 	public function store() 
 	{
+
+		$this->app = new \config\APP;
 
 		$params = $this->app->request()->get('params');
 
         try {	
 
-        	$params['branch_id'] = $this->app->branch->id;
-        	
         	$this->validate($params);
 
             $returnData = (!empty($this->repo->store($params))) 
@@ -98,12 +78,14 @@ class OfferController
 
 	public function update()
 	{
+
+		$this->app = new \config\APP;
+
 		$params = $this->app->request()->get('params');
 
         try {
 
         	$params['status'] = !empty($params['status']) ? $params['status'] : 0;
-
             if ($this->repo->update($params))
             {
                 return array('success'=>1, 'result'=>__('Updated'), 'reload'=>1);
@@ -111,7 +93,7 @@ class OfferController
         
 
         } catch (\Exception $e) {
-        	throw new \Exception("Error Processing Request", 1);
+        	throw new \Exception("Error Processing Request". $e->getMessage(), 1);
         	
         }
 
@@ -121,16 +103,16 @@ class OfferController
 	public function delete() 
 	{
 
+
+		$this->app = new \config\APP;
+
 		$params = $this->app->request()->get('params');
-
+		
         try {
-
-        	$check = $this->repo->find($params['id']);
-
 
             if ($this->repo->delete($params['id']))
             {
-                return json_encode(array('success'=>1, 'result'=>__('Deleted'), 'reload'=>1));
+                return array('success'=>1, 'result'=>__('Deleted'), 'reload'=>1);
             }
             
 
@@ -141,56 +123,22 @@ class OfferController
 
 	}
 
+
 	public function validate($params) 
 	{
 
 		if (empty($params['content']['ar']['title']))
 		{
-        	throw new \Exception(json_encode(array('result'=>__('NAME_EMPTY'), 'error'=>1)), 1);
+        	throw new \Exception(json_encode(array('result'=>__('Arabic title is required'), 'error'=>1)), 1);
 		}
+
+		if (empty($params['title']))
+		{
+        	throw new \Exception(json_encode(array('result'=>__('Year is required'), 'error'=>1)), 1);
+		}
+
 
 	}
 
-
-	/**
-	 * Front page 
-	 * @var Int
-	 */
-	public function list($pageinfo)
-	{
-
-		try {
-
-			$items = $this->repo->get();
-
-			echo render('views/front/offers.html.twig', [
-		        'items' => $items,
-		        'pageinfo' => $pageinfo,
-		    ]);
-
-		} catch (\Exception $e) {
-			throw new \Exception($e->getMessage(), 1);
-			
-		}
-	} 
-
-	/**
-	 * Front page 
-	 * @var Int
-	 */
-	public function page($id=null)
-	{
-
-		try {
-
-			echo render('views/front/offer.html.twig', [
-		        'item' => $this->repo->find($id),
-		    ]);
-
-		} catch (\Exception $e) {
-			throw new \Exception($e->getMessage(), 1);
-			
-		}
-	} 
 
 }

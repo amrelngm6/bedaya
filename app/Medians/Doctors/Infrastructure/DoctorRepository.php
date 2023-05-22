@@ -5,6 +5,7 @@ namespace Medians\Doctors\Infrastructure;
 use Medians\Doctors\Domain\Doctor;
 use Medians\Doctors\Domain\Category;
 use Medians\Doctors\Domain\Content;
+use Medians\CustomFields\Domain\CustomField;
 
 
 class DoctorRepository 
@@ -90,6 +91,12 @@ class DoctorRepository
 		// Return the FBUserInfo object with the new data
     	$Object = Doctor::create($dataArray);
     	$Object->update($dataArray);
+    	
+    	// Store languages content
+    	$this->storeContent($data['content'] ,$Object->id);
+
+    	// Store Custom fields
+    	$this->storeCustomFields($data['field'] ,$Object->id);
 
     	return $Object;
     }
@@ -105,6 +112,12 @@ class DoctorRepository
 		// Return the FBUserInfo object with the new data
     	$Object->update( (array) $data);
 
+    	// Store languages content
+    	!empty($data['content']) ? $this->storeContent($data['content'], $data['id']) : '';
+
+    	// Store Custom fields
+    	!empty($data['field']) ? $this->storeCustomFields($data['field'], $data['id']) : '';
+
     	return $Object;
 
     }
@@ -119,7 +132,14 @@ class DoctorRepository
 	{
 		try {
 			
-			return Doctor::find($id)->delete();
+			$delete = Doctor::find($id)->delete();
+
+			if ($delete){
+				$this->storeContent(null, $id);
+				$this->storeCustomFields(null, $id);
+			}
+
+			return true;
 
 		} catch (\Exception $e) {
 
@@ -137,7 +157,7 @@ class DoctorRepository
 	*/
 	public function storeContent($data, $id) 
 	{
-		Content::where('item_type', Doctor::class)->where('model_id', $id)->delete();
+		Content::where('item_type', Doctor::class)->where('item_id', $id)->delete();
 		if ($data)
 		{
 			foreach ($data as $key => $value)
@@ -146,6 +166,7 @@ class DoctorRepository
 				$fields['item_type'] = Doctor::class;	
 				$fields['item_id'] = $id;	
 				$fields['lang'] = $key;	
+				$fields['prefix'] = isset($value['prefix']) ? $value['prefix'] : Content::generatePrefix($value['title']);	
 				$fields['created_by'] = $this->app->auth()->id;
 
 				$Model = Content::create($fields);
@@ -156,6 +177,29 @@ class DoctorRepository
 		}
 	}
 
+	/**
+	* Save related items to database
+	*/
+	public function storeCustomFields($data, $id) 
+	{
+		CustomField::where('item_type', Doctor::class)->where('item_id', $id)->delete();
+		if ($data)
+		{
+			foreach ($data as $key => $value)
+			{
+				$fields = [];
+				$fields['item_type'] = Doctor::class;	
+				$fields['item_id'] = $id;	
+				$fields['code'] = $key;	
+				$fields['value'] = $value;
+
+				$Model = CustomField::create($fields);
+				$Model->update($fields);
+			}
+	
+			return $Model;		
+		}
+	}
 
 
  

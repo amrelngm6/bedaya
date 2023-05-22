@@ -4,7 +4,6 @@ namespace Medians\Stories\Domain;
 
 use Shared\dbaser\CustomController;
 
-
 class Story extends CustomController
 {
 

@@ -246,8 +246,10 @@ select.form-control[size] {
 }
 
 .table thead th {
-	font-weight: 500;
+	font-weight: 600;
 	letter-spacing: 0.05em;
+	font-size: 16px;
+
 }
 
 .table-striped>tbody>tr:nth-of-type(2n+1) {

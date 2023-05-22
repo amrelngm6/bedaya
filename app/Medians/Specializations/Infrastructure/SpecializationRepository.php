@@ -3,7 +3,7 @@
 namespace Medians\Specializations\Infrastructure;
 
 use Medians\Specializations\Domain\Specialization;
-use Medians\Domain\Content\Content;
+use Medians\Content\Domain\Content;
 
 
 class SpecializationRepository 
@@ -29,7 +29,7 @@ class SpecializationRepository
 
 	public function get($limit = 100)
 	{
-		return Specialization::with('content','user')->withCount('childs')->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		return Specialization::with('content','user','parent')->withCount('childs')->limit($limit)->orderBy('updated_at', 'DESC')->get();
 	}
 
 	public function search($request, $limit = 20)
@@ -92,6 +92,8 @@ class SpecializationRepository
     	$Object = Specialization::create($dataArray);
     	$Object->update($dataArray);
 
+    	$this->storeContent($data['content'], $data['id']);
+
     	return $Object;
     }
     	
@@ -105,6 +107,9 @@ class SpecializationRepository
 		
 		// Return the FBUserInfo object with the new data
     	$Object->update( (array) $data);
+
+    	// Store languages content
+    	!empty($data['content']) ? $this->storeContent($data['content'], $data['id']) : '';
 
     	return $Object;
 
@@ -138,7 +143,7 @@ class SpecializationRepository
 	*/
 	public function storeContent($data, $id) 
 	{
-		Content::where('item_type', Specialization::class)->where('model_id', $id)->delete();
+		Content::where('item_type', Specialization::class)->where('item_id', $id)->delete();
 		if ($data)
 		{
 			foreach ($data as $key => $value)
@@ -147,6 +152,7 @@ class SpecializationRepository
 				$fields['item_type'] = Specialization::class;	
 				$fields['item_id'] = $id;	
 				$fields['lang'] = $key;	
+				$fields['prefix'] = isset($value['prefix']) ? $value['prefix'] : Content::generatePrefix($value['title']);	
 				$fields['created_by'] = $this->app->auth()->id;
 
 				$Model = Content::create($fields);

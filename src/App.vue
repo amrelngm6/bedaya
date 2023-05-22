@@ -42,6 +42,11 @@ import blog from './components/blog.vue'
 import specialization from './components/specialization.vue'
 import doctors from './components/doctors.vue'
 import success_stories from './components/success_stories.vue'
+import offers from './components/offers.vue'
+import online_consultation from './components/online_consultation.vue'
+import story_date from './components/story_date.vue'
+import pages from './components/pages.vue'
+import bookings from './components/bookings.vue'
 
 export default {
     name: 'app',
@@ -58,6 +63,11 @@ export default {
         specialization,
         doctors,
         success_stories,
+        offers,
+        online_consultation,
+        story_date,
+        pages,
+        bookings,
         navbar
     },
     data() {

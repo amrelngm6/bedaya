@@ -24,8 +24,13 @@ class Specialization extends CustomController
 	];
 
 
-	public $appends = ['photo'];
+	public $appends = ['photo', 'parent_name'];
 
+
+	public function getParentNameAttribute() : ?String
+	{
+		return isset($this->parent->title) ? $this->parent->title : '';
+	}
 
 	public function getPhotoAttribute() : ?String
 	{
@@ -47,6 +52,12 @@ class Specialization extends CustomController
 	public function childs()
 	{
 		return $this->hasMany(Specialization::class, 'parent_id', 'id');
+	}
+
+
+	public function parent()
+	{
+		return $this->hasOne(Specialization::class, 'id', 'parent_id');
 	}
 
 

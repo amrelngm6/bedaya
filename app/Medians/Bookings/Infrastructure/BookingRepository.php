@@ -27,9 +27,9 @@ class BookingRepository
 		return Booking::with('content')->find($id);
 	}
 
-	public function get($limit = 100)
+	public function get($type = 'Booking', $limit = 100)
 	{
-		return Booking::with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		return Booking::where('class', $type)->with('content','user','custom_fields', 'consultation' , 'offer')->limit($limit)->orderBy('updated_at', 'DESC')->get();
 	}
 
 	public function similar($item, $limit = 3)
@@ -84,7 +84,7 @@ class BookingRepository
     	$Object = Booking::create($dataArray);
     	$Object->update($dataArray);
 
-    	$this->storeCustomFields($data['custom_field'] ,$Object->id);
+    	$this->storeCustomFields($data['field'] ,$Object->id);
 
     	return $Object;
     }

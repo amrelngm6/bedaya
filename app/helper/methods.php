@@ -10,7 +10,7 @@ function setLang()
         $_SESSION['site_lang'] = isset($_SESSION['site_lang']) 
             ? $_SESSION['site_lang'] 
             : (isset($app->auth()->branch->id) && !empty($app->setting('lang')) ? $app->setting('lang') : 'arabic');
-        
+        return $_SESSION['site_lang'];
 
     } catch (\Exception $e) {
         throw new Exception($e->getMessage(), 1);    
@@ -123,7 +123,7 @@ function response($response)
 */ 
 function __($langkey = null)
 {
-    $Langs = (new helper\Lang($_SESSION['site_lang']))->load();
+    $Langs = (new helper\Lang(setLang()))->load();
     return !empty($Langs->__($langkey)) ? $Langs->__($langkey) : ucfirst(str_replace('_', ' ', $langkey));
 }
 

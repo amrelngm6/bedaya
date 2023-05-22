@@ -48,8 +48,11 @@ class APP
 		{
 			$arr = explode('/', $_SERVER['HTTP_REFERER']);
 
-			$_SESSION['site_lang'] = end($arr);
-			$_SESSION['lang'] = end($arr);
+			if (in_array(end($arr), ['arabic', 'english']))
+			{
+				$_SESSION['site_lang'] = end($arr);
+				$_SESSION['lang'] = end($arr);
+			}
 		}
 		
 		$_SESSION['lang'] = isset($_SESSION['site_lang']) ? $_SESSION['site_lang'] : $this->lang_code;
@@ -133,7 +136,6 @@ class APP
 		$data = array(
 			array('title'=>__('Dashboard'), 'icon'=>'fa-dashboard', 'link'=>'dashboard'),
 			
-            array('title'=>__('Users'),  'icon'=>'fa-users', 'link'=>'admin/users', 'component'=>'users'),
 	        // array('title'=>__('Users'),  'icon'=>'fa-users', 'link'=>'', 'sub'=>
 	        //     [
 	        //         array('title'=>__('Users'),  'icon'=>'fa-dashboard', 'link'=>'users'),
@@ -142,10 +144,32 @@ class APP
 	        // ),
 
 
-			array('title'=> __('Specializations'),  'icon'=>'fa-puzzle-piece', 'link'=>'admin/specialization', 'component'=>'specialization'),
+	        array('title'=>__('Blog'),  'icon'=>'fa-newspaper', 'link'=>'', 'sub'=>
+	            [
+	                array('title'=>__('Blog'),  'icon'=>'', 'link'=>'admin/blog', 'component'=> 'blog'),
+	                array('title'=>__('categories'),  'icon'=>'', 'link'=>'admin/categories', 'component'=> 'categories'),
+	            ]
+	        ),
+
+	        array('title'=>__('Bookings'),  'icon'=>'fa-calendar', 'link'=>'blog', 'sub'=>
+	            [
+	                array('title'=>__('Bookings'),  'icon'=>'', 'link'=>'admin/bookings', 'component'=> 'bookings'),
+	                array('title'=>__('Offers'),  'icon'=>'', 'link'=>'admin/offers_bookings', 'component'=> 'bookings'),
+	                array('title'=>__('Online Consultation'),  'icon'=>'', 'link'=>'admin/consultation_bookings', 'component'=> 'bookings'),
+	                array('title'=>__('Contact messages'),  'icon'=>'', 'link'=>'admin/contact_bookings', 'component'=> 'bookings'),
+	            ]
+	        ),
+
+
+			array('title'=> __('pages'),  'icon'=>'fa-file', 'link'=>'admin/pages', 'component'=>'pages'),
+				array('title'=> __('Specializations'),  'icon'=>'fa-puzzle-piece', 'link'=>'admin/specialization', 'component'=>'specialization'),
+			array('title'=> __('DOCTORS'),  'icon'=>'fa-hospital', 'link'=>'admin/doctors', 'component'=>'doctors'),
+			array('title'=> __('online_consultation'),  'icon'=>'fa-hand-holding-medical', 'link'=>'admin/online_consultation', 'component'=>'online_consultation'),
+			array('title'=> __('Offers'),  'icon'=>'fa-gift', 'link'=>'admin/offers', 'component'=>'offers'),
 			array('title'=> __('success stories'),  'icon'=>'fa-video', 'link'=>'admin/success_stories', 'component'=>'success_stories'),
+			array('title'=> __('story dates'),  'icon'=>'fa-calendar-days', 'link'=>'admin/story_date', 'component'=>'story_date'),
+            array('title'=>__('Users'),  'icon'=>'fa-users', 'link'=>'admin/users', 'component'=>'users'),
 			array('title'=> __('Settings'),  'icon'=>'fa-cogs', 'link'=>'settings'),
-			array('title'=> __('blog'),  'icon'=>'fa-newspaper', 'link'=>'admin/blog', 'component'=>'blog'),
 			array('title'=> __('Logout'),  'icon'=>'fa-sign-out', 'link'=>'logout'),
 		);
 

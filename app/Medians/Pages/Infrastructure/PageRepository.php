@@ -4,7 +4,7 @@ namespace Medians\Pages\Infrastructure;
 
 use Medians\Pages\Domain\Page;
 
-use Medians\Domain\Content\Content;
+use Medians\Content\Domain\Content;
 
 class PageRepository 
 {
@@ -100,23 +100,12 @@ class PageRepository
     	$Object = Page::create($dataArray);
     	$Object->update($dataArray);
 
+    	// Store Custom fields
+    	$this->storeContent($data['content'], $Object->id);
+
     	return $Object;
     }
     	
-    /**
-     * Update Lead
-     */
-    public function update($data)
-    {
-
-		$Object = Page::find($data['id']);
-		
-		// Return the FBUserInfo object with the new data
-    	$Object->update( (array) $data);
-
-    	return $Object;
-
-    }
 
 
 	/**
@@ -128,7 +117,13 @@ class PageRepository
 	{
 		try {
 			
-			return Page::find($id)->delete();
+			$delete = Page::find($id)->delete();
+
+			if ($delete){
+				$this->storeContent(null, $id);
+			}
+
+			return true;
 
 		} catch (\Exception $e) {
 
@@ -138,15 +133,12 @@ class PageRepository
 	}
 
 
-
-
-
 	/**
 	* Save related items to database
 	*/
 	public function storeContent($data, $id) 
 	{
-		Content::where('item_type', Page::class)->where('model_id', $id)->delete();
+		Content::where('item_type', Page::class)->where('item_id', $id)->delete();
 		if ($data)
 		{
 			foreach ($data as $key => $value)
@@ -155,6 +147,7 @@ class PageRepository
 				$fields['item_type'] = Page::class;	
 				$fields['item_id'] = $id;	
 				$fields['lang'] = $key;	
+				$fields['prefix'] = isset($value['prefix']) ? $value['prefix'] : Content::generatePrefix($value['title']);	
 				$fields['created_by'] = $this->app->auth()->id;
 
 				$Model = Content::create($fields);
@@ -164,6 +157,7 @@ class PageRepository
 			return $Model;		
 		}
 	}
+
 
 
 

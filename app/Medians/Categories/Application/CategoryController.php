@@ -23,36 +23,50 @@ class CategoryController
 
 
 	/**
+	 * Columns list to view at DataTable 
+	 *  
+	 */ 
+	public function columns( ) 
+	{
+
+		return [
+            [
+                'key'=> "id",
+                'title'=> "#",
+            ],
+            [
+                'key'=> "title",
+                'title'=> __('title'),
+                'sortable'=> true,
+            ]
+        ];
+	}
+
+	
+
+	/**
 	 * Admin index items
 	 * 
 	 * @param Silex\Application $app
 	 * @param \Twig\Environment $twig
 	 * 
 	 */ 
-	public function index( $model ) 
+	public function index( ) 
 	{
-
-	    return render('views/admin/categories/list.html.twig', [
-	        'title' => __('categories'),
-	        'model' => $model,
-	        'categories' => $this->repo->get($model),
-	    ]);
-
+		
+		try {
+			
+		    return render('categories', [
+		        'load_vue' => true,
+		        'title' => __('categories'),
+		        'columns' => $this->columns(),
+		        'items' => $this->repo->get(),
+		    ]);
+		} catch (\Exception $e) {
+			throw new \Exception($e->getMessage(), 1);
+			
+		}
 	}
-
-
-
-
-	public function edit(int $id ) 
-	{
-
-		return render('views/admin/forms/edit_device_type.html.twig', [
-	        'title' => __('edit_category'),
-	        'category' => $this->repo->find($id),
-	    ]);
-
-	}
-
 
 
 	public function store() 
@@ -66,6 +80,7 @@ class CategoryController
 
         	$this->validate($params);
 
+        	$params['model'] = 'Medians\Blog\Domain\Blog';
             $returnData = (!empty($this->repo->store($params))) 
             ? array('success'=>1, 'result'=>__('Added'), 'reload'=>1)
             : array('success'=>0, 'result'=>'Error', 'error'=>1);
@@ -129,12 +144,12 @@ class CategoryController
 	public function validate($params) 
 	{
 
-		if (empty(trim($params['model'])))
-		{
-        	throw new \Exception(json_encode(array('result'=>__('model_required'), 'error'=>1)), 1);
-		}
+		// if (empty(trim($params['model'])))
+		// {
+        // 	throw new \Exception(json_encode(array('result'=>__('model_required'), 'error'=>1)), 1);
+		// }
 
-		if (empty($params['name']))
+		if (empty($params['content']['ar']['title']))
 		{
         	throw new \Exception(json_encode(array('result'=>__('NAME_EMPTY'), 'error'=>1)), 1);
 		}

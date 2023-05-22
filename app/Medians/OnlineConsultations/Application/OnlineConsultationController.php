@@ -3,6 +3,7 @@
 namespace Medians\OnlineConsultations\Application;
 
 use Medians\OnlineConsultations\Infrastructure\OnlineConsultationRepository;
+use Medians\Doctors\Infrastructure\DoctorRepository;
 
 class OnlineConsultationController
 {
@@ -20,11 +21,63 @@ class OnlineConsultationController
 		$this->app = new \config\APP;
 
 		$this->repo = new OnlineConsultationRepository();
+
+		$this->doctorRepo = new DoctorRepository();
+	}
+
+
+	/**
+	 * Columns list to view at DataTable 
+	 *  
+	 */ 
+	public function columns( ) 
+	{
+
+		return [
+            [
+                'key'=> "id",
+                'title'=> "#",
+            ],
+            [
+                'key'=> "title",
+                'title'=> __('title'),
+                'sortable'=> true,
+            ]
+        ];
+	}
+
+	
+
+	/**
+	 * Admin index items
+	 * 
+	 * @param Silex\Application $app
+	 * @param \Twig\Environment $twig
+	 * 
+	 */ 
+	public function index( ) 
+	{
+		
+		try {
+			
+		    return render('online_consultation', [
+		        'load_vue' => true,
+		        'title' => __('online_consultation'),
+		        'columns' => $this->columns(),
+		        'items' => $this->repo->get(),
+		        'doctors' => $this->doctorRepo->get(),
+		    ]);
+		} catch (\Exception $e) {
+			throw new \Exception($e->getMessage(), 1);
+			
+		}
 	}
 
 
 
-
+	/**
+	 * Store item to database
+	 */ 
 	public function store() 
 	{
 
@@ -32,8 +85,6 @@ class OnlineConsultationController
 
         try {	
 
-        	$params['branch_id'] = $this->app->branch->id;
-        	
         	$this->validate($params);
 
             $returnData = (!empty($this->repo->store($params))) 
@@ -49,6 +100,9 @@ class OnlineConsultationController
 
 
 
+	/**
+	 * Update item at database
+	 */ 
 	public function update()
 	{
 		$params = $this->app->request()->get('params');
@@ -71,6 +125,9 @@ class OnlineConsultationController
 	}
 
 
+	/**
+	 * Remove item from database
+	 */ 
 	public function delete() 
 	{
 
@@ -94,12 +151,15 @@ class OnlineConsultationController
 
 	}
 
+	/**
+	 * Validate store
+	 */ 
 	public function validate($params) 
 	{
 
-		if (empty($params['name']))
+		if (empty($params['doctor_id']))
 		{
-        	throw new \Exception(json_encode(array('result'=>__('NAME_EMPTY'), 'error'=>1)), 1);
+        	throw new \Exception(json_encode(array('result'=>__('Doctor_required'), 'error'=>1)), 1);
 		}
 
 	}

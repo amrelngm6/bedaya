@@ -99,6 +99,7 @@ Macaw::get('/admin/blog/edit/(:all)', Medians\Blog\Application\BlogController::c
 Macaw::get('/admin/blog/index', Medians\Blog\Application\BlogController::class.'@index');
 Macaw::get('/admin/blog', Medians\Blog\Application\BlogController::class.'@index');
 Macaw::get('/admin/blog/', Medians\Blog\Application\BlogController::class.'@index');
+Macaw::get('/admin/categories', Medians\Categories\Application\CategoryController::class.'@index');
 Macaw::get('/admin/blog/categories', function ()  {
     return (new apps\Categories\CategoryController())->index('Medians\Blog\Domain\Blog');
 });
@@ -156,6 +157,64 @@ Macaw::get('/admin/success_stories/show/(:num)', \Medians\Stories\Application\St
 Macaw::get('/admin/success_stories/index', \Medians\Stories\Application\StoryController::class.'@index');
 Macaw::get('/admin/success_stories/', \Medians\Stories\Application\StoryController::class.'@index');
 Macaw::get('/admin/success_stories', \Medians\Stories\Application\StoryController::class.'@index');
+
+/**
+* @return story date
+*/
+Macaw::get('/admin/story_date/create', \Medians\StoryDates\Application\StoryDateController::class.'@create');
+Macaw::get('/admin/story_date/edit/(:num)', \Medians\StoryDates\Application\StoryDateController::class.'@edit');
+Macaw::get('/admin/story_date/show/(:num)', \Medians\StoryDates\Application\StoryDateController::class.'@show');
+Macaw::get('/admin/story_date/index', \Medians\StoryDates\Application\StoryDateController::class.'@index');
+Macaw::get('/admin/story_date/', \Medians\StoryDates\Application\StoryDateController::class.'@index');
+Macaw::get('/admin/story_date', \Medians\StoryDates\Application\StoryDateController::class.'@index');
+
+/**
+* @return offers
+*/
+Macaw::get('/admin/offers/create', \Medians\Offers\Application\OfferController::class.'@create');
+Macaw::get('/admin/offers/edit/(:num)', \Medians\Offers\Application\OfferController::class.'@edit');
+Macaw::get('/admin/offers/show/(:num)', \Medians\Offers\Application\OfferController::class.'@show');
+Macaw::get('/admin/offers/index', \Medians\Offers\Application\OfferController::class.'@index');
+Macaw::get('/admin/offers/', \Medians\Offers\Application\OfferController::class.'@index');
+Macaw::get('/admin/offers', \Medians\Offers\Application\OfferController::class.'@index');
+
+/**
+* @return online consultation
+*/
+Macaw::get('/admin/online_consultation/create', \Medians\OnlineConsultations\Application\OnlineConsultationController::class.'@create');
+Macaw::get('/admin/online_consultation/edit/(:num)', \Medians\OnlineConsultations\Application\OnlineConsultationController::class.'@edit');
+Macaw::get('/admin/online_consultation/show/(:num)', \Medians\OnlineConsultations\Application\OnlineConsultationController::class.'@show');
+Macaw::get('/admin/online_consultation/index', \Medians\OnlineConsultations\Application\OnlineConsultationController::class.'@index');
+Macaw::get('/admin/online_consultation/', \Medians\OnlineConsultations\Application\OnlineConsultationController::class.'@index');
+Macaw::get('/admin/online_consultation', \Medians\OnlineConsultations\Application\OnlineConsultationController::class.'@index');
+
+
+/**
+* @return doctors
+*/
+Macaw::get('/admin/doctors/create', \Medians\Doctors\Application\DoctorController::class.'@create');
+Macaw::get('/admin/doctors/edit/(:num)', \Medians\Doctors\Application\DoctorController::class.'@edit');
+Macaw::get('/admin/doctors/show/(:num)', \Medians\Doctors\Application\DoctorController::class.'@show');
+Macaw::get('/admin/doctors/index', \Medians\Doctors\Application\DoctorController::class.'@index');
+Macaw::get('/admin/doctors/', \Medians\Doctors\Application\DoctorController::class.'@index');
+Macaw::get('/admin/doctors', \Medians\Doctors\Application\DoctorController::class.'@index');
+
+/**
+* @return bookings
+*/
+Macaw::get('/admin/bookings/index', \Medians\Bookings\Application\BookingController::class.'@index');
+Macaw::get('/admin/bookings/', \Medians\Bookings\Application\BookingController::class.'@index');
+Macaw::get('/admin/bookings', \Medians\Bookings\Application\BookingController::class.'@index');
+Macaw::get('/admin/offers_bookings', \Medians\Bookings\Application\BookingController::class.'@index_offers');
+Macaw::get('/admin/consultation_bookings', \Medians\Bookings\Application\BookingController::class.'@index_consultation');
+Macaw::get('/admin/contact_bookings', \Medians\Bookings\Application\BookingController::class.'@index_contact');
+
+/**
+* @return doctors
+*/
+Macaw::get('/admin/pages/index', \Medians\Pages\Application\PageController::class.'@index');
+Macaw::get('/admin/pages/', \Medians\Pages\Application\PageController::class.'@index');
+Macaw::get('/admin/pages', \Medians\Pages\Application\PageController::class.'@index');
 
 /**
 * @return Reports

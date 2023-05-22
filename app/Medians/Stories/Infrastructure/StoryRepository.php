@@ -83,10 +83,10 @@ class StoryRepository
     	$Object->update( (array) $data);
 
     	// Store languages content
-    	$this->storeContent($data['content'], $data['id']);
+    	!empty($data['content']) ? $this->storeContent($data['content'], $data['id']) : '';
 
     	// Store Custom fields
-    	$this->storeCustomFields($data['field'], $data['id']);
+    	!empty($data['field']) ? $this->storeCustomFields($data['field'], $data['id']) : '';
 
     	return $Object;
 
@@ -136,6 +136,7 @@ class StoryRepository
 				$fields['item_type'] = Story::class;	
 				$fields['item_id'] = $id;	
 				$fields['lang'] = $key;	
+				$fields['prefix'] = isset($value['prefix']) ? $value['prefix'] : Content::generatePrefix($value['title']);	
 				$fields['created_by'] = $this->app->auth()->id;
 
 				$Model = Content::create($fields);

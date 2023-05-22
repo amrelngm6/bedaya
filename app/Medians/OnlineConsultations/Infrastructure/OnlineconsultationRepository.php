@@ -85,8 +85,11 @@ class OnlineConsultationRepository
     	$Object = OnlineConsultation::create($dataArray);
     	$Object->update($dataArray);
 
-    	$this->storeCustomFields($data['custom_field'] ,$Object->id);
-    	$this->storeContent($data['lang'] ,$Object->id);
+    	// Store languages content
+    	$this->storeContent($data['content'] ,$Object->id);
+
+    	// Store Custom fields
+    	$this->storeCustomFields($data['field'] ,$Object->id);
 
     	return $Object;
     }
@@ -102,6 +105,12 @@ class OnlineConsultationRepository
 		// Return the FBUserInfo object with the new data
     	$Object->update( (array) $data);
 
+    	// Store languages content
+    	!empty($data['content']) ? $this->storeContent($data['content'], $data['id']) : '';
+
+    	// Store Custom fields
+    	!empty($data['field']) ? $this->storeCustomFields($data['field'], $data['id']) : '';
+
     	return $Object;
 
     }
@@ -116,7 +125,14 @@ class OnlineConsultationRepository
 	{
 		try {
 			
-			return OnlineConsultation::find($id)->delete();
+			$delete = OnlineConsultation::find($id)->delete();
+
+			if ($delete){
+				$this->storeContent(null, $id);
+				$this->storeCustomFields(null, $id);
+			}
+
+			return true;
 
 		} catch (\Exception $e) {
 
@@ -134,16 +150,17 @@ class OnlineConsultationRepository
 	*/
 	public function storeContent($data, $id) 
 	{
-		Content::where('item_type', OnlineConsultation::class)->where('model_id', $id)->delete();
+		Content::where('item_type', OnlineConsultation::class)->where('item_id', $id)->delete();
 		if ($data)
 		{
 			foreach ($data as $key => $value)
 			{
-				$fields = [];
+				$fields = $value;
 				$fields['item_type'] = OnlineConsultation::class;	
 				$fields['item_id'] = $id;	
-				$fields['code'] = $key;	
-				$fields['value'] = $value;	
+				$fields['lang'] = $key;	
+				$fields['prefix'] = isset($value['prefix']) ? $value['prefix'] : Content::generatePrefix($value['title']);	
+				$fields['created_by'] = $this->app->auth()->id;
 
 				$Model = Content::create($fields);
 				$Model->update($fields);
@@ -152,10 +169,6 @@ class OnlineConsultationRepository
 			return $Model;		
 		}
 	}
-
-
-
-
 
 	/**
 	* Save related items to database
@@ -171,7 +184,7 @@ class OnlineConsultationRepository
 				$fields['item_type'] = OnlineConsultation::class;	
 				$fields['item_id'] = $id;	
 				$fields['code'] = $key;	
-				$fields['value'] = $value;	
+				$fields['value'] = $value;
 
 				$Model = CustomField::create($fields);
 				$Model->update($fields);
@@ -180,8 +193,6 @@ class OnlineConsultationRepository
 			return $Model;		
 		}
 	}
-
-
 
  
 }

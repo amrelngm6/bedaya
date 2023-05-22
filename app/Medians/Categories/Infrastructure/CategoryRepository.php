@@ -3,6 +3,8 @@
 namespace Medians\Categories\Infrastructure;
 
 use Medians\Categories\Domain\Category;
+use Medians\Blog\Domain\Blog;
+use Medians\Content\Domain\Content;
 
 
 class CategoryRepository 
@@ -28,15 +30,9 @@ class CategoryRepository
 		return Category::find($id);
 	}
 
-	public function get($model, $limit = 100)
+	public function get($model = null, $limit = 100)
 	{
-		switch ($model) 
-		{
-			case 'Medians\Blog\Domain\Blog':
-				return Category::withCount('blog')->where('model', $model)->limit($limit)->get();
-				break;
-			
-		}
+		return Category::with('content','ar','en')->withCount('blog')->where('model', Blog::class)->limit($limit)->get();
 	}
 
 	public function categories($model)
@@ -70,24 +66,13 @@ class CategoryRepository
     	$Object = Category::create($dataArray);
     	$Object->update($dataArray);
 
+    	// Store languages content
+    	$this->storeContent($data['content'] ,$Object->id);
+
     	return $Object;
     }
     	
-    /**
-     * Update Lead
-     */
-    public function update($data)
-    {
-
-		$Object = Category::find($data['id']);
-		
-		// Return the FBUserInfo object with the new data
-    	$Object->update( (array) $data);
-
-    	return $Object;
-
-    } 
-
+    	
 
 	/**
 	* Delete item to database
@@ -98,12 +83,44 @@ class CategoryRepository
 	{
 		try {
 			
-			return Category::find($id)->delete();
+			$delete = Category::find($id)->delete();
+
+			if ($delete){
+				$this->storeContent(null, $id);
+			}
+
+			return true;
 
 		} catch (\Exception $e) {
 
 			throw new \Exception("Error Processing Request " . $e->getMessage(), 1);
 			
+		}
+	}
+
+
+	/**
+	* Save related items to database
+	*/
+	public function storeContent($data, $id) 
+	{
+		Content::where('item_type', Category::class)->where('item_id', $id)->delete();
+		if ($data)
+		{
+			foreach ($data as $key => $value)
+			{
+				$fields = $value;
+				$fields['item_type'] = Category::class;	
+				$fields['item_id'] = $id;	
+				$fields['lang'] = $key;	
+				$fields['prefix'] = isset($value['prefix']) ? $value['prefix'] : Content::generatePrefix($value['title']);	
+				$fields['created_by'] = $this->app->auth()->id;
+
+				$Model = Content::create($fields);
+				$Model->update($fields);
+			}
+	
+			return $Model;		
 		}
 	}
 

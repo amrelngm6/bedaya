@@ -39,6 +39,28 @@ class PageController
 
 
 	/**
+	 * Columns list to view at DataTable 
+	 *  
+	 */ 
+	public function columns( ) 
+	{
+
+		return [
+            [
+                'key'=> "id",
+                'title'=> "#",
+            ],
+            [
+                'key'=> "title",
+                'title'=> __('title'),
+                'sortable'=> true,
+            ]
+        ];
+	}
+
+	
+
+	/**
 	 * Admin index items
 	 * 
 	 * @param Silex\Application $app
@@ -50,15 +72,19 @@ class PageController
 		
 		try {
 			
-		    return render('views/admin/page/list.html.twig', [
-		        'title' => __('page'),
-		        'page' => $this->repo->get(),
+		    return render('pages', [
+		        'load_vue' => true,
+		        'title' => __('pages'),
+		        'columns' => $this->columns(),
+		        'items' => $this->repo->get(),
 		    ]);
 		} catch (\Exception $e) {
 			throw new \Exception($e->getMessage(), 1);
 			
 		}
 	}
+
+
 
 
 
@@ -72,7 +98,6 @@ class PageController
         try {	
 
         	$params['created_by'] = $this->app->auth()->id;
-        	$params['branch_id'] = $this->app->branch->id;
         	
         	$this->validate($params);
 
@@ -137,7 +162,7 @@ class PageController
 	public function validate($params) 
 	{
 
-		if (empty($params['name']))
+		if (empty($params['content']['ar']['title']))
 		{
         	throw new \Exception(json_encode(array('result'=>__('NAME_EMPTY'), 'error'=>1)), 1);
 		}

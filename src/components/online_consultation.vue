@@ -18,31 +18,35 @@
                                     <tr class=" ">
                                         <th class="p-2 text-default w-4 ">#</th>
                                         <th class="p-2 text-default " v-text="__('title')"></th>
+                                        <th class="p-2 text-default " v-text="__('Doctor')"></th>
                                         <th class="p-2 text-center ">{{__('Action')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr  :key="category" v-for="category in content.items" class="dark:bg-gray-800 text-center">
+                                    <tr  :key="online_consultation" v-for="online_consultation in content.items" class="dark:bg-gray-800 text-center">
                                         <td class="p-2 border-1 border-t  border-gray-200 text-default">
                                             <div class="flex ">
                                                 <div class="ml-3 text-default">
-                                                    <div class="font-medium">{{category.id}}</div>
+                                                    <div class="font-medium">{{online_consultation.id}}</div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="p-2  text-default border-1 border-t  border-gray-200">
-                                            <span class="px-2"> {{category.content ? category.content.title : ''}}</span>
+                                            <span class="px-2"> {{online_consultation.content ? online_consultation.content.title : ''}}</span>
+                                        </td>
+                                        <td class="p-2 border-1 border-t  border-gray-200 text-default" >
+                                            <span class="px-2"> {{online_consultation.doctor_name}}</span>
                                         </td>
                                         <td class="p-2 border-1 border-t  border-gray-200">
-                                            <!-- <a class="text-gray-400 hover:text-gray-100  mx-2 text-lg" :href="'/builder?prefix='+(category.content ? category.content.prefix : '')" target="_blank"> -->
-                                                <!-- <i class="fa fa-edit"></i> -->
-                                            <!-- </a> -->
+                                            <a class="text-gray-400 hover:text-gray-100  mx-2 text-lg" :href="'/builder?prefix='+(online_consultation.content ? online_consultation.content.prefix : '')" target="_blank">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
 
-                                            <a @click="activeItem = null;showEditSide = true; activeItem = category; showAddSide = false;  " class="text-gray-400 hover:text-gray-100  mx-2" href="javascript:;">
+                                            <a @click="activeItem = null;showEditSide = true; activeItem = online_consultation; showAddSide = false;  " class="text-gray-400 hover:text-gray-100  mx-2" href="javascript:;">
                                                 <i class="material-icons-outlined text-base">edit</i>
                                             </a>
 
-                                            <a href="javascript:;"  @click="$parent.delete(category, 'Category.delete')" class="text-gray-400 hover:text-gray-100  ml-2" :title="__('delete')"><i class="material-icons-round text-base">delete_outline</i></a>
+                                            <a href="javascript:;"  @click="$parent.delete(online_consultation, 'OnlineConsultation.delete')" class="text-gray-400 hover:text-gray-100  ml-2" :title="__('delete')"><i class="material-icons-round text-base">delete_outline</i></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -59,19 +63,28 @@
                                     <h1 class="w-full m-auto max-w-xl text-base mb-10 ">{{__('ADD_NEW')}}</h1>
                                     <span class="cursor-pointer py-1 px-2" @click="showAddSide = false, activeItem = {}"><close_icon /></span>
                                 </div>
-                                <input name="type" type="hidden" value="Category.create">
+                                <input name="type" type="hidden" value="OnlineConsultation.create">
                                 <input name="params[status]" type="hidden" value="on">
                                 
-                                <span class="block my-2" v-text="__('parent_category')"></span>
-                                <select  v-model="activeItem.parent_id" name="params[doctor_id]" class="form-checkbox p-2 px-3 w-full text-orange-600 border border-1 border-gray-400 rounded-lg" v-if="content.categories">
-                                    <option v-if="activeItem.id != type.id" :key="index" v-for="(type, index) in content.categories" :value="type.id" v-text="type.name"></option>
+                                <span class="block my-2" v-text="__('Doctor')"></span>
+                                <select name="params[doctor_id]" class="form-checkbox p-2 px-3 w-full text-orange-600 border border-1 border-gray-400 rounded-lg" v-if="content.doctors">
+                                    <option  :key="index" v-for="(type, index) in content.doctors" :value="type.id" v-text="type.title"></option>
                                 </select>
 
-                                <span class="block my-2" v-text="__('Title')+' AR'"></span>
-                                <input name="params[content][ar][title]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" >
+                                <span class="block my-2" v-text="__('Consultation sessions count')"></span>
+                                <input name="params[field][consultation_sessions_count]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Consultation sessions count')" >
 
-                                <span class="block my-2" v-text="__('Title')+' EN'"></span>
-                                <input name="params[content][en][title]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" >
+                                <span class="block my-2" v-text="__('Consultation_session_time')"></span>
+                                <input name="params[field][consultation_session_time]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Consultation_session_time')" >
+
+                                <span class="block my-2" v-text="__('Consultation_speciality')"></span>
+                                <input name="params[field][consultation_speciality]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Consultation_speciality')" >
+
+                                <span class="block my-2" v-text="__('Consultation_discount')"></span>
+                                <input name="params[field][consultation_discount]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Consultation_discount')" >
+
+                                <span class="block my-2" v-text="__('Consultation_old_price')"></span>
+                                <input name="params[field][consultation_old_price]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Consultation_old_price')" >
 
                                 <button class="uppercase h-12 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800" v-text="__('save')"></button>
                             </form>
@@ -84,28 +97,26 @@
                             <span class="cursor-pointer py-1 px-2" @click="showEditSide = false"><close_icon /></span>
                         </div>
                         <div >
-                            <form v-if="activeItem.content" action="/api/update" method="POST" data-refresh="1" id="add-device-form" class="action py-0 m-auto rounded-lg max-w-xl pb-10">
+                            <form v-if="activeItem.field" action="/api/update" method="POST" data-refresh="1" id="add-device-form" class="action py-0 m-auto rounded-lg max-w-xl pb-10">
 
-                                <input name="type" type="hidden" value="Category.update">
-                                <input name="params[id]" type="hidden" v-model="activeItem.id">
-
-
-                                <span class="block my-2" v-text="__('parent_category')"></span>
-                                <select  v-model="activeItem.parent_id" name="params[doctor_id]" class="form-checkbox p-2 px-3 w-full text-orange-600 border border-1 border-gray-400 rounded-lg" v-if="content.categories">
-                                    <option v-if="activeItem.id != type.id" :key="index" v-for="(type, index) in content.categories" :value="type.id" v-text="type.name"></option>
+                                <span class="block my-2" v-text="__('Doctor')"></span>
+                                <select  v-model="activeItem.doctor_id" name="params[doctor_id]" class="form-checkbox p-2 px-3 w-full text-orange-600 border border-1 border-gray-400 rounded-lg" v-if="content.doctors">
+                                    <option  :key="index" v-for="(type, index) in content.doctors" :value="type.id" v-text="type.title"></option>
                                 </select>
 
-                                <span class="block my-2" v-text="__('Title')+' AR'"></span>
-                                <input name="params[content][ar][title]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600"  v-model="activeItem.ar.title">
+                                <div v-for="field in activeItem.custom_fields">
+                                    <span class="block my-2" v-text="__(field.code)"></span>
+                                    <input :name="'params[field]['+field.code+']'" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="field.title" :value="activeItem.field[field.code]" >
+                                </div>
 
-                                <span class="block my-2" v-text="__('Title')+' EN'"></span>
-                                <input name="params[content][en][title]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" v-model="activeItem.en.title" >
+                                <input name="type" type="hidden" value="OnlineConsultation.update">
+                                <input name="params[id]" type="hidden" v-model="activeItem.id">
 
 
                                 <button class="uppercase h-10 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800">{{__('Update')}}</button>
                             </form>
                         
-                            <a @click="$parent.delete(activeItem, 'Category.delete')" href="javascript:;" class=" my-2 py-2 uppercase block text-center  pb-1 mt-1 text-white w-full rounded text-gray-700 hover:bg-red-800 hover:text-white">{{__('Delete')}}</a>
+                            <a @click="$parent.delete(activeItem, 'OnlineConsultation.delete')" href="javascript:;" class=" my-2 py-2 uppercase block text-center  pb-1 mt-1 text-white w-full rounded text-gray-700 hover:bg-red-800 hover:text-white">{{__('Delete')}}</a>
 
                         </div>
                     </div>
@@ -121,10 +132,10 @@ export default
 {
     components: {
     },
-    name:'category',
+    name:'online_consultation',
     data() {
         return {
-            url: this.conf.url+this.path+'?load=json',
+            url: this.conf.url+'admin/online_consultation?load=json',
             content: {
 
                 title: '',
@@ -141,7 +152,6 @@ export default
     },
     props: [
         'lang',
-        'path',
         'setting',
         'conf',
         'auth',

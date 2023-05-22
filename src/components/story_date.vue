@@ -17,35 +17,32 @@
                                 <thead class="mb-10  text-gray-500 pb-10">
                                     <tr class=" ">
                                         <th class="p-2 text-default w-4 ">#</th>
-                                        <th class="p-2 text-default " v-text="__('title')"></th>
-                                        <th class="p-2 text-center ">{{__('Youtube Video')}}</th>
+                                        <th class="p-2 text-default " v-text="__('Year')"></th>
+                                        <th class="p-2 text-center ">{{__('title')}}</th>
                                         <th class="p-2 text-center ">{{__('Action')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr  :key="story" v-for="story in content.items" class="dark:bg-gray-800 text-center">
+                                    <tr  :key="story_date" v-for="story_date in content.items" class="dark:bg-gray-800 text-center">
                                         <td class="p-2 border-1 border-t  border-gray-200">
                                             <div class="flex ">
                                                 <div class="ml-3 text-default">
-                                                    <div class="font-medium">{{story.id}}</div>
+                                                    <div class="font-medium">{{story_date.id}}</div>
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="p-2  text-default border-1 border-t  border-gray-200">
-                                            <div class="w-full flex gap-4">
-                                            <img class="w-8 h-8 rounded inline-block " :src="story.picture"> <span class="px-2"> {{__('lang') == 'en' ? story.field.short_name : story.field.short_name_ar}}</span>
-                                                
-                                            </div>
+                                            {{story_date.title}}
                                         </td>
                                         <td class="p-2 border-1 border-t  border-gray-200" >
-                                            <a target="_blank" :href="'https://youtube.com/watch?v='+story.field.video_link" v-text="story.field.video_link"></a>
+                                            {{story_date.content ? story_date.content.title : ''}}
                                         </td>
                                         <td class="p-2 border-1 border-t  border-gray-200">
-                                            <a @click="activeItem = null;showEditSide = true; activeItem = story; showAddSide = false;  " class="text-gray-400 hover:text-gray-100  mx-2" href="javascript:;">
+                                            <a @click="activeItem = null;showEditSide = true; activeItem = story_date; showAddSide = false;  " class="text-gray-400 hover:text-gray-100  mx-2" href="javascript:;">
                                                 <i class="material-icons-outlined text-base">edit</i>
                                             </a>
 
-                                            <a href="javascript:;"  @click="$parent.delete(story, 'Story.delete')" class="text-gray-400 hover:text-gray-100  ml-2" :title="__('delete')"><i class="material-icons-round text-base">delete_outline</i></a>
+                                            <a href="javascript:;"  @click="$parent.delete(story_date, 'StoryDate.delete')" class="text-gray-400 hover:text-gray-100  ml-2" :title="__('delete')"><i class="material-icons-round text-base">delete_outline</i></a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -62,28 +59,24 @@
                                     <h1 class="w-full m-auto max-w-xl text-base mb-10 ">{{__('ADD_NEW')}}</h1>
                                     <span class="cursor-pointer py-1 px-2" @click="showAddSide = false, activeItem = {}"><close_icon /></span>
                                 </div>
-                                <input name="type" type="hidden" value="Story.create">
+                                <input name="type" type="hidden" value="StoryDate.create">
                                 <input name="params[status]" type="hidden" value="1">
 
-                                <span class="block mb-2" >Youtube video ID</span>
-                                <input name="params[field][video_link]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Video id')" >
+                                <span class="block mb-2" >Year</span>
+                                <input name="params[title]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Year')" >
 
                                 <span class="block mb-2" v-text="__('title')+' AR'"></span>
-                                <input name="params[field][short_name_ar]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Story')" >
+                                <input name="params[content][ar][title]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600"  >
 
                                 <span class="block mb-2" v-text="__('title')+' EN'"></span>
-                                <input name="params[field][short_name]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Story')" >
+                                <input name="params[content][en][title]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" >
 
-                                <span class="block mb-2" v-text="__('title')+' AR'"></span>
-                                <textarea rows="3" name="params[content][ar][content]" required="" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Arabic content')" ></textarea>
+                                <span class="block mb-2" v-text="__('Content')+' AR'"></span>
+                                <textarea rows="3" name="params[content][ar][content]"  class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" ></textarea>
 
-                                <span class="block mb-2" v-text="__('title')+' EN'"></span>
-                                <textarea rows="3" name="params[content][en][content]" required="" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('English content')" ></textarea>
+                                <span class="block mb-2" v-text="__('Content')+' EN'"></span>
+                                <textarea rows="3" name="params[content][en][content]" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" ></textarea>
 
-                                <span class="block my-2" v-text="__('picture')"></span>
-                                <vue-medialibrary-field name="params[picture]" :key="activeItem.id" :api_url="conf.url" v-model="activeItem.picture"></vue-medialibrary-field>
-
-                                
                                 <button class="uppercase h-12 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800" v-text="__('save')"></button>
                             </form>
                         </div>
@@ -97,33 +90,28 @@
                         <div >
                             <form action="/api/update" method="POST" data-refresh="1" id="add-device-form" class="action py-0 m-auto rounded-lg max-w-xl pb-10">
 
-                                <input name="type" type="hidden" value="Story.update">
+                                <input name="type" type="hidden" value="StoryDate.update">
                                 <input name="params[id]" type="hidden" v-model="activeItem.id">
 
-                                <span class="block mb-2" >Youtube video ID</span>
-                                <input name="params[field][video_link]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Video id')" v-model="activeItem.field.video_link">
+                                <span class="block mb-2" >Year</span>
+                                <input name="params[title]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Year')" v-model="activeItem.title">
 
                                 <span class="block mb-2" v-text="__('title')+' AR'"></span>
-                                <input name="params[field][short_name_ar]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Story')" v-model="activeItem.field.short_name_ar">
+                                <input name="params[content][ar][title]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('title')+' AR'" v-model="activeItem.ar.title">
 
                                 <span class="block mb-2" v-text="__('title')+' EN'"></span>
-                                <input name="params[field][short_name]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Story')" v-model="activeItem.field.short_name">
+                                <input name="params[content][en][title]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('title')+' EN'" v-model="activeItem.en.title">
 
-                                <span class="block mb-2" v-text="__('title')+' AR'"></span>
+                                <span class="block mb-2" v-text="__('Content')+' AR'"></span>
                                 <textarea rows="3" name="params[content][ar][content]" required="" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Arabic content')" v-model="activeItem.ar.content"></textarea>
 
-                                <span class="block mb-2" v-text="__('title')+' EN'"></span>
+                                <span class="block mb-2" v-text="__('Content')+' EN'"></span>
                                 <textarea rows="3" name="params[content][en][content]" required="" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('English content')" v-model="activeItem.en.content"></textarea>
 
-                                <span class="block my-2" v-text="__('picture')"></span>
-                            
-                                <vue-medialibrary-field name="params[picture]" :key="activeItem.id" :api_url="conf.url" v-model="activeItem.picture"></vue-medialibrary-field>
-
-                                
                                 <button class="uppercase h-10 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800">{{__('Update')}}</button>
                             </form>
                         
-                            <a @click="$parent.delete(activeItem, 'Story.delete')" href="javascript:;" class=" my-2 py-2 uppercase block text-center  pb-1 mt-1 text-white w-full rounded text-gray-700 hover:bg-red-800 hover:text-white">{{__('Delete')}}</a>
+                            <a @click="$parent.delete(activeItem, 'StoryDate.delete')" href="javascript:;" class=" my-2 py-2 uppercase block text-center  pb-1 mt-1 text-white w-full rounded text-gray-700 hover:bg-red-800 hover:text-white">{{__('Delete')}}</a>
 
                         </div>
                     </div>
@@ -139,10 +127,10 @@ export default
 {
     components: {
     },
-    name:'success_stories',
+    name:'story_date',
     data() {
         return {
-            url: this.conf.url+'admin/success_stories?load=json',
+            url: this.conf.url+'admin/story_date?load=json',
             content: {
 
                 title: '',

@@ -13,6 +13,69 @@
                 <hr class="mt-2" />
                 <div class="w-full flex gap gap-6">
                     <data-table ref="specialization" @actionTriggered="handleAction" v-bind="bindings"/>
+
+                    <div class="col-md-3" v-if="showAddSide">
+                        <div class="mb-6 p-4 rounded-lg shadow-lg bg-white dark:bg-gray-700 ">
+                            <form action="/api/create" method="POST" data-refresh="1" id="add-device-form" class="action  py-0 m-auto rounded-lg max-w-xl pb-10">
+                                <div class="w-full flex">
+                                    <h1 class="w-full m-auto max-w-xl text-base mb-10 ">{{__('ADD_NEW')}}</h1>
+                                    <span class="cursor-pointer py-1 px-2" @click="showAddSide = false, activeItem = {}"><close_icon /></span>
+                                </div>
+                                <input name="type" type="hidden" value="Specialization.create">
+                                <input name="params[status]" type="hidden" value="1">
+
+                                <span class="block mb-2" v-text="__('category')"></span>
+                                <select name="params[parent_id]" class="form-checkbox p-2 px-3 w-full text-orange-600 border border-1 border-gray-400 rounded-lg" v-if="content.items">
+                                    <option  value="0">--</option>
+                                    <option  :key="index" v-for="(type, index) in content.items" :value="type.id" v-text="type.title"></option>
+                                </select>
+
+                                <span class="block my-2" v-text="__('title')+' AR'"></span>
+                                <input name="params[content][ar][title]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Title')" >
+
+                                <span class="block mb-2" v-text="__('title')+' EN'"></span>
+                                <input name="params[content][en][title]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Title')" >
+
+                                <span class="block my-2" v-text="__('picture')"></span>
+                                <vue-medialibrary-field name="params[picture]" :key="activeItem.id" :api_url="conf.url" v-model="activeItem.picture"></vue-medialibrary-field>
+
+                                
+                                <button class="uppercase h-12 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800" v-text="__('save')"></button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-6 p-4 rounded-lg shadow-lg bg-white dark:bg-gray-700 " v-if="showEditSide && !showAddSide ">
+
+                        <div class="w-full flex">
+                            <h1 class="w-full m-auto max-w-xl text-base mb-10 " v-text="__('edit')"></h1>
+                            <span class="cursor-pointer py-1 px-2" @click="showEditSide = false"><close_icon /></span>
+                        </div>
+                        <div >
+                            <form action="/api/update" method="POST" data-refresh="1" id="add-device-form" class="action py-0 m-auto rounded-lg max-w-xl pb-10">
+
+                                <span class="block mb-2" v-text="__('parent_category')"></span>
+                                <select name="params[parent_id]" class="form-checkbox p-2 px-3 w-full text-orange-600 border border-1 border-gray-400 rounded-lg" v-if="content.items" v-model="activeItem.parent_id">
+                                    <option  value="0">--</option>
+                                    <option v-if="type.id != activeItem.id" :key="index" v-for="(type, index) in content.items" :value="type.id" v-text="type.title"></option>
+                                </select>
+
+                                <span class="block my-2" v-text="__('picture')"></span>
+                                <vue-medialibrary-field name="params[picture]" :key="activeItem.id" :api_url="conf.url" v-model="activeItem.picture"></vue-medialibrary-field>
+
+                                
+                                <input name="type" type="hidden" value="Specialization.update">
+                                <input name="params[id]" type="hidden" v-model="activeItem.id">
+
+
+                                <button class="uppercase h-10 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800">{{__('Update')}}</button>
+                            </form>
+                        
+                            <a @click="$parent.delete(activeItem, 'Specialization.delete')" href="javascript:;" class=" my-2 py-2 uppercase block text-center  pb-1 mt-1 text-white w-full rounded text-gray-700 hover:bg-red-800 hover:text-white">{{__('Delete')}}</a>
+
+                        </div>
+                    </div>
+
                 </div>
                 <!-- END  -->
             </main>
@@ -22,10 +85,14 @@
 <script>
 
 import dataTableActions from './includes/data-table-actions.vue';
+import dataTablePicture from './includes/data-table-picture.vue';
+import dataTableSideActions from './includes/data-table-side-actions.vue';
 
 export default 
 {
     components:{
+        dataTablePicture,
+        dataTableSideActions,
         dataTableActions
     },
     name:'specialization',
@@ -38,7 +105,7 @@ export default
                 columns: [],
             },
 
-            activeItem:null,
+            activeItem:{},
             showAddSide:false,
             showEditSide:false,
             showLoader: true,
@@ -47,6 +114,16 @@ export default
 
     computed: {
         bindings() {
+            this.content.columns.push({
+                    key: this.__("picture"),
+                    component: dataTablePicture,
+                });
+
+            this.content.columns.push({
+                    key: this.__("options"),
+                    component: dataTableSideActions,
+                });
+
             this.content.columns.push({
                     key: this.__("actions"),
                     component: dataTableActions,
@@ -72,6 +149,15 @@ export default
 
     methods: 
     {
+
+        editFields(data)
+        {
+            this.activeItem = null;
+            this.showEditSide = true; 
+            this.activeItem = data; 
+            this.showAddSide = false; 
+
+        },
 
         handleAction(actionName, data) {
             switch(actionName) 
