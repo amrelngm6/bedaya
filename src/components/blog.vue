@@ -12,7 +12,7 @@
                 </div>
                 <hr class="mt-2" />
                 <div class="w-full flex gap gap-6">
-                    <data-table class='w-full' ref="blog" @actionTriggered="handleAction" v-bind="bindings"/>
+                    <data-table class='w-full' ref="blog"  @actionTriggered="handleAction" v-bind="bindings"/>
 
                     <div class="col-md-3" v-if="showAddSide">
                         <div class="mb-6 p-4 rounded-lg shadow-lg bg-white dark:bg-gray-700 ">
@@ -126,19 +126,22 @@ export default
             this.content.columns.push({
                     key: this.__("picture"),
                     component: dataTablePicture,
+                    sortable: false,
                 });
 
             this.content.columns.push({
                     key: this.__("options"),
                     component: dataTableSideActions,
+                    sortable: false,
                 });
 
             this.content.columns.push({
                     key: this.__("actions"),
                     component: dataTableActions,
+                    sortable: false,
                 });
             return {
-
+                sortingMode: 'single',
                 columns: this.content.columns,
                 data: this.content.items
             }

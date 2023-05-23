@@ -33,7 +33,7 @@ class HomeController
 		try {
 
 			$item = $this->pagesRepo->homepage();
-			
+			$item->addView();
 		    // $_SESSION['site_lang'] = (isset($item->lang) && $item->lang == 'ar') ? 'arabic' : 'english';
 
 	        return  render('views/front/page.html.twig',[

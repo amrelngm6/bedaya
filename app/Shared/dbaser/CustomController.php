@@ -6,6 +6,7 @@ use \Illuminate\Database\Eloquent\Model;
 
 use Medians\Users\Domain\User;
 use Medians\Content\Domain\Content;
+use Medians\Views\Domain\View;
 
 class CustomController extends Model
 {
@@ -60,6 +61,26 @@ class CustomController extends Model
 	}
 
 
+	public function sessionGuest()
+	{
+		if (empty($_SESSION['guest']))
+		{
+			$_SESSION['guest'] = sha1(md5(date('ymdhis').rand(9,99)));
+		}
+
+		return $_SESSION['guest'];
+	}
+
+	public function addView()
+	{
+
+		$add = View::firstOrCreate(['session'=>$this->sessionGuest(), 'item_type'=>get_class($this), 'item_id'=>$this->id]);
+
+		if (isset($add->times))
+			$add->update(['times' => $add->times+1]);
+		else
+			$add->update(['times' => 1]);
+	}
 }
 
 

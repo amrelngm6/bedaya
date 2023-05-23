@@ -40,7 +40,7 @@ class DoctorController
                 [
                     'key'=> "id",
                     'title'=> "#",
-                    'sortable'=> false,
+	                'type'=> "number",
                 ],
                 [
                     'key'=> "title",

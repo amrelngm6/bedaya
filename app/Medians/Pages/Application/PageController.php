@@ -49,6 +49,7 @@ class PageController
             [
                 'key'=> "id",
                 'title'=> "#",
+                'type'=> "number",
             ],
             [
                 'key'=> "name",

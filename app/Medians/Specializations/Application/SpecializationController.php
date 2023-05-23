@@ -40,22 +40,25 @@ class SpecializationController
                 [
                     'key'=> "id",
                     'title'=> "#",
-                    'sortable'=> false,
+	                'type'=> "number",
                 ],
                 [
                     'key'=> "title",
                     'title'=> __('title'),
+                    'type' => 'string',
                     'sortable'=> false,
                 ],
                 [
                     'key'=> "parent_name",
                     'title'=> __('parent_category'),
+                    'type' => 'string',
                     'sortable'=> false,
                 ],
                 [
                     'key'=> "childs_count",
                     'title'=> __('Sub_categories'),
                     'sortable'=> true,
+                    'type' => 'number',
                 ]
             ];
 	}

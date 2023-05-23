@@ -117,16 +117,19 @@ export default
             this.content.columns.push({
                     key: this.__("picture"),
                     component: dataTablePicture,
+                    sortable: false,
                 });
 
             this.content.columns.push({
                     key: this.__("options"),
                     component: dataTableSideActions,
+                    sortable: false,
                 });
 
             this.content.columns.push({
                     key: this.__("actions"),
                     component: dataTableActions,
+                    sortable: false,
                 });
             return {
 

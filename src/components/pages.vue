@@ -76,6 +76,7 @@ export default
             this.content.columns.push({
                     key: this.__("actions"),
                     component: dataTableActions,
+                    sortable: false,
                 });
             return {
 

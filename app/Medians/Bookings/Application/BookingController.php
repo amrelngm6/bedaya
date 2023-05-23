@@ -42,16 +42,17 @@ class BookingController
             [
                 'key'=> "id",
                 'title'=> "#",
+                'type'=> "number",
             ],
             [
                 'key'=> "title",
                 'title'=> __('title'),
-                'sortable'=> true,
+                'sortable'=> false,
             ],
             [
                 'key'=> "class",
                 'title'=> __('Type'),
-                'sortable'=> true,
+                'sortable'=> false,
             ],
             [
                 'key'=> "status",

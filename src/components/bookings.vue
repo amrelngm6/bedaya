@@ -78,6 +78,7 @@ export default
             this.content.columns.push({
                     key: this.__("options"),
                     component: dataTableSideActions,
+                    sortable: false,
                 });
             return {
 
