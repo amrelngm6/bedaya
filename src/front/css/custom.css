@@ -161,8 +161,8 @@ button.cyan-bg {
 
 .rtl h3.cyan-gradient45, .rtl .title-gradient 
 {
-    padding-right: 0rem;
-    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-left: 10rem;
 }
 h3.cyan-gradient45, .title-gradient 
 {
