@@ -126,16 +126,8 @@ class BuilderController
 		if (!$request->get('title') || !$request->get('prefix'))			
 			return true;
 
-		$check = $this->contentRepo->find($request->get('prefix'));
-		$check->title = $request->get('title');
-		$check->seo_title = $request->get('seo_title');
-		$check->seo_keywords = $request->get('seo_keywords');
-		$check->seo_desc = $request->get('seo_desc');
-		$save = $check->save();
-		if ($save)
-		{
-			echo __('Done');
-		}
+
+		return $this->repo->updateMeta($request);
 	}
 
 

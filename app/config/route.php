@@ -18,7 +18,7 @@ Macaw::get('/doctors', \Medians\Doctors\Application\DoctorController::class.'@li
 Macaw::get('/book/(:all)', \Medians\Bookings\Application\BookingController::class.'@page'); 
 Macaw::post('/submit/(:all)', \Medians\FrontendController::class.'@form_submit'); 
 Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
-Macaw::get('/offers/(:all)', \Medians\Offers\Application\OfferController::class.'@page'); 
+Macaw::get('/offer_booking/(:all)', \Medians\Offers\Application\OfferController::class.'@page'); 
 Macaw::get('/search', \Medians\Pages\Application\PageController::class.'@search'); 
 Macaw::get('/stream', \Medians\Media\Application\MediaController::class.'@stream'); 
 Macaw::get('/assets', \Medians\Media\Application\MediaController::class.'@assets'); 

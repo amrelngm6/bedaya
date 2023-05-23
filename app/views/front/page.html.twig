@@ -11,7 +11,7 @@
 
     <div class="blog-content ">
         <div class="mx-auto ">
-        {{app.renderTemplate(item.content.content, item).render( {'item':item, 'app':app, 'lang':lang, 'specializations':specializations, 'story_dates':story_dates, 'stories':stories, 'doctors': doctors, 'blog': blog} )|raw}}
+        {{app.renderTemplate(item.content.content, item).render( {'item':item, 'app':app, 'lang':lang, 'specializations':specializations, 'story_dates':story_dates, 'stories':stories, 'all_stories':all_stories, 'doctors': doctors, 'blog': blog} )|raw}}
         </div>
     </div>
 {% include 'views/front/includes/footer.html.twig' %} 

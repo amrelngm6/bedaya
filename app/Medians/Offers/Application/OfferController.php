@@ -57,7 +57,7 @@ class OfferController
 		
 		try {
 			
-		    return render('offers', [
+		    render('offers', [
 		        'load_vue' => true,
 		        'title' => __('Offers'),
 		        'columns' => $this->columns(),

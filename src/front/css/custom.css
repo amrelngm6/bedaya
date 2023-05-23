@@ -130,11 +130,12 @@ p {
 }
 .cyan-color
 {
-    color: #36d3eb;
+    color: #0399a8;
 }
 .cyan-bg
 {
-    background-color: #36d3eb;
+    background-color: #0399a8;
+    color: #fafafa;
 }
 .lightcyan-color
 {
@@ -147,12 +148,12 @@ p {
 .rtl .title-gradient
 {
     background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,212,255,.30) 100%);
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(3,135,168,.50) 100%);
 }
 .title-gradient
 {
     background: rgb(255,255,255);
-    background: linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(0,212,255,.30) 100%);
+    background: linear-gradient(270deg, rgba(255,255,255,0) 0%, rgba(3,135,168,.50) 100%);
 }
 
 .rtl h3.cyan-gradient45, .rtl .title-gradient 
@@ -169,33 +170,33 @@ h3.cyan-gradient45, .title-gradient
 .cyan-gradient
 {
     background: rgb(255,255,255);
-    background: linear-gradient(135deg, rgba(52,173,217,1) 0%, rgba(23,220,245,1) 100%);
+    background: linear-gradient(135deg, rgba(52,173,217,1) 0%, rgba(3,135,168,1) 100%);
 }
 .cyan-gradient-vertical
 {
     background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(52,173,217,1) 0%, rgba(23,220,245,1) 100%);
+    background: linear-gradient(180deg, rgba(52,173,217,1) 0%, rgba(3,135,168,1) 100%);
 }
 .rtl .cyan-gradient45
 {
-    background: linear-gradient(225deg, rgba(52,173,217,1) 0%, rgba(23,220,245,1) 100%);
+    background: linear-gradient(225deg, rgba(52,173,217,1) 0%, rgba(3,135,168,1) 100%);
 }
 .rtl .cyan-gradient90
 {
-    background: linear-gradient(270deg, rgba(52,173,217,1) 0%, rgba(23,220,245,1) 100%);
+    background: linear-gradient(270deg, rgba(52,173,217,1) 0%, rgba(3,135,168,1) 100%);
 }
 .cyan-gradient45
 {
     background: rgb(255,255,255);
-    background: linear-gradient(45deg, rgba(52,173,217,1) 0%, rgba(23,220,245,1) 100%);
+    background: linear-gradient(45deg, rgba(52,173,217,1) 0%, rgba(3,135,168,1) 100%);
 }
 .cyan-gradient90
 {
     background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(52,173,217,1) 0%, rgba(23,220,245,1) 100%);
+    background: linear-gradient(90deg, rgba(52,173,217,1) 0%, rgba(3,135,168,1) 100%);
 }
 .switch-hover:hover{
-    background: linear-gradient(45deg, rgba(52,173,217,1) 0%, rgba(23,220,245,1) 100%);
+    background: linear-gradient(45deg, rgba(52,173,217,1) 0%, rgba(3,135,168,1) 100%);
 }
 .switch-hover img.pic-1,
 .switch-hover:hover img.pic-2

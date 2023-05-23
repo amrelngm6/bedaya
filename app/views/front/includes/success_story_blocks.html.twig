@@ -6,7 +6,7 @@
                     </div>
                     <div class="relative rounded-tl-2xl rounded-br-2xl m-6 cyan-gradient-vertical p-10">
                         <div class="mb-4 text-white font-semibold custom-scroll h-32 p-2 overflow-auto">
-                            <p>{{item.content.content}}</p>
+                            <p>{{item.content.content|raw}}</p>
                         </div>
                         <div style="bottom: -85px;" class="w-full absolute right-0 left-0 bottom-0 w-30  mx-auto">
                             <div data-youtube-link="{{item.field.video_link}}" class="rounded-full border-4 border border-white  bg-white w-20 mx-auto show-modal-iframe ">

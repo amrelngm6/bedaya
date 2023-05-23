@@ -185,6 +185,7 @@ class PageController
 				'specializations' => $this->specsRepo->get_root(),
 				'story_dates' => $this->storyDateRepo->get(),
 				'stories' => $this->storyRepo->get(3),
+				'all_stories' => $this->storyRepo->get(),
 				'doctors' => $this->doctorRepo->get(3),
 				'blog' => $this->blogRepo->get(3),
 		        'item' => $item,

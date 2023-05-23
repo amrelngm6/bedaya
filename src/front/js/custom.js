@@ -33,7 +33,7 @@ jQuery(document).ready(function (e) {
 		console.log(jQuery(this).find('img').attr('class'))
 	});
 
-	jQuery(document).on('click', '.switch-view', function(e){
+	jQuery(document).on('change', '.switch-view', function(e){
 		jQuery('#'+jQuery(this).data('target')).toggleClass('hidden');
 	});
 
