@@ -24,7 +24,7 @@
             <div class="flex w-full px-4 py-5 sm:px-6 gap gap-3">
                 <div class="w-full py-4">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">
-                        {{lang.__('BOOKING_WITH')}}  : <a href="/د-إسماعيل-أبو-الفتوح">{{doctor.content.title}}</a>
+                        {{lang.__('BOOKING_WITH')}}  : <a href="/{{doctor.content.prefix}}">{{doctor.content.title}}</a>
                     </h3>
                     <p class="mt-1 max-w-2xl text-sm text-gray-500">
                     {{lang.__('contact info')}}
@@ -55,8 +55,11 @@
                         <dd class="mt-1 text-sm text-gray-900 sm:mt-0 ">
                             <p>{{lang.__('Specialization')}}</p>
                             <select class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="params[custom_field][specialization]">
-                                <option value="1">1</option>
-                                <option value="1">1</option>
+                                {% for spec in app.specializations %}
+                                {% if spec.parent_id == 0 %}
+                                <option  value="{{spec.id}}">{{spec.content.title}}</option>
+                                {% endif %}
+                                {% endfor %}
                             </select>
                         </dd>
                     </div>

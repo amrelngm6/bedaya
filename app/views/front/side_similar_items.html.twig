@@ -1,7 +1,8 @@
-
+                            {% if similar_articles|length > 0 %}
                             <div class="cyan-gradient45 rounded-lg py-2  pl-40 pr-6 purple-color font-semibold text-lg  ">
                                 {{lang.__('RELATED_ARTICLES')}}
                             </div>
+                            {% endif %}
                             {% for similar_item in similar_articles %}
                             <div class="relative border-1 border border-gray-100 gap-3 bg-white rounded-lg my-6 p-2 flex pt-4 ">
                                 <img loading="lazy" src="/stream?image={{similar_item.photo}}" class="rounded-full p-1 border-purple-800 border-1 w-24 h-24 mt-4 " alt="Doctor" width="88" height="88" />

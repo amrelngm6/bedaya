@@ -135,6 +135,9 @@ p {
 .cyan-bg
 {
     background-color: #0399a8;
+}
+a.cyan-bg, 
+button.cyan-bg {
     color: #fafafa;
 }
 .lightcyan-color

@@ -12,7 +12,7 @@
                     <div v-if="auth" class="w-full flex overflow-auto" style="height: 85vh; z-index: 9999;">
                         <div class="w-full">
                             <transition   :duration="550">
-                                <component ref="activeTab" :path="activeTab" :setting="setting" :lang="lang" :conf="conf" :auth="auth" :is="component"></component>
+                                <component ref="activeTab" :key="activeTab" :path="activeTab" :setting="setting" :lang="lang" :conf="conf" :auth="auth" :is="component"></component>
                             </transition>
 
                         </div>

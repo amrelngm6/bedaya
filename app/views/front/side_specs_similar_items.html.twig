@@ -1,7 +1,9 @@
 
+            {% if similar_items|length > 0 %}
             <h4 class="title-gradient rounded-lg py-2 mt-12 my-2 pl-40 pr-6 purple-color font-semibold text-xl " style="width: max-content;">
                 {{lang.__('SIMILAR_ITEMS')}}
             </h4>
+            {% endif %}
             <div class="lg:flex gap-3 gap row">
                 {% for similar_item in similar_items %}
                 <div class="blog-main-item lg:flex block w-full">
