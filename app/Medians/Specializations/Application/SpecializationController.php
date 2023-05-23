@@ -90,42 +90,6 @@ class SpecializationController
 
 
 
-	/**
-	 * Create new item
-	 * 
-	 */ 
-	public function create() 
-	{
-
-		return render('views/admin/specialization/create.html.twig', [
-	        'title' => __('add_new'),
-	        'langs_list' => ['ar','en'],
-	        'categories' => $this->categoryRepo->get('Medians\Specialization\Domain\Specialization'),
-	    ]);
-
-	}
-
-
-
-	public function edit($id ) 
-	{
-		try {
-				
-				// print_r($this->repo->find($id));
-			return render('views/admin/specialization/specialization.html.twig', [
-		        'title' => __('edit_specialization'),
-		        'langs_list' => ['ar','en'],
-		        'item' => $this->repo->find($id),
-		        'categories' => $this->categoryRepo->get('Medians\Specialization\Domain\Specialization'),
-		    ]);
-
-		} catch (\Exception $e) {
-			throw new \Exception($e->getMessage(), 1);
-			
-		}
-	}
-
-
 	public function store() 
 	{
 
@@ -217,6 +181,8 @@ class SpecializationController
 		try {
 			
 			$item = $this->repo->find($contentObject->item_id);
+			$item->addView();
+			
 			return render('views/front/specialization.html.twig', [
 		        'item' => $item,
 		        'similar_articles' => $this->blogRepo->similar($item, 3),

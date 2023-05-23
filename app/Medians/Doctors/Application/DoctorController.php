@@ -183,6 +183,9 @@ class DoctorController
 			
 			$item = $this->repo->find($contentObject->item_id);
 			$specs = $this->specsRepo->similar($item, 2);
+
+			$item->addView();
+
 			return render('views/front/doctor.html.twig', [
 		        'item' => $item,
 		        'offers' => $this->offersRepo->random(1),
@@ -204,6 +207,7 @@ class DoctorController
 	{
 
 		try {
+			$this->repo->getModel()->addView();
 			
 			return render('views/front/doctors.html.twig', [
 		        'items' => $this->repo->get(9),

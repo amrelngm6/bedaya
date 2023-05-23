@@ -142,24 +142,4 @@ class StoryController
 	}
 
 
-	/**
-	 * Front page for items list
-	 * @var Int
-	 */
-	public function list()
-	{
-
-		try {
-				
-			return render('views/front/stories.html.twig', [
-		        'items' => $this->repo->get(20),
-		        'specializations' => $this->specsRepo->get(2),
-		    ]);
-
-		} catch (\Exception $e) {
-			throw new \Exception($e->getMessage(), 1);
-			
-		}
-	} 
-
 }

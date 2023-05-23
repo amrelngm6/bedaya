@@ -219,6 +219,7 @@ class BlogController
 		try {
 			
 			$item = $this->repo->find($contentObject->item_id);
+			$item->addView();
 
 			return render('views/front/article.html.twig', [
 		        'item' => $item,

@@ -180,6 +180,7 @@ class OnlineConsultationController
 				return $this->page($explode[2]);
 
 			$items = $this->repo->get();
+			$this->repo->getModel()->addView();
 
 			echo render('views/front/online_consultations.html.twig', [
 		        'items' => $items,
@@ -200,9 +201,12 @@ class OnlineConsultationController
 	{
 
 		try {
+			
+			$item = $this->repo->find($id);
+			$item->addView();
 
 			echo render('views/front/online_consultation.html.twig', [
-		        'item' => $this->repo->find($id),
+		        'item' => $item,
 		    ]);
 
 		} catch (\Exception $e) {

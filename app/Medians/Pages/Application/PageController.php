@@ -181,6 +181,8 @@ class PageController
 		try {
 			
 			$item = $this->repo->find($contentObject->item_id, $contentObject->prefix);
+		
+			$item->addView();
 			
 			return render('views/front/page.html.twig', [
 				'specializations' => $this->specsRepo->get_root(),
@@ -275,6 +277,7 @@ class PageController
 
 			if (isset($item->item_type))
 			{
+
 		        switch ($item->item_type) 
 		        {
 		        	case \Medians\Specializations\Domain\Specialization::class:

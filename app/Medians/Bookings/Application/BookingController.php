@@ -244,6 +244,8 @@ class BookingController
 		try {
 
 			$item = $this->doctorRepo->find($id);
+			$this->repo->getModel()->addView();
+			$item->addView();
 			
 			return render('views/front/booking.html.twig', [
 		        'doctor' => $item,

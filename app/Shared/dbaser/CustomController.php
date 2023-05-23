@@ -74,12 +74,12 @@ class CustomController extends Model
 	public function addView()
 	{
 
-		$add = View::firstOrCreate(['session'=>$this->sessionGuest(), 'item_type'=>get_class($this), 'item_id'=>$this->id]);
+		$add = View::create(['session'=>$this->sessionGuest(), 'item_type'=>get_class($this), 'item_id'=>$this->id]);
 
-		if (isset($add->times))
-			$add->update(['times' => $add->times+1]);
-		else
-			$add->update(['times' => 1]);
+		// if (isset($add->times))
+		// 	$add->update(['times' => $add->times+1]);
+		// else
+		// 	$add->update(['times' => 1]);
 	}
 }
 

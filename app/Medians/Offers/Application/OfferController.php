@@ -162,6 +162,7 @@ class OfferController
 		try {
 
 			$items = $this->repo->get();
+			$this->repo->getModel()->addView();
 
 			echo render('views/front/offers.html.twig', [
 		        'items' => $items,
@@ -182,9 +183,11 @@ class OfferController
 	{
 
 		try {
+			$item = $this->repo->find($id);
+			$item->addView();
 
 			echo render('views/front/offer.html.twig', [
-		        'item' => $this->repo->find($id),
+		        'item' => $item,
 		    ]);
 
 		} catch (\Exception $e) {
