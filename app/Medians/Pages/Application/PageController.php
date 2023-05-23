@@ -51,8 +51,8 @@ class PageController
                 'title'=> "#",
             ],
             [
-                'key'=> "title",
-                'title'=> __('title'),
+                'key'=> "name",
+                'title'=> __('name'),
                 'sortable'=> true,
             ]
         ];

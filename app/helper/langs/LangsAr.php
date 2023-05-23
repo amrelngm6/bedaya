@@ -523,8 +523,8 @@ class LangsAr
 		,'DEF_VAL' => 'Default value'
 		,'SPECS' => 'Specifications'
 		,'TYPES' => 'Types'
-		,'parent_category' => 'القسم الرئيسية'
-		,'parent_name' => 'القسم الرئيسية'
+		,'parent_category' => 'القسم الرئيسي'
+		,'parent_name' => 'القسم الرئيسي'
 		,'AUTHOR' => 'Author'
 		,'AUTHORS' => 'Authors'
 		,'SOURCE' => 'Source'
@@ -1037,6 +1037,11 @@ class LangsAr
 		,'home' => 'الرئيسية'
 		,'bedaya_specializations' => 'تخصصات المستشفي'
 		,'important links' => 'روابط هامة'
+		,'pages' => 'صفحات الموقع'
+		,'story dates' => 'تواريخ هامة'
+		,'Year' => 'العام'
+		,'options' => 'الخيارات'
+
 		,'COPYRIGHTS' => 'Copyrights are reserved'
 		);
 	

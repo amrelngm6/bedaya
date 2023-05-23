@@ -55,7 +55,7 @@ class SpecializationController
                 [
                     'key'=> "childs_count",
                     'title'=> __('Sub_categories'),
-                    'sortable'=> false,
+                    'sortable'=> true,
                 ]
             ];
 	}

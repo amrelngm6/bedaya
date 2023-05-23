@@ -60,6 +60,7 @@ Macaw::post('/', \Medians\Auth\Application\AuthService::class.'@userLogin');
 
 Macaw::get('/json/dashboard', \Medians\DashboardController::class.'@json'); 
 Macaw::get('/dashboard', \Medians\DashboardController::class.'@index'); 
+Macaw::get('/login', \Medians\DashboardController::class.'@index'); 
 
 
 Macaw::post('/api/create', \Medians\APIController::class.'@create');

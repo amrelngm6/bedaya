@@ -161,13 +161,13 @@ class APP
 	        ),
 
 
-			array('title'=> __('pages'),  'icon'=>'fa-file', 'link'=>'admin/pages', 'component'=>'pages'),
 				array('title'=> __('Specializations'),  'icon'=>'fa-puzzle-piece', 'link'=>'admin/specialization', 'component'=>'specialization'),
 			array('title'=> __('DOCTORS'),  'icon'=>'fa-hospital', 'link'=>'admin/doctors', 'component'=>'doctors'),
 			array('title'=> __('online_consultation'),  'icon'=>'fa-hand-holding-medical', 'link'=>'admin/online_consultation', 'component'=>'online_consultation'),
 			array('title'=> __('Offers'),  'icon'=>'fa-gift', 'link'=>'admin/offers', 'component'=>'offers'),
 			array('title'=> __('success stories'),  'icon'=>'fa-video', 'link'=>'admin/success_stories', 'component'=>'success_stories'),
 			array('title'=> __('story dates'),  'icon'=>'fa-calendar-days', 'link'=>'admin/story_date', 'component'=>'story_date'),
+			array('title'=> __('pages'),  'icon'=>'fa-file', 'link'=>'admin/pages', 'component'=>'pages'),
             array('title'=>__('Users'),  'icon'=>'fa-users', 'link'=>'admin/users', 'component'=>'users'),
 			array('title'=> __('Settings'),  'icon'=>'fa-cogs', 'link'=>'settings'),
 			array('title'=> __('Logout'),  'icon'=>'fa-sign-out', 'link'=>'logout'),

@@ -21,13 +21,18 @@ class Page extends CustomController
 	];
 
 
-	public $appends = ['photo','field'];
+	public $appends = ['photo','field','name'];
 
 
 
 	public function getFieldAttribute() 
 	{
 		return !empty($this->custom_fields) ? array_column($this->custom_fields->toArray(), 'value', 'code') : [];
+	}
+
+	public function getNameAttribute() : ?String
+	{
+		return isset($this->content->title) ? $this->content->title : $this->title;
 	}
 
 	public function getPhotoAttribute() : ?String

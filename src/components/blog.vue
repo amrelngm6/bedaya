@@ -57,6 +57,15 @@
                         <div >
                             <form action="/api/update" method="POST" data-refresh="1" id="add-device-form" class="action py-0 m-auto rounded-lg max-w-xl pb-10">
 
+
+                                <span class="block mb-2" v-text="__('category')"></span>
+                                <select name="params[category_id]" class="form-checkbox p-2 px-3 w-full text-orange-600 border border-1 border-gray-400 rounded-lg" v-if="content.categories" v-model="activeItem.category_id">
+                                    <option  :key="index" v-for="(type, index) in content.categories" :value="type.id" v-text="type.name"></option>
+                                </select>
+
+                                <span class="block mb-2" v-text="__('author_name')"></span>
+                                <input v-if="activeItem.field" name="params[field][author_name]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" v-model="activeItem.field.author_name" >
+
                                 <span class="block my-2" v-text="__('picture')"></span>
                                 <vue-medialibrary-field name="params[picture]" :key="activeItem.id" :api_url="conf.url" v-model="activeItem.picture"></vue-medialibrary-field>
 

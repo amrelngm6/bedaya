@@ -41,7 +41,7 @@ class BuilderRepository
 	{
 
 		$check = Content::where('prefix', $request->get('prefix'))->first();
-		$check->prefix = ($request->get('seoName') == $request->get('prefix')) ? '' : Content::generatePrefix($request->get('seoName'));
+		$check->prefix = ($request->get('seoName') == $request->get('prefix')) ? $request->get('prefix') : Content::generatePrefix($request->get('seoName'));
 		$check->title = $request->get('title');
 		$check->seo_title = $request->get('seo_title');
 		$check->seo_keywords = $request->get('seo_keywords');
