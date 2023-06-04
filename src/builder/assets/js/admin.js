@@ -3934,7 +3934,7 @@ function koLinkSettings() {
                             a = i;
                             break;
                         }
-                        if (r.indexOf("me-" + i) > -1) {
+                        if (r.indexOf("my-" + i) > -1) {
                             a = i;
                             break;
                         }
@@ -3951,9 +3951,9 @@ function koLinkSettings() {
                 l = l.find("i");
                 l = l.attr("class");
                 if (p == 2) {
-                    c = '<i class="' + l + " mr-" + a + " me-" + a + '"></i>' + c;
+                    c = '<i class="' + l + " mr-" + a + " my-" + a + '"></i>' + c;
                 } else {
-                    c += '<i class="' + l + " ml-" + a + " ms-" + a + '"></i>';
+                    c += '<i class="' + l + " ml-" + a + " my-" + a + '"></i>';
                 }
             }
         }

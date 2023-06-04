@@ -652,13 +652,13 @@ body .btn
 }
 
 
-.sidebar-create-form,
-.sidebar-edit-form
+body .sidebar-create-form,
+body .sidebar-edit-form
 {
-
     position: fixed;
     top: 60px;
     right: 0;
+    padding: 0;
     z-index: 9;
     box-shadow: -151px 0 550px rgba(0,0,0,.2);
     FONT-WEIGHT: 600;

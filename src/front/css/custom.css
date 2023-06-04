@@ -54,6 +54,9 @@
     body .home-bg {
 /*        height: 120%;*/
     }
+    body section {
+        padding: 0 !important;
+    }
 }
 
 @media screen and (max-width: 991px) 
