@@ -479,3 +479,11 @@ footer
 table {
     width: 100%;
 }
+.home-doctors-list
+{
+    position: relative;
+}
+.fa.checked
+{
+    color: orange;
+}
