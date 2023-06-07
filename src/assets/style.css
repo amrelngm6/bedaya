@@ -662,7 +662,11 @@ body .sidebar-edit-form
     z-index: 9;
     box-shadow: -151px 0 550px rgba(0,0,0,.2);
     FONT-WEIGHT: 600;
-    max-height: calc(100vh - 60px);
+    height: calc(100vh - 60px);
     overflow: auto;
 }
     
+body .sidebar-edit-form
+{
+  padding: 16px;
+}

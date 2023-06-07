@@ -3,7 +3,7 @@
 
         <div class="relative w-full h-full" v-if="activeItem && activeItem.status == 'active'">
 
-            <div class="mt-10 relative mx-auto w-full bg-white px-6 rounded-lg overflow-y-auto" style="max-width: 600px;">
+            <div class="mt-10 relative mx-auto w-full bg-white px-6 rounded-lg overflow-y-auto" style="max-height: calc(100vh - 100px);">
 
                 <div class="w-full  mt-2 mb-4 pt-2 pb-6" style="max-height: 500px;" >
 

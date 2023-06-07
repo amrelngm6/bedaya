@@ -3,7 +3,7 @@
 
         <div class="relative w-full h-full  pt-2" v-if="activeItem && activeItem.status && (activeItem.status == 'completed' || activeItem.status == 'paid') ">
 
-            <div class="pt-8 mt-12 relative mx-auto w-full bg-white p-6 rounded-lg overflow-y-auto" style="max-width: 600px; " v-if="showPopup" >
+            <div class="pt-8 mt-12 relative mx-auto w-full bg-white p-6 rounded-lg overflow-y-auto" style="max-height: calc(100vh - 100px);" v-if="showPopup" >
 
                 <div class="w-full  mt-2 mb-4 pt-2 pb-6" style="max-height: 500px;" >
 
