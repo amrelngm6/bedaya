@@ -664,6 +664,7 @@ body .sidebar-edit-form
     FONT-WEIGHT: 600;
     height: calc(100vh - 60px);
     overflow: auto;
+    background: #fff;
 }
     
 body .sidebar-edit-form

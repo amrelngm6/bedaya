@@ -35,6 +35,19 @@ function shuffleArray(array)
 
 jQuery(document).ready(function (e) {
 
+
+	jQuery(document).on('click', '.arrow', function(e)
+	{
+		var box = $(".box-inner"), x;
+		if ($(this).hasClass("arrow-r")) {
+			x = ((box.width() / 2)) + box.scrollLeft();
+			box.animate({ scrollLeft: x })
+		} else {
+			x = ((box.width() / 2)) - box.scrollLeft();
+			box.animate({ scrollLeft: -x })
+		}
+	});
+
 	jQuery(document).on('click', '#show-menu', function(e){
 		jQuery('#mobile-menu').addClass('show');
 	});

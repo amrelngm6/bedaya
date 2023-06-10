@@ -37,7 +37,6 @@ import categories from './components/categories.vue'
 import settings from './components/settings.vue'
 import users from './components/users.vue'
 import customers from './components/customers.vue'
-import reports from './components/reports.vue'
 import blog from './components/blog.vue'
 import specialization from './components/specialization.vue'
 import doctors from './components/doctors.vue'
@@ -58,7 +57,6 @@ export default {
         settings,
         users,
         customers,
-        reports,
         blog,
         specialization,
         doctors,

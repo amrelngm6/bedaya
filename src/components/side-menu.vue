@@ -3,16 +3,13 @@
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
                 <li class="nav-item nav-profile">
-                    <a href="#" class="nav-link">
-                        <div class="nav-profile-image">
-                            <img :src="auth.photo" alt="profile">
-                        </div>
+                    <span class="nav-link block py-1 ">
+
                         <div class="nav-profile-text d-flex flex-column">
-                            <span class="font-weight-bold mb-2" v-text="auth.name"></span>
-                            <span class="text-white text-xs" v-text="auth.Role ? auth.Role.name : ''"></span>
+                            <span class="font-weight-bold  py-2 px-3 block" v-text="$parent.__('Dashboard menu')"></span>
                         </div>
                         <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
-                    </a>
+                    </span>
                 </li>
             </ul>
                     
@@ -22,12 +19,13 @@
                         <span class="text-left" >
                             <i class="fa" :class="menu.icon"></i>
                         </span>
-                        <span class=" text-sm font-semibold" v-text="menu.title"></span>
+                        <span class="w-full text-base " v-text="menu.title"></span>
+                        <i v-if="menu.sub && !menu.show_sub" class="text-sm fa fa-caret-down"></i>
                     </a>
                     <ul v-if="menu.sub && menu.show_sub " class="pb-4" >
                         <li v-for="submenu in menu.sub" >
                             <a v-on:click.prevent="openPage(submenu)" class=" text-purple-800 hover:text-white"  :class="submenu.class" :href="url+submenu.link">
-                                <span class="mx-2 text-sm font-semibold" v-text="submenu.title"> </span>
+                                <span class="mx-2 text-base " v-text="submenu.title"> </span>
                             </a>
                         </li>
                     </ul>

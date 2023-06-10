@@ -13,7 +13,7 @@ $app = new \config\APP;
 
 // Macaw::get('', \Medians\HomeController::class.'@index'); 
 Macaw::get('/', \Medians\HomeController::class.'@index'); 
-Macaw::get('/stories', \Medians\Stories\Application\StoryController::class.'@list'); 
+// Macaw::get('/stories', \Medians\Stories\Application\StoryController::class.'@list'); 
 Macaw::get('/doctors', \Medians\Doctors\Application\DoctorController::class.'@list'); 
 Macaw::get('/book/(:all)', \Medians\Bookings\Application\BookingController::class.'@page'); 
 Macaw::post('/submit/(:all)', \Medians\FrontendController::class.'@form_submit'); 

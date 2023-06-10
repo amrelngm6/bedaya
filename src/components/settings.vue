@@ -2,7 +2,7 @@
     <div class="w-full flex overflow-auto" style="height: 85vh; z-index: 9999;">
         <div class=" w-full">
 
-            <main v-if="content && !showLoader" class=" flex-1 overflow-x-hidden overflow-y-auto  w-full">
+            <main v-if="setting && !showLoader" class=" flex-1 overflow-x-hidden overflow-y-auto  w-full">
                 <!-- New releases -->
                 <div class="px-4 mb-6 py-4 rounded-lg shadow-lg bg-white dark:bg-gray-700 flex w-full">
                     <h1 class="font-bold text-lg w-full" v-text="__('settings')"></h1>
@@ -80,7 +80,7 @@
 
 
 
-                            <div class="w-full flex gap-4" v-if="activeTab == 'address'">
+                            <div class="w-full block" v-if="activeTab == 'address'">
                                 <div class="card" >
                                     <div class="card-body pt-0">
                                         <div class="settings-form">
@@ -110,7 +110,7 @@
                             </div>
 
 
-                            <div class="w-full flex gap-4" v-if="activeTab == 'calendar'">
+                            <div class="w-full block" v-if="activeTab == 'calendar'">
                                 <div class="card" >
                                     <div class="card-body pt-0">
                                         <div class="settings-form">
@@ -140,7 +140,7 @@
 
 
 
-                            <div class="w-full flex gap-4" v-if="activeTab == 'invoices'">
+                            <div class="w-full block" v-if="activeTab == 'invoices'">
                                 <div class="card w-full " >
                                     <div class="card-body pt-0">
                                         <div class="settings-form">
@@ -157,14 +157,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="w-full "></div>
                             </div>
 
 
                             <button class="uppercase h-12 mt-3 text-white w-40 mx-auto rounded bg-red-700 hover:bg-red-800">{{__('Save')}}</button>
                         </form>
                     </div>
-                    <div class="col-md-2" >
+                    <div class="col-md-3" >
                         <ul class="bg-white p-4 rounded-lg">
                             <li :class="tab.link == activeTab ? 'font-bold' : ''" class="cursor-pointer py-2 px-1 border-b border-gray-200 py-2" :key="index" v-for="(tab, index) in setting_tabs" @click="switchTab(tab)" v-text="tab.title"></li>
                         </ul>
@@ -176,17 +175,12 @@
     </div>
 </template>
 <script>
-import vue_medialibrary_field from './Field.vue';
-
 export default 
 {
-    components: {
-        vue_medialibrary_field
-    },
     name:'Settings',
     data() {
         return {
-            url: this.conf.url+'settings?load=json',
+            url: this.conf.url+this.path+'?load=json',
             content: {
 
                 title: '',
@@ -229,9 +223,6 @@ export default
             this.showForm = true;
         },
         
-        setValues(data) {
-            this.content = JSON.parse(JSON.stringify(data)); return this
-        },
         __(i)
         {
             return this.$root.$children[0].__(i);

@@ -1,4 +1,5 @@
 {% include 'views/front/includes/header.html.twig' %}
+{% include 'views/front/includes/navbar.html.twig' %}
 
     <div class="w-full py-2 cyan-bg relative mb-10">
         <div class="w-full overflow-hidden h-full cyan-bg absolute top-0 left-0">
@@ -14,8 +15,8 @@
                         <div class="lg:w-8/12 w-full bg-white border-1 border border-gray-100 rounded-lg  p-2 mb-10" >
                             <h1 class="text-xl purple-color font-bold mb-4">{{item.content.title}}</h1>
                             <hr class="pb-2" />
-                            <p class="float-left"><span>{{lang.__('author')}} :</span> <span class="font-bold">{{item.field.author_name}}</span> </p>
-                            <p><span>{{lang.__('released_at')}}:{{item.created_at | date('M, d Y')}}</span> • <span>{{lang.__('views')}}: 441</span></p>
+                            <p class="float-left lg:text-base text-xs"><span>{{lang.__('author')}} :</span> <span class="font-bold">{{item.field.author_name}}</span> </p>
+                            <p class="lg:text-base text-sm flex gap-2"><span>{{lang.__('released_at')}}:{{item.created_at | date('M, d Y')}}</span> • <span class=" hide-mobile">{{lang.__('views')}}: {{item.views_count}}</span></p>
                             <img alt="{{item.content.title}}" width="800" height="532" src="/stream?image={{item.picture}}" class="w-full" />
                             <div id="certificates" class="mt-10 relative mb-6 p-6 lightcyan-bg  rounded-lg overflow-hidden">
                                 <img loading="lazy"  alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
