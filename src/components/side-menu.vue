@@ -1,9 +1,9 @@
 <template>
     <div class="sidebar-inner slimscroll">
-        <div id="sidebar-menu" class="sidebar-menu">
-            <ul>
-                <li class="nav-item nav-profile">
-                    <span class="nav-link block py-1 ">
+        <div id="sidebar-menu" class="sidebar-menu rounded-lg">
+            <ul class="rounded-lg">
+                <li class="nav-item nav-profile bg-gray-800 rounded-lg">
+                    <span class="nav-link block py-1  bg-gray-800">
 
                         <div class="nav-profile-text d-flex flex-column">
                             <span class="font-weight-bold  py-2 px-3 block" v-text="$parent.__('Dashboard menu')"></span>

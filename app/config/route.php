@@ -52,6 +52,7 @@ if(empty($app->auth()->id))
 */
 
 Macaw::get('/login', \Medians\Auth\Application\AuthService::class.'@loginPage');
+Macaw::get('/admin_login', \Medians\Auth\Application\AuthService::class.'@loginPage');
 Macaw::post('/login', \Medians\Auth\Application\AuthService::class.'@userLogin');
 Macaw::post('/', \Medians\Auth\Application\AuthService::class.'@userLogin');
 
