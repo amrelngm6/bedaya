@@ -1,13 +1,14 @@
 <?php
 
 namespace Medians\Specializations\Application;
+use Shared\dbaser\CustomController;
 
 use Medians\Specializations\Infrastructure\SpecializationRepository;
 use Medians\Blog\Infrastructure\BlogRepository;
 use Medians\Categories\Infrastructure\CategoryRepository;
 
 
-class SpecializationController
+class SpecializationController extends CustomController 
 {
 
 	/**

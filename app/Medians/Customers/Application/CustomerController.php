@@ -1,12 +1,13 @@
 <?php
 
 namespace Medians\Customers\Application;
+use Shared\dbaser\CustomController;
 
 use Medians\Customers\Infrastructure as Repo;
 
 
 
-class CustomerController
+class CustomerController extends CustomController 
 {
 
 

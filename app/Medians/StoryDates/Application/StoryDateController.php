@@ -1,11 +1,12 @@
 <?php
 
 namespace Medians\StoryDates\Application;
+use Shared\dbaser\CustomController;
 
 use Medians\StoryDates\Infrastructure\StoryDateRepository;
 
 
-class StoryDateController
+class StoryDateController extends CustomController 
 {
 
 	/**

@@ -1,11 +1,12 @@
 <?php
 
 namespace Medians\Branches\Application;
+use Shared\dbaser\CustomController;
 
 use Medians\Branches\Infrastructure\BranchRepository;
 
 
-class BranchController
+class BranchController extends CustomController 
 {
 
 

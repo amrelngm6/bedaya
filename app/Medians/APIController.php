@@ -11,7 +11,7 @@ use Medians\Devices\Infrastructure\DevicesRepository;
 use Medians\Products\Infrastructure\ProductsRepository;
 
 
-class APIController
+class APIController 
 {
 
 	/**

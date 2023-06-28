@@ -2,8 +2,9 @@
 
 namespace Medians;
 
+use \Shared\dbaser\CustomController;
 
-class FrontendController
+class FrontendController extends CustomController 
 {
 
 	/**

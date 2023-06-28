@@ -2,10 +2,10 @@
 
 namespace Medians\Doctors\Domain;
 
-use Shared\dbaser\CustomController;
+use Shared\dbaser\CustomModel;
 
 
-class Doctor extends CustomController
+class Doctor extends CustomModel
 {
 
 	/*

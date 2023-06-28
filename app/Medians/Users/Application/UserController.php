@@ -1,11 +1,12 @@
 <?php
 
 namespace Medians\Users\Application;
+use Shared\dbaser\CustomController;
 
 use Medians\Users\Infrastructure\UserRepository;
 
 
-class UserController
+class UserController extends CustomController 
 {
 
 

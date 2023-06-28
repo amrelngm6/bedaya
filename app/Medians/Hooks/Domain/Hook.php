@@ -2,9 +2,9 @@
 
 namespace Medians\Hooks\Domain;
 
-use Shared\dbaser\CustomController;
+use Shared\dbaser\CustomModel;
 
-class Hook extends CustomController
+class Hook extends CustomModel
 {
 
 	/*

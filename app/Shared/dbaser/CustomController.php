@@ -2,85 +2,97 @@
 
 namespace Shared\dbaser;
 
-use \Illuminate\Database\Eloquent\Model;
 
-use Medians\Users\Domain\User;
-use Medians\Content\Domain\Content;
-use Medians\Views\Domain\View;
-
-class CustomController extends Model
+/**
+ * Using this class for the common
+ * functions between Controllers
+ * and services inside APP layer
+ * 
+ */   
+class CustomController 
 {
 
-	function __construct()
+	/**
+	* @var Object
+	*/
+	protected $repo;
+
+	public $app ;
+
+	public $client ;
+
+	public $blogRepo;
+	public $doctorRepo;
+	public $specsRepo;
+	public $storiesRepo;
+	public $storyDateRepo;
+	public $pagesRepo;
+	public $offersRepo;
+	public $categoryRepo;
+	public $contentRepo;
+	public $storyRepo;
+
+	/**
+	 * Check if the user can Access specific feature
+	 * by code pf the feature
+	 * 
+	 * Return upgrade message as JSON 	 
+	 * 
+	 * @param $code String => Code of the feature 
+	 * @param $currentCount Int =>  current usage of the feature  
+	 * 
+	 * @return JSON
+	 * 
+	 */ 
+	public function checkFeatureAccess(String $code, $currentCount)
 	{
-		$this->orderBy('id', 'DESC');
-	}
 
-	function can($permission, $app)
-	{
-	    if (isset($app->auth->role_id))
-	    {
+		$this->app = new \config\APP;
 
-	        if ($app->auth->role_id == 1)
-	            return true;
+		$branchFeatures = (object) $this->app->branch->features;
 
-		    if (isset($this->agent_id) && $this->agent_id == $app->auth->id)
-	            return true;
-
-		    if (isset($this->created_by) && $this->created_by == $app->auth->id)
-	            return true;
-
-		    if (get_class($this) == User::class && $this->id == $app->auth->id)
-	            return true;
-
-	    }
-
-
-	    return null;
-	}
-
-	
-	public function user()
-	{
-		return $this->hasOne(User::class, 'id', 'inserted_by');
-	}
-
-	public function content()
-	{
-		return $this->morphOne(Content::class, 'item')->where('lang', __('lang'));
-	}
-
-	public function en()
-	{
-		return $this->morphOne(Content::class, 'item')->where('lang', 'en');
-	}
-
-	public function ar()
-	{
-		return $this->morphOne(Content::class, 'item')->where('lang', 'ar');
-	}
-
-
-	public function sessionGuest()
-	{
-		if (empty($_SESSION['guest']))
-		{
-			$_SESSION['guest'] = sha1(md5(date('ymdhis').rand(9,99)));
+		if (empty($branchFeatures->$code)){
+			echo json_encode(['error'=>__('plan_limit_exceeded_upgrade_now')]); die();
 		}
 
-		return $_SESSION['guest'];
+		if (isset($branchFeatures->$code) && $branchFeatures->$code <= $currentCount && $branchFeatures->$code > -1 ){
+			echo json_encode(['error'=>__('plan_limit_exceeded_upgrade_now')]); die();
+		}
+
 	}
 
-	public function addView()
+
+	/**
+	 * Check if the user can created and assigned 
+	 * to a branch 
+	 * if Not he should be redirected to Get-Started page
+	 * 
+	 * Redirect to /get-started page 	 
+	 * 
+	 * @param $code String => Code of the feature 
+	 * @param $limit Int =>  current usage of the feature  
+	 * 
+	 * @return JSON
+	 * 
+	 */ 
+	public function checkBranch()
 	{
+		$this->app = new \config\APP;
 
-		$add = View::create(['session'=>$this->sessionGuest(), 'item_type'=>get_class($this), 'item_id'=>$this->id]);
+		$checkUser = $this->app->auth();
+		
+		if (isset($checkUser->id) && $checkUser->id === 1)
+			return true;
 
-		// if (isset($add->times))
-		// 	$add->update(['times' => $add->times+1]);
-		// else
-		// 	$add->update(['times' => 1]);
+		if (isset($checkUser->id) && empty($checkUser->active_branch))
+			echo $this->app->redirect('/get-started'); 
+
+		if (empty($this->app->branch->plan))
+			echo $this->app->redirect('/get-started'); 
+
 	}
+
+
 }
 
 

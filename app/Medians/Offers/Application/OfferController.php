@@ -1,10 +1,11 @@
 <?php
 
 namespace Medians\Offers\Application;
+use Shared\dbaser\CustomController;
 
 use Medians\Offers\Infrastructure\OfferRepository;
 
-class OfferController
+class OfferController extends CustomController 
 {
 
 	/**

@@ -1,6 +1,7 @@
 <?php
 
 namespace Medians\Bookings\Application;
+use Shared\dbaser\CustomController;
 
 use Medians\Bookings\Infrastructure\BookingRepository;
 use Medians\Blog\Infrastructure\BlogRepository;
@@ -8,7 +9,7 @@ use Medians\Categories\Infrastructure\CategoryRepository;
 use Medians\Doctors\Infrastructure\DoctorRepository;
 
 
-class BookingController
+class BookingController extends CustomController 
 {
 
 	/**

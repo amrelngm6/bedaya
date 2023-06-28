@@ -2,12 +2,12 @@
 
 namespace Medians\OnlineConsultations\Domain;
 
-use Shared\dbaser\CustomController;
+use Shared\dbaser\CustomModel;
 use \Medians\Doctors\Domain\Doctor;
 use \Medians\CustomFields\Domain\CustomField;
 
 
-class OnlineConsultation extends CustomController
+class OnlineConsultation extends CustomModel
 {
 
 	/*

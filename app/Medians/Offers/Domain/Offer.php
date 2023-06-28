@@ -2,12 +2,12 @@
 
 namespace Medians\Offers\Domain;
 
-use Shared\dbaser\CustomController;
+use Shared\dbaser\CustomModel;
 use \Medians\Specializations\Domain\Specialization;
 use \Medians\CustomFields\Domain\CustomField;
 
 
-class Offer extends CustomController
+class Offer extends CustomModel
 {
 
 	/*

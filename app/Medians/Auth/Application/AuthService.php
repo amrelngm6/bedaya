@@ -1,6 +1,7 @@
 <?php
 
 namespace Medians\Auth\Application;
+use Shared\dbaser\CustomController;
 
 
 use Medians\Branches\Application\BranchController;
@@ -32,6 +33,7 @@ class AuthService
 	*/
 	private $repo;
 
+	protected $app;
 
 
 	function __construct()

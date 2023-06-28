@@ -2,20 +2,11 @@
 
 namespace config;
 
-use Shared\dbaser as MysqliDb;
+use Illuminate\Database\Capsule\Manager as Capsule;
 
 class Configuration 
 {
 
-	/* //////////////////////////////////
-	@Params MYSQL data
-	///////////////////////////////////*/
-	public $host;
-	public $user;  
-	public $pass;
-	public $name;
-
-	
 	/* //////////////////////////////////
 	@Params The Installation URL
 	///////////////////////////////////*/
@@ -35,7 +26,7 @@ class Configuration
 	/* //////////////////////////////////
 	@Params Administration Panel path 
 	///////////////////////////////////*/
-	public  $admin_path = 'adminPanel';
+	public  $admin_path = 'admin';
 
 		
 	/* //////////////////////////////////
@@ -57,7 +48,8 @@ class Configuration
 	/////////////////////////////////////////////////////////
 	public  $plugins = './extensions/layout/';
 
-	
+	protected $capsule;	
+
 	function __construct()
 	{		
 		$http = isset($_SERVER['HTTPS']) ? 'https' : 'http';
@@ -97,8 +89,21 @@ class Configuration
 		return (array) $this;
 	}
 
-	public function checkDB() : MysqliDb
+	/**
+	 * Set the database connection using 
+	 * @var Illuminate\Database\Capsule\Manager 
+	 * library for all models
+	 */ 
+	public function checkDB() 
 	{
+		global $Capsule;
+
+		$this->capsule = $Capsule;
+		// if (isset($_SESSION['db_checked']) && $this->capsule->getConnection())
+		// 	return $this->capsule;
+
+		return $this->capsule;
 	}
-	
+
+
 }

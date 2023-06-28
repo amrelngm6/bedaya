@@ -46,6 +46,8 @@ import online_consultation from './components/online_consultation.vue'
 import story_date from './components/story_date.vue'
 import pages from './components/pages.vue'
 import bookings from './components/bookings.vue'
+import notifications from './components/notifications.vue'
+import notifications_events from './components/notifications_events.vue'
 
 export default {
     name: 'app',
@@ -66,6 +68,8 @@ export default {
         story_date,
         pages,
         bookings,
+        notifications,
+        notifications_events,
         navbar
     },
     data() {

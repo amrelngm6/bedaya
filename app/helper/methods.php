@@ -1,24 +1,7 @@
 <?php
 
-
-function setLang()
-{
-    try {
-        
-        $app = new \config\APP;
-
-        $_SESSION['site_lang'] = isset($_SESSION['site_lang']) 
-            ? $_SESSION['site_lang'] 
-            : (isset($app->auth()->branch->id) && !empty($app->setting('lang')) ? $app->setting('lang') : 'arabic');
-        return $_SESSION['site_lang'];
-
-    } catch (\Exception $e) {
-        throw new Exception($e->getMessage(), 1);    
-    }
-}
-
-
-
+$app = new \config\APP;
+$app->setLang();
 
 /** 
  * Render function
@@ -27,13 +10,13 @@ function setLang()
  */
 function render($template, $data, $responseType = 'html')
 {
-    !class_exists('Langs') ? setLang() : '';
+
 
     try {
         
         $app = new \config\APP;
             
-        $ettings = $app->Settings();
+        $ettings = !empty($app->auth()->active_branch) ? $app->Settings() : [];
         
             
     } catch (\Exception $e) {
@@ -63,7 +46,7 @@ function render($template, $data, $responseType = 'html')
     $data['app']->Settings = $ettings;
     $data['startdate'] = !empty($app->request()->get('start')) ? $app->request()->get('start') : date('Y-m-d');
     $data['enddate'] = !empty($app->request()->get('end')) ? $app->request()->get('end') : date('Y-m-d');
-    $data['lang'] = (new helper\Lang($_SESSION['site_lang']))->load();
+    $data['lang'] = (new helper\Lang($_SESSION['lang']))->load();
     $data['lang_key'] = __('lang');
     
     echo $app->template()->render($path, $data);
@@ -111,7 +94,7 @@ function response($response)
     
     $app = new \config\APP;
 
-	echo isset($app->auth()->id) ? (is_array($response) ? json_encode($response) : $response) : Page403();
+    echo isset($app->auth()->id) ? (is_array($response) ? json_encode($response) : $response) : Page403();
 
 }
 
@@ -123,7 +106,7 @@ function response($response)
 */ 
 function __($langkey = null)
 {
-    $Langs = (new helper\Lang(setLang()))->load();
+    $Langs = (new helper\Lang($_SESSION['site_lang']))->load();
     return !empty($Langs->__($langkey)) ? $Langs->__($langkey) : ucfirst(str_replace('_', ' ', $langkey));
 }
 

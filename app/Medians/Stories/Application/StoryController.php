@@ -1,12 +1,13 @@
 <?php
 
 namespace Medians\Stories\Application;
+use Shared\dbaser\CustomController;
 
 use Medians\Stories\Infrastructure\StoryRepository;
 use Medians\Specializations\Infrastructure\SpecializationRepository;
 
 
-class StoryController
+class StoryController extends CustomController 
 {
 
 	/**

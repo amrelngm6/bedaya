@@ -1,11 +1,12 @@
 <?php
 
 namespace Medians\OnlineConsultations\Application;
+use Shared\dbaser\CustomController;
 
 use Medians\OnlineConsultations\Infrastructure\OnlineConsultationRepository;
 use Medians\Doctors\Infrastructure\DoctorRepository;
 
-class OnlineConsultationController
+class OnlineConsultationController extends CustomController 
 {
 
 	/**

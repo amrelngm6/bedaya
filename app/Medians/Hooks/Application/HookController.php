@@ -1,10 +1,11 @@
 <?php
 
 namespace Medians\Hooks\Application;
+use Shared\dbaser\CustomController;
 
 
 
-class HookController
+class HookController extends CustomController 
 {
 
 	/**

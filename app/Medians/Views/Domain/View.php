@@ -3,9 +3,9 @@
 namespace Medians\Views\Domain;
 
 
-use Shared\dbaser\CustomController;
+use Shared\dbaser\CustomModel;
 
-class View extends CustomController
+class View extends CustomModel
 {
 
 

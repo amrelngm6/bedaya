@@ -259,7 +259,7 @@ class LangsAr
 		,'404_SUBTITLE' => "الصفحة التى تحاول الوصول اليها حاليا تم او نقلها او تم حذفها "
 		,'404_PARAGRAPH' => "من الممكن  ان تكون وصلت هنا عن طريق الخطا "
 		,'U_HAVE' => "You have "
-		,'MSGS' => "All messages"
+		,'messages' => "جميع الرسائل"
 		,'NOTIFICATIONS' => "Notifications"
 		,'ALL_NOTIFICATIONS' => "All Notifications"
 		,'PROFILE' => "الملف الشخصي"
@@ -1041,6 +1041,8 @@ class LangsAr
 		,'story dates' => 'تواريخ هامة'
 		,'Year' => 'العام'
 		,'options' => 'الخيارات'
+		,'most_viewed_pages' => 'أكثر الصفحات قراءة'
+		,'top_5_pages_visits' => 'اكثر 5 صفحات قراءة على  الموقع'
 
 		,'COPYRIGHTS' => 'Copyrights are reserved'
 		);

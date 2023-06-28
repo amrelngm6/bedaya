@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 use Medians\Settings\Infrastructure\SettingsRepository;
 
+use \Medians\Auth\Application\AuthService;
 
 
 class APP 
@@ -17,8 +18,11 @@ class APP
 
 	public $default_lang = 'arabic';
 
-	public $lang_code = 'en';
-	// public $auth;
+	public $lang_code = 'ar';
+
+	public $lang;
+
+	public $auth;
 
 	public $branch;
 
@@ -28,17 +32,22 @@ class APP
 
 	public $Settings;
 
+	public $capsule;
+
 
 
 	function __construct()
 	{
 
-		$this->setLang();
-		$this->currentPage = $this->request()->getPathInfo();
+		$this->setLang(); // Set the active language 
 
-		$this->CONF = (new \config\Configuration())->getCONFArray();
+		$this->currentPage = $this->request()->getPathInfo(); // Filter the request URI to get the current page
 
-		$this->branch =  (object) array('id'=>1);
+		$this->CONF = (new \config\Configuration())->getCONFArray();  // Load configuration as Array
+
+		$this->capsule = (new \config\Configuration())->checkDB(); // Check database connection
+
+		$this->auth(); // Check active secttion
 
 	}
 
@@ -56,19 +65,41 @@ class APP
 		}
 		
 		$_SESSION['lang'] = isset($_SESSION['site_lang']) ? $_SESSION['site_lang'] : $this->lang_code;
+		$this->lang = $_SESSION['lang']; // Check active language
 
 	}
 
+
+	/**
+	 * Load all setting for a branch 
+	 * return as Array
+	 */ 
 	public function specializations()
 	{
 		return  (new \Medians\Specializations\Infrastructure\SpecializationRepository())->get_root();
 	}
-
+	/**
+	 * Load all setting for a branch 
+	 * return as Array
+	 */ 
 	public function Settings()
 	{
 		return  (new \Medians\Settings\Application\SettingsController())->getAll();
 	}
 
+	/**
+	 * Load Sysetem Settings
+	 */ 
+	public function SystemSetting()
+	{
+		return  (new \Medians\Settings\Application\SystemSettingsController())->getAll();
+	}
+
+
+	/**
+	 * Get setting value by code 
+	 * return value
+	 */ 
 	public function setting($code)
 	{
 		return (new SettingsRepository)->getByCode($code);
@@ -76,7 +107,34 @@ class APP
 
 	public function auth()
 	{
-		return (new \Medians\Auth\Application\AuthService( new \Medians\Users\Infrastructure\UserRepository($this), $this ))->checkSession();
+		$check = !empty($this->auth) ? $this->auth : (new AuthService())->checkSession();
+		$this->branch = !empty($this->branch) ? $this->branch : (isset($check->branch) ? $check->branch : $this->checkAPISession()->branch);
+		return $check ? $check : $this->checkAPISession();
+	}
+
+	/**
+	 * Check if the request is through mobile
+	 */
+	public function checkAPISession()
+	{
+		if (!empty($this->request()->headers->get('token')))
+		{
+			$check = (new AuthService())->checkAPISession($this->request()->headers->get('token'));
+			return $check;
+		}
+		return (object) ['branch'=>null];
+	}  
+
+	public function setBranch($branch)
+	{
+		$this->branch = $branch; 
+	}
+
+	public function active_branch()
+	{
+		$this->auth();
+
+		return $this->branch;
 	}
 
 	public static function request()
@@ -87,7 +145,9 @@ class APP
 
 	public static function redirect($url)
 	{
-		return new RedirectResponse($url);
+		echo "<img width='100%' src='/src/assets/img/redirect.gif' /><style>*{margin:0;color:#fff; overflow:hidden}</style>";
+		echo new RedirectResponse($url);
+		exit();
 	}
 
 	public function  run()
@@ -119,7 +179,7 @@ class APP
 	/**
 	 * Template for Twig render 
 	 */
-	public function renderTemplate($code, $data=null)
+	public function renderTemplate($code)
 	{
 		$twig = $this->template()->createTemplate($code);
 

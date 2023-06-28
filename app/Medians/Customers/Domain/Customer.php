@@ -2,9 +2,9 @@
 
 namespace Medians\Customers\Domain;
 
-use Shared\dbaser\CustomController;
+use Shared\dbaser\CustomModel;
 
-class Customer extends CustomController
+class Customer extends CustomModel
 {
 
 	/*

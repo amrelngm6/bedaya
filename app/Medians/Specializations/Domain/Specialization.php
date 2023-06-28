@@ -2,10 +2,10 @@
 
 namespace Medians\Specializations\Domain;
 
-use Shared\dbaser\CustomController;
+use Shared\dbaser\CustomModel;
 
 
-class Specialization extends CustomController
+class Specialization extends CustomModel
 {
 
 	/*

@@ -2,12 +2,12 @@
 
 namespace Medians\Bookings\Domain;
 
-use Shared\dbaser\CustomController;
+use Shared\dbaser\CustomModel;
 
 use Medians\CustomFields\Domain\CustomField;
 
 
-class Booking extends CustomController
+class Booking extends CustomModel
 {
 
 	/*

@@ -1,13 +1,14 @@
 <?php
 
 namespace Medians\Doctors\Application;
+use Shared\dbaser\CustomController;
 
 use Medians\Doctors\Infrastructure\DoctorRepository;
 use Medians\Specializations\Infrastructure\SpecializationRepository;
 use Medians\Offers\Infrastructure\OfferRepository;
 
 
-class DoctorController
+class DoctorController extends CustomController 
 {
 
 	/**

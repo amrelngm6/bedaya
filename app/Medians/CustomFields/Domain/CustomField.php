@@ -2,9 +2,9 @@
 
 namespace Medians\CustomFields\Domain;
 
-use Shared\dbaser\CustomController;
+use Shared\dbaser\CustomModel;
 
-class CustomField extends CustomController
+class CustomField extends CustomModel
 {
 
 	protected $table = 'custom_fields';

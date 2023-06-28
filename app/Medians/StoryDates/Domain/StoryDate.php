@@ -2,10 +2,10 @@
 
 namespace Medians\StoryDates\Domain;
 
-use Shared\dbaser\CustomController;
+use Shared\dbaser\CustomModel;
 use Medians\CustomFields\Domain\CustomField;
 
-class StoryDate extends CustomController
+class StoryDate extends CustomModel
 {
 
 	/*

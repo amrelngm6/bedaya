@@ -1,6 +1,7 @@
 <?php
 
 namespace Medians\Blog\Application;
+use Shared\dbaser\CustomController;
 
 use Medians\Specializations\Infrastructure\SpecializationRepository;
 use Medians\Blog\Infrastructure\BlogRepository;
@@ -9,7 +10,7 @@ use Medians\Offers\Infrastructure\OfferRepository;
 use Medians\Stories\Infrastructure\StoryRepository;
 
 
-class BlogController
+class BlogController extends CustomController 
 {
 
 	/**

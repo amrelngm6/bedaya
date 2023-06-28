@@ -2,9 +2,9 @@
 
 namespace Medians\Content\Domain;
 
-use Shared\dbaser\CustomController;
+use Shared\dbaser\CustomModel;
 
-class Content extends CustomController
+class Content extends CustomModel
 {
 
 	/**

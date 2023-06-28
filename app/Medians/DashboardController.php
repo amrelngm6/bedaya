@@ -1,10 +1,11 @@
 <?php
 
 namespace Medians;
+use \Shared\dbaser\CustomController;
 
 use Medians\Infrastructure as Repo;
 
-class DashboardController
+class DashboardController extends CustomController 
 {
 
 	/**

@@ -1,6 +1,7 @@
 <?php
 
 namespace Medians\Auth\Application;
+use Shared\dbaser\CustomController;
 
 
 use Medians\Branches\Application\BranchController;

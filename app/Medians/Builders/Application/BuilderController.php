@@ -1,12 +1,13 @@
 <?php
 
 namespace Medians\Builders\Application;
+use Shared\dbaser\CustomController;
 
 use Medians\Builders\Infrastructure\BuilderRepository;
 use Medians\Content\Infrastructure\ContentRepository;
 
 
-class BuilderController
+class BuilderController extends CustomController 
 {
 
 	function __construct()

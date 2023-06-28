@@ -1,6 +1,7 @@
 <?php
 
 namespace Medians\Pages\Application;
+use Shared\dbaser\CustomController;
 
 use Medians\Specializations\Infrastructure\SpecializationRepository;
 use Medians\Pages\Infrastructure\PageRepository;
@@ -12,7 +13,7 @@ use Medians\Stories\Infrastructure\StoryRepository;
 use Medians\Content\Infrastructure\ContentRepository;
 
 
-class PageController
+class PageController extends CustomController 
 {
 
 	/**
@@ -270,7 +271,8 @@ class PageController
 		try 
 		{
 			$item = $this->find($prefix);
-			if ($prefix && empty($item->home))
+
+			if ($prefix && empty($item->home) && empty($_SERVER['HTTP_REFERER']))
 			{
 			    $_SESSION['site_lang'] = (isset($item->lang) && $item->lang == 'ar') ? 'arabic' : 'english';
 			}

@@ -9,6 +9,7 @@ use Medians\Content\Domain\Content;
 class SpecializationRepository 
 {
 
+	protected $app ;
 
 	function __construct()
 	{

@@ -2,16 +2,12 @@
 
 namespace Medians;
 
+use \Shared\dbaser\CustomController;
+
 use Medians\Infrastructure as Repo;
 
-class HomeController
+class HomeController extends CustomController 
 {
-
-	/**
-	* @var Object
-	*/
-	protected $repo;
-
 
 
 	function __construct()
@@ -34,7 +30,6 @@ class HomeController
 
 			$item = $this->pagesRepo->homepage();
 			$item->addView();
-		    // $_SESSION['site_lang'] = (isset($item->lang) && $item->lang == 'ar') ? 'arabic' : 'english';
 
 	        return  render('views/front/page.html.twig',[
 	        	'blog'=> $this->blogRepo->get(3),
