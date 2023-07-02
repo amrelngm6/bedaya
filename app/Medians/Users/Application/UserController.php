@@ -13,7 +13,7 @@ class UserController extends CustomController
 	/*
 	/ @var new CustomerRepository
 	*/
-	private $repo;
+	protected $repo;
 
 	public $app;
 

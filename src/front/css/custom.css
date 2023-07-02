@@ -280,10 +280,12 @@ p
 
 .success-stories-grid .play-icon
 {
-    visibility: hidden;
+    transition: transform .7s ease-in-out;
+    /* visibility: hidden; */
 }
 .success-stories-grid .custom-scroll-item:hover .play-icon
 {
+    transform: rotate(360deg);
     visibility: visible;
 }
 
@@ -441,6 +443,7 @@ footer
     color: #f30;
 }
 
+.float-right,
 .owl-nav button.owl-next
 {
     float: right;

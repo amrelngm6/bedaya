@@ -6,6 +6,7 @@ use Shared\dbaser\CustomController;
 use Medians\Specializations\Infrastructure\SpecializationRepository;
 use Medians\Blog\Infrastructure\BlogRepository;
 use Medians\Categories\Infrastructure\CategoryRepository;
+use Medians\Stories\Infrastructure\StoryRepository;
 
 
 class SpecializationController extends CustomController 
@@ -25,6 +26,7 @@ class SpecializationController extends CustomController
 
 		$this->repo = new SpecializationRepository();
 		$this->blogRepo = new BlogRepository();
+		$this->storiesRepo = new StoryRepository();
 		$this->categoryRepo = new CategoryRepository();
 	}
 
@@ -183,9 +185,10 @@ class SpecializationController extends CustomController
 			
 			$item = $this->repo->find($contentObject->item_id);
 			$item->addView();
-			
+
 			return render('views/front/specialization.html.twig', [
 		        'item' => $item,
+		        'stories' => $this->storiesRepo->random(1),
 		        'similar_articles' => $this->blogRepo->similar($item, 3),
 		    ]);
 
