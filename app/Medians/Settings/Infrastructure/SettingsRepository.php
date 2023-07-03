@@ -41,7 +41,8 @@ class SettingsRepository
 	{
 		try {
 			
-			$check = Settings::where('branch_id', $this->app->branch->id)->where('code', $code)->first();
+			// $check = Settings::where('branch_id', $this->app->branch->id)->where('code', $code)->first();
+			$check = Settings::where('code', $code)->first();
 			return isset($check->value) ? $check->value : '';
 		} catch (\Exception $e) {
     		throw new \Exception($e->getMessage(), 1);

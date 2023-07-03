@@ -18,6 +18,7 @@ class FrontendController extends CustomController
 	{
 		$this->app = new \config\APP;
 
+		$this->contentRepo = new \Medians\Content\Infrastructure\ContentRepository;
 		$this->repo = new \Medians\Bookings\Infrastructure\BookingRepository;
 	
 	}
@@ -46,4 +47,29 @@ class FrontendController extends CustomController
 		echo json_encode($response);
 	} 
 
-}
+	public function switchLang($lang)
+	{
+
+		if (empty($_SERVER['HTTP_REFERER'])) {
+			echo (new \config\APP)->redirect('/');
+			return null;
+		}
+
+		$prefix = str_replace($this->app->CONF['url'], '', $_SERVER['HTTP_REFERER']);
+		$object = $this->contentRepo->find($prefix);
+
+		if (empty($object)){
+			echo (new \config\APP)->redirect('/'.$prefix); 
+			return true;
+		}
+
+
+		$item = $this->contentRepo->switch_lang($object);
+
+		echo (new \config\APP)->redirect('/'.$item->prefix); 
+		
+		// $_SESSION['site_lang'] = in_array($lang, ['arabic', 'english']) ? $lang : 'arabic';
+
+		// echo (new \config\APP)->redirect($_SERVER['HTTP_REFERER']);
+	}
+}	

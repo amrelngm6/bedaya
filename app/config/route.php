@@ -26,13 +26,12 @@ Macaw::get('/assets', \Medians\Media\Application\MediaController::class.'@assets
 
 Macaw::get('/invoices/print/(:all)', \Medians\Orders\Application\OrderController::class.'@print');
 Macaw::get('/invoices/qr_code/(:all)', \Medians\Orders\Application\OrderController::class.'@qr_code');
+Macaw::get('/switch-lang/(:all)', \Medians\FrontendController::class.'@switchLang');
 
-Macaw::get('/switch-lang/(:all)', function ($lang)  {
+// Macaw::get('/switch-lang/(:all)', function ($lang)  {
 
-    $_SESSION['site_lang'] = in_array($lang, ['arabic', 'english']) ? $lang : 'arabic';
-    echo (new \config\APP)->redirect($_SERVER['HTTP_REFERER']);
-    return true;
-});
+    
+// });
 
 Macaw::get('/builder', \Medians\Builders\Application\BuilderController::class.'@index'); 
 Macaw::get('/builder/load', \Medians\Builders\Application\BuilderController::class.'@load'); 
