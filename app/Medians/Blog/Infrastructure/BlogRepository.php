@@ -43,7 +43,10 @@ class BlogRepository
 
 	public function get($limit = 100)
 	{
-		return Blog::with('content','user')->with(['category'=>function($q){
+		
+		return Blog::with('user')->with(['content'=>function($q){
+			return $q->where('lang', substr($_SESSION['site_lang'], 0, 2));
+		}])->with(['category'=>function($q){
 			return $q->with('content');
 		}])->limit($limit)->orderBy('id', 'DESC')->get();
 	}
