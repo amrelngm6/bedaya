@@ -56,19 +56,24 @@ class FrontendController extends CustomController
 		}
 
 		$prefix = str_replace($this->app->CONF['url'], '', $_SERVER['HTTP_REFERER']);
-		$object = $this->contentRepo->find($prefix);
 
+		if (empty($prefix))
+		{
+			echo (new \config\APP)->redirect('/'); 
+			return true;
+		}
+
+		$object = $this->contentRepo->find(urldecode($prefix));
 		if (empty($object)){
 			echo (new \config\APP)->redirect('/'.$prefix); 
 			return true;
 		}
 
-
 		$item = $this->contentRepo->switch_lang($object);
 
 		echo (new \config\APP)->redirect('/'.$item->prefix); 
 		
-		// $_SESSION['site_lang'] = in_array($lang, ['arabic', 'english']) ? $lang : 'arabic';
+		$_SESSION['site_lang'] = in_array($lang, ['arabic', 'english']) ? $lang : 'arabic';
 
 		// echo (new \config\APP)->redirect($_SERVER['HTTP_REFERER']);
 	}
