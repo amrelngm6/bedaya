@@ -1,11 +1,4 @@
 
-    <div class="relative py-10 w-full overflow-hidden bg-gray-100">
-        <img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/circles-bg.webp" class="absolute left-0 top-0 w-full" style="opacity: 0.1;" />
-        <div class="container grid mx-auto relative z-10">
-            <h3 class="title-gradient rounded-lg py-2 pl-40 pr-6 purple-color font-semibold text-xl " style="width: max-content;">
-                {{lang.__('CATS_LIST')}}
-            </h3>
-        </div>
         <span :set="childs = []"></span>
         <div class="container mx-auto relative lg:block z-10">
             <div class="lg:grid lg:grid-cols-5 custom-scroll lg:overflow-hidden overflow-auto lg:h-64 lg:h-auto md:h-full sm:h-full  flex lg:w-full gap-6 lg:px-10 px-2 py-2 content-center mt-4" style="align-content:baseline" id="switch-cat">
@@ -29,4 +22,3 @@
                 </div>
             </div>
         </div>
-    </div>
