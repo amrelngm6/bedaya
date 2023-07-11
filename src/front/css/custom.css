@@ -501,7 +501,7 @@ table {
 {
     .main-header-slider
     {
-        min-height: 55vh;
+        min-height: 450px;
     }
     .hide-mobile
     {
