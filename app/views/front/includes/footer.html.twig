@@ -101,47 +101,12 @@
     <!-- <script src="/assets?asset=/src/front/owl/owl.carousel.min.js"></script> -->
     <!-- <script src="/assets?asset=/src/front/js/sweetalert2@11.js"></script> -->
     <script src="/assets?asset=/src/front/js/all.js"></script>
-    <script type="text/javascript">
-    jQuery(document).ready(function (e) {
-        jQuery(document).on('click', '#modal-bg', function(e) {
-            jQuery('#modal-wrapper').addClass('hidden')
-            jQuery('#modal-content').html(' ')
-        })
-        jQuery(document).on('click', '.show-modal-iframe', function(e) {
-            jQuery('#modal-wrapper').removeClass('hidden')
-            var link = "https://www.youtube.com/embed/"+jQuery(this).data('youtube-link');
-            var iframe = document.createElement('iframe');
-            iframe.frameBorder=0;
-            iframe.width="100%";
-            iframe.height="100%";
-            iframe.id="v-"+jQuery(this).data('youtube-link');
-            iframe.setAttribute("src", link);
-            document.getElementById("modal-content").appendChild(iframe);
-        })
-        // body...
-        $('.owl-carousel').owlCarousel({
-            loop:true,
-            margin:10,
-            responsiveClass:true,
-            responsive:{
-                0:{
-                    items:1,
-                    nav:true
-                },
-                600:{
-                    items:3,
-                    nav:false
-                },
-                1000:{
-                    items:4,
-                    nav:true,
-                    loop:true
-                }
-            }
-        })
-    })
+    <script src="/assets?asset=/src/front/js/custom.js"></script>
 
+    <script>
+    
     </script>
+
 </body>
 
 </html>

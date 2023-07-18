@@ -14,8 +14,29 @@ function shuffleArray(array)
 
 jQuery(document).ready(function (e) {
 
+	jQuery(document).on('click', '.navbar-item', function(){
+		jQuery('.navbar-item').removeClass('active')
+		jQuery(this).addClass('active')
+	})
+
+	jQuery(document).on('click', '.arrow', function(e)
+	{
+		var box = $(".box-inner"), x;
+		if ($(this).hasClass("arrow-r")) {
+			x = ((box.width() / 2)) + box.scrollLeft();
+			box.animate({ scrollLeft: x })
+		} else {
+			x = ((box.width() / 2)) - box.scrollLeft();
+			box.animate({ scrollLeft: -x })
+		}
+	});
+
 	jQuery(document).on('click', '#show-menu', function(e){
 		jQuery('#mobile-menu').addClass('show');
+		
+		window.scrollY > 490
+		? jQuery('.fixed-on-scroll').addClass('fixed').removeClass('absolute')
+		: jQuery('.fixed-on-scroll').addClass('absolute').removeClass('fixed')
 	});
 	jQuery(document).on('click', '#close-menu', function(e){
 		jQuery('#mobile-menu').removeClass('show');
@@ -91,6 +112,63 @@ jQuery(document).ready(function (e) {
 		xhr.send(new URLSearchParams(formData).toString());
 	})
 
+
+
+	
+	jQuery(document).on('click', '#modal-bg', function(e) {
+		jQuery('#modal-wrapper').addClass('hidden')
+		jQuery('#modal-content').html(' ')
+	})
+	jQuery(document).on('click', '.show-modal-iframe', function(e) {
+		jQuery('#modal-wrapper').removeClass('hidden')
+		var link = "https://www.youtube.com/embed/"+jQuery(this).data('youtube-link');
+		var iframe = document.createElement('iframe');
+		iframe.frameBorder=0;
+		iframe.width="100%";
+		iframe.height="100%";
+		iframe.id="v-"+jQuery(this).data('youtube-link');
+		iframe.setAttribute("src", link);
+		document.getElementById("modal-content").appendChild(iframe);
+	})
+	// body...
+	$('.owl-carousel').owlCarousel({
+		loop:true,
+		margin:10,
+		responsiveClass:true,
+		responsive:{
+			0:{
+				items:1,
+				nav:true
+			},
+			600:{
+				items:3,
+				nav:false
+			},
+			1000:{
+				items:4,
+				nav:true,
+				loop:true
+			}
+		}
+	});
+
+	jQuery.get( "/src/assets/countries.json", function( data ) {
+		
+		var newdata = '';
+
+		/* Remove all options from the select list */
+		$('#countrieslist').empty();
+		
+		for (let i = 0; i < data.length; i++) {
+			newdata += '<option value="'+data[i].code+'" style="background-image:url(https://countryflagicons.com/SHINY/24/'+data[i].code+'.png)"></option>' ;
+		}
+
+		$('#countrieslist').html(newdata);
+	});
+
+	jQuery('body').on('scroll', function(){
+		alert(1)
+	});
 
 
 });

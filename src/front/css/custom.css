@@ -510,3 +510,35 @@ table {
     body .show-mobile { display:block; }
 }
 
+.navbar-mobile .navbar-item {
+    color: #444
+}
+
+.navbar-mobile .navbar-item p {
+    display: none;
+    margin-bottom: 0;
+}
+.navbar-mobile .navbar-item.active, 
+.navbar-mobile .navbar-item:hover 
+{
+    padding-top: 5px;    
+}
+.navbar-mobile .navbar-item.active svg, .navbar-mobile .navbar-item:hover svg
+{
+    fill:#0399a8;
+    animation: col 1s linear; 
+} 
+.navbar-mobile .navbar-item.active p, .navbar-mobile .navbar-item:hover p 
+{
+    animation: col 1s linear; 
+    display: block;
+    color: #0399a8;
+}
+
+.active .color-animate {fill:#0399a8; animation: col 1s linear;}
+@keyframes col {
+    0%,21% {fill:#444}
+    32% {fill:#53c9e7}
+    75% {fill: #0399a8}
+    100% {fill:#0399a8}
+}

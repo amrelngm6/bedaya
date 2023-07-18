@@ -1,5 +1,4 @@
 {% include 'views/front/includes/header.html.twig' %}
-{% include 'views/front/includes/navbar.html.twig' %}
 
 {% if item.home == 0 %}
 <div class="w-full cyan-bg pb-20 pt-2 relative ">
@@ -14,5 +13,6 @@
         {{app.renderTemplate(item.content.content, item).render( {'item':item, 'app':app, 'lang':lang, 'specializations':specializations, 'story_dates':story_dates, 'stories':stories, 'all_stories':all_stories, 'doctors': doctors, 'blog': blog} )|raw}}
     </div>
 </div>
+{% include 'views/front/includes/navbar.html.twig' %}
 
 {% include 'views/front/includes/footer.html.twig' %}

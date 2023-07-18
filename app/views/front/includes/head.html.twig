@@ -44,6 +44,17 @@
     <style>.text-default{text-align: {{lang.__('lang') == 'ar' ? 'right' : 'left'}} }</style>
     <!-- UA-89806532-4 -->
     <meta name="google-site-verification" content="-X2XHH_xRXPphZ-NG1_0ldtVIn2TQq5wHG8VRu9yZmY" />
-    
+    <script>
+        
+        function scrollBody()
+        {
+            if (window.innerWidth < 900 )
+            {
+                window.scrollY > 100
+                ? jQuery('.fixed-on-scroll').addClass('fixed')
+                : jQuery('.fixed-on-scroll').removeClass('fixed')
+            }
+        }
+    </script>
 </head>
-<body class="p-0 m-0 {{lang.__('dir')}}">
+<body class="p-0 m-0 {{lang.__('dir')}}" onScroll="scrollBody()">
