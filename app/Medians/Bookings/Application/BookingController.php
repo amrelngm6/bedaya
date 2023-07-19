@@ -246,7 +246,8 @@ class BookingController extends CustomController
 
 			$item = $this->doctorRepo->find($id);
 			$this->repo->getModel()->addView();
-			$item->addView();
+			if (!empty($item))
+				$item->addView();
 			
 			return render('views/front/booking.html.twig', [
 		        'doctor' => $item,
