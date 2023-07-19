@@ -1,7 +1,7 @@
 
                             {% if stories %}
                             <div class="cyan-gradient45 rounded-lg py-2 mt-10 pl-40 pr-6 purple-color font-semibold text-lg  " >
-                                <a href="/قصص-نجاح-حقن-مجهرى">{{lang.__('success_stories')}} <span class="mx-4 text-sm">{{lang.__('readmore')}}  </span></a>
+                                <a href="{{lang.__('lang') == 'ar' ?  '/قصص-نجاح-حقن-مجهرى' : '/icsi-success-stories'}}">{{lang.__('success_stories')}} <span class="mx-4 text-sm">{{lang.__('readmore')}}  </span></a>
                             </div>
                             {% endif %}
                             {% for item in stories %}
