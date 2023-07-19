@@ -19,6 +19,7 @@ class BuilderRepository
 		$save = [];
 
 		foreach (Builder::groupBy('category')->with(['childs'=>function($e){
+			return $e;
 			// $e->whereIn('category', ['content', 'columns'])->whereIn('id', [92])->select('id', 'content', 'category');
 		}])->get() as $key => $value) 
 		{
