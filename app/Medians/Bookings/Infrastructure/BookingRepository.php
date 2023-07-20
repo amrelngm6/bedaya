@@ -91,7 +91,7 @@ class BookingRepository
     	$Object = Booking::create($dataArray);
     	$Object->update($dataArray);
 
-    	$this->storeCustomFields($data['field'] ,$Object->id);
+    	$this->storeCustomFields($data['custom_field'] ,$Object->id);
 
     	return $Object;
     }
