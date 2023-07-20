@@ -187,7 +187,7 @@ class SpecializationController extends CustomController
 			$item->addView();
 
 			return render('views/front/specialization.html.twig', [
-		        'item' => $item,
+		        'item' => $this->repo->filterShortCode($item),
 		        'stories' => $this->storiesRepo->random(1),
 		        'similar_articles' => $this->blogRepo->similar($item, 3),
 		    ]);

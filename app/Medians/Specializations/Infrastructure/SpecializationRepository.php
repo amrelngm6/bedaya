@@ -3,6 +3,7 @@
 namespace Medians\Specializations\Infrastructure;
 
 use Medians\Specializations\Domain\Specialization;
+use Medians\Blog\Infrastructure\BlogRepository;
 use Medians\Content\Domain\Content;
 
 
@@ -165,6 +166,17 @@ class SpecializationRepository
 	}
 
 
+	
+	/**
+	 * Filter short codes for Hooks
+	 */
+	public function filterShortCode ($item)
+	{
+		$blogRepo = new BlogRepository;
+		return $blogRepo->filterShortCode($item);
+	}
+	
+ 
 
  
 }
