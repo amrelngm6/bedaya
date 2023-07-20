@@ -160,7 +160,7 @@ jQuery(document).ready(function (e) {
 		$('#countrieslist').empty();
 		
 		for (let i = 0; i < data.length; i++) {
-			newdata += '<option value="'+data[i].code+'" style="background-image:url(https://countryflagicons.com/SHINY/24/'+data[i].code+'.png)"></option>' ;
+			newdata += '<option value="'+data[i].code+'" >'+data[i].dial_code+'</option>' ;
 		}
 
 		$('#countrieslist').html(newdata);
