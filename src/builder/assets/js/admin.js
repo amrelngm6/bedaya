@@ -4487,19 +4487,19 @@ function blockZeroPadding() {
     koBlockSettings(1);
 }
 function koSliderInit(e, a, t) {
-    if ($("#" + e + "_slider .ui-slider-handle").length > 0) $("#" + e + "_slider").slider("destroy");
-    // $("#" + e + "_slider").slider({
-    //     min: 0,
-    //     max: 300,
-    //     value: a,
-    //     step: 10,
-    //     slide: function (a, i) {
-    //         $("#" + e).text(i.value + "px");
-    //         $("#" + keditBlockId).css(t, i.value);
-    //         if ($("#" + keditBlockId).hasClass("p-0")) $("#" + keditBlockId).removeClass("p-0");
-    //     },
-    // });
-    // $("#" + e).text($("#" + e + "_slider").slider("value") + "px");
+    // if ($("#" + e + "_slider .ui-slider-handle").length > 0) $("#" + e + "_slider").slider("destroy");
+    $("#" + e + "_slider").slider({
+        min: 0,
+        max: 300,
+        value: a,
+        step: 10,
+        slide: function (a, i) {
+            $("#" + e).text(i.value + "px");
+            $("#" + keditBlockId).css(t, i.value);
+            if ($("#" + keditBlockId).hasClass("p-0")) $("#" + keditBlockId).removeClass("p-0");
+        },
+    });
+    $("#" + e).text($("#" + e + "_slider").slider("value") + "px");
 }
 jQuery.fn.outerHTML = function () {
     return jQuery("<div />").append(this.eq(0).clone()).html();
