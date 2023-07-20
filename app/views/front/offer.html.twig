@@ -46,7 +46,7 @@
             <div class="flex w-full px-4 py-5 sm:px-6 gap gap-3">
                 <div class="w-full py-4">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">
-                        {{lang.__('book_with')}} : {{item.content.title}}
+                        {{lang.__('book_now')}} : {{item.content.title}}
                     </h3>
                     <p class="mt-1 max-w-2xl text-sm text-gray-500">
                         {{lang.__('contact info')}}
@@ -62,7 +62,7 @@
                         </dt>
                         <dd class="w-full mt-1 text-sm text-gray-900 sm:mt-0 ">
                             <p>{{lang.__('Mobile')}}</p>
-                            <div class="flex ">
+                            <div class="flex ltr">
                                 <select class="bg-gray-200 text-gray-700 border border-gray-200 rounded  " name="params[custom_field][mobile_key]" id="countrieslist"></select>
                                 <input required="" maxlength="11" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="customer-mobile" type="tel" placeholder="{{lang.__('mobile')}}" name="params[custom_field][mobile]">
                             </div>
