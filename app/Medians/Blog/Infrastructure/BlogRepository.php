@@ -50,9 +50,24 @@ class BlogRepository
 		}])->limit($limit)->orderBy('id', 'DESC')->get();
 	}
 
+	
+	public function getFront($limit = 100, $lang = null)
+	{
+		return Blog::with('user','content')->whereHas('content', function($q){
+			return $q->where('content', '!=', '');
+		})
+		->with(['category'=>function($q){
+			return $q->with('content');
+		}])->limit($limit)->orderBy('id', 'DESC')->get();
+	}
+
+
 	public function getByCategory($id, $limit = 100)
 	{
-		return Blog::with('content','user')->where('category_id', $id)->limit($limit)->orderBy('id', 'DESC')->get();
+		return Blog::with('content','user')->whereHas('content', function($q){
+			return $q->where('content', '!=', '');
+		})
+		->where('category_id', $id)->limit($limit)->orderBy('id', 'DESC')->get();
 	}
 
 	public function getFeatured($limit = 1)

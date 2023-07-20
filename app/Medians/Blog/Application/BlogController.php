@@ -251,7 +251,7 @@ class BlogController extends CustomController
 		        'first_item' => $this->repo->getFeatured(1),
 		        'search_items' => $request->get('search') ?  $this->repo->search($request, 10) : [],
 		        'search_text' => $request->get('search'),
-		        'items' => $this->repo->get(4),
+		        'items' => $this->repo->getFront(4),
 		        'cat_her' => $this->repo->getByCategory(6, 4),
 		        'cat_him' => $this->repo->getByCategory(7, 4),
 		        'offers' => $this->offersRepo->random(1),
