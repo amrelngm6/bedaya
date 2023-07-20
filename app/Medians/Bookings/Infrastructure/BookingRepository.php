@@ -77,18 +77,6 @@ class BookingRepository
 	public function store($data) 
 	{
 
-		$swissNumberStr = "0109686928";
-		$phoneUtil = \libphonenumber\PhoneNumberUtil::getInstance();
-		try {
-			$swissNumberProto = $phoneUtil->parse($data['custom_field']['mobile']);
-			echo $phoneUtil->format($swissNumberProto, \libphonenumber\PhoneNumberFormat::E164);
-			print_r($swissNumberProto);
-		} catch (\libphonenumber\NumberParseException $e) {
-			print_r($e);
-		}
-
-		return null;
-
 		$Model = new Booking();
 		
 		foreach ($data as $key => $value) 
