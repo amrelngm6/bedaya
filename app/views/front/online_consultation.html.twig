@@ -36,14 +36,17 @@
             </div>
             <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
                 <dl class="sm:divide-y sm:divide-gray-200">
-                    <div class="sm:flex sm:items-center sm:justify-between sm:py-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">
+                    <div class="gap-6 sm:flex sm:items-center sm:justify-between sm:py-4 sm:px-6">
+                        <dd class="w-full mt-1 text-sm text-gray-900 sm:mt-0 ">
                             <p>{{lang.__('Name')}}</p>
-                            <input required class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-first-name" type="text" placeholder="{{lang.__('ENTER_FULLNAME')}}" name="params[custom_field][name]">
+                            <input required class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-first-name" type="text" placeholder="{{lang.__('ENTER_FULLNAME')}}" name="params[custom_field][name]">
                         </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 ">
+                        <dd class="w-full mt-1 text-sm text-gray-900 sm:mt-0 ">
                             <p>{{lang.__('Mobile')}}</p>
-                            <input required maxlength="11" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-mobile" type="text" placeholder="{{lang.__('mobile')}}" name="params[custom_field][mobile]">
+                            <div class="flex ">
+                                <select class="bg-gray-200 text-gray-700 border border-gray-200 rounded  " name="params[custom_field][mobile_key]" id="countrieslist"></select>
+                                <input required="" maxlength="11" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="customer-mobile" type="tel" placeholder="رقم الموبايل" name="params[custom_field][mobile]">
+                            </div>
                         </dd>
                     </div>
                     <div class="sm:flex sm:items-center sm:justify-between sm:py-4 sm:px-6">
