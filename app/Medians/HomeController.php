@@ -32,7 +32,7 @@ class HomeController extends CustomController
 			$item->addView();
 
 	        return  render('views/front/page.html.twig',[
-	        	'blog'=> $this->blogRepo->get(3),
+	        	'blog'=> $this->blogRepo->getFront(3),
 	        	'doctors'=> $this->doctorRepo->get(3),
 	        	'specializations'=> $this->specsRepo->get_root(),
 	        	'stories'=> $this->storiesRepo->get(3),
