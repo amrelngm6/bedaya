@@ -240,8 +240,9 @@ class BlogRepository
 			}
 		}
 
-		$item->content->content = $postContent;
-		
+		$item->content->content = str_replace("h=&amp;", '', $postContent);
+		// $item->content->content = $postContent;
+
 		return $item;
 	}
 	
