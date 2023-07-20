@@ -3,6 +3,7 @@
 namespace Medians\Blog\Infrastructure;
 
 use Medians\Blog\Domain\Blog;
+use Medians\Hooks\Domain\Hook;
 use Medians\Blog\Domain\Content;
 use Medians\CustomFields\Domain\CustomField;
 
@@ -214,5 +215,48 @@ class BlogRepository
 	}
 
 
+
+	/**
+	 * Filter short codes for Hooks
+	 */
+	public function filterShortCode ($item)
+	{
+		$postContent = $item->content->content;
+
+		$hooks = $this->_plugins_shortcode_filter($postContent);
+		
+		if (!empty($hooks[2][0])) {
+			
+			foreach ($hooks[2] as $key => $value) 
+			{
+				$codeToReplace = $hooks[0][$key];
+				$id = $hooks[2][$key];
+
+				$hook = Hook::find($id);
+				$hookContent = unserialize($hook->content)['content'];
+
+				$postContent = str_replace($codeToReplace, $hookContent, $postContent);
+				
+			}
+		}
+
+		$item->content->content = $postContent;
+		
+		return $item;
+	}
+	
  
+	public static function _plugins_shortcode_filter($val) {
+		
+		/** 
+		 * Plugin shortcode 
+		 * Usage:  [--@plugin= Plugin Name --@id= Plugin ID --]
+		 * 
+		*/
+		
+		preg_match_all("|\[--@plugin=(.*)\--@id=(.*)\--](.*)</[^>]+>|U", $val, $matches, PREG_PATTERN_ORDER);	
+		
+		return $matches;
+		
+	}
 }

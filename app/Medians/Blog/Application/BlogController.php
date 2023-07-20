@@ -225,7 +225,7 @@ class BlogController extends CustomController
 			$item->addView();
 
 			return render('views/front/article.html.twig', [
-		        'item' => $item,
+		        'item' => $this->repo->filterShortCode($item),
 		        'similar_items' => $this->specsRepo->similar($item, 3),
 		        'similar_articles' => $this->repo->similar($item, 3),
 		        'offers' => $this->offersRepo->random(1),

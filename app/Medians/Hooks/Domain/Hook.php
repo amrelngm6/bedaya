@@ -13,7 +13,7 @@ class Hook extends CustomModel
 	protected $table = 'hooks';
 
 	public $fillable = [
-		`title`, `position`, `plugin`, `plugin_class`, `content`, `pages`, `order`, `langs`, `status`, 
+		'title', 'position', 'plugin', 'plugin_class', 'content', 'pages', 'order', 'langs', 'status', 
 	];
 
 
@@ -30,6 +30,8 @@ class Hook extends CustomModel
 	{
 		return $this->fillable;
 	}
+
+	
 
 
 }
