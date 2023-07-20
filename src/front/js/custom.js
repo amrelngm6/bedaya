@@ -162,7 +162,7 @@ jQuery(document).ready(function (e) {
 		let selected;
 		for (let i = 0; i < data.length; i++) {
 			selected = data[i].code == 'EG' ? 'selected' : '';
-			newdata += '<option value="'+data[i].code+'" '+selected+' >'+data[i].dial_code+'</option>' ;
+			newdata += '<option value="'+data[i].dial_code+'" '+selected+' >'+data[i].dial_code +''+ data[i].code  +'</option>' ;
 		}
 
 		$('#countrieslist').html(newdata);
