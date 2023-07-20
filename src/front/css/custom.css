@@ -514,7 +514,7 @@ table {
     color: #444
 }
 
-.navbar-mobile .navbar-item p {
+.navbar-mobile .navbar-item span {
     display: none;
     margin-bottom: 0;
 }
@@ -528,7 +528,7 @@ table {
     fill:#0399a8;
     animation: col 1s linear; 
 } 
-.navbar-mobile .navbar-item.active p, .navbar-mobile .navbar-item:hover p 
+.navbar-mobile .navbar-item.active span, .navbar-mobile .navbar-item:hover span 
 {
     animation: col 1s linear; 
     display: block;
