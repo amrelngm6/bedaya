@@ -159,8 +159,10 @@ jQuery(document).ready(function (e) {
 		/* Remove all options from the select list */
 		$('#countrieslist').empty();
 		
+		let selected;
 		for (let i = 0; i < data.length; i++) {
-			newdata += '<option value="'+data[i].code+'" >'+data[i].dial_code+'</option>' ;
+			selected = data[i].code == 'EG' ? 'selected' : '';
+			newdata += '<option value="'+data[i].code+'" '+selected+' >'+data[i].dial_code+'</option>' ;
 		}
 
 		$('#countrieslist').html(newdata);
