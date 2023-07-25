@@ -39,7 +39,7 @@
                                 {% endfor %}
 
                             {% else %}
-                            <img loading="lazy" src="/stream?image={{item.picture}}" alt="{{item.content.title}}"  />
+                            <img  src="/stream?image={{item.picture}}" alt="{{item.content.title}}"  />
 
                             <div class="relative my-10">
                                 {% set params = {'item': item, 'lang': lang} %}
