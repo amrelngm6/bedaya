@@ -73,7 +73,10 @@ class BlogRepository
 
 	public function getFeatured($limit = 1)
 	{
-		return Blog::with('content','user')->orderBy('updated_at', 'DESC')->first();
+		return Blog::with('content','user')
+		->whereHas('content', function($q){
+			return $q->where('content', '!=', '');
+		})->orderBy('updated_at', 'DESC')->first();
 	}
 
 	public function filterSearchTitle($title)
