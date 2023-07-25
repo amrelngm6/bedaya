@@ -560,3 +560,14 @@ table {
 footer ul li a {
     color: #fff;
 }
+
+
+body .wapp-side-icon {
+    display: block!important;
+    position: fixed;
+    bottom: 5%;
+    right: 20px;
+    z-index: 99999999;
+    width: 80px;
+  }
+  

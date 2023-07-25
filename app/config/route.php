@@ -15,11 +15,15 @@ $app = new \config\APP;
 Macaw::get('/', \Medians\HomeController::class.'@index'); 
 // Macaw::get('/stories', \Medians\Stories\Application\StoryController::class.'@list'); 
 Macaw::get('/doctors', \Medians\Doctors\Application\DoctorController::class.'@list'); 
+Macaw::get('/doctors/', \Medians\Doctors\Application\DoctorController::class.'@list'); 
 Macaw::get('/book/(:all)', \Medians\Bookings\Application\BookingController::class.'@page'); 
+Macaw::get('/book/(:all)/', \Medians\Bookings\Application\BookingController::class.'@page'); 
 Macaw::post('/submit/(:all)', \Medians\FrontendController::class.'@form_submit'); 
 Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
+Macaw::get('/blog/', \Medians\Blog\Application\BlogController::class.'@list'); 
 Macaw::get('/offer_booking/(:all)', \Medians\Offers\Application\OfferController::class.'@page'); 
 Macaw::get('/search', \Medians\Pages\Application\PageController::class.'@search'); 
+Macaw::get('/search/', \Medians\Pages\Application\PageController::class.'@search'); 
 Macaw::get('/stream', \Medians\Media\Application\MediaController::class.'@stream'); 
 Macaw::get('/assets', \Medians\Media\Application\MediaController::class.'@assets'); 
 

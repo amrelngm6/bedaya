@@ -42,7 +42,7 @@ class BlogRepository
 		return Blog::with('content')->find($id);
 	}
 
-	public function get($limit = 100, $lang = null)
+	public function get($limit = 500, $lang = null)
 	{
 		
 		return Blog::with('user','content')->with(['category'=>function($q){
@@ -58,7 +58,8 @@ class BlogRepository
 		})
 		->with(['category'=>function($q){
 			return $q->with('content');
-		}])->limit($limit)->orderBy('id', 'DESC')->get();
+		}])->limit($limit)
+		->orderBy('id', 'DESC')->get();
 	}
 
 

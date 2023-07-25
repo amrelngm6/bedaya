@@ -1,6 +1,6 @@
 <template>
     <div class="w-full flex overflow-auto" style="height: 85vh; z-index: 9999;">
-        <div class=" w-full relative">
+        <div class=" w-full relative" @click="showEditSide = false">
             <div v-if="showLoader" class="mx-auto mt-10 absolute top-0 left-0 right-0 bottom-0 m-auto w-40 h-40" >
                 <img :src="conf.url+'uploads/images/loader.gif'"  />
             </div>
@@ -15,12 +15,11 @@
 
                     <div class="col-md-3 mb-6 p-4 rounded-lg shadow-lg bg-white dark:bg-gray-700 sidebar-edit-form" v-if="showEditSide && !showAddSide ">
 
-                        <div class="w-full flex">
-                            <h1 class="w-full m-auto max-w-xl text-base mb-10 " v-text="__('edit')"></h1>
+                        <div class="w-full flex  my-6">
+                            <h1 class="w-full m-auto max-w-xl text-base " v-text="__('edit')"></h1>
                             <span class="cursor-pointer py-1 px-2" @click="showEditSide = false"><close_icon /></span>
                         </div>
                         <div >
-                            
                             <form v-if="activeItem.field" action="/api/update" method="POST" data-refresh="1" id="add-device-form" class="action py-0 m-auto rounded-lg max-w-xl pb-10">
 
                                 <div v-for="field in activeItem.custom_fields">
