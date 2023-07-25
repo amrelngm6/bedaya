@@ -150,6 +150,7 @@ class BlogRepository
 
 		$Object = Blog::find($data['id']);
 		
+		$data['updated_at'] = date('Y-m-d H:i:s');
 		// Return the FBUserInfo object with the new data
     	$Object->update( (array) $data);
 

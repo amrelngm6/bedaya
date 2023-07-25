@@ -21,7 +21,7 @@ class Blog extends CustomModel
 	];
 
 
-	public $appends = ['title','photo','field','category_name','date'];
+	public $appends = ['title','photo','field','category_name','date', 'update_date'];
 
 
 
@@ -48,6 +48,11 @@ class Blog extends CustomModel
 	public function getDateAttribute() : ?String
 	{
 		return date('Y-m-d', strtotime($this->created_at));
+	}
+	
+	public function getUpdateDateAttribute() 
+	{
+		return isset($this->updated_at) ? date('Y-m-d', strtotime($this->updated_at)) : '';
 	}
 
 
