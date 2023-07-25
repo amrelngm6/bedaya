@@ -24,8 +24,23 @@ class Booking extends CustomModel
 
 
 
-	public $appends = ['field', 'title'];
+	public $appends = ['field', 'title', 'date','name', 'mobile' ];
 
+
+	public function getDateAttribute() 
+	{
+		return isset($this->created_at) ? date('Y-m-d', strtotime($this->created_at)) : '';
+	}
+
+	public function getMobileAttribute() 
+	{
+		return isset($this->field['mobile']) ? $this->field['mobile'] : '';
+	}
+
+	public function getNameAttribute() 
+	{
+		return isset($this->field['name']) ? $this->field['name'] : '';
+	}
 
 	public function getFieldAttribute() 
 	{

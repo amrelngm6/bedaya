@@ -49,12 +49,22 @@ class DoctorRepository
 	}
 
 
+	public function filterSearchTitle($title)
+	{
+		$title = str_replace([ 'أ','', 'ي',"ى","ة",''], '', $title);
+		return str_replace(' ', '%', $title);
+	}
 	public function search($request, $limit = 20)
 	{
-		$title = $request->get('search');
-		$arr =  json_decode(json_encode(['id'=>0, 'content'=>['title'=>$title]]));
+		$title = $this->filterSearchTitle($request->get('search'));
+		$return = Doctor::whereHas('content', function($q) use ($title){
+			$q->where('title', 'LIKE', '%'.$title.'%');
+		})
+		->where('status', '!=', '0')
+		->with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')
+		->get();
 
-		return $this->similar( $arr, $limit);
+		return $return;
 	}
 
 	public function random($limit = 100)
@@ -70,7 +80,9 @@ class DoctorRepository
 			$q->where('title', 'LIKE', '%'.$title.'%')->orWhere('content', 'LIKE', '%'.$title.'%');
 		})
 		->where('id', '!=', $item->id)
-		->with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		->where('status', '!=', '0')
+		->with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')
+		->get();
 
 
 		return count($return->toArray()) ? $return : $this->random($limit);

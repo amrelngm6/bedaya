@@ -34,13 +34,25 @@ class SpecializationRepository
 		return Specialization::with('content','user','parent')->withCount('childs')->limit($limit)->orderBy('updated_at', 'DESC')->get();
 	}
 
-	public function search($request, $limit = 20)
+	public function filterSearchTitle($title)
 	{
-		$title = $request->get('search');
-		$arr =  json_decode(json_encode(['id'=>0, 'content'=>['title'=>$title]]));
-
-		return $this->similar( $arr, $limit);
+		$title = str_replace([ 'أ','', 'ي',"ى","ة",'ه'], '', $title);
+		return str_replace(' ', '%', $title);
 	}
+	public function search($request, $limit = 20)
+	{	
+		$title = $this->filterSearchTitle($request->get('search'));
+		echo '%'.$title.'%';
+		$return = Specialization::whereHas('content', function($q) use ($title){
+			$q->where('title', 'LIKE', '%'.$title.'%');
+		})
+		->where('status', '!=', '0')
+		->with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')
+		->get();
+
+		return $return;
+	}
+
 
 	public function similar($item, $limit = 3)
 	{

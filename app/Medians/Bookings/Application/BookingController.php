@@ -46,19 +46,24 @@ class BookingController extends CustomController
                 'type'=> "number",
             ],
             [
-                'key'=> "title",
-                'title'=> __('title'),
+                'key'=> "date",
+                'title'=> __('date'),
+                'sortable'=> false,
+            ],
+            [
+                'key'=> "name",
+                'title'=> __('Name'),
+                'sortable'=> true,
+			],
+            [
+                'key'=> "mobile",
+                'title'=> __('mobile'),
                 'sortable'=> false,
             ],
             [
                 'key'=> "class",
                 'title'=> __('Type'),
                 'sortable'=> false,
-            ],
-            [
-                'key'=> "status",
-                'title'=> __('status'),
-                'sortable'=> true,
             ]
         ];
 	}
