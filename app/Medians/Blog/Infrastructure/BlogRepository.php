@@ -269,9 +269,16 @@ class BlogRepository
 			}
 		}
 
-		$item->content->content = str_replace("h=&amp;", '', $postContent);
-		// $item->content->content = $postContent;
-
+		$output = str_replace("h=&amp;", '', $postContent);
+		preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', $output, $matches);
+		if (isset($matches[1]))
+		{
+			$video = str_replace('https://www.youtube.com/embed/' , '', $matches[1]); 
+			$videoContent = $this->videoContent($video);
+			$output = str_replace($matches[0] , $videoContent, $output); 
+		}
+		
+		$item->content->content = $output;
 		return $item;
 	}
 	
@@ -288,5 +295,16 @@ class BlogRepository
 		
 		return $matches;
 		
+	}
+	
+
+	public function videoContent($video_id)
+	{
+		return '
+		<div class="video-center show-modal-iframe relative" data-youtube-link="'.$video_id.'">
+			<img alt="Bedaya" width="800" height="570" class="mx-auto  lazy" src="/stream?image=/uploads/thumbnails/video.webp">
+			<img loading="lazy" alt="Bedaya" class="cursor-pointer w-16 lg:w-24 bg-white rounded-full p-1 lg:p-3 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0 lazy" src="/stream?image=/uploads/img/play-button_en.webp">
+		</div>
+		';
 	}
 }
