@@ -41,11 +41,14 @@ class DoctorRepository
 		return Doctor::with('content','custom_fields')->find($id);
 	}
 
+	public function getAll()
+	{
+		return Doctor::with('content','user')->orderBy('id', 'ASC')->get();
+	}
+
 	public function get($limit = 100)
 	{
-
-		return Doctor::with('content','user')->limit($limit)->orderBy('id', 'ASC')->get();
-
+		return Doctor::with('content','user')->where('status', 'on')->limit($limit)->orderBy('id', 'ASC')->get();
 	}
 
 

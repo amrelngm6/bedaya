@@ -14,7 +14,6 @@
                 <div class="w-full flex gap gap-6">
                     <data-table class="w-full" ref="doctors" @actionTriggered="handleAction" v-bind="bindings"/>
 
-
                     <div class="col-md-3 sidebar-create-form" v-if="showAddSide">
                         <div class="mb-6 p-4 rounded-lg shadow-lg bg-white dark:bg-gray-700 ">
                             <form action="/api/create" method="POST" data-refresh="1" id="add-device-form" class="action  py-0 m-auto rounded-lg max-w-xl pb-10">
@@ -24,7 +23,6 @@
                                 </div>
                                 <input name="type" type="hidden" value="Doctor.create">
                                 <input name="params[status]" type="hidden" value="on">
-                                
 
                                 <input name="params[content][ar][title]" required="" type="text" class="h-12 my-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Title')+' AR'" >
 
@@ -50,41 +48,13 @@
 
                                 <span class="block my-2" v-text="__('picture')"></span>
                                 <vue-medialibrary-field name="params[picture]" :key="activeItem.id" :api_url="conf.url" v-model="activeItem.picture"></vue-medialibrary-field>
-
                                 
                                 <button class="uppercase h-12 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800" v-text="__('save')"></button>
                             </form>
                         </div>
                     </div>
                     <div class="col-md-3 mb-6 p-4 rounded-lg shadow-lg bg-white dark:bg-gray-700 sidebar-edit-form" v-if="showEditSide && !showAddSide ">
-
-                        <div class="w-full flex">
-                            <h1 class="w-full m-auto max-w-xl text-base mb-10 " v-text="__('edit')"></h1>
-                            <span class="cursor-pointer py-1 px-2" @click="showEditSide = false"><close_icon /></span>
-                        </div>
-                        <div >
-                            <form v-if="activeItem.field" action="/api/update" method="POST" data-refresh="1" id="add-device-form" class="action py-0 m-auto rounded-lg max-w-xl pb-10">
-
-
-                                <div v-if="field.code" v-for="field in activeItem.custom_fields">
-                                    <span class="block my-2" v-text="field.code ? __(field.code) : ''"></span>
-                                    <input :name="'params[field]['+field.code+']'"  type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="field.title" :value="field.code ? activeItem.field[field.code] : ''" >
-                                </div>
-
-                                <span class="block my-2" v-text="__('picture')"></span>
-                                <vue-medialibrary-field name="params[picture]" :key="activeItem.id" :api_url="conf.url" v-model="activeItem.picture"></vue-medialibrary-field>
-
-                                
-                                <input name="type" type="hidden" value="Doctor.update">
-                                <input name="params[id]" type="hidden" v-model="activeItem.id">
-
-
-                                <button class="uppercase h-10 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800">{{__('Update')}}</button>
-                            </form>
-                        
-                            <a @click="$parent.delete(activeItem, 'Doctor.delete')" href="javascript:;" class=" my-2 py-2 uppercase block text-center  pb-1 mt-1 text-white w-full rounded text-gray-700 hover:bg-red-800 hover:text-white">{{__('Delete')}}</a>
-
-                        </div>
+                        <sidebar_edit_form model="Doctor" :conf="conf" :item="activeItem"></sidebar_edit_form>
                     </div>
 
                 </div>
@@ -97,11 +67,14 @@
 
 import dataTableActions from './includes/data-table-actions.vue';
 import dataTableSideActions from './includes/data-table-side-actions.vue';
+import sidebar_edit_form from './includes/sidebar_edit.vue';
 
 export default 
 {
+
     components:{
         dataTableActions,
+        sidebar_edit_form,
         dataTableSideActions
     },
     name:'doctors',
@@ -154,7 +127,15 @@ export default
 
     methods: 
     {
-
+        /**
+         *  Hide sidebar 
+         *
+         */
+        hideSidebar()
+        {
+            this.showEditSide = false;
+            this.showAddSide = false;
+        },
         editFields(data)
         {
             this.activeItem = null;
