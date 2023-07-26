@@ -33,7 +33,7 @@ class HomeController extends CustomController
 
 	        return  render('views/front/page.html.twig',[
 	        	'blog'=> $this->blogRepo->getFront(3),
-	        	'doctors'=> $this->doctorRepo->get(3),
+	        	'doctors'=> $this->doctorRepo->getHome(3),
 	        	'specializations'=> $this->specsRepo->get_root(),
 	        	'stories'=> $this->storiesRepo->get(3),
 	        	'headerPosition'=> 'absolute',

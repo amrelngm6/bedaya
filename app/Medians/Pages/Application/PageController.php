@@ -190,7 +190,7 @@ class PageController extends CustomController
 				'story_dates' => $this->storyDateRepo->get(),
 				'stories' => $this->storyRepo->get(3),
 				'all_stories' => $this->storyRepo->get(),
-				'doctors' => $this->doctorRepo->get(3),
+				'doctors' => $this->doctorRepo->getHome(3),
 				'blog' => $this->blogRepo->getFront(3),
 		        'item' => $item,
 		    ]);
