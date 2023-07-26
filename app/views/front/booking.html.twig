@@ -17,7 +17,7 @@
 
     <form action="/submit/booking" id="booking-form" class="max-w-xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <input type="hidden" name="params[itemid]" value="0">
-        <input type="hidden" name="params[doctor_name]" value="{{doctor.content.title}}">
+        <input type="hidden" name="params[custom_field][doctor_name]" value="{{doctor.content.title}}">
         <input type="hidden" name="params[class]" value="Booking">
         <input type="hidden" name="params[status]" value="new">
         <div class="bg-white overflow-hidden sm:rounded-lg relative ">
@@ -38,27 +38,33 @@
 
             <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
                 <dl class="sm:divide-y sm:divide-gray-200">
-                    <div class="sm:flex sm:items-center sm:justify-between sm:py-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">
+                
+                    <div class="gap-6 sm:flex sm:items-center sm:justify-between sm:py-4 sm:px-6">
+                        <dt class="w-full text-sm font-medium text-gray-500 ">
                             <p>{{lang.__('Name')}}</p>
                             <input required class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-first-name" type="text" placeholder="{{lang.__('ENTER_FULLNAME')}}" name="params[custom_field][name]">
                         </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 ">
+                        
+                        <dt class="w-full text-sm font-medium text-gray-500 pb-4">
                             <p>{{lang.__('Mobile')}}</p>
-                            <input required maxlength="11" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-first-name" type="text" placeholder="{{lang.__('mobile')}}" name="params[custom_field][mobile]">
+                            <div class="flex ltr">
+                                <select class="w-20 bg-gray-200 text-gray-700 border border-gray-200  py-2 pb-3 " name="params[custom_field][mobile_key]" id="countrieslist"></select>
+                                <input required="" maxlength="11" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 " min="8" id="customer-mobile" type="tel" placeholder="{{lang.__('Mobile')}} " name="params[custom_field][mobile]">
+                            </div>
                         </dd>
+
                     </div>
-                    <div class="sm:flex sm:items-center sm:justify-between sm:py-4 sm:px-6">
-                        <dt class="text-sm font-medium text-gray-500">
+                    <div class="gap-6 sm:flex sm:items-center sm:justify-between sm:py-4 sm:px-6">
+                        <dt class="w-full text-sm font-medium text-gray-500">
                             <p>{{lang.__('Email')}}</p>
                             <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-first-name" type="text" placeholder="{{lang.__('Email')}}" name="params[custom_field][email]">
                         </dt>
-                        <dd class="mt-1 text-sm text-gray-900 sm:mt-0 ">
+                        <dd class="w-full mt-1 text-sm text-gray-900 sm:mt-0 ">
                             <p>{{lang.__('Specialization')}}</p>
                             <select class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="params[custom_field][specialization]">
                                 {% for spec in app.specializations %}
                                 {% if spec.parent_id == 0 %}
-                                <option  value="{{spec.id}}">{{spec.content.title}}</option>
+                                <option  value="{{spec.content.title}}">{{spec.content.title}}</option>
                                 {% endif %}
                                 {% endfor %}
                             </select>
