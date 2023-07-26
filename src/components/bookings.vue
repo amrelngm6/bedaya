@@ -1,6 +1,6 @@
 <template>
     <div class="w-full flex overflow-auto" style="height: 85vh; z-index: 9999;">
-        <div class=" w-full relative" @click="showEditSide = false">
+        <div class=" w-full relative" >
             <div v-if="showLoader" class="mx-auto mt-10 absolute top-0 left-0 right-0 bottom-0 m-auto w-40 h-40" >
                 <img :src="conf.url+'uploads/images/loader.gif'"  />
             </div>

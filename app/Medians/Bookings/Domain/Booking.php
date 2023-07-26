@@ -24,7 +24,7 @@ class Booking extends CustomModel
 
 
 
-	public $appends = ['field', 'title', 'date','name', 'mobile' ];
+	public $appends = ['field', 'title', 'date','name', 'mobile', 'full_mobile', 'email' ];
 
 
 	public function getDateAttribute() 
@@ -35,6 +35,18 @@ class Booking extends CustomModel
 	public function getMobileAttribute() 
 	{
 		return isset($this->field['mobile']) ? $this->field['mobile'] : '';
+	}
+
+	public function getEmailAttribute() 
+	{
+		return isset($this->field['email']) ? $this->field['email'] : '';
+	}
+
+	public function getFullMobileAttribute() 
+	{
+		$code = isset($this->field['mobile_key']) ? $this->field['mobile_key'] : '';
+		$num = isset($this->field['mobile']) ? $this->field['mobile'] : '';
+		return $code.$num;
 	}
 
 	public function getNameAttribute() 
