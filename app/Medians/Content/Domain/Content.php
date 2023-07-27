@@ -32,6 +32,7 @@ class Content extends CustomModel
 		'inserted_by'
 	];
 
+	public $appends = ['html_content'];
 
 	/**
 	 * Has timestamp or not 
@@ -47,6 +48,11 @@ class Content extends CustomModel
 
 		return isset($check->id) ? $text.date('Ymd') : $text;
 
+	}
+
+	public function getHtmlContentAttribute()
+	{
+		// return $this->content;
 	}
 
 }
