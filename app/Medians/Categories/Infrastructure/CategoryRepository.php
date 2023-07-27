@@ -81,6 +81,26 @@ class CategoryRepository
     	
     	
 
+    /**
+     * Update Lead
+     */
+    public function update($data)
+    {
+
+		$Object = Category::find($data['id']);
+		
+		$data['updated_at'] = date('Y-m-d H:i:s');
+		// Return the FBUserInfo object with the new data
+    	$Object->update( (array) $data);
+
+    	// Store languages content
+    	$this->storeContent($data['content'] ,$Object->id);
+
+    	return $Object;
+
+    }
+
+
 	/**
 	* Delete item to database
 	*
