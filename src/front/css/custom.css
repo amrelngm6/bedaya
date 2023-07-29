@@ -565,10 +565,10 @@ footer ul li a {
 body .wapp-side-icon {
     display: block!important;
     position: fixed;
-    bottom: 5%;
-    right: 20px;
+    bottom: 12%;
+    right: 10px;
     z-index: 99999999;
-    width: 80px;
+    width: 60px;
   }
   
   .white-color,
