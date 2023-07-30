@@ -86,7 +86,7 @@
 			</style>
     <div id="kToolbar" class="animated slideDown">
         <div class="ktoolbar" style="margin-right:2px;">
-            <span class="kToolbarMore__"><a href="javascript:void(null)" id="kToolbarFormat" onclick="keditor('Format')" data-balloon-pos="down" data-balloon="Header Type">H1</a></span><span class="ktoolset"><a href="javascript:void(null)" id="ktoolbar_bold" onclick="keditor('bold')" data-balloon-pos="down" data-balloon="Bold"><i class="fas fa-bold"></i></a><a href="javascript:void(null)" onclick="keditor('italic')" data-balloon-pos="down" data-balloon="Italic"><i class="fas fa-italic"></i></a><span class="kToolbarMore"><a href="javascript:void(null)" onclick="keditor('underline')"><i class="fas fa-underline"></i></a></span></span><a href="javascript:void(null)" onclick="keditor('createLink','/')"><i class="fas fa-link"></i></a><a href="javascript:void(null)" onmousedown="keditor('saveFocus');koShowFrame('color','*');return false;" data-balloon-pos="down" data-balloon="Text color"><i class="fas fa-paint-brush"></i></a><a class="ktoolbarToggle kToolbarLess" href="javascript:void(null)" onclick="jQuery('.kToolbarMore').show();jQuery('.kToolbarLess').hide();jQuery(focusElement).focus();kToolbarPosition();" data-balloon="More Options" data-balloon-pos="down"><i class="fas fa-chevron-right"></i></a><span class="kToolbarMore"><a href="javascript:void(null)" onclick="keditor('Align')" data-balloon-pos="down" data-balloon="Align"><i class="fas fa-align-left fa-toolbar-align"></i></a><span class="ktoolset"><a href="javascript:void(null)" onclick="koFontModal(1)" data-balloon-pos="down" data-balloon="Font"><i class="fas fa-font"></i></a><a href="javascript:void(null)" onclick="kfontSize('plus')" data-balloon-pos="down" data-balloon="Font size"><i class="fas fa-plus"></i></a><a href="javascript:void(null)" onclick="kfontSize('minus')" data-balloon-pos="down" data-balloon="Font size"><i class="fas fa-minus"></i></a></span><span class="kToolbarContent"><a href="javascript:void(null)" onclick="keditor('insertOrderedList')"><i class="fas fa-list-ol"></i></a><a href="javascript:void(null)" onclick="keditor('insertUnorderedList')"><i class="fas fa-list"></i></a></span><span class="kToolbarHeader_ALL"><a href="javascript:void(null)" onclick="keditor('Remove');" class="ktoolbarRemove"><i class="fas fa-trash"></i></a></span><span class="ktoolset"><a href="javascript:void(null)" onclick="keditor('undo')"><i class="fas fa-undo"></i></a><a href="javascript:void(null)" onclick="keditor('redo')"><i class="fas fa-redo"></i></a></span><a class="ktoolbarToggle" href="javascript:void(null)" onclick="jQuery('.kToolbarMore').hide();jQuery('.kToolbarLess').show();jQuery(focusElement).focus();" data-balloon="Less Options" data-balloon-pos="down"><i class="fas fa-chevron-left"></i></a>
+            <span class="kToolbarMore__"><a href="javascript:void(null)" id="kToolbarFormat" onclick="keditor('Format')" data-balloon-pos="down" data-balloon="Header Type">H1</a></span><span class="ktoolset"><a href="javascript:void(null)" id="ktoolbar_bold" onclick="keditor('bold')" data-balloon-pos="down" data-balloon="Bold"><i class="fas fa-bold"></i></a><a href="javascript:void(null)" onclick="keditor('italic')" data-balloon-pos="down" data-balloon="Italic"><i class="fas fa-italic"></i></a><span class="kToolbarMore"><a href="javascript:void(null)" onclick="keditor('underline')"><i class="fas fa-underline"></i></a></span></span><a href="javascript:void(null)" onclick="keditor('createLink','/')"><i class="fas fa-link"></i></a> <a href="javascript:void(null)" onclick="keditor('createImage','/')"><i class="fas fa-file"></i></a> <a href="javascript:void(null)" onmousedown="keditor('saveFocus');koShowFrame('color','*');return false;" data-balloon-pos="down" data-balloon="Text color"><i class="fas fa-paint-brush"></i></a><a class="ktoolbarToggle kToolbarLess" href="javascript:void(null)" onclick="jQuery('.kToolbarMore').show();jQuery('.kToolbarLess').hide();jQuery(focusElement).focus();kToolbarPosition();" data-balloon="More Options" data-balloon-pos="down"><i class="fas fa-chevron-right"></i></a><span class="kToolbarMore"><a href="javascript:void(null)" onclick="keditor('Align')" data-balloon-pos="down" data-balloon="Align"><i class="fas fa-align-left fa-toolbar-align"></i></a><span class="ktoolset"><a href="javascript:void(null)" onclick="koFontModal(1)" data-balloon-pos="down" data-balloon="Font"><i class="fas fa-font"></i></a><a href="javascript:void(null)" onclick="kfontSize('plus')" data-balloon-pos="down" data-balloon="Font size"><i class="fas fa-plus"></i></a><a href="javascript:void(null)" onclick="kfontSize('minus')" data-balloon-pos="down" data-balloon="Font size"><i class="fas fa-minus"></i></a></span><span class="kToolbarContent"><a href="javascript:void(null)" onclick="keditor('insertOrderedList')"><i class="fas fa-list-ol"></i></a><a href="javascript:void(null)" onclick="keditor('insertUnorderedList')"><i class="fas fa-list"></i></a></span><span class="kToolbarHeader_ALL"><a href="javascript:void(null)" onclick="keditor('Remove');" class="ktoolbarRemove"><i class="fas fa-trash"></i></a></span><span class="ktoolset"><a href="javascript:void(null)" onclick="keditor('undo')"><i class="fas fa-undo"></i></a><a href="javascript:void(null)" onclick="keditor('redo')"><i class="fas fa-redo"></i></a></span><a class="ktoolbarToggle" href="javascript:void(null)" onclick="jQuery('.kToolbarMore').hide();jQuery('.kToolbarLess').show();jQuery(focusElement).focus();" data-balloon="Less Options" data-balloon-pos="down"><i class="fas fa-chevron-left"></i></a>
             </span>
         </div>
         <div class="ktoolbar">
@@ -96,7 +96,9 @@
     <link rel="stylesheet" href="/assets?asset=/src/builder/css/basicModal.min.css" crossorigin="anonymous" />
     <script src="/assets?asset=/src/builder/js/basicModal.min.js" crossorigin="anonymous"></script>
     <script>
-        var modalExitEditor = {
+		
+        
+		var modalExitEditor = {
 
 				body: '<h3 style="padding:0 0 5px 0;margin:0 0 10px;"><a href="javascript:void(null)" onclick="basicModal.close()" style="float:right;text-decoration:none;color:#666;background:#f5f5f5;line-height:50px;width:50px;text-align:center;display:block;position:absolute;top:5px;right:5px;border-radius:5px;">&times;</a>Exit from this editor</h3>Continue to leave the editor, you can come back at anytime later as your browser will still remember you\'re website administrator. <br><br>Use logout button if you don\'t want editor to remember you',
 				buttons: {
@@ -1651,6 +1653,7 @@
             </div>
             <div class="koMenuTabs">
                 <a href="javascript:void(null)" class="active" onclick="koShowFrame('html');return false;"><span><i class="fas fa-code"></i> HTML</span></a>
+                <!-- <a href="javascript:void(null)"  onclick="koShowFrame('editor');return false;"><span><i class="fas fa-code"></i> editor</span></a> -->
             </div>
             <div class="koMenu koMenuButtonFixed" style="overflow:hidden;width:500px;margin-bottom:0;">
                 <div id="koMenu_htmlHolder"></div>
@@ -1680,18 +1683,12 @@
                         <li>
                             <a href="#panel_files" id="filesTab_1" onclick="refreshFManager();showFolder(true);" data-toggle="tab" data-bs-toggle="tab" data-title="My Files" class="active"><i class="fas fa-folder-open fa-fw"></i> My Files</a>
                             <div class="koMenuSeparator my-3"></div>
-                            <a href="#panel_photosAPI" id="filesTab_2" data-toggle="tab" data-bs-toggle="tab" onclick="koPhotosAPI();" data-title="Free Stock Photos"><i class="fas fa-images fa-fw"></i> Free Stock Photos</a>
-                            <a href="#fileManagerStockPremium" id="filesTab_3" data-toggle="tab" data-bs-toggle="tab" onclick="koPhotosAPI2();" data-title="Professional Stock Photos">
-                                <i class="fas fa-camera fa-fw"></i>
-                                Professional Stock Photos
-                            </a>
-                            <div class="koMenuSeparator my-3"></div>
                             <a href="javascript:void(null)" class="button" onclick="jQuery('#bottomUploadButton').trigger('click')" data-title="Upload a file"><i class="fas fa-upload fa-fw"></i> Upload a file</a>
                         </li>
                     </ul>
                 </div>
                 <div class="koMenu tab-content" style="width:570px;max-width:calc(100vw - 50px);overflow-y: scroll;">
-                    <div id="fileManager"></div>
+                    <div id="fileManager" class="gap-6 grid grid-cols-3"></div>
                 </div>
             </div>
             <script>
@@ -7259,13 +7256,29 @@ function showFolder(folder,folderName){
 
 	}
 
+	function appendImages(res)
+	{
+		
+		let data = res.media
+		
+		let a ='';
+		jQuery("#fileManager").html(' ');
+		for (let i = 0; i < data.length; i++) {
+			a = '<img width="150" height="150" class="lib-img" src="'+data[i].data_url+'" />';
+			jQuery("#fileManager").append(a);
+			
+		}
+	}
+	
 	jQuery.ajax({
-		 type: "POST",
-		 url: "/builder",
-		 data: "supermode=files&small=1&smallInLight=1&back="+encodeURIComponent("")+"&folder="+encodeURIComponent(jQuery("#fileManagerUploadToFolder").val()/*folder*/),
+		 type: "GET",
+		 url: "/media-library-api/media",
+		 data: "page=1",
 		 success: function(data){
 
-		 		if(loginFirst(data))return;			 	jQuery("#fileManager").html(data);
+		 		if(loginFirst(data))return;			 	
+				
+				appendImages(JSON.parse(data));
 
 				if(typeof assetManagerFilter === "undefined")assetManagerFilter=null;
 

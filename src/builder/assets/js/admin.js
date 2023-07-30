@@ -6959,6 +6959,30 @@ function keditor(e, a, t) {
     } else if (e == "Class") {
         var s = document.getSelection();
         document.execCommand("insertHTML", !1, '<span class="koColor">' + s + "</span>");
+    } else if (e == "createImage") {
+        var o = "link-" + guidGenerator();
+        if (window.getSelection().toString()) {
+            sel = window.getSelection();
+            selText = window.getSelection().toString();
+            if (sel.rangeCount) {
+                range = sel.getRangeAt(0);
+                range.deleteContents();
+                document.execCommand("insertHTML", !1, '<img class="" id="' + o + '" src="/uploads/images/default.png" />');
+            }
+        } else {
+            document.execCommand("insertHTML", !1, '<img  class="" id="' + o + '" src="/uploads/images/default.png" />');
+        }
+        $(focusElement).focus();
+        $(focusElement).find(".keditInlineEdit.keditLinkEdit").remove();
+        $(focusElement).find("img").editableLinks();
+        $(focusElement).blur();
+        k_EditSave("norefresh");
+        keditableToolbar("hide");
+        $("#" + o)
+            .find("img")
+            .click();
+        $("#" + o).removeAttr("id");
+        
     } else if (e == "createLink") {
         var o = "link-" + guidGenerator();
         if (window.getSelection().toString()) {
@@ -6982,6 +7006,10 @@ function keditor(e, a, t) {
             .find("a")
             .click();
         $("#" + o).removeAttr("id");
+
+        setTimeout(function(){
+            window.reload()
+        }, 1000)
     } else if (e == "saveFocus") {
         if (window.getSelection) {
             keditorSavedRange = window.getSelection().getRangeAt(0);
@@ -8014,3 +8042,16 @@ window.onload = function () {
         return langPhrase.jsSure;
     });
 };
+
+
+jQuery(document).on('click', '.lib-img', function(){
+    console.log(this)
+    insertImgPath(jQuery(this).attr('src'))
+})
+
+function insertImgPath(src)
+{
+    console.log(src)
+    jQuery('#k_imagePath').val(src)
+    koMenuClose()
+}

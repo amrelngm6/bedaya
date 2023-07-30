@@ -74,12 +74,14 @@
     .custom-scroll-list
     {
         width: max-content;
+        min-width: 100%;
     }
     
     .custom-scroll-item
     {
         max-width: 350px;
         display: inline-block;
+        min-width: max-content;
     }
 
     .crossed:after {
