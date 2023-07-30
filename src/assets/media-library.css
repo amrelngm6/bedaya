@@ -236,8 +236,8 @@
 }
 .media-library__close {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 70px;
+  left: 0;
   padding: 1rem 1.5rem;
   font-size: 1.5rem;
   color: #a0aec0;
