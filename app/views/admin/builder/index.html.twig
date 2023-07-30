@@ -7455,8 +7455,8 @@ function refreshFManager(){
         <script id="__inPageUploadFrame">
             jQuery('#__inPageUploadFrame').replaceWith('<ifra' + 'me name="inPageUploadFrame" id="inPageUploadFrame" src="" style="display:none;"></ifra' + 'me>')
 				</script>
-        <form action="/builder?supermode=page_upload" id="inPageUploadForm" target="inPageUploadFrame" method="post" enctype="multipart/form-data">
-            <input type="file" name="file[]" id="bottomUploadButton" multiple>
+        <form action="/media-library-api/upload" id="inPageUploadForm" target="inPageUploadFrame" method="post" enctype="multipart/form-data">
+            <input type="file" name="files" id="bottomUploadButton" multiple>
             <input type="submit" name="submit" id="bottomUploadButtonSubmit">
             <input type="reset" id="bottomUploadButtonReset">
             <input type="hidden" name="managerApplyTo" id="managerApplyTo" />
@@ -7481,6 +7481,13 @@ function refreshFManager(){
 				}
 				jQuery('#inPageUploadForm').submit(function() {
 					jQuery('#koMenu_files').prepend('<div class="unloading" id="koMenuUnloading"><span><i class="fas fa-spinner fa-pulse "></i>Uploading...</div>');
+					
+					setTimeout(function(){
+						jQuery('#koMenuUnloading').remove();
+						jQuery('#koMenuItem_files').click()
+					}, 5000)
+					
+					
 				});
 				jQuery("#bottomUploadButton").change(function() {
 					jQuery("#asset_loadingInfo").show();
