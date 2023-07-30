@@ -3122,6 +3122,11 @@ function k_EditSave(e, a) {
             } else if (t == "OK-REFRESH") {
                 refreshWindow();
             }
+
+            if (e == 'reload')
+            {
+                window.location.reload()
+            }
         },
     });
     n = {};
@@ -6976,7 +6981,7 @@ function keditor(e, a, t) {
         $(focusElement).find(".keditInlineEdit.keditLinkEdit").remove();
         $(focusElement).find("img").editableLinks();
         $(focusElement).blur();
-        k_EditSave("norefresh");
+        k_EditSave('reload');
         keditableToolbar("hide");
         $("#" + o)
             .find("img")
