@@ -8052,6 +8052,7 @@ window.onload = function () {
 jQuery(document).on('click', '.lib-img', function(){
     console.log(this)
     insertImgPath(jQuery(this).attr('src'))
+
 })
 
 function insertImgPath(src)
@@ -8059,4 +8060,6 @@ function insertImgPath(src)
     console.log(src)
     jQuery('#k_imagePath').val(src)
     koMenuClose()
+    jQuery('#bgPreview_k_imagePath').css('background-image', 'url(' + src + ')');
+
 }
