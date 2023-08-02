@@ -6,7 +6,7 @@
                             {% endif %}
                             {% for item in stories %}
 
-                            <div class="bg-white rounded-tl-2xl rounded-br-2xl relative custom-scroll-item mt-4" style="max-width: 100%; width:max-content">
+                            <div class="bg-white rounded-tl-2xl rounded-br-2xl relative custom-scroll-item mt-4" style="max-width: 100%; min-width: 100%; width:max-content">
                                 <div class="pt-6 pb-20">
                                     <div class="show-modal-iframe play-icon absolute z-10 cursor-pointer right-0 left-0 w-12 rounded-full border-4 border border-white mx-auto bg-white" data-youtube-link="{{item.field.video_link}}">
                                         <img loading="lazy" alt="{{app.Settings['sitename']}}" width="46" height="46" src="/stream?image=/uploads/img/play-button_ex.webp"  />
