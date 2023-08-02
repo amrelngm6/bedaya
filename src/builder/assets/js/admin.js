@@ -2919,6 +2919,7 @@ function k_htmlFormat(e) {
         i = 0,
         n = [];
     e = e.replace(/ <\/a>/g, "</a>");
+    e = e.replace(/ ></g, ">\n<");
     return e;
 }
 function k_RawHTML(e, a) {
@@ -7039,10 +7040,11 @@ function keditor(e, a, t) {
         } else if (e == "Format") {
             var n = $(focusElement),
                 l = n.prop("tagName");
+                alert(l)
             if (l == "H1") {
-                n.changeTag("h2");
-                $("#kToolbarFormat").text("h2");
-            } else if (l == "H2") {
+                n.changeTag("h1");
+                $("#kToolbarFormat").text("h1");
+            } else if (l == "H3") {
                 n.changeTag("h3");
                 $("#kToolbarFormat").text("h3");
             } else if (l == "H3") {
@@ -7057,6 +7059,11 @@ function keditor(e, a, t) {
             } else if (l == "H6") {
                 n.changeTag("h1");
                 $("#kToolbarFormat").text("h1");
+            } else if (l == "DIV") {
+                console.log(n)
+                
+                // n.changeTag("h2");
+                // $("#kToolbarFormat").text("h2");
             }
             $(".keditable").off();
             initKeditable();
