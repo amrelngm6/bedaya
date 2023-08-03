@@ -205,6 +205,17 @@
 	<div class="koMenuField mt-3">
 
 		<div>
+			<span class="textareaCounter" id="short"></span>
+ 			<textarea id="MDESCRIPTION_short" name="short" placeholder="Meta Description" type="text" onkeyup="$('.googleResultsDescription a').text($(this).val());$('#short').text(this.value.length)">{{page.short}}</textarea>
+			<label for="MDESCRIPTION_short">Short content</label>
+		</div>
+		<small class="form-text text-muted">Short content of the page</small>
+	
+	</div>
+
+	<div class="koMenuField mt-3">
+
+		<div>
 			<span class="textareaCounter" id="MDESCRIPTION_TITLECounter"></span>
  			<textarea id="MDESCRIPTION_TITLE" name="seo_desc" placeholder="Meta Description" type="text" onkeyup="$('.googleResultsDescription a').text($(this).val());$('#MDESCRIPTION_TITLECounter').text(this.value.length)">{{page.seo_desc}}</textarea>
 			<label for="MDESCRIPTION_TITLE">Meta Description</label>
