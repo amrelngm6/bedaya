@@ -63,8 +63,8 @@ class DoctorRepository
 	public function filterSearchTitle($title)
 	{
 		$title = str_replace(
-			[ 'اسباب','اسماعيل']
-			, ['أسباب', "إسماعيل"]
+			[ 'اسباب'  ,'اسماعيل','استاذ']
+			, ['أسباب' ,"إسماعيل",'أستاذ']
 			, $title);
 		return str_replace(' ', '%', trim($title));
 	}
