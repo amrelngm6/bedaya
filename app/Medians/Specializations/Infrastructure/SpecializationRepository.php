@@ -28,7 +28,7 @@ class SpecializationRepository
 	{
 		return Specialization::with('content')->find($id);
 	}
-
+ 
 	public function get($limit = 100)
 	{
 		return Specialization::with('content','user','parent')->withCount('childs')->limit($limit)->orderBy('updated_at', 'DESC')->get();
