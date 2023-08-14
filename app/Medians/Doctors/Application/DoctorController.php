@@ -211,7 +211,7 @@ class DoctorController extends CustomController
 			$this->repo->getModel()->addView();
 			
 			return render('views/front/doctors.html.twig', [
-		        'items' => $this->repo->get(9),
+		        'items' => $this->repo->get(12),
 		        'specializations' => $this->specsRepo->get(),
 		    ]);
 

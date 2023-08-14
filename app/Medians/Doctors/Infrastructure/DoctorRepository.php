@@ -51,12 +51,12 @@ class DoctorRepository
 		return Doctor::whereHas('content', function($q) {
 			$q->where('content', '!=', '');
 		})
-		->with('content','user')->where('status', 'on')->limit($limit)->orderBy('id', 'ASC')->get();
+		->with('content','user')->where('status', '!=', '0')->limit($limit)->orderBy('id', 'ASC')->get();
 	}
 
 	public function get($limit = 100)
 	{
-		return Doctor::with('content','user')->where('status', 'on')->limit($limit)->orderBy('id', 'ASC')->get();
+		return Doctor::with('content','user')->where('status', '!=', '0')->limit($limit)->orderBy('id', 'ASC')->get();
 	}
 
 
