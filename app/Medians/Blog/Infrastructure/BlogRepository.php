@@ -81,8 +81,11 @@ class BlogRepository
 
 	public function filterSearchTitle($title)
 	{
-		$title = str_replace([ 'أ','', 'ي',"ى","ة",'ه'], '', $title);
-		return str_replace(' ', '%', $title);
+		$title = str_replace(
+			[ 'اسباب' ,'اسماعيل','افراز','مجهرى','تاخر','اهم','المجهرى','','','','','','','','','','','']
+			, ['أسباب',"إسماعيل",'إفراز','مجهري','تأخر','أهم','المجهري','','','','','','','','','','','']
+			, $title);
+		return str_replace(' ', '%', trim($title));
 	}
 	public function search($request, $limit = 20)
 	{
@@ -91,7 +94,8 @@ class BlogRepository
 			$q->where('title', 'LIKE', '%'.$title.'%');
 		})
 		->where('status', '!=', '0')
-		->with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')
+		->with('content','user')
+		->limit($limit)->orderBy('updated_at', 'DESC')
 		->get();
 
 		return $return;

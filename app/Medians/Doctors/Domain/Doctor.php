@@ -51,6 +51,11 @@ class Doctor extends CustomModel
 		return $this->morphMany(CustomFields::class, 'item');
 	}
 
+	public function content()
+	{
+		return $this->morphOne(Content::class, 'item')->where('lang', __('lang'));
+	}
+
 
 	public function thumbnail() 
 	{

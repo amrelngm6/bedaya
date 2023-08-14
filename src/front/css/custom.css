@@ -81,7 +81,7 @@
     {
         max-width: 350px;
         display: inline-block;
-        min-width: max-content;
+        width: max-content;
     }
 
     .crossed:after {

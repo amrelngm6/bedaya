@@ -36,13 +36,12 @@ class SpecializationRepository
 
 	public function filterSearchTitle($title)
 	{
-		$title = str_replace([ 'أ','', 'ي',"ى","ة",'ه'], '', $title);
-		return str_replace(' ', '%', $title);
+		$title = str_replace([ 'أ','', 'ا',"ى","ة",'ه'], ' ', $title);
+		return str_replace(' ', '%', trim($title));
 	}
 	public function search($request, $limit = 20)
 	{	
 		$title = $this->filterSearchTitle($request->get('search'));
-		echo '%'.$title.'%';
 		$return = Specialization::whereHas('content', function($q) use ($title){
 			$q->where('title', 'LIKE', '%'.$title.'%');
 		})

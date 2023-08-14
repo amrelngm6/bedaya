@@ -62,11 +62,15 @@ class DoctorRepository
 
 	public function filterSearchTitle($title)
 	{
-		$title = str_replace([ 'أ','', 'ي',"ى","ة",''], '', $title);
-		return str_replace(' ', '%', $title);
+		$title = str_replace(
+			[ 'اسباب','اسماعيل']
+			, ['أسباب', "إسماعيل"]
+			, $title);
+		return str_replace(' ', '%', trim($title));
 	}
 	public function search($request, $limit = 20)
 	{
+
 		$title = $this->filterSearchTitle($request->get('search'));
 		$return = Doctor::whereHas('content', function($q) use ($title){
 			$q->where('title', 'LIKE', '%'.$title.'%');
@@ -74,7 +78,9 @@ class DoctorRepository
 		->where('status', '!=', '0')
 		->with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')
 		->get();
+		// ->toSql();
 
+		// print_r($return);
 		return $return;
 	}
 
