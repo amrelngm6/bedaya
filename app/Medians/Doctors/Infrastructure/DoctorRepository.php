@@ -75,7 +75,7 @@ class DoctorRepository
 		$return = Doctor::whereHas('content', function($q) use ($title){
 			$q->where('title', 'LIKE', '%'.$title.'%');
 		})
-		->where('status', '!=', '0')
+		// ->where('status', '!=', '0')
 		->with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')
 		->get();
 		// ->toSql();
