@@ -47,6 +47,11 @@ class DoctorController extends CustomController
                     'key'=> "title",
                     'title'=> __('title'),
                     'sortable'=> false,
+				],
+                [
+                    'key'=> "status",
+                    'title'=> __('status'),
+                    'sortable'=> false,
                 ]
             ];
 	}
