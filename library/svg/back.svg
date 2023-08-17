@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
+  <g id="Redirect" transform="translate(44 44) rotate(180)">
+    <circle id="Ellipse_24" data-name="Ellipse 24" cx="22" cy="22" r="22" fill="#f4f4f4"/>
+    <g id="Icons_Indicators_System-Icons_chevron_left_333333" data-name="Icons+Indicators / System-Icons / chevron_left / #333333" transform="translate(32.56 31.68) rotate(180)">
+      <g id="chevron_left">
+        <path id="bg" d="M0,0H19.36V19.36H0Z" transform="translate(19.36) rotate(90)" fill="rgba(216,216,216,0)"/>
+        <path id="Shape" d="M6.857,13.713,0,6.857,6.857,0" transform="translate(5.647 2.823)" fill="none" stroke="#999" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="3"/>
+      </g>
+    </g>
+  </g>
+</svg>

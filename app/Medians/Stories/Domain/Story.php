@@ -20,9 +20,7 @@ class Story extends CustomModel
 		'inserted_by'
 	];
 
-
 	public $appends = ['field'];
-
 
 	public function getFieldAttribute() 
 	{
@@ -46,7 +44,8 @@ class Story extends CustomModel
 
 	public function thumbnail() 
 	{
-    	return str_replace('/images/', '/thumbnails/', str_replace(['.png','.jpg','.jpeg'],'.webp', $this->picture));
+    	$return = str_replace('/images/', '/thumbnails/', str_replace(['.png','.jpg','.jpeg'],'.webp', $this->picture));
+    	return is_file($return) ? $return : $this->picture;
 	}
 
 

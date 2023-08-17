@@ -31,7 +31,11 @@ class SpecializationRepository
  
 	public function get($limit = 100)
 	{
-		return Specialization::with('content','user','parent')->withCount('childs')->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		return Specialization::with('content','user','parent', 'content as summary')
+		->withCount('childs')
+		->limit($limit)
+		->orderBy('summary.title', 'DESC')
+		->get();
 	}
 
 	public function filterSearchTitle($title)
@@ -41,7 +45,7 @@ class SpecializationRepository
 	}
 	public function search($request, $limit = 20)
 	{	
-		$title = $this->filterSearchTitle($request->get('search'));
+		$title = $request->get('search') ? $this->filterSearchTitle($request->get('search')) : '';
 		$return = Specialization::whereHas('content', function($q) use ($title){
 			$q->where('title', 'LIKE', '%'.$title.'%');
 		})

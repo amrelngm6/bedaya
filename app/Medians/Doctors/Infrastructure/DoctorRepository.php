@@ -71,7 +71,7 @@ class DoctorRepository
 	public function search($request, $limit = 20)
 	{
 
-		$title = $this->filterSearchTitle($request->get('search'));
+		$title = $request->get('search') ? $this->filterSearchTitle($request->get('search')) : '';
 		$return = Doctor::whereHas('content', function($q) use ($title){
 			$q->where('title', 'LIKE', '%'.$title.'%');
 		})
