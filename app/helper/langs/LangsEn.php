@@ -797,7 +797,7 @@ class LangsEn
 			,'NATIONALITY' => 'Nationality'
 			,'LONGITUDE' => 'Longitude'
 			,'LATITUDE' => 'Latitude'
-			,'OFFERS' => 'Offers'
+			,'OFFERS' => 'Treatment plan'
 			,'TALK_TO_EXPERTS_INTRO' => 'Have a question? talk to our experts now and we will answer all your questions'
 			,'CHAT_WITH_US' => 'Chat with us'
 			,'VIEW_ALL_DOCTORS' => 'View all doctors'
