@@ -14,7 +14,6 @@ spl_autoload_register(function ($name) {
 
 });
 
-
 /**
  * Set the database connection using 
  * @var Illuminate\Database\Capsule\Manager 
@@ -38,6 +37,7 @@ $capsule->bootEloquent();
 
 include('app/helper/methods.php');
 include('app/config/route.php');
+
 
 
 
