@@ -274,12 +274,14 @@ class BlogRepository
 		}
 
 		$output = str_replace("h=&amp;", '', $postContent);
-		preg_match('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', $output, $matches);
+		preg_match_all('/<iframe.*src=\"(.*)\".*><\/iframe>/isU', $output, $matches);
 		if (isset($matches[1]))
 		{
-			$video = str_replace('https://www.youtube.com/embed/' , '', $matches[1]); 
-			$videoContent = $this->videoContent($video);
-			$output = str_replace($matches[0] , $videoContent, $output); 
+			foreach ($matches[1] as $k => $match) {
+				$video = str_replace('https://www.youtube.com/embed/' , '', $match); 
+				$videoContent = $this->videoContent($video);
+				$output = str_replace($matches[0][$k] , $videoContent, $output); 
+			}
 		}
 		
 		$item->content->content = $output;
@@ -301,14 +303,42 @@ class BlogRepository
 		
 	}
 	
+	
 
 	public function videoContent($video_id)
 	{
+		$img = $this->videoFrame($video_id);
 		return '
 		<div class="video-center show-modal-iframe relative" data-youtube-link="'.$video_id.'">
-			<img alt="Bedaya" width="800" height="570" class="mx-auto  lazy" src="/stream?image=/uploads/thumbnails/video.webp">
+			<img alt="Bedaya" width="800" height="570" class="mx-auto  lazy" src="'.$img.'">
 			<img loading="lazy" alt="Bedaya" class="cursor-pointer w-16 lg:w-24 bg-white rounded-full p-1 lg:p-3 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0 lazy" src="/stream?image=/uploads/img/play-button_en.webp">
 		</div>
 		';
+	}
+
+	public function storeFrame($remoteFile, $video_id)
+	{
+		$filepath =  $_SERVER['DOCUMENT_ROOT'].'/uploads/youtube/'.$video_id.'.jpg';
+		file_put_contents($filepath, file_get_contents($remoteFile));
+		return $filepath;
+	}
+
+	public function videoFrame($video_id)
+	{
+
+		if (is_file($_SERVER['DOCUMENT_ROOT'].'/uploads/youtube/'.$video_id.'.jpg'))
+			return '/uploads/youtube/'.$video_id.'.jpg';
+
+		$yt = new \helper\YTChannel('AIzaSyAX2RDygDexQhJ2QXhBUvY4LPlNZdlzXb8');
+
+		$output = $yt->video_info($video_id);
+
+		if (isset($output['thumbnails']['hd']))
+			return $this->storeFrame($output['thumbnails']['hd'], $video_id);
+		
+		if (isset($output['thumbnails']['high']))
+			return $this->storeFrame($output['thumbnails']['high'], $video_id);
+		
+		return '/stream?image=/uploads/thumbnails/video.webp';
 	}
 }
