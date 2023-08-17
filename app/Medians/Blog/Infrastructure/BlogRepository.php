@@ -333,11 +333,14 @@ class BlogRepository
 
 		$output = $yt->video_info($video_id);
 
-		if (isset($output['thumbnails']['hd']))
+		if (!empty($output['thumbnails']['hd']))
 			return $this->storeFrame($output['thumbnails']['hd'], $video_id);
 		
-		if (isset($output['thumbnails']['high']))
+			if (!empty($output['thumbnails']['high']))
 			return $this->storeFrame($output['thumbnails']['high'], $video_id);
+		
+		if (!empty($output['thumbnails']['default']))
+			return $this->storeFrame($output['thumbnails']['default'], $video_id);
 		
 		return '/stream?image=/uploads/thumbnails/video.webp';
 	}
