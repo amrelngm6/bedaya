@@ -23,9 +23,10 @@
                                 <div class="relative">
                                     <span class="block w-full text-lg font-bold pb-2 purple-color"> {{lang.__('content table')}} </span>
                                     <hr class="border-gray-400 my-4" />
+                                    <div id="content-table"></div>
                                 </div>
                             </div>
-                            <div class="relative my-10 text-lg">
+                            <div class="relative my-10 text-lg" id="article-content">
                                 {% set params = {'item': item} %}
                                 {{app.renderTemplate(item.content.content, item).render(params)|raw}}
                             </div>
@@ -50,5 +51,20 @@
         </div>
     </div>
 
-
+    <script>
+    
+    jQuery(document).ready(function(){
+    var parent = document.getElementById("article-content"),
+        h2 = parent.getElementsByTagName("h2"),
+        a = h2.length,
+        b, link, title,
+        c='';
+        for (b = 0; b < a; b += 1) {
+            title = $(h2[b]).text();
+            link = $(h2[b]).attr('id');
+            c += link ? '<p><a href="#'+link+'">'+title+'</a></p>' : '';
+        }
+        jQuery('#content-table').html(c)        
+    })
+    </script>
 {% include 'views/front/includes/footer.html.twig' %}
