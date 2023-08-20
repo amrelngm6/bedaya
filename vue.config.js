@@ -42,7 +42,6 @@ module.exports = {
   },
   css: {
     extract: {
-      path: path.resolve(__dirname, 'dist'),
       filename: "./css/app.css",
       chunkFilename: './css/chunk.[id].css',
     },

@@ -19,6 +19,7 @@
                                         <th class="p-2 text-default w-4 ">#</th>
                                         <th class="p-2 text-default " v-text="__('title')"></th>
                                         <th class="p-2 text-center ">{{__('Youtube Video')}}</th>
+                                        <th class="p-2 text-center ">{{__('Sorting')}}</th>
                                         <th class="p-2 text-center ">{{__('Action')}}</th>
                                     </tr>
                                 </thead>
@@ -39,6 +40,11 @@
                                         </td>
                                         <td class="p-2 border-1 border-t  border-gray-200" >
                                             <a target="_blank" :href="'https://youtube.com/watch?v='+story.field.video_link" v-text="story.field.video_link"></a>
+                                        </td>
+                                        <td class="p-2  text-default border-1 border-t  border-gray-200">
+                                            <div class="w-full flex gap-4">
+                                            <span class="px-2"> {{story.field.sort}}</span>
+                                            </div>
                                         </td>
                                         <td class="p-2 border-1 border-t  border-gray-200">
                                             <a @click="activeItem = null;showEditSide = true; activeItem = story; showAddSide = false;  " class="text-gray-400 hover:text-gray-100  mx-2" href="javascript:;">
@@ -65,19 +71,19 @@
                                 <input name="type" type="hidden" value="Story.create">
                                 <input name="params[status]" type="hidden" value="1">
 
-                                <span class="block mb-2" >Youtube video ID</span>
+                                <span class="block mt-6 mb-2" >Youtube video ID</span>
                                 <input name="params[field][video_link]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Video id')" >
 
-                                <span class="block mb-2" v-text="__('title')+' AR'"></span>
+                                <span class="block mt-6 mb-2" v-text="__('title')+' AR'"></span>
                                 <input name="params[field][short_name_ar]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Story')" >
 
-                                <span class="block mb-2" v-text="__('title')+' EN'"></span>
+                                <span class="block mt-6 mb-2" v-text="__('title')+' EN'"></span>
                                 <input name="params[field][short_name]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Story')" >
 
-                                <span class="block mb-2" v-text="__('title')+' AR'"></span>
+                                <span class="block mt-6 mb-2" v-text="__('title')+' AR'"></span>
                                 <textarea rows="3" name="params[content][ar][content]" required="" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Arabic content')" ></textarea>
 
-                                <span class="block mb-2" v-text="__('title')+' EN'"></span>
+                                <span class="block mt-6 mb-2" v-text="__('title')+' EN'"></span>
                                 <textarea rows="3" name="params[content][en][content]" required="" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('English content')" ></textarea>
 
                                 <span class="block my-2" v-text="__('picture')"></span>
@@ -100,19 +106,22 @@
                                 <input name="type" type="hidden" value="Story.update">
                                 <input name="params[id]" type="hidden" v-model="activeItem.id">
 
-                                <span class="block mb-2" >Youtube video ID</span>
+                                <span class="block mt-6 mb-2" >Youtube video ID</span>
                                 <input name="params[field][video_link]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Video id')" v-model="activeItem.field.video_link">
 
-                                <span class="block mb-2" v-text="__('title')+' AR'"></span>
+                                <span class="block mt-6 mb-2" >Sorting</span>
+                                <input name="params[field][sort]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('sorting')" v-model="activeItem.field.sort">
+
+                                <span class="block mt-6 mb-2" v-text="__('title')+' AR'"></span>
                                 <input name="params[field][short_name_ar]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Story')" v-model="activeItem.field.short_name_ar">
 
-                                <span class="block mb-2" v-text="__('title')+' EN'"></span>
+                                <span class="block mt-6 mb-2" v-text="__('title')+' EN'"></span>
                                 <input name="params[field][short_name]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Story')" v-model="activeItem.field.short_name">
 
-                                <span class="block mb-2" v-text="__('title')+' AR'"></span>
+                                <span class="block mt-6 mb-2" v-text="__('title')+' AR'"></span>
                                 <textarea rows="3" name="params[content][ar][content]" required="" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Arabic content')" v-model="activeItem.ar.content"></textarea>
 
-                                <span class="block mb-2" v-text="__('title')+' EN'"></span>
+                                <span class="block mt-6 mb-2" v-text="__('title')+' EN'"></span>
                                 <textarea rows="3" name="params[content][en][content]" required="" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('English content')" v-model="activeItem.en.content"></textarea>
 
                                 <span class="block my-2" v-text="__('picture')"></span>

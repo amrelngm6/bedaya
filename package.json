@@ -10,22 +10,14 @@
   "dependencies": {
     "@andresouzaabreu/vue-data-table": "^3.3.3",
     "@vueform/multiselect": "^2.6.1",
-    "@vuepic/vue-datepicker": "^4.2.2",
     "chart.js": "^4.3.0",
     "core-js": "^2.6.5",
-    "qrcode.vue": "^3.3.4",
-    "ssh2-promise": "^1.0.3",
     "v-dropdown": "^3.0.0-beta.1",
     "v-selectmenu": "^2.0.2",
     "vue": "^2.6.10",
-    "vue-chartjs": "^5.2.0",
-    "vue-morris": "^1.1.0",
     "vue-native-notification": "^1.1.1",
-    "vue-search-select": "^3.1.0",
-    "vue3-daterange-picker": "^1.0.1",
-    "vuejs-datepicker": "^1.6.2"
+    "vue-search-select": "^3.1.0"
   },
-  "peerDependencies": {},
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
     "@fortawesome/free-brands-svg-icons": "^6.2.1",
@@ -41,8 +33,6 @@
     "eslint-plugin-vue": "^5.0.0",
     "feather-icons": "^4.26.0",
     "jquery": "^3.6.4",
-    "medians-calendar-vue3": "git+https://github.com/amrelngm6/medians-calendar-vue3.git",
-    "portal-vue": "^3.0.0",
     "postcss": "^8.4.21",
     "svg-loaders": "^0.2.0",
     "tailwindcss": "^3.2.7",

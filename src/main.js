@@ -20,8 +20,6 @@ Vue.component('login-dashboard', () => import('./components/login-dashboard'));
 Vue.component('side-menu', () => import('./components/side-menu'));
 Vue.component('close_icon', () => import('./components/svgs/Close'));
 
-import QrcodeVue from 'qrcode.vue';
-Vue.component('qr_code', QrcodeVue);
 Vue.component('vue-medialibrary-manager', () => import('./components/Manager'));
 Vue.component('vue-medialibrary-field', () => import('./components/Field'));
 
