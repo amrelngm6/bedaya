@@ -53,7 +53,7 @@ class StoryRepository
 
 	public function random($limit = 100)
 	{
-		return Story::with('ar', 'en', 'content','user')->where('status', 'on')->limit($limit)->inRandomOrder()->get();
+		return Story::with('ar', 'en', 'content','user')->limit($limit)->inRandomOrder()->get();
 	}
 
 
