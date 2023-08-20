@@ -1050,7 +1050,7 @@ class LangsAr
 		,'Consultation'=> 'استشارة اونلاين'
 		,'content table' => 'جدول المحتوي'
 
-		,'COPYRIGHTS' => 'Copyrights are reserved'
+		,'COPYRIGHTS' => 'جميع الحقوق محفوظة لمستشفي بداية'
 		);
 	
 
