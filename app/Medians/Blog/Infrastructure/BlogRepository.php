@@ -318,8 +318,8 @@ class BlogRepository
 
 	public function storeFrame($remoteFile, $video_id)
 	{
-		$filepath =  $_SERVER['DOCUMENT_ROOT'].'/uploads/youtube/'.$video_id.'.jpg';
-		file_put_contents($filepath, file_get_contents($remoteFile));
+		$filepath =  '/uploads/youtube/'.$video_id.'.jpg';
+		file_put_contents($_SERVER['DOCUMENT_ROOT'].$filepath, file_get_contents($remoteFile));
 		return $filepath;
 	}
 
