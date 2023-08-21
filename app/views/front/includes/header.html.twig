@@ -150,6 +150,7 @@
                         <div class="relative w-full sub-menu">
                             <ul class="w-full absolute  bg-white p-2 rounded-lg z-10 ">
                                 {% for item in app.specializations|sort((a, b) => a.content.title <=> b.content.title) %}
+                                {% if item.id > 2 %}
                                 <li class="py-1 switch-child-ul w-full">
                                     <a href="{{item.childs|length ? 'javascript:;' : item.content.prefix }}" class="{{item.childs|length ? 'bg-gray-100 px-2' : '' }} block p-1  w-full">{{item.content.title}}</a>
 
@@ -161,6 +162,7 @@
                                     </ul>
                                     {% endif %}
                                 </li>
+                                {% endif %}
 
                                 {% endfor %}
                             </ul>
