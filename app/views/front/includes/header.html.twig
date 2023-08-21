@@ -39,7 +39,7 @@
                         {% for item in app.specializations  %}
                         {% if item.id == 2 %}
                         <li class="has-sub-menu h-full relative">
-                            <a class="block px-2 h-full hover:bg-blue-100" href="/services"><span class="block pt-8">{{item.content.title}}</span></a>
+                            <a class="block px-2 h-full hover:bg-blue-100" href="/{{item.content.prefix}}"><span class="block pt-8">{{item.content.title}}</span></a>
                             <ul class="text-sm sub-menu w-48 absolute top-18 right-0 bg-white p-6 mt-4">
                                 {% for child_item in item.childs|sort((a, b) => a.content.title <=> b.content.title) %}
                                 <li class="py-1"><a href="/{{child_item.content.prefix}}">{{child_item.content.title}}</a></li>
@@ -50,7 +50,7 @@
                         {% endfor %}
 
                         <li class="has-sub-menu h-full relative">
-                            <a class="block px-2 h-full hover:bg-blue-100" href="/services"><span class="block pt-8">{{lang.__('specializations')}}</span></a>
+                            <a class="block px-2 h-full hover:bg-blue-100" href="javascript:;"><span class="block pt-8">{{lang.__('specializations')}}</span></a>
                             <ul class="text-sm sub-menu w-48 absolute top-18 right-0 bg-white p-6 mt-4">
                                 {% for item in app.specializations|sort((a, b) => a.content.title <=> b.content.title)  %}
                                 {% if item.id != 2 %}
@@ -120,7 +120,7 @@
                         <a class="w-full" href="javascript:;">{{lang.__('about_bedaya')}}</a>
                         <div class="relative w-full sub-menu ">
                             <ul class="w-full absolute  bg-white p-2 rounded-lg z-10 ">
-                                <li class="py-1"><a href="/about-us">{{lang.__('ABOUT us')}} </a></li>
+                                <li class="py-1"><a href="/about-us">{{lang.__('About us')}} </a></li>
                                 <li class="py-1"><a href="/doctors">{{lang.__('our doctors')}}</a></li>
                                 <li class="py-1"><a href="/expatriates">{{lang.__('INTERNATIONAL_PATIENTS')}}</a></li>
                                 <li class="py-1"><a href="/استشارات-اونلاين">{{lang.__('ONLINE CONSULTATION')}}</a></li>
@@ -128,6 +128,22 @@
                             </ul>
                         </div>
                     </li>
+
+                    {% for item in app.specializations  %}
+                    {% if item.id == 2 %}
+                    <li class="py-1 flex">
+                        <a class="w-64 " href="{{item.content.prefix}}">{{item.content.title}}</a>
+                        <div class="relative w-full sub-menu">
+
+                            <ul class="w-full absolute  bg-white p-2 rounded-lg z-10 ">
+                                {% for child_item in item.childs|sort((a, b) => a.content.title <=> b.content.title) %}
+                                <li class="py-1"><a href="/{{child_item.content.prefix}}">{{child_item.content.title}}</a></li>
+                                {% endfor %}
+                            </ul>
+                            </div>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
 
                     <li class="py-1 flex">
                         <a class="w-64 " href="javascript:;">{{lang.__('SPECIALIZATIONS')}}</a>
