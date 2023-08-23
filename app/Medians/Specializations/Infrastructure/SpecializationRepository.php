@@ -31,10 +31,9 @@ class SpecializationRepository
  
 	public function get($limit = 100)
 	{
-		return Specialization::with('content','user','parent', 'content as summary')
+		return Specialization::with('content','user','parent')
 		->withCount('childs')
 		->limit($limit)
-		->orderBy('summary.title', 'DESC')
 		->get();
 	}
 
