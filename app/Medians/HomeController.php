@@ -36,6 +36,7 @@ class HomeController extends CustomController
 	        	'doctors'=> $this->doctorRepo->getHome(3),
 	        	'specializations'=> $this->specsRepo->get_root(),
 	        	'stories'=> $this->storiesRepo->get(3),
+	        	'all_stories'=> $this->storiesRepo->get(),
 	        	'headerPosition'=> 'absolute',
 		        'item' => $item,
 	        	'story_dates'=> $this->storyDateRepo->get(10)

@@ -45,7 +45,6 @@ class StoryRepository
 	{
 		return Story::with('ar','en','content','user')
 		->limit($limit)
-		->orderBy('updated_at', 'DESC')
 		->get();
 	}
 

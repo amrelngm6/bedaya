@@ -161,12 +161,13 @@ class OfferController extends CustomController
 	{
 
 		try {
-
+			echo 'here';
 			$items = $this->repo->get();
 			$this->repo->getModel()->addView();
 
 			echo render('views/front/offers.html.twig', [
 		        'items' => $items,
+				'all_stories' => $this->storyRepo->get(),
 		        'pageinfo' => $pageinfo,
 		    ]);
 
