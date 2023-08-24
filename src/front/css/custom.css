@@ -520,13 +520,11 @@ table {
 .show-mobile { display:none; }
 body a.purple-bg:hover
 {
-    outline: 1px solid #4f276f;
-    border: 1px solid #fff;
+    outline: 1px solid #0399a8;
 }
 body a.cyan-bg:hover
 {
-    outline: 1px solid #0399a8;
-    border: 1px solid #fff;
+    outline: 1px solid #4f276f;
 }
 @media (max-width:500px)
 {
