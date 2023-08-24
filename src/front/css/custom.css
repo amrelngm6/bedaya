@@ -518,6 +518,11 @@ table {
     color: orange;
 }
 .show-mobile { display:none; }
+body a.purple-bg:hover
+{
+    outline: 1px solid #4f276f;
+    border: 1px solid #fff;
+}
 @media (max-width:500px)
 {
     .main-header-slider
