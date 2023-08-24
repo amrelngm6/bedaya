@@ -523,6 +523,11 @@ body a.purple-bg:hover
     outline: 1px solid #4f276f;
     border: 1px solid #fff;
 }
+body a.cyan-bg:hover
+{
+    outline: 1px solid #0399a8;
+    border: 1px solid #fff;
+}
 @media (max-width:500px)
 {
     .main-header-slider
