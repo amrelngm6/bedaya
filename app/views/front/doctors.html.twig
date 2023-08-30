@@ -43,15 +43,13 @@
             <div class="w-full block-overlay relative  h-auto my-2 rounded-xl overflow-hidden">
                 <img loading="lazy" src="/stream?image={{item.picture}}" class="rounded-lg w-full" />  
                 <div class="shadow w-full h-full left-0 top-0 absolute z-10 rounder-lg"></div>
-
                 <div class="block-overlay-hover w-full absolute  left-0 bottom-8 hover:bottom-10 px-8 z-20">
                     <div class="bottom-8 relative">
                         <a href="{{item.content.prefix}}" class="text-white text-xl font-bold">{{item.content.title}}</a>
-                        <!-- <a href="{{item.content.prefix}}" class="cyan-color block w-full text-base font-semibold">{{lang.__('lang') == 'en' ? item.field.short_name : item.field.short_name_ar}}</a> -->
+                        <span class="text-sm text-white "> {{lang.__('lang') == 'en' ? item.doctor.field.short_name : item.doctor.field.short_name_ar}} </span>
                         <p class="text-sm text-white pt-8 gap-3 gap font-semibold">
                             <a class="py-3 px-4 purple-bg text-white rounded-tl-lg rounded-br-lg" href="/{{item.content.prefix}}">{{lang.__('Profile CV')}}</a>
                             <a class="py-3 px-4 cyan-bg purple-color hover:text-gray-500 mx-2 " href="/book/{{item.id}}">{{lang.__('BOOK_NOW')}} </a>
-                            <!-- <a class="py-3 px-3 cyan-bg purple-color hover:bg-white mx-1 " href="#!">استشارة اونلاين </a> -->
                         </p>
                         <p class="text-sm text-white pt-4 ">
                             {{item.content.short|striptags|trim|raw}}
