@@ -37,7 +37,7 @@ class HomeController extends CustomController
 	        	'specializations'=> $this->specsRepo->get_root(),
 	        	'stories'=> $this->storiesRepo->get(3),
 	        	'all_stories'=> $this->storiesRepo->get(),
-	        	'headerPosition'=> 'absolute',
+	        	'headerPosition'=> 'fixed',
 		        'item' => $item,
 	        	'story_dates'=> $this->storyDateRepo->get(10)
 	        ]);
