@@ -1013,7 +1013,7 @@ class LangsAr
 		,'latest_articles' => 'أحدث المقالات'
 		,'our_experts' => 'تعرف على خبراء المستشفى'
 		,'important dates' => 'تواريخ تعني لنا الكثير'
-		,'Successful team' => 'فريق نجاح بداية'
+		,'Successful team' => 'فريق العمل'
 		,'Profile CV' => 'الصفحة الشخصية'
 		,'summary' => 'نبذة  مختصرة '
 		,'Bedaya success stories' => 'قصص نجاح بداية'
