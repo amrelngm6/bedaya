@@ -53,6 +53,8 @@
     
 @media screen and (max-width: 767px) 
 {
+    .pb-60{padding-bottom:0rem}
+    .pb-60 .absolute {position: relative;}
     .header-overlay {
         margin-top: 205px; 
         width: 100%; 
