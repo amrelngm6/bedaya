@@ -846,6 +846,8 @@ class LangsEn
 			,'CALCULATOR_MSG' => 'Wondering, `when will i get my period ?` Our easy tracking tool helps map out your cycle.'
 			,'GO_HOME' => 'Go to homepage'
 			,'BACK_HOME' => 'Back home'
+			,'offer_content' => 'Treatment plan content'
+			
 			,'ALL_TIMES_SET' => 'All times are set automatically upon current location'
 			,'PAYMENT_METHOD' => 'Payment method'
 			,'CURRENT_ZONE' => 'Current time zone'
