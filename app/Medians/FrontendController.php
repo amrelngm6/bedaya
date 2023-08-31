@@ -37,7 +37,7 @@ class FrontendController extends CustomController
 			
 			$Object = $this->repo->store($request);
 
-			$response = $Object ? array('success'=>1, 'result'=> __('BOOKING_THANKS'), 'title'=>__('BOOKING_NOTE')) : 'error' ;
+			$response = $Object ? array('success'=>1, 'result'=> __('BOOKING_NOTE'), 'title'=>__('BOOKING_THANKS')) : 'error' ;
 
 		} catch (Exception $e) {
 			$response  = array('error'=>$e->getMessage()) ;
