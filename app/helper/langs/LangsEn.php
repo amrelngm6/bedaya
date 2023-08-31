@@ -659,7 +659,7 @@ class LangsEn
 			,'WELCOME' => 'Welcome '
 			,'BUSS_INFO' => 'Business info'
 
-
+			
 			,'DIRECTION' => 'Direction'
 			,'DIRECTIONS' => 'Directions'
 			,'BOOK' => 'Book'
@@ -667,7 +667,8 @@ class LangsEn
 			,'BOOK_NOW' => 'Book Now'
 			,'BOOKING_ID' => 'Booking ID '
 			,'BOOKING_INFO' => 'Booking information'
-			,'BOOKING_THANKS' => 'Thanks for booking offer from '
+			,'BOOKING_THANKS' => 'Thanks for choosing Bedaya services'
+			,'THANKS_TITLE' => 'Thanks for choosing Bedaya services'
 			,'BOOKING_DATE' => 'Booking date'
 			,'CHANGE_PICTURE' => 'Change picture'
 			,'LOCATION' => 'Location'
@@ -728,7 +729,7 @@ class LangsEn
 			,'BOOKING_DATE' => 'Booking date'
 			,'FILES_EXTENSIONS' => 'Files extensions'
 			,'ADD_NEW_DOCUMENT' => 'Add new document'
-			,'BOOKING_NOTE' => "Thanks for booking with us, we'll contact you ASAP." 
+			,'BOOKING_NOTE' => "We'll contact you ASAP." 
 			,'WITH' => 'with'
 			,'OF' => 'of'
 			,'FOR' => 'for'

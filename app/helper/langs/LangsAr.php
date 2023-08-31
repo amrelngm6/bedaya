@@ -718,7 +718,7 @@ class LangsAr
 		,'MEDICAL_DOCS' => 'الملفات الطبية'
 		,'FILES_EXTENSIONS' => 'Files extensions'
 		,'ADD_NEW_DOCUMENT' => 'اضافة ملف  جديد '
-		,'BOOKING_NOTE' => 'تم الحجز بنجاح, وسيتم التواصل معكم فى اقرب وقت'
+		,'BOOKING_NOTE' => 'سيتم التواصل معكم فى اقرب وقت'
 		,'WITH' => 'مع'
 		,'FOR' => 'من اجل'
 		,'OF' => 'من'
