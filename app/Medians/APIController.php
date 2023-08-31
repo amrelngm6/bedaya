@@ -221,6 +221,10 @@ class APIController
 					return (new Products\Application\StockController())->delete();
 					break;
 
+				case 'OnlineConsultation.delete':
+					return (new OnlineConsultations\Application\OnlineConsultationController())->delete();
+					break;
+
 
 			}
 
