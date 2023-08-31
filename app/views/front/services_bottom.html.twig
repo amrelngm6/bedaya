@@ -11,7 +11,8 @@
             <div class="lg:flex  gap-3 gap row">
                 
                 {% for item in specializations %}
-                {% if loop.index < 3 %}
+                {% if loop.index > 2 %}
+                {% if loop.index < 5 %}
                 <div class="blog-main-item lg:flex block w-full">
                     <div class="blog-item-img lg:w-5/12">
                         <a href="{{item.content.prefix}}"><img loading="lazy" src="/stream?image={{item.photo}}" class="rounded-lg w-full py-4 lg:py-6" alt="{{item.content.title}}"></a>
