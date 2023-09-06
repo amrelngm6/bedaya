@@ -927,7 +927,7 @@ class LangsEn
 			,'please_add_your_devices_first' => 'Please add your devices first'
 			,'online_consultation_block_title' => 'Online Consultation. Effective conversations with our doctors wherever you are'
 			,'online_consultation_block_text' => 'If you are unable to get out of the house or you live in a foreign country, do not worry. We are now providing online consultation service via the Internet, through which you can speak with a specialist doctor, discuss all the details, and obtain the appropriate online medical advice.'
-			,'Successful team' => 'Our team'
+			,'Successful team' => 'Our Team'
 	
 			,'COPYRIGHTS' => 'Copyrights are reserved Bedaya Hospital'
 		);
