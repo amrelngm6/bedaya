@@ -120,11 +120,11 @@
                         <a class="w-full" href="javascript:;">{{lang.__('about_bedaya')}}</a>
                         <div class="relative w-full sub-menu ">
                             <ul class="w-full absolute  bg-white p-2 rounded-lg z-10 ">
-                                <li class="py-1"><a href="/about-us">{{lang.__('About Us')}} </a></li>
-                                <li class="py-1"><a href="/doctors">{{lang.__('OUR_DOCTORS')}}</a></li>
-                                <li class="py-1"><a href="/expatriates">{{lang.__('INTERNATIONAL_PATIENTS')}}</a></li>
-                                <li class="py-1"><a href="/استشارات-اونلاين">{{lang.__('ONLINE CONSULTATION')}}</a></li>
-                                <li class="py-1"><a href="/offers">{{lang.__('Offers')}}</a></li> 
+                                <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'من-نحن' : 'about-us'}}">{{lang.__('About Us')}} </a></li>
+                                <li class="py-1"><a href="/doctors">{{lang.__('our Doctors')}}</a></li>
+                                <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'expatriates' : 'foreign-patients'}}">{{lang.__('INTERNATIONAL_PATIENTS')}}</a></li>
+                                <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'استشارات-اونلاين' : 'online-consultation'}}">{{lang.__('ONLINE CONSULTATION')}}</a></li>
+                                <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'bedaya-offers' : 'offers'}}">{{lang.__('Offers')}}</a></li> 
                             </ul>
                         </div>
                     </li>
