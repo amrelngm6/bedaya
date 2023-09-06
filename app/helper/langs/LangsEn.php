@@ -827,6 +827,7 @@ class LangsEn
 			,'UPCOMING_APPOINTMENTS' => 'Upcoming appointments'
 			,'HOSTPITAL_STORY' => 'Hospital story'
 			,'OUR_DOCTORS' => 'Our Doctors'
+			,'about_bedaya' => 'About Bedaya'
 			,'INTERNATIONAL_PATIENTS' => 'International Patients'
 			,'MEDIA_PRESS' => 'Media and press'
 			,'UPCOMING_EVENTS' => 'Upcoming events'
