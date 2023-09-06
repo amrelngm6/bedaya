@@ -245,6 +245,11 @@ class BlogController extends CustomController
 	{
 		$request =  $this->app->request();
 
+		$him = $this->repo->getByCategory(6, 4);
+		print_r($him);
+		$her = $this->repo->getByCategory(7, 4);
+		print_r($her);
+
 		try {
 				
 			return render('views/front/blog.html.twig', [
@@ -252,7 +257,7 @@ class BlogController extends CustomController
 		        'search_items' => $request->get('search') ?  $this->repo->search($request, 10) : [],
 		        'search_text' => $request->get('search'),
 		        'items' => $this->repo->getFront(4),
-		        'cat_her' => $this->repo->getByCategory(6, 4),
+		        'cat_her' => $her,
 		        'cat_him' => $this->repo->getByCategory(7, 4),
 		        'offers' => $this->offersRepo->random(1),
 		    ]);
