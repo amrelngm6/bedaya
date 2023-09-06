@@ -506,7 +506,8 @@ footer
 }
 .slider-text
 {
-    top: 250px;
+    top: auto;
+    bottom: 100px;
     z-index: 999;
 }
 table {
