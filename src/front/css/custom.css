@@ -56,10 +56,11 @@
     .pb-60{padding-bottom:0rem}
     .pb-60 .absolute {position: relative;}
     .header-overlay {
+        min-height: 45px;
         margin-top: 205px; 
         width: 100%; 
         background: rgba(0,0,0,.25); 
-        padding: 5px 19px;   
+        padding: 0px 10px;   
     }
     body .curve-doctor
     {
