@@ -612,3 +612,8 @@ body .wapp-side-icon {
     position: relative;
     z-index: 9;
 }  
+
+#kpg_533462
+{
+    z-index: 99;
+}
