@@ -40,10 +40,14 @@ class OnlineConsultationController extends CustomController
                 'title'=> "#",
             ],
             [
-                'key'=> "title",
+				'key'=> "title",
                 'title'=> __('title'),
                 'sortable'=> true,
-            ]
+			],
+			[
+				'key'=> "sorting",
+				'title'=> "Sorting",
+			]
         ];
 	}
 
