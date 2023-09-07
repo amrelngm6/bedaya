@@ -80,6 +80,7 @@ class BlogRepository
 	public function getFeatured($limit = 1)
 	{
 		return Blog::with('content','user')
+		->where('status', 'on')
 		->whereHas('content', function($q){
 			return $q->where('content', '!=', '');
 		})->orderBy('updated_at', 'DESC')->first();
@@ -99,7 +100,7 @@ class BlogRepository
 		$return = Blog::whereHas('content', function($q) use ($title){
 			$q->where('title', 'LIKE', '%'.$title.'%');
 		})
-		->where('status', '!=', '0')
+		->where('status', 'on')
 		->with('content','user')
 		->limit($limit)->orderBy('updated_at', 'DESC')
 		->get();
@@ -117,6 +118,7 @@ class BlogRepository
 			}
 		})
 		->where('id', '!=', $item->id)
+		->where('status', 'on')
 		->with('category', 'content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
 	}
 
