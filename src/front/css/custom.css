@@ -55,6 +55,7 @@
 @media screen and (max-width: 767px) 
 {
     .lg-fixed {position: relative;}
+    .lg-fixed.fixed {position: fixed;}
     .pb-60{padding-bottom:0rem}
     .pb-60 .absolute {position: relative;}
     .header-overlay {
