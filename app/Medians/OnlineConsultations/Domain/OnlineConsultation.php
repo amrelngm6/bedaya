@@ -19,6 +19,7 @@ class OnlineConsultation extends CustomModel
         'price',
         'doctor_id',
         'status',
+        'sorting',
         'created_by',
     ];
 
