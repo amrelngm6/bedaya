@@ -39,8 +39,7 @@ class OnlineConsultationRepository
 	{
 		return OnlineConsultation::with('content','user')
 		->limit($limit)
-		->orderBy('updated_at', 'DESC')
-		->where('sorting', 'desc')
+		->orderBy('sorting', 'DESC')
 		->get();
 	}
 
