@@ -258,6 +258,8 @@ class BlogController extends CustomController
 		        'cat_her' => $her,
 		        'cat_him' => $him,
 		        'offers' => $this->offersRepo->random(1),
+		        'specializations' => $this->specsRepo->get(2),
+
 		    ]);
 
 		} catch (\Exception $e) {
