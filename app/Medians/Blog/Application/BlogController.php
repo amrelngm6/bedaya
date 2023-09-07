@@ -256,7 +256,7 @@ class BlogController extends CustomController
 		        'search_text' => $request->get('search'),
 		        'items' => $this->repo->getFront(4),
 		        'cat_her' => $her,
-		        'cat_him' => $this->repo->getByCategory(7, 4),
+		        'cat_him' => $him,
 		        'offers' => $this->offersRepo->random(1),
 		    ]);
 
