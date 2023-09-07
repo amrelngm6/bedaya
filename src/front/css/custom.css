@@ -54,7 +54,7 @@
 .lg-fixed {position: fixed;}
 @media screen and (max-width: 767px) 
 {
-    .slider-text {bottom: 40px}
+    body .slider-text {bottom: 40px}
     .lg-fixed {position: relative;}
     .lg-fixed.fixed {position: fixed;}
     .pb-60{padding-bottom:0rem}
