@@ -130,6 +130,15 @@ jQuery(document).ready(function (e) {
 		iframe.setAttribute("src", link);
 		document.getElementById("modal-content").appendChild(iframe);
 	})
+	jQuery(document).on('click', '.show-modal-picture', function(e) {
+		jQuery('#modal-wrapper').removeClass('hidden')
+		var link = jQuery(this).data('picture-link');
+		var iframe = document.createElement('img');
+		iframe.width="100%";
+		iframe.height="100%";
+		iframe.setAttribute("src", link);
+		document.getElementById("modal-content").appendChild(iframe);
+	})
 	// body...
 	$('.owl-carousel').owlCarousel({
 		loop:true,
