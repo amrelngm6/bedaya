@@ -37,7 +37,11 @@ class OnlineConsultationRepository
 
 	public function get($limit = 100)
 	{
-		return OnlineConsultation::with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		return OnlineConsultation::with('content','user')
+		->limit($limit)
+		->orderBy('updated_at', 'DESC')
+		->where('sorting', 'desc')
+		->get();
 	}
 
 	public function similar($item, $limit = 3)
@@ -50,7 +54,7 @@ class OnlineConsultationRepository
 			$q->where('title', 'LIKE', '%'.$title.'%')->orWhere('content', 'LIKE', '%'.$title.'%');
 		})
 		->where('id', '!=', $item->id)
-		->with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		->with('content','user')->limit($limit)->orderBy('sorting', 'DESC')->get();
 	}
 
 	public function get_root($limit = 100)
@@ -65,7 +69,7 @@ class OnlineConsultationRepository
 		}])
 		->with('content','user')
 		->where('id','!=','1')
-		->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		->limit($limit)->orderBy('sorting', 'DESC')->get();
 	}
 
 
