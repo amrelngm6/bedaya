@@ -112,6 +112,15 @@
                                 <input name="type" type="hidden" value="OnlineConsultation.update">
                                 <input name="params[id]" type="hidden" v-model="activeItem.id">
 
+                                <div class="py-2">
+                                    <label for="sorting"><span v-text="__('sorting')"></span></label>
+                                    <input :name="'params[sorting]'" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600"  :value="activeItem.sorting" >
+                                </div>
+                                
+                                <div class="py-2">
+                                    <label for="status"><span v-text="__('status')"></span></label>
+                                    <input class="mx-4" id="status" type="checkbox" v-model="activeItem.status" name="params[status]" />
+                                </div>
 
                                 <button class="uppercase h-10 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800">{{__('Update')}}</button>
                             </form>
