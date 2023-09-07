@@ -69,6 +69,10 @@
                                 <span class="block my-2" v-text="__('picture')"></span>
                                 <vue-medialibrary-field name="params[picture]" :key="activeItem.id" :api_url="conf.url" v-model="activeItem.picture"></vue-medialibrary-field>
 
+                                <div class="py-2">
+                                    <label for="status"><span v-text="__('status')"></span></label>
+                                    <input class="mx-4" id="status" type="checkbox" v-model="activeItem.status" name="params[status]" />
+                                </div>
                                 
                                 <input name="type" type="hidden" value="Blog.update">
                                 <input name="params[id]" type="hidden" v-model="activeItem.id">
