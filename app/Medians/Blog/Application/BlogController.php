@@ -245,8 +245,8 @@ class BlogController extends CustomController
 	{
 		$request =  $this->app->request();
 
-		$him = $this->repo->getByCategory(6, 4);
-		$her = $this->repo->getByCategory(7, 4);
+		$her = $this->repo->getByCategory(6, 4);
+		$him = $this->repo->getByCategory(7, 4);
 
 		try {
 				
