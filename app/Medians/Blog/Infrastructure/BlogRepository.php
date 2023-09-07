@@ -23,10 +23,10 @@ class BlogRepository
 	function __construct()
 	{
 		$this->app = new \config\APP;
-		foreach ($this->get(100) as $key => $value) 
-		{
+		// foreach ($this->get(100) as $key => $value) 
+		// {
 			// (new \Medians\Media\Infrastructure\MediaRepository)->resize($value->picture, 270, 224);
-		}
+		// }
 
 	}
 
@@ -53,22 +53,28 @@ class BlogRepository
 	
 	public function getFront($limit = 100, $lang = null)
 	{
-		return Blog::with('user','content')->whereHas('content', function($q){
+		return Blog::with('user','content')
+		->whereHas('content', function($q){
 			return $q->where('content', '!=', '');
 		})
 		->with(['category'=>function($q){
 			return $q->with('content');
 		}])->limit($limit)
+		->where('status', 'on')
 		->orderBy('id', 'DESC')->get();
 	}
 
 
 	public function getByCategory($id, $limit = 100)
 	{
-		return Blog::with('content','user')->whereHas('content', function($q){
+		return Blog::with('content','user')
+		->whereHas('content', function($q){
 			return $q->where('content', '!=', '');
 		})
-		->where('category_id', $id)->limit($limit)->orderBy('id', 'DESC')->get();
+		->where('status', 'on')
+		->where('category_id', $id)
+		->limit($limit)
+		->orderBy('id', 'DESC')->get();
 	}
 
 	public function getFeatured($limit = 1)
