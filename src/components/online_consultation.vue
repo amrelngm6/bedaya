@@ -101,7 +101,7 @@
 
                                 <span class="block my-2" v-text="__('Doctor')"></span>
                                 <select  v-model="activeItem.doctor_id" name="params[doctor_id]" class="form-checkbox p-2 px-3 w-full text-orange-600 border border-1 border-gray-400 rounded-lg" v-if="content.doctors">
-                                    <option  :key="index" v-for="(type, index) in content.doctors" :value="type.id" v-text="type.title"></option>
+                                    <option  :key="index" v-for="(type, index) in content.doctors" :value="type.id" v-text="type.content ? type.content.title : ''"></option>
                                 </select>
 
                                 <div v-for="field in activeItem.custom_fields">

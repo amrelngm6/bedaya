@@ -29,11 +29,11 @@
                         <li class="has-sub-menu h-full relative">
                             <a class="block px-2 h-full hover:bg-blue-100" href="javascript:;"><span class="block pt-8">{{lang.__('About_Bedaya')}}</span></a>
                             <ul class="text-sm sub-menu w-48 absolute top-18 right-0 bg-white p-6 mt-4">
-                                <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'من-نحن' : 'about-us'}}">{{lang.__('About Us')}} </a></li>
-                                <li class="py-1"><a href="/doctors">{{lang.__('our Doctors')}}</a></li>
-                                <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'expatriates' : 'foreign-patients'}}">{{lang.__('INTERNATIONAL_PATIENTS')}}</a></li>
                                 <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'استشارات-اونلاين' : 'online-consultation'}}">{{lang.__('ONLINE_CONSULTATION')}}</a></li>
+                                <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'expatriates' : 'foreign-patients'}}">{{lang.__('INTERNATIONAL_PATIENTS')}}</a></li>
                                 <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'bedaya-offers' : 'offers'}}">{{lang.__('Offers')}}</a></li> 
+                                <li class="py-1"><a href="/doctors">{{lang.__('our Doctors')}}</a></li>
+                                <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'من-نحن' : 'about-us'}}">{{lang.__('About Us')}} </a></li>
                             </ul>
                         </li>
                         {% for item in app.specializations  %}
