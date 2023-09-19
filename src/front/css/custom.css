@@ -625,3 +625,7 @@ body .wapp-side-icon {
 {
     z-index: 99;
 }
+.social-footer-link a
+{
+    vertical-align: top;
+}
