@@ -24,10 +24,10 @@
                     </a>
                     <a aria-label="Logo" title="Logo" class="p-1 lg:p-3 pb-1 mt-0 lg:mt-auto" href="{{app.CONF.url}}"><img loading="lazy" alt="{{app.Settings['sitename']}}" src="/stream?image=/uploads/img/logo.webp" width="95" height="50"  /></a>
                     <ul class="lg:flex  hidden gap-1 h-full font-semibold purple-color">
-                        <li class="h-full"><a class="block px-2 h-full hover:bg-blue-100" href="/"><span class="block pt-8">{{lang.__('home')}}</span></a></li>
+                        <li class="h-full"><a class="block px-2 h-full  hover:bg-blue-100 purple-color" href="/"><span class="block pt-8">{{lang.__('home')}}</span></a></li>
                         
                         <li class="has-sub-menu h-full relative">
-                            <a class="block px-2 h-full hover:bg-blue-100" href="javascript:;"><span class="block pt-8">{{lang.__('About_Bedaya')}}</span></a>
+                            <a class="block px-2 h-full  hover:bg-blue-100 purple-color" href="javascript:;"><span class="block pt-8">{{lang.__('About_Bedaya')}}</span></a>
                             <ul class="text-sm sub-menu w-48 absolute top-18 right-0 bg-white p-6 mt-4">
                                 <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'استشارات-اونلاين' : 'online-consultation'}}">{{lang.__('ONLINE_CONSULTATION')}}</a></li>
                                 <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'expatriates' : 'foreign-patients'}}">{{lang.__('INTERNATIONAL_PATIENTS')}}</a></li>
@@ -39,7 +39,7 @@
                         {% for item in app.specializations  %}
                         {% if item.id == 2 %}
                         <li class="has-sub-menu h-full relative">
-                            <a class="block px-2 h-full hover:bg-blue-100" href="/{{item.content.prefix}}"><span class="block pt-8">{{item.content.title}}</span></a>
+                            <a class="block px-2 h-full  hover:bg-blue-100 purple-color" href="/{{item.content.prefix}}"><span class="block pt-8">{{item.content.title}}</span></a>
                             <ul class="text-sm sub-menu w-48 absolute top-18 right-0 bg-white p-6 mt-4">
                                 {% for child_item in item.childs|sort((a, b) => a.content.title <=> b.content.title) %}
                                 <li class="py-1"><a href="/{{child_item.content.prefix}}">{{child_item.content.title}}</a></li>
@@ -50,7 +50,7 @@
                         {% endfor %}
 
                         <li class="has-sub-menu h-full relative">
-                            <a class="block px-2 h-full hover:bg-blue-100" href="javascript:;"><span class="block pt-8">{{lang.__('specializations')}}</span></a>
+                            <a class="block px-2 h-full  hover:bg-blue-100 purple-color" href="javascript:;"><span class="block pt-8">{{lang.__('specializations')}}</span></a>
                             <ul class="text-sm sub-menu w-48 absolute top-18 right-0 bg-white p-6 mt-4">
                                 {% for item in app.specializations|sort((a, b) => a.content.title <=> b.content.title)  %}
                                 {% if item.id != 2 %}
@@ -70,10 +70,10 @@
 
                             </ul>
                         </li>
-                        <li class="h-full"><a class="block px-2 h-full hover:bg-blue-100" href="/{{lang.__('lang') == 'ar' ? 'قصص-نجاح-حقن-مجهرى' : 'icsi-success-stories'}}"><span class="block pt-8">{{lang.__('success stories')}}</span></a></li>
+                        <li class="h-full"><a class="block px-2 h-full  hover:bg-blue-100 purple-color" href="/{{lang.__('lang') == 'ar' ? 'قصص-نجاح-حقن-مجهرى' : 'icsi-success-stories'}}"><span class="block pt-8">{{lang.__('success stories')}}</span></a></li>
 
-                        <li class="h-full"><a class="block px-2 h-full hover:bg-blue-100" href="/blog"><span class="block pt-8">{{lang.__('blog')}}</span></a></li>
-                        <li class="h-full"><a class="block px-2 h-full hover:bg-blue-100" href="/{{lang.__('lang') == 'ar' ? 'contact' : 'contactus'}}"><span class="block pt-8">{{lang.__('Contact')}}</span></a></li>
+                        <li class="h-full"><a class="block px-2 h-full  hover:bg-blue-100 purple-color" href="/blog"><span class="block pt-8">{{lang.__('blog')}}</span></a></li>
+                        <li class="h-full"><a class="block px-2 h-full  hover:bg-blue-100 purple-color" href="/{{lang.__('lang') == 'ar' ? 'contact' : 'contactus'}}"><span class="block pt-8">{{lang.__('Contact')}}</span></a></li>
                     </ul>
                 </div>
                 <div class="p-1 lg:py-4 lg:px-4  flex gap-3  ">
