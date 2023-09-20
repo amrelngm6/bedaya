@@ -119,7 +119,9 @@
     </a>
     <script>
     jQuery(document).ready(function(){
-        jQuery('#mobile-slider-img').html('<img alt="Bedaya" height="1400" width="700" class="lg:hidden block w-full home-bg mx-auto relative" style="max-width: 100%; z-index:999" src="/stream?image=/uploads/images/banner2ar.webp">');
+        setTimeout(function(){
+            jQuery('#mobile-slider-img').html('<img alt="Bedaya" height="1400" width="700" class="lg:hidden block w-full home-bg mx-auto relative" style="max-width: 100%; z-index:999" src="/stream?image=/uploads/images/banner2ar.webp">');
+        }, 1000)
     })
     </script>
 </body>
