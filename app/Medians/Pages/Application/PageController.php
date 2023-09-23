@@ -290,10 +290,14 @@ class PageController extends CustomController
 		        		return (new  \Medians\Doctors\Application\DoctorController)->page($item);
 		        		break;
 		        	
-		        	case \Medians\Blog\Domain\Blog::class:
-		        		return (new  \Medians\Blog\Application\BlogController)->page($item);
-		        		break;
-		        	
+					case \Medians\Blog\Domain\Blog::class:
+						return (new  \Medians\Blog\Application\BlogController)->page($item);
+						break;
+						
+					case \Medians\Categories\Domain\Category::class:
+						return (new  \Medians\Blog\Application\BlogController)->category($item);
+						break;
+					
 		        	case \Medians\Pages\Domain\Page::class:
 		        		return (new  \Medians\Pages\Application\PageController)->page($item);
 		        		break;

@@ -268,4 +268,35 @@ class BlogController extends CustomController
 		}
 	} 
 
+
+	/**
+	 * Category items-list page 
+	 * @var Int
+	 */
+	public function category($category)
+	{
+		$request =  $this->app->request();
+
+		$category_items = $this->repo->getByCategory($category->item_id, 10);
+
+		try {
+				
+			return render('views/front/category.html.twig', [
+		        'first_item' => $this->repo->getFeatured(1),
+		        'search_items' => $request->get('search') ?  $this->repo->search($request, 10) : [],
+		        'search_text' => $request->get('search'),
+		        'item' => $category,
+		        'items' => $category_items,
+		        'offers' => $this->offersRepo->random(1),
+		        'specializations' => $this->specsRepo->get(10),
+		        'stories' => $this->storiesRepo->random(1),
+
+		    ]);
+
+		} catch (\Exception $e) {
+			throw new \Exception($e->getMessage(), 1);
+			
+		}
+	} 
+
 }
