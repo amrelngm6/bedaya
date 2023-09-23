@@ -245,8 +245,10 @@ class BlogController extends CustomController
 	{
 		$request =  $this->app->request();
 
-		$her = $this->repo->getByCategory(6, 4);
-		$him = $this->repo->getByCategory(7, 4);
+		$cather = $this->categoryRepo->find(6);
+		$her = $this->repo->getByCategory($cather->id, 4);
+		$cathim = $this->categoryRepo->find(7);
+		$him = $this->repo->getByCategory($cathim->id, 4);
 
 		try {
 				
@@ -256,7 +258,9 @@ class BlogController extends CustomController
 		        'search_text' => $request->get('search'),
 		        'items' => $this->repo->getFront(4),
 		        'cat_her' => $her,
+		        'cather' => $cather,
 		        'cat_him' => $him,
+		        'cathim' => $cathim,
 		        'offers' => $this->offersRepo->random(1),
 		        'specializations' => $this->specsRepo->get(10),
 
@@ -276,9 +280,10 @@ class BlogController extends CustomController
 	public function category($category)
 	{
 		$request =  $this->app->request();
-
-		$category_items = $this->repo->getByCategory($category->item_id, 10);
-
+		$currentPage = $request->get('page') ? $request->get('page') : 1;
+		$offset = $currentPage > 1 ? $currentPage * 10 : 0;
+		$category_items = $this->repo->paginateByCategory($category->item_id, 10, $offset);
+		$pages = (Int) ($this->repo->countByCategory($category->item_id) / 10);
 		try {
 				
 			return render('views/front/category.html.twig', [
@@ -290,6 +295,9 @@ class BlogController extends CustomController
 		        'offers' => $this->offersRepo->random(1),
 		        'specializations' => $this->specsRepo->get(10),
 		        'stories' => $this->storiesRepo->random(1),
+				'offset' => $offset,
+				'pages' => array_fill(0,$pages,[]),
+				'current_page' => $currentPage,
 
 		    ]);
 

@@ -77,6 +77,30 @@ class BlogRepository
 		->orderBy('id', 'DESC')->get();
 	}
 
+	public function countByCategory($id)
+	{
+		return Blog::whereHas('content', function($q){
+			return $q->where('content', '!=', '');
+		})
+		->where('status', 'on')
+		->where('category_id', $id)
+		->count();
+	}
+
+	public function paginateByCategory($id, $limit = 100, $offset = 0)
+	{
+		return Blog::with('content','user')
+		->whereHas('content', function($q){
+			return $q->where('content', '!=', '');
+		})
+		->where('status', 'on')
+		->where('category_id', $id)
+		->limit($limit)
+		->offset($offset)
+		->orderBy('id', 'DESC')
+		->get();
+	}
+
 	public function getFeatured($limit = 1)
 	{
 		return Blog::with('content','user')

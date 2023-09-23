@@ -21,18 +21,32 @@
                             {% for similar_item in items %}
                             <div class="blog-main-item lg:flex block w-full">
                                 <div class="blog-item-img lg:w-3/12">
-                                    <img  src="/stream?image={{similar_item.picture}}" class="rounded-lg w-full py-4 lg:py-6">
+                                    <a  href="/{{similar_item.content.prefix}}"><img  src="/stream?image={{similar_item.picture}}" class="rounded-lg w-full py-4 lg:py-6"></a>
                                 </div>
                                 <div class="blog-item-content lg:w-9/12">
                                     <div class="py-2 lg:py-6 lg:pr-6 lg:px-10 px-2">
 
-                                        <a href="/{{similar_item.content.prefix}}" class="pt-6 block  font-semibold text-sm cyan-color">{{similar_item.created_at | date('Y-m-d')}}</a>
+                                        <a href="/{{similar_item.content.prefix}}" class="pt-2 block  font-semibold text-sm cyan-color">{{similar_item.created_at | date('Y-m-d')}}</a>
                                         <a href="/{{similar_item.content.prefix}}" class="lg:py-4 py-2 block font-bold purple-color lg:text-xl md:text-lg text-base">{{similar_item.content.title}}</a>
-                                        <p class=" font-semibold text-gray-600 lg:text-base text-sm">{{similar_item.content.content |striptags|slice(0, 100) }}</p>
+                                        <p class=" font-semibold text-gray-600 lg:text-base text-sm">{{similar_item.content.content |striptags|slice(0, 140) }}</p>
                                     </div>
                                 </div>
                             </div>
                             {% endfor %}
+                            <hr class="pb-2" />
+                            {% if pages|length %}
+                            <div class="py-4 flex mx-auto text-center w-96">
+                                <span class="w-full"></span>
+                                {% for page in pages %}
+                                    {% if loop.index == current_page %} 
+                                    <span class="p-4 text-center font-bold cyan-color">{{loop.index}}</span> 
+                                    {% else %} 
+                                    <a href="?page={{loop.index}}" class="p-4 text-center text-gray-600 font-semibold ">{{loop.index}}</a> 
+                                    {% endif %} 
+                                {% endfor %}
+                                <span class="w-full"></span>
+                            </div>
+                            {% endif %}
                         </div>
                         <div class="w-full lg:w-4/12" id="app">
                             
