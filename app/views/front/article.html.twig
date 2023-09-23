@@ -59,10 +59,14 @@
         a = h2.length,
         b, link, title,
         c='';
+        cLink='';
         for (b = 0; b < a; b += 1) {
             title = $(h2[b]).text();
             link = $(h2[b]).attr('id');
-            c += link ? '<p><a href="#'+link+'">'+title+'</a></p>' : '';
+            if (!link) 
+                cLink = 'tag-'+(Math.random() * 1000);     
+            
+            c += link ? '<p><a href="#'+link+'">'+title+'</a></p>' : '<p><a href="#'+cLink+'">'+title+'</a></p>';
         }
         jQuery('#content-table').html(c)        
     })
