@@ -125,6 +125,8 @@ class DoctorRepository
 			}
 		}		
 
+		$dataArray['title'] = isset($data['content']['en']['title']) ? $data['content']['en']['title'] : '';
+
 		// Return the FBUserInfo object with the new data
     	$Object = Doctor::create($dataArray);
     	$Object->update($dataArray);
@@ -146,6 +148,8 @@ class DoctorRepository
 
 		$Object = Doctor::find($data['id']);
 		
+		$data['title'] = isset($data['content']['en']['title']) ? $data['content']['en']['title'] : '';
+
 		// Return the FBUserInfo object with the new data
     	$Object->update( (array) $data);
 
