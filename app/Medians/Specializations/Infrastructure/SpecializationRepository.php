@@ -77,11 +77,11 @@ class SpecializationRepository
 			$q->with(['content'=>function($q) use ($lang)
 			{
 				$q->where('lang', $lang);
-			}]);
+			}])->orderBy('sorting','ASC');
 		}])
 		->with('content','user')
 		->where('id','!=','1')
-		->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		->limit($limit)->orderBy('sorting','ASC')->get();
 	}
 
 
