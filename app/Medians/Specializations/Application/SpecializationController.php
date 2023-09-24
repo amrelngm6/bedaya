@@ -62,6 +62,12 @@ class SpecializationController extends CustomController
                     'title'=> __('Sub_categories'),
                     'sortable'=> true,
                     'type' => 'number',
+				],
+                [
+                    'key'=> "sorting",
+                    'title'=> __('sorting'),
+                    'sortable'=> true,
+                    'type' => 'number',
                 ]
             ];
 	}
