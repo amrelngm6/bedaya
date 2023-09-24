@@ -59,7 +59,7 @@
 
                                     {% if item.childs %}
                                     <ul class="text-sm sub-menu w-48 absolute top-18 right-40 bg-white p-6">
-                                        {% for child_item in item.childs|sort((a, b) => a.sorting <=> b.sorting) %}
+                                        {% for child_item in item.childs %}
                                         <li class="py-1"><a href="/{{child_item.content.prefix}}">{{child_item.content.title}}</a></li>
                                         {% endfor %}
                                     </ul>

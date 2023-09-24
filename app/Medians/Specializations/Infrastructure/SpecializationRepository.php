@@ -58,15 +58,17 @@ class SpecializationRepository
 
 	public function similar($item, $limit = 3)
 	{
+
 		if (empty($item->content->title))
 			return null;
 		
+		$lang = __('lang');
 		$title = str_replace(' ', '%', $item->content->title);
 		return Specialization::whereHas('content', function($q) use ($title){
 			$q->where('title', 'LIKE', '%'.$title.'%')->orWhere('content', 'LIKE', '%'.$title.'%');
 		})
 		->where('id', '!=', $item->id)
-		->with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		->with('content','user')->limit($limit)->orderBy($lang == 'en' ? 'sorting' : 'sorting_ar', 'DESC')->get();
 	}
 
 	public function get_root($limit = 100)
@@ -77,11 +79,11 @@ class SpecializationRepository
 			$q->with(['content'=>function($q) use ($lang)
 			{
 				$q->where('lang', $lang);
-			}])->orderBy('sorting','ASC');
+			}])->orderBy($lang == 'en' ? 'sorting' : 'sorting_ar' ,'ASC');
 		}])
 		->with('content','user')
 		->where('id','!=','1')
-		->limit($limit)->orderBy('sorting','ASC')->get();
+		->limit($limit)->orderBy($lang == 'en' ? 'sorting' : 'sorting_ar','ASC')->get();
 	}
 
 
