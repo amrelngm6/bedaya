@@ -79,11 +79,11 @@ class SpecializationRepository
 			$q->with(['content'=>function($q) use ($lang)
 			{
 				$q->where('lang', $lang);
-			}])->orderBy($lang == 'en' ? 'sorting' : 'sorting_ar' ,'ASC');
+			}])->orderBy($lang == 'en' ? 'sorting' : 'sorting_ar' ,'DESC');
 		}])
 		->with('content','user')
 		->where('id','!=','1')
-		->limit($limit)->orderBy($lang == 'en' ? 'sorting' : 'sorting_ar','ASC')->get();
+		->limit($limit)->orderBy($lang == 'en' ? 'sorting' : 'sorting_ar','DESC')->get();
 	}
 
 

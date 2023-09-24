@@ -1,0 +1,13 @@
+{% if lang.__('lang') == 'ar' %}
+<li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'استشارات-اونلاين' : 'online-consultation'}}">{{lang.__('ONLINE_CONSULTATION')}}</a></li>
+<li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'expatriates' : 'foreign-patients'}}">{{lang.__('INTERNATIONAL_PATIENTS')}}</a></li>
+<li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'bedaya-offers' : 'offers'}}">{{lang.__('Offers')}}</a></li> 
+<li class="py-1"><a href="/doctors">{{lang.__('our Doctors')}}</a></li>
+<li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'من-نحن' : 'about-us'}}">{{lang.__('About Us')}} </a></li>
+{% else %}
+<li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'من-نحن' : 'about-us'}}">{{lang.__('About Us')}} </a></li>
+<li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'expatriates' : 'foreign-patients'}}">{{lang.__('INTERNATIONAL_PATIENTS')}}</a></li>
+<li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'bedaya-offers' : 'offers'}}">{{lang.__('Offers')}}</a></li> 
+<li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'استشارات-اونلاين' : 'online-consultation'}}">{{lang.__('ONLINE_CONSULTATION')}}</a></li>
+<li class="py-1"><a href="/doctors">{{lang.__('our Doctors')}}</a></li>
+{% endif %}

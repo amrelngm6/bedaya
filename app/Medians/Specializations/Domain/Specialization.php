@@ -26,12 +26,17 @@ class Specialization extends CustomModel
 	];
 
 
-	public $appends = ['photo', 'parent_name'];
+	public $appends = ['photo', 'parent_name', 'sort'];
 
 
 	public function getParentNameAttribute() : ?String
 	{
 		return isset($this->parent->title) ? $this->parent->title : '';
+	}
+
+	public function getSortAttribute() 
+	{
+		return __('lang') == 'en' ? $this->sorting : $this->sorting_ar;
 	}
 
 	public function getPhotoAttribute() : ?String
