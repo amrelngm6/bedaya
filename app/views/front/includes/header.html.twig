@@ -48,14 +48,14 @@
                         <li class="has-sub-menu h-full relative">
                             <a class="block px-2 h-full  hover:bg-blue-100 purple-color" href="javascript:;"><span class="block pt-8">{{lang.__('specializations')}}</span></a>
                             <ul class="text-sm sub-menu w-48 absolute top-18 right-0 bg-white p-6 mt-4">
-                                {% for item in app.specializations  %}
+                                {% for item in app.specializations|sort((a, b) => a.sort <=> b.sort)  %}
                                 {% if item.id != 2 %}
                                 <li class="py-1 has-sub-menu h-full relative {{item.id}}">
                                     <a href="/{{item.content.prefix}}">{{item.content.title}}</a>
 
                                     {% if item.childs %}
                                     <ul class="text-sm sub-menu w-48 absolute top-18 right-40 bg-white p-6">
-                                        {% for child_item in item.childs %}
+                                        {% for child_item in item.childs|sort((a, b) => a.sort <=> b.sort)  %}
                                         <li class="py-1"><a href="/{{child_item.content.prefix}}">{{child_item.content.title}}</a></li>
                                         {% endfor %}
                                     </ul>
@@ -116,13 +116,7 @@
                         <a class="w-full" href="javascript:;">{{lang.__('about_bedaya')}}</a>
                         <div class="relative w-full sub-menu ">
                             <ul class="w-full absolute  bg-white p-2 rounded-lg z-10 ">
-                            
-                                <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'استشارات-اونلاين' : 'online-consultation'}}">{{lang.__('ONLINE_CONSULTATION')}}</a></li>
-                                <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'expatriates' : 'foreign-patients'}}">{{lang.__('INTERNATIONAL_PATIENTS')}}</a></li>
-                                <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'bedaya-offers' : 'offers'}}">{{lang.__('Offers')}}</a></li> 
-                                <li class="py-1"><a href="/doctors">{{lang.__('our Doctors')}}</a></li>
-                                <li class="py-1"><a href="/{{lang.__('lang') == 'ar' ? 'من-نحن' : 'about-us'}}">{{lang.__('About Us')}} </a></li>
-                                
+                            {% include 'views/front/includes/about_dropmenu.html.twig' %}
                             </ul>
                         </div>
                     </li>
@@ -134,7 +128,7 @@
                         <div class="relative w-full sub-menu">
 
                             <ul class="w-full absolute  bg-white p-2 rounded-lg z-10 ">
-                                {% for child_item in item.childs|sort((a, b) => a.content.title <=> b.content.title) %}
+                                {% for child_item in item.childs|sort((a, b) => a.sort <=> b.sort)  %}
                                 <li class="py-1"><a href="/{{child_item.content.prefix}}">{{child_item.content.title}}</a></li>
                                 {% endfor %}
                             </ul>
@@ -147,14 +141,14 @@
                         <a class="w-64 " href="javascript:;">{{lang.__('SPECIALIZATIONS')}}</a>
                         <div class="relative w-full sub-menu">
                             <ul class="w-full absolute  bg-white p-2 rounded-lg z-10 ">
-                                {% for item in app.specializations|sort((a, b) => a.content.title <=> b.content.title) %}
+                                {% for item in app.specializations|sort((a, b) => a.sort <=> b.sort) %}
                                 {% if item.id > 2 %}
                                 <li class="py-1 switch-child-ul w-full">
                                     <a href="{{item.childs|length ? 'javascript:;' : item.content.prefix }}" class="{{item.childs|length ? 'bg-gray-100 px-2' : '' }} block p-1  w-full">{{item.content.title}}</a>
 
                                     {% if item.childs|length %}
                                     <ul class="text-sm  px-2 hidden" >
-                                        {% for child_item in item.childs|sort((a, b) => a.content.title <=> b.content.title) %}
+                                        {% for child_item in item.childs|sort((a, b) => a.sort <=> b.sort) %}
                                         <li class="py-1"><a href="{{child_item.content.prefix}}">{{child_item.content.title}}</a></li>
                                         {% endfor %}
                                     </ul>
