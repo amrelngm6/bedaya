@@ -52,7 +52,7 @@ class Specialization extends CustomModel
 
 	public function childs()
 	{
-		return $this->hasMany(Specialization::class, 'parent_id', 'id');
+		return $this->hasMany(Specialization::class, 'parent_id', 'id')->orderBy('sorting','ASC');
 	}
 
 
