@@ -20,6 +20,7 @@ class Specialization extends CustomModel
 		'category_id', 
 		'parent_id', 
 		'sorting', 
+		'sorting_ar', 
 		'status', 
 		'inserted_by'
 	];

@@ -66,6 +66,9 @@
                                 <span class="block mt-4" v-text="__('sorting')"></span>
                                 <input v-model="activeItem.sorting" name="params[sorting]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('sorting')" >
 
+                                <span class="block mt-4" v-text="__('sorting')+' Ar'"></span>
+                                <input v-model="activeItem.sorting_ar" name="params[sorting_ar]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('sorting')+' Ar'" >
+
                                 <span class="block my-2" v-text="__('picture')"></span>
                                 <vue-medialibrary-field name="params[picture]" :key="activeItem.id" :api_url="conf.url" v-model="activeItem.picture"></vue-medialibrary-field>
 
