@@ -16,9 +16,10 @@ class Specialization extends CustomModel
 	public $fillable = [
 		'title', 
 		'prefix', 
+		'picture', 
 		'category_id', 
 		'parent_id', 
-		'picture', 
+		'sorting', 
 		'status', 
 		'inserted_by'
 	];
