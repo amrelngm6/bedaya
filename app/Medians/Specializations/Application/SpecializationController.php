@@ -55,7 +55,7 @@ class SpecializationController extends CustomController
                     'key'=> "parent_name",
                     'title'=> __('parent_category'),
                     'type' => 'string',
-                    'sortable'=> false,
+                    'sortable'=> true,
                 ],
                 [
                     'key'=> "childs_count",
