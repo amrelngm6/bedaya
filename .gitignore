@@ -4,6 +4,7 @@
 /uploads/bugs
 /app/config/database.php
 /app/config/parameters.yml
+/src/tailwind
 
 .env
 cookie.txt
