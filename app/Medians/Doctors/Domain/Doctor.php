@@ -59,10 +59,7 @@ class Doctor extends CustomModel
 
 	public function thumbnail() 
 	{
-    	$file = str_replace('/images/', '/thumbnails/', str_replace(['.png','.jpg','.jpeg'],'.webp', $this->photo()));
-
-		return is_file($file) ? $file : $this-photo();
-		
+    	return str_replace('/images/', '/thumbnails/', str_replace(['.png','.jpg','.jpeg'],'.webp', $this->photo()));
 	}
 
 
