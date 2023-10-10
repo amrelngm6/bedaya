@@ -18,6 +18,7 @@
                                     <tr class=" ">
                                         <th class="p-2 text-default w-4 ">#</th>
                                         <th class="p-2 text-default " v-text="__('title')"></th>
+                                        <th class="p-2 text-default " v-text="__('Status')"></th>
                                         <th class="p-2 text-default " v-text="__('Specialization')"></th>
                                         <th class="p-2 text-center ">{{__('Action')}}</th>
                                     </tr>
@@ -33,6 +34,9 @@
                                         </td>
                                         <td class="p-2  text-default border-1 border-t  border-gray-200">
                                             <span class="px-2"> {{offer.content ? offer.content.title : ''}}</span>
+                                        </td>
+                                        <td class="p-2  text-default border-1 border-t  border-gray-200">
+                                            <span class="px-2" :class="offer.status ? '' : 'text-red-400'" v-text="offer.status ? offer.status : 'Disabled'"></span>
                                         </td>
                                         <td class="p-2 border-1 border-t  border-gray-200 text-default" >
                                             <span class="px-2"> {{offer.speciality_name}}</span>
