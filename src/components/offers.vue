@@ -104,6 +104,10 @@
                                 <input name="type" type="hidden" value="Offer.update">
                                 <input name="params[id]" type="hidden" v-model="activeItem.id">
 
+                                <label class="block mb-3">
+                                    <input name="params[status]" type="checkbox" v-model="activeItem.active" class="form-checkbox h-5 w-5 text-orange-600">
+                                    <span class="ml-2 text-gray-700  mx-2" v-text="__('PUBLISH')"></span>
+                                </label>
 
                                 <span class="block mb-2" v-text="__('icon')"></span>
                                 <input name="params[field][icon]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('icon')"  v-model="activeItem.field.icon">
