@@ -105,7 +105,7 @@
                                 <input name="params[id]" type="hidden" v-model="activeItem.id">
 
                                 <label class="inline-flex w-full items-center mb-3">
-                                    <input name="params[status]" type="checkbox" v-model="activeItem.active" class="form-checkbox h-5 w-5 text-orange-600">
+                                    <input name="params[status]" type="checkbox" v-model="activeItem.status" class="form-checkbox h-5 w-5 text-orange-600">
                                     <span class="ml-2 text-gray-700  mx-2" v-text="__('PUBLISH')"></span>
                                 </label>
 
