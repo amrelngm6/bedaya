@@ -40,6 +40,11 @@ class OfferController extends CustomController
                 'key'=> "title",
                 'title'=> __('title'),
                 'sortable'=> true,
+			],
+            [
+                'key'=> "status",
+                'title'=> __('status'),
+                'sortable'=> true,
             ]
         ];
 	}
@@ -62,7 +67,7 @@ class OfferController extends CustomController
 		        'load_vue' => true,
 		        'title' => __('Offers'),
 		        'columns' => $this->columns(),
-		        'items' => $this->repo->get(),
+		        'items' => $this->repo->getAll(),
 		    ]);
 		} catch (\Exception $e) {
 			throw new \Exception($e->getMessage(), 1);

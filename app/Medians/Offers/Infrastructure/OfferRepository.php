@@ -41,6 +41,11 @@ class OfferRepository
 		return Offer::with('content','user', 'speciality')->where('status', 'on')->limit($limit)->orderBy('updated_at', 'DESC')->get();
 	}
 
+	public function getAll()
+	{
+		return Offer::with('content','user', 'speciality')->orderBy('id', 'DESC')->get();
+	}
+
 	public function random($limit = 100)
 	{
 		return Offer::with('content','user')->where('status', 'on')->limit($limit)->inRandomOrder()	->get();
