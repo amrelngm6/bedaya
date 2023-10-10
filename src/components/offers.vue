@@ -68,25 +68,25 @@
                                 <input name="params[speciality_id]" type="hidden" value="23">
 
                                 <span class="block mb-2" v-text="__('price_eg')"></span>
-                                <input name="params[field][price_eg]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('price_eg')" >
+                                <input name="params[field][price_eg]"  type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('price_eg')" >
 
                                 <span class="block mb-2" v-text="__('price_ly')"></span>
-                                <input name="params[field][price_ly]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('price_ly')" >
+                                <input name="params[field][price_ly]"  type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('price_ly')" >
 
                                 <span class="block mb-2" v-text="__('price_sd')"></span>
-                                <input name="params[field][price_sd]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('price_sd')" >
+                                <input name="params[field][price_sd]"  type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('price_sd')" >
 
                                 <span class="block mb-2" v-text="__('discount')"></span>
-                                <input name="params[field][discount]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('discount')" >
+                                <input name="params[field][discount]"  type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('discount')" >
 
                                 <span class="block mb-2" v-text="__('old_price')"></span>
-                                <input name="params[field][old_price]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('old_price')" >
+                                <input name="params[field][old_price]"  type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('old_price')" >
 
                                 <span class="block mb-2" v-text="__('title')+' AR'"></span>
-                                <input name="params[content][ar][title]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('discount')" >
+                                <input name="params[content][ar][title]"  type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('discount')" >
 
                                 <span class="block mb-2" v-text="__('title')+' EN'"></span>
-                                <input name="params[content][ar][title]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('old_price')" >
+                                <input name="params[content][ar][title]"  type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('old_price')" >
                                 
                                 <button class="uppercase h-12 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800" v-text="__('save')"></button>
                             </form>
@@ -105,20 +105,23 @@
                                 <input name="params[id]" type="hidden" v-model="activeItem.id">
 
 
+                                <span class="block mb-2" v-text="__('icon')"></span>
+                                <input name="params[field][icon]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('icon')"  v-model="activeItem.field.icon">
+
                                 <span class="block mb-2" v-text="__('price_eg')"></span>
-                                <input name="params[field][price_eg]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('price_eg')"  v-model="activeItem.field.price_eg">
+                                <input name="params[field][price_eg]"  type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('price_eg')"  v-model="activeItem.field.price_eg">
 
                                 <span class="block mb-2" v-text="__('price_ly')"></span>
-                                <input name="params[field][price_ly]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('price_ly')"  v-model="activeItem.field.price_ly">
+                                <input name="params[field][price_ly]"  type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('price_ly')"  v-model="activeItem.field.price_ly">
 
                                 <span class="block mb-2" v-text="__('price_sd')"></span>
-                                <input name="params[field][price_sd]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('price_sd')"  v-model="activeItem.field.price_sd">
+                                <input name="params[field][price_sd]"  type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('price_sd')"  v-model="activeItem.field.price_sd">
 
                                 <span class="block mb-2" v-text="__('discount')"></span>
-                                <input name="params[field][discount]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('discount')"  v-model="activeItem.field.discount">
+                                <input name="params[field][discount]"  type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('discount')"  v-model="activeItem.field.discount">
 
                                 <span class="block mb-2" v-text="__('old_price')"></span>
-                                <input name="params[field][old_price]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('old_price')"  v-model="activeItem.field.old_price">
+                                <input name="params[field][old_price]"  type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('old_price')"  v-model="activeItem.field.old_price">
 
                                 <button class="uppercase h-10 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800">{{__('Update')}}</button>
                             </form>
