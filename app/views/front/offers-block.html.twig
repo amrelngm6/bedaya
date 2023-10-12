@@ -7,7 +7,7 @@
                 <div class="w-full  p-7 pt-10 lg:flex">
                     <div class="w-full py-2">
                          
-                    <h2 class="flex mb-2 text-2xl font-semibold purple-color pb-4 gap gap-4"><img width="90" height="40" src="/stream?image=/uploads/img/logo.webp" /> {{item.content.title}}</h2>
+                    <h2 class="flex mb-2 text-2xl font-semibold purple-color pb-4 gap gap-4"><img width="90" height="40" src="/stream?image=/uploads/img/{{item.field.icon ? item.field.icon : 'logo.webp'}}" /> {{item.content.title}}</h2>
                     
                         {{contents[0]|raw}}
                         <a href="/offer_booking/{{item.id}}" class="inline-block hover:bg-gray-800 purple-bg py-3 px-4 rounded-lg text-white">{{lang.__('more_details')}}</a>
