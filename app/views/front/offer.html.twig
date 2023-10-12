@@ -39,7 +39,7 @@
             <div class="flex w-full px-4 pt-5 sm:px-6 gap gap-3">
                 <div class="w-full py-4">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">
-                        <img width="50" height="20" style="display:inline-block " src="/stream?image=/uploads/img/logo.webp"> 
+                        <img width="50" height="20" style="display:inline-block " src="/stream?image=/uploads/img/{{item.field.icon ? item.field.icon : 'logo.webp'}}"> 
                         <span class="inline-block mt-1 mx-4"> {{item.content.title}}</span>
                     </h3>
                     <p class="mt-1 max-w-2xl text-sm text-gray-500">
