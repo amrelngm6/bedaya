@@ -26,7 +26,9 @@ class SpecializationRepository
 
 	public function find($id)
 	{
-		return Specialization::with('content')->find($id);
+		return Specialization::with('content')
+		->where('status', '!=', '0')
+		->find($id);
 	}
  
 	public function get($limit = 100)
@@ -34,6 +36,7 @@ class SpecializationRepository
 		return Specialization::with('content','user','parent')
 		->withCount('childs')
 		->limit($limit)
+		->where('status', '!=', '0')
 		->get();
 	}
 

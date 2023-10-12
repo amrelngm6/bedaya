@@ -12,7 +12,6 @@
                 <div class="w-full flex gap gap-6">
                     <div class="w-full">
                         <div v-if="content.items" class="px-4 mb-6 py-4 rounded-lg shadow-lg bg-white dark:bg-gray-700 ">
-
                             <table class="table dark:text-gray-400 text-gray-800 border-separate space-y-6 text-sm w-full">
                                 <thead class="mb-10  text-gray-500 pb-10">
                                     <tr class=" ">
