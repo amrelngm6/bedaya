@@ -27,7 +27,7 @@ class SpecializationRepository
 	public function find($id)
 	{
 		return Specialization::with('content')
-		->where('status', '!=', '0')
+		->where('status', 'on')
 		->find($id);
 	}
  
@@ -36,7 +36,7 @@ class SpecializationRepository
 		return Specialization::with('content','user','parent')
 		->withCount('childs')
 		->limit($limit)
-		->where('status', '!=', '0')
+		->where('status', 'on')
 		->get();
 	}
 
@@ -51,7 +51,7 @@ class SpecializationRepository
 		$return = Specialization::whereHas('content', function($q) use ($title){
 			$q->where('title', 'LIKE', '%'.$title.'%');
 		})
-		->where('status', '!=', '0')
+		->where('status', 'on')
 		->with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')
 		->get();
 
@@ -71,6 +71,7 @@ class SpecializationRepository
 			$q->where('title', 'LIKE', '%'.$title.'%')->orWhere('content', 'LIKE', '%'.$title.'%');
 		})
 		->where('id', '!=', $item->id)
+		->where('status', 'on')
 		->with('content','user')->limit($limit)->orderBy($lang == 'en' ? 'sorting' : 'sorting_ar', 'DESC')->get();
 	}
 
@@ -86,6 +87,7 @@ class SpecializationRepository
 		}])
 		->with('content','user')
 		->where('id','!=','1')
+		->where('status', 'on')
 		->limit($limit)->orderBy($lang == 'en' ? 'sorting' : 'sorting_ar','DESC')->get();
 	}
 
