@@ -86,6 +86,7 @@ class OfferController extends CustomController
         try {	
 
         	$params['branch_id'] = $this->app->branch->id;
+        	$params['title'] = isset($params['content']['en']['title']) ? $params['content']['en']['title'] : '';
         	
         	$this->validate($params);
 
