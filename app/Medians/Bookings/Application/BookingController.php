@@ -255,6 +255,7 @@ class BookingController extends CustomController
 
 			$item = $this->doctorRepo->find($id);
 			$this->repo->getModel()->addView();
+			
 			if (!empty($item))
 				$item->addView();
 			
