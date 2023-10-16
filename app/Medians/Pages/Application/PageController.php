@@ -310,6 +310,10 @@ class PageController extends CustomController
 		        		return (new  \Medians\Offers\Application\OfferController)->list($item);
 		        		break;
 		        	
+		        	case \Medians\Technologies\Domain\Technology::class:
+		        		return (new  \Medians\Technologies\Application\TechnologyController)->list($item);
+		        		break;
+		        	
 		        	default:
 		        		// code...
 		        		break;
