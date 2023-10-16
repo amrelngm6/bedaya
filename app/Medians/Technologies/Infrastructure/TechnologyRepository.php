@@ -48,7 +48,7 @@ class TechnologyRepository
 
 	public function random($limit = 100)
 	{
-		return Technology::with('content','user')->where('status', 'on')->limit($limit)->inRandomOrder()	->get();
+		return Technology::with('content','user')->where('status', 'on')->limit($limit)->inRandomOrder	()	->get();
 	}
 
 
@@ -72,8 +72,6 @@ class TechnologyRepository
     	$Object = Technology::create($dataArray);
     	$Object->update($dataArray);
 
-    	$this->storeCustomFields($data['field'] ,$Object->id);
-    	
     	$this->storeContent($data['content'] ,$Object->id);
 
     	return $Object;
