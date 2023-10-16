@@ -26,6 +26,8 @@ Macaw::get('/search', \Medians\Pages\Application\PageController::class.'@search'
 Macaw::get('/search/', \Medians\Pages\Application\PageController::class.'@search'); 
 Macaw::get('/stream', \Medians\Media\Application\MediaController::class.'@stream'); 
 Macaw::get('/assets', \Medians\Media\Application\MediaController::class.'@assets'); 
+Macaw::get('/technologies', \Medians\Technologies\Application\TechnologyController::class.'@list'); 
+Macaw::get('/technologies/(:all)', \Medians\Technologies\Application\TechnologyController::class.'@item'); 
 
 
 Macaw::get('/invoices/print/(:all)', \Medians\Orders\Application\OrderController::class.'@print');
@@ -220,6 +222,13 @@ Macaw::get('/admin/contact_bookings', \Medians\Bookings\Application\BookingContr
 Macaw::get('/admin/pages/index', \Medians\Pages\Application\PageController::class.'@index');
 Macaw::get('/admin/pages/', \Medians\Pages\Application\PageController::class.'@index');
 Macaw::get('/admin/pages', \Medians\Pages\Application\PageController::class.'@index');
+
+/**
+* @return technologies
+*/
+Macaw::get('/admin/technologies/index', \Medians\Technologies\Application\TechnologyController::class.'@index');
+Macaw::get('/admin/technologies/', \Medians\Technologies\Application\TechnologyController::class.'@index');
+Macaw::get('/admin/technologies', \Medians\Technologies\Application\TechnologyController::class.'@index');
 
 /**
 * @return Reports

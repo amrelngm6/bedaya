@@ -48,6 +48,7 @@ import pages from './components/pages.vue'
 import bookings from './components/bookings.vue'
 import notifications from './components/notifications.vue'
 import notifications_events from './components/notifications_events.vue'
+import technologies from './components/technologies.vue'
 
 export default {
     name: 'app',
@@ -70,6 +71,7 @@ export default {
         bookings,
         notifications,
         notifications_events,
+        technologies,
         navbar
     },
     data() {

@@ -163,17 +163,15 @@ class TechnologyController extends CustomController
 	 * Front page 
 	 * @var Int
 	 */
-	public function list($pageinfo)
+	public function list()
 	{
 
 		try {
 
 			$items = $this->repo->get();
-			$this->repo->getModel()->addView();
 
-			echo render('views/front/offers.html.twig', [
+			echo render('views/front/page.html.twig', [
 		        'items' => $items,
-		        'pageinfo' => $pageinfo,
 		    ]);
 
 		} catch (\Exception $e) {

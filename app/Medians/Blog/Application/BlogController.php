@@ -251,7 +251,7 @@ class BlogController extends CustomController
 		$him = $this->repo->getByCategory($cathim->id, 4);
 
 		try {
-				
+
 			return render('views/front/blog.html.twig', [
 		        'first_item' => $this->repo->getFeatured(1),
 		        'search_items' => $request->get('search') ?  $this->repo->search($request, 10) : [],
