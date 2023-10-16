@@ -75,7 +75,7 @@
                                 <input name="params[content][en][title]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Title')" >
 
                                 <span class="block mb-2" v-text="__('sorting')"></span>
-                                <input name="params[sorting]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('icon')"  v-model="activeItem.sorting">
+                                <input name="params[sorting]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Sorting')"  v-model="activeItem.sorting">
 
                                 <label class="inline-flex w-full items-center mb-3">
                                     <input name="params[status]" type="checkbox" v-model="activeItem.status" class="form-checkbox h-5 w-5 text-orange-600">
@@ -99,7 +99,7 @@
                                 <input name="params[id]" type="hidden" v-model="activeItem.id">
                                 
                                 <span class="block mb-2" v-text="__('sorting')"></span>
-                                <input name="params[sorting]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('icon')"  v-model="activeItem.sorting">
+                                <input name="params[sorting]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Sorting')"  v-model="activeItem.sorting">
 
                                 <label class="inline-flex w-full items-center mb-3">
                                     <input name="params[status]" type="checkbox" v-model="activeItem.status" class="form-checkbox h-5 w-5 text-orange-600">
