@@ -18,7 +18,7 @@ class Technology extends CustomModel
     protected $fillable = [
         'title',
         'status',
-        'sort',
+        'sorting',
         'created_by',
     ];
 
