@@ -103,6 +103,9 @@
                                 
                                 <span class="block mb-2" v-text="__('sorting')"></span>
                                 <input name="params[sorting]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Sorting')"  v-model="activeItem.sorting">
+                                
+                                <span class="block mb-2" v-text="__('Link')"></span>
+                                <input name="params[url]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('readmore URL')"  v-model="activeItem.url">
 
                                 <label class="inline-flex w-full items-center mb-3">
                                     <input name="params[status]" type="checkbox" v-model="activeItem.status" class="form-checkbox h-5 w-5 text-orange-600">
@@ -111,7 +114,6 @@
 
                                 <span class="block my-2" v-text="__('picture')"></span>
                                 <vue-medialibrary-field name="params[picture]" :key="activeItem.picture" :api_url="conf.url" v-model="activeItem.picture"></vue-medialibrary-field>
-
 
                                 <button class="uppercase h-10 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800">{{__('Update')}}</button>
                             </form>
