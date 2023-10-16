@@ -9,7 +9,7 @@
         </div>
         <div class="mx-2 text-white cyan-bg rounded-xl p-6 ">
             
-            <a href="/offer_booking/{{item.id}}" class="pull-{{lang.__('lang') == 'ar' ? 'left' : 'right'}} relative z-10 hover:bg-gray-800 purple-bg py-3 px-4 rounded-lg text-white">{{lang.__('more_details')}}</a>
+            <a href="{{item.url}}" class="pull-{{lang.__('lang') == 'ar' ? 'left' : 'right'}} relative z-10 hover:bg-gray-800 purple-bg py-3 px-4 rounded-lg text-white">{{lang.__('more_details')}}</a>
 
             {{item.content.content|raw}}
 
