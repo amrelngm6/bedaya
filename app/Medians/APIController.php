@@ -105,6 +105,10 @@ class APIController
 	                $return =  (new Users\Application\UserController())->store(); 
 	                break;
 
+	            case 'Technology.create':
+	                $return =  (new Technologies\Application\TechnologyController())->store(); 
+	                break;
+
 			}
 
 			return response(json_encode($return));

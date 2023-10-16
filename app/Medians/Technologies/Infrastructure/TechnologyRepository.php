@@ -38,32 +38,18 @@ class TechnologyRepository
 
 	public function get($limit = 100)
 	{
-		return Technology::with('content','user', 'speciality')->where('status', 'on')->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		return Technology::with('content',)->where('status', 'on')->limit($limit)->orderBy('updated_at', 'DESC')->get();
 	}
 
 	public function getAll()
 	{
-		return Technology::with('content','user', 'speciality')->orderBy('id', 'DESC')->get();
+		return Technology::with('content','user')->orderBy('id', 'DESC')->get();
 	}
 
 	public function random($limit = 100)
 	{
 		return Technology::with('content','user')->where('status', 'on')->limit($limit)->inRandomOrder()	->get();
 	}
-
-	public function similar($item, $limit = 3)
-	{
-		if (empty($item->content->title))
-			return null;
-		
-		$title = str_replace(' ', '%', $item->content->title);
-		return Technology::whereHas('content', function($q) use ($title){
-			$q->where('title', 'LIKE', '%'.$title.'%')->orWhere('content', 'LIKE', '%'.$title.'%');
-		})
-		->where('id', '!=', $item->id)
-		->with('content','user')->limit($limit)->orderBy('updated_at', 'DESC')->get();
-	}
-
 
 
 	/**
