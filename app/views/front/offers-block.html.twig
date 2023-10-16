@@ -1,8 +1,6 @@
 <div class="w-full" style=" display:table">
             {% for item in offers %}
 
-    {% set contents = item.content.content|split('<h3>محتويات الباكدج</h3>') %}
-
             <div style="vertical-align:top;" class="px-2 inline-block list-icon mb-20 relative bg-white lg:w-1/2">
                 <div class="w-full  p-7 pt-10 lg:flex">
                     <div class="w-full py-2">
@@ -11,16 +9,26 @@
                 </div>
                 <div class=" text-white w-full cyan-bg rounded-xl p-6 ">
                     
-                    <a href="/offer_booking/{{item.id}}" class="pull-left hover:bg-gray-800 purple-bg py-3 px-4 rounded-lg text-white">{{lang.__('more_details')}}</a>
-                    <p class="text-lg font-semibold  pb-4">{{lang.__('offer_content')}}</p>
-                    <span class="mb-2 w-20 border border-b-1  border-gray-200 block"></span>
-                    <section class="w-full pt-10">
-                       
-{{contents[1]|raw}}
-						
+                    <a href="/offer_booking/{{item.id}}" class="pull-{{lang.__('lang') == 'ar' ? 'left' : 'right'}} relative z-10 hover:bg-gray-800 purple-bg py-3 px-4 rounded-lg text-white">{{lang.__('more_details')}}</a>
+
+                    {{item.content.content|raw}}
 
                 </div>
             </div>
 
             {% endfor %}
-            </div>
+</div>
+
+<style>
+.blog-content section.kedit > .keditable > h3
+{
+    color: #fff
+}
+.blog-content section.kedit > .keditable > p
+{
+    display: none
+}
+.list-icon li [
+    margin: 0 0 5px 0
+]
+</style>
