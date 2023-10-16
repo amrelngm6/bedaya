@@ -19,6 +19,7 @@ class Technology extends CustomModel
         'title',
         'status',
         'sorting',
+        'picture',
         'created_by',
     ];
 

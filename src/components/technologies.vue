@@ -82,6 +82,9 @@
                                     <span class="ml-2 text-gray-700  mx-2" v-text="__('PUBLISH')"></span>
                                 </label>
 
+                                <span class="block my-2" v-text="__('picture')"></span>
+                                <vue-medialibrary-field name="params[picture]" :key="activeItem.id" :api_url="conf.url" v-model="activeItem.picture"></vue-medialibrary-field>
+
                                 <button class="uppercase h-12 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800" v-text="__('save')"></button>
                             </form>
                         </div>
@@ -105,6 +108,10 @@
                                     <input name="params[status]" type="checkbox" v-model="activeItem.status" class="form-checkbox h-5 w-5 text-orange-600">
                                     <span class="ml-2 text-gray-700  mx-2" v-text="__('PUBLISH')"></span>
                                 </label>
+
+                                <span class="block my-2" v-text="__('picture')"></span>
+                                <vue-medialibrary-field name="params[picture]" :key="activeItem.picture" :api_url="conf.url" v-model="activeItem.picture"></vue-medialibrary-field>
+
 
                                 <button class="uppercase h-10 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800">{{__('Update')}}</button>
                             </form>
