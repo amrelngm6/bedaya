@@ -145,8 +145,8 @@ class OfferController extends CustomController
         	throw new \Exception("Error Processing Request", 1);
         	
         }
-
 	}
+
 
 	public function validate($params) 
 	{

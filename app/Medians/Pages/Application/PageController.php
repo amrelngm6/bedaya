@@ -11,6 +11,7 @@ use Medians\Doctors\Infrastructure\DoctorRepository;
 use Medians\StoryDates\Infrastructure\StoryDateRepository;
 use Medians\Stories\Infrastructure\StoryRepository;
 use Medians\Content\Infrastructure\ContentRepository;
+use Medians\Technologies\Infrastructure\TechnologyRepository;
 
 
 class PageController extends CustomController 
@@ -20,6 +21,7 @@ class PageController extends CustomController
 	* @var Object
 	*/
 	protected $repo;
+	protected $technologyRepo;
 
 	
 
@@ -36,6 +38,7 @@ class PageController extends CustomController
 		$this->doctorRepo = new DoctorRepository();
 		$this->storyDateRepo = new StoryDateRepository();
 		$this->storyRepo = new StoryRepository();
+		$this->technologyRepo = new TechnologyRepository();
 	}
 
 
@@ -193,6 +196,7 @@ class PageController extends CustomController
 				'doctors' => $this->doctorRepo->getHome(3),
 				'blog' => $this->blogRepo->getFront(3),
 		        'item' => $item,
+				'all_technologies' => $this->technologyRepo->get(),
 		    ]);
 
 		} catch (\Exception $e) {
@@ -314,13 +318,9 @@ class PageController extends CustomController
 		        		return (new  \Medians\Technologies\Application\TechnologyController)->list($item);
 		        		break;
 		        	
-		        	default:
-		        		// code...
-		        		break;
 		        }
 			}
 
-		        
 
 		} catch (\Exception $e) {
 			throw new \Exception( $e->getMessage(), 1);

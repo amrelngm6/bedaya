@@ -1,20 +1,20 @@
-<div class="w-full gap gap-6" style=" display:table;">
-            {% for item in items %}
+<div class="w-full gap gap-6" >
+    {% for item in all_technologies %}
 
-            <div style="vertical-align:top;" class="px-2 inline-block list-icon mb-2 relative bg-white lg:w-1/2">
-                <div class="w-full p-7 pt-10 lg:flex">
-                    <div class="w-full py-2">
-                        <h2 class="pb-0 my-1 flex text-2xl font-semibold purple-color gap gap-3"><img width="50" height="50" src="/stream?image=/uploads/img/{{item.field.icon ? item.field.icon : 'logo.webp'}}" /> {{item.content.title}}</h2>
-                   </div>
-                </div>
-                <div class="mx-2 text-white cyan-bg rounded-xl p-6 ">
-                    
-                    <a href="/offer_booking/{{item.id}}" class="pull-{{lang.__('lang') == 'ar' ? 'left' : 'right'}} relative z-10 hover:bg-gray-800 purple-bg py-3 px-4 rounded-lg text-white">{{lang.__('more_details')}}</a>
-
-                    {{item.content.content|raw}}
-
+        <div style="vertical-align:top;" class="px-2 inline-block list-icon mb-2 relative bg-white lg:w-1/2">
+            <div class="w-full p-7 pt-10 lg:flex">
+                <div class="w-full py-2">
+                    <h2 class="pb-0 my-1 flex text-2xl font-semibold purple-color gap gap-3"><img width="50" height="50" src="/stream?image=/uploads/img/{{item.field.icon ? item.field.icon : 'logo.webp'}}" /> {{item.content.title}}</h2>
                 </div>
             </div>
+            <div class="mx-2 text-white cyan-bg rounded-xl p-6 ">
+                
+                <a href="/offer_booking/{{item.id}}" class="pull-{{lang.__('lang') == 'ar' ? 'left' : 'right'}} relative z-10 hover:bg-gray-800 purple-bg py-3 px-4 rounded-lg text-white">{{lang.__('more_details')}}</a>
 
-            {% endfor %}
+                {{item.content.content|raw}}
+
+            </div>
+        </div>
+
+    {% endfor %}
 </div>
