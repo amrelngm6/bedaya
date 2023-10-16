@@ -67,8 +67,21 @@
                                     <span class="cursor-pointer py-1 px-2" @click="showAddSide = false, activeItem = {}"><close_icon /></span>
                                 </div>
                                 <input name="type" type="hidden" value="Technology.create">
-                                <input name="params[status]" type="hidden" value="on">
-                                <input name="params[speciality_id]" type="hidden" value="23">
+                                
+                                <span class="block my-2" v-text="__('title')+' AR'"></span>
+                                <input name="params[content][ar][title]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Title')" >
+
+                                <span class="block mb-2" v-text="__('title')+' EN'"></span>
+                                <input name="params[content][en][title]" required="" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Title')" >
+
+                                <label class="inline-flex w-full items-center mb-3">
+                                    <input name="params[status]" type="checkbox" v-model="activeItem.status" class="form-checkbox h-5 w-5 text-orange-600">
+                                    <span class="ml-2 text-gray-700  mx-2" v-text="__('PUBLISH')"></span>
+                                </label>
+
+                                <span class="block mb-2" v-text="__('sorting')"></span>
+                                <input name="params[sorting]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('icon')"  v-model="activeItem.sorting">
+
 
                                 <button class="uppercase h-12 mt-3 text-white w-full rounded bg-red-700 hover:bg-red-800" v-text="__('save')"></button>
                             </form>

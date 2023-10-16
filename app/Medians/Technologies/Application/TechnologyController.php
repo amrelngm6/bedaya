@@ -63,7 +63,7 @@ class TechnologyController extends CustomController
 		
 		try {
 			
-		    render('offers', [
+		    render('technologies', [
 		        'load_vue' => true,
 		        'title' => __('Technologies'),
 		        'columns' => $this->columns(),
