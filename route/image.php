@@ -30,6 +30,10 @@ if(!empty($_GET['img'])) {
 			$type = './library/photos';
 			break;
 		
+		case 'img':
+			$type = '../';
+			break;
+		
 		default:
 			exit('Invalid parameter value');
 			break;
