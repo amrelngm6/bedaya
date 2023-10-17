@@ -38,12 +38,12 @@ class TechnologyRepository
 
 	public function get($limit = 100)
 	{
-		return Technology::with('content',)->where('status', 'on')->limit($limit)->orderBy('updated_at', 'DESC')->get();
+		return Technology::with('content',)->where('status', 'on')->limit($limit)->orderBy('sorting', 'ASC')->get();
 	}
 
 	public function getAll()
 	{
-		return Technology::with('content','user')->orderBy('id', 'DESC')->get();
+		return Technology::with('content','user')->orderBy('sorting', 'ASC')->get();
 	}
 
 	public function random($limit = 100)

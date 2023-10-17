@@ -169,7 +169,7 @@ class TechnologyController extends CustomController
 		try {
 
 			$items = $this->repo->get();
-
+			
 			echo render('views/front/page.html.twig', [
 		        'items' => $items,
 		    ]);

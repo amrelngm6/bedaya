@@ -7,7 +7,7 @@
             </div>
             <div class="mx-2 text-white cyan-bg rounded-xl p-6 ">
                 
-                {{item.content.content|raw}}
+                {{item.html_content|raw}}
 
                 <a href="/offer_booking/{{item.id}}" class=" relative z-10 hover:bg-gray-800 purple-bg py-3 px-4 rounded-lg text-white">{{lang.__('more_details')}}</a>
 

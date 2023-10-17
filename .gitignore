@@ -5,6 +5,7 @@
 /app/config/database.php
 /app/config/parameters.yml
 /src/tailwind
+/route/cache
 
 .env
 cookie.txt
