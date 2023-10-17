@@ -166,6 +166,10 @@ class APIController
                 $return = (new Offers\Application\OfferController())->update(); 
                 break;
 
+            case 'Technology.update':
+                $return = (new Technologies\Application\TechnologyController())->update(); 
+                break;
+
             case 'User.update':
                 $return =  (new Users\Application\UserController())->update(); 
                 break;
