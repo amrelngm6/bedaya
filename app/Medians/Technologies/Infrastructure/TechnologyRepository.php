@@ -48,7 +48,7 @@ class TechnologyRepository
 
 	public function random($limit = 100)
 	{
-		return Technology::with('content','user')->where('status', 'on')->limit($limit)->inRandomOrder	()	->get();
+		return Technology::with('content','user')->where('status', 'on')->limit($limit)->inRandomOrder()->get();
 	}
 
 

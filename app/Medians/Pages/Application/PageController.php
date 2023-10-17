@@ -188,6 +188,8 @@ class PageController extends CustomController
 		
 			$item->addView();
 			
+			print_r($this->technologyRepo->get());
+			
 			return render('views/front/page.html.twig', [
 				'specializations' => $this->specsRepo->get_root(),
 				'story_dates' => $this->storyDateRepo->get(),
