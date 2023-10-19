@@ -466,7 +466,7 @@ class LangsEn
 			
 			,'SIGNUP_DONE_MSG' => 'You can login after reviewing your profile.'
 			,'ABOUT' => 'About'
-			,'CONTACT' => 'Contact'
+			,'CONTACT' => 'Contact us'
 			,'AR' => 'Arabic'
 			,'EN' => 'English'
 			,'CHANGE_LANG' => 'Change Language'
