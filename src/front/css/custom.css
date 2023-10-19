@@ -482,7 +482,7 @@ footer
     content: "🗸";
     display: inline-block;
     position: absolute;
-    top: 3px;
+    /* top: 3px; */
     right: 0;
     color: #53c9e7;
 }
