@@ -11,7 +11,7 @@
             
             <a style=" margin: 0 40px; {{lang.__('lang') == 'ar' ? 'left' : 'right'}}: 0px; " href="{{item.url}}" class="pull-{{lang.__('lang') == 'ar' ? 'left' : 'right'}} absolute z-10 hover:bg-gray-800 purple-bg py-3 px-4 rounded-lg text-white">{{lang.__('more_details')}}</a>
             
-            <div class="w-full overflow-auto custom-scroll" style="max-height:200px">
+            <div class="w-full overflow-auto custom-scroll" style="height:200px">
             {{item.content.content|raw}}
             </div>
 
