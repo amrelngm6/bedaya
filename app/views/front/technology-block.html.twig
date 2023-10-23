@@ -1,16 +1,19 @@
 
-        <div style="vertical-align:top;" class="px-2 inline-block list-icon mb-2 relative bg-white lg:w-1/2">
-            <div class="w-full p-7 pt-10 lg:flex">
+    <div class="px-2 inline-block list-icon mb-2 relative bg-white lg:flex gap gap-6">
+        <div style="vertical-align:top;" class="px-2 inline-block list-icon mb-2 relative bg-white w-full">
+            <div class="w-full p-7 pt-10 ">
                 <div class="w-full py-2">
-                    <h2 class="pb-0 my-1 flex text-2xl font-semibold purple-color gap gap-3"><img width="50" height="50" src="/stream?image={{ item.picture }}" /> {{item.content.title}}</h2>
+                    <h2 class="pb-0 my-1  text-2xl font-semibold purple-color "> {{item.content.title}}</h2>
                 </div>
-            </div>
-            <div class="mx-2 text-white cyan-bg rounded-xl p-6 ">
-                <div  class="custom-scroll w-full " style="max-height:200px">
+                <div  class="custom-scroll w-full overflow-auto" style="max-height:300px" >
                 {{item.content.content|raw}}
                 </div>
                 <a href="{{item.url}}" class=" relative z-10 hover:bg-gray-800 purple-bg py-3 px-4 rounded-lg text-white">{{lang.__('more_details')}}</a>
 
             </div>
         </div>
-
+        <div class="w-full pt-10 ">
+            <img width="400" height="400" src="/stream?image={{ item.picture }}" />
+        </div>
+    </div>
+    <hr class="container mx-auto" />
