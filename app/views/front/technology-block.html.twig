@@ -5,7 +5,7 @@
                 <div class="w-full py-2">
                     <h2 class="pb-0 my-1  text-2xl font-semibold purple-color "> {{item.content.title}}</h2>
                 </div>
-                <div  class="custom-scroll w-full overflow-auto item-content" style="max-height:300px" >
+                <div  class="custom-scroll w-full overflow-auto item-content" style="max-height:300px; margin-bottom:30px" >
                 {{item.content.content|raw}}
                 </div>
                 <a href="{{item.url}}" class=" relative z-10 hover:bg-gray-800 purple-bg py-3 px-4 rounded-lg text-white">{{lang.__('more_details')}}</a>
