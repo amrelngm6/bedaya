@@ -21,6 +21,7 @@ class Technology extends CustomModel
         'sorting',
         'picture',
         'url',
+        'url_en',
         'created_by',
     ];
 
