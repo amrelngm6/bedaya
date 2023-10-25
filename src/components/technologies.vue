@@ -106,6 +106,9 @@
                                 
                                 <span class="block mb-2" v-text="__('Link')"></span>
                                 <input name="params[url]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Readmore URL')"  v-model="activeItem.url">
+                                
+                                <span class="block mb-2" v-text="__('English Link')"></span>
+                                <input name="params[url_en]" type="text" class="h-12 mt-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('English Readmore URL')"  v-model="activeItem.url_en">
 
                                 <label class="inline-flex w-full items-center mb-3">
                                     <input name="params[status]" type="checkbox" v-model="activeItem.status" class="form-checkbox h-5 w-5 text-orange-600">
