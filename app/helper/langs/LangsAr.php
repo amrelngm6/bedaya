@@ -1050,6 +1050,8 @@ class LangsAr
 		,'Consultation'=> 'استشارة اونلاين'
 		,'content table' => 'جدول المحتوي'
 		,'show More' => 'عرض المزيد'
+		,'Medical Journey' => 'رحلة علاجك'
+		,'Latest Technologies' => 'أحدث التقنيات'
 
 		,'COPYRIGHTS' => 'جميع الحقوق محفوظة لمستشفي بداية'
 		);
