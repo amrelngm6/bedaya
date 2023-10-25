@@ -13,11 +13,13 @@
                     <ul class="pt-3">
                         {% if sub_list|length %}
                         {% for i in sub_list %}
+                        {% if i %}
                         <li class="gap gap-4 flex pb-2 mb-2 ">
                             <span class="elementor-icon-list-text"> 
                                 {{i}}
                             </span>
                         </li>
+                        {% endif %}
                         {% endfor %}
                         {% endif %}
                     </ul>
