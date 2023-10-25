@@ -1,4 +1,4 @@
-
+{% set sub_list = item.content.short|split(',') %}
     <div class="px-2 inline-block list-icon mb-2 relative bg-white lg:flex gap gap-6">
         <div style="vertical-align:top;" class="px-2 inline-block list-icon mb-2 relative bg-white w-full">
             <div class="w-full p-7 pt-10 ">
@@ -11,7 +11,10 @@
                 <div class="flex gap-6">
                     <a href="{{item.url}}" class=" relative z-10 hover:bg-gray-800 purple-bg py-3 px-4 rounded-lg text-white">{{lang.__('more_details')}}</a>
                     <ul>
-                        {{item.content.short|raw}}
+                    {% if %}
+                    {% for i in sub_list %}
+                        {{i}}
+                    {% endif %}
                     </ul>
                 </div>
             </div>
