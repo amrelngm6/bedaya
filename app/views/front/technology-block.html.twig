@@ -8,6 +8,7 @@
                 <div  class="custom-scroll w-full overflow-auto item-content" style="max-height:300px; margin-bottom:30px" >
                 {{item.content.content|raw}}
                 </div>
+                <img class="show-mobile -mx-3 rounded-2xl " width="600" height="400" src="/route/image.php?w=600&h=400&img=img&src={{ item.picture }}" />
                 <div class="flex gap-4">
                     
                     {% if lang.__('lang') == 'en' %}
@@ -37,7 +38,7 @@
         </div>
         <div class="w-full pt-10 ">
         
-            <img class="-mx-3 rounded-2xl " width="600" height="400" src="/route/image.php?w=600&h=400&img=img&src={{ item.picture }}" />
+            <img class="hide-mobile -mx-3 rounded-2xl " width="600" height="400" src="/route/image.php?w=600&h=400&img=img&src={{ item.picture }}" />
         </div>
     </div>
     <hr class="container mx-auto" />
