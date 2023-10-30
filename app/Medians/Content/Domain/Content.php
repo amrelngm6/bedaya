@@ -46,7 +46,7 @@ class Content extends CustomModel
 		$text = str_replace(array(' ', '/', '\\', '"', "'", '&', '@', '#', '$', '(', ')', '=', '+'), '_', $text);
 		$check = Content::where('prefix', $text)->first();
 
-		return isset($check->id) ? $text.date('Ymd') : $text;
+		return isset($check->id) ? $text.date('Ymd') . rand(9,99) : $text;
 
 	}
 
