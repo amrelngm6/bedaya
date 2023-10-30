@@ -102,6 +102,11 @@
                         </div>
                         <div >
                             <form v-if="activeItem.field" action="/api/update" method="POST" data-refresh="1" id="add-device-form" class="action py-0 m-auto rounded-lg max-w-xl pb-10">
+
+                                <div v-if="!activeItem.content">
+                                    <input name="params[content][ar][content]"  type="hidden"  value="-" >
+                                    <input name="params[content][en][content]"  type="hidden"  value="-" >
+                                </div>
                                 
                                 <span class="block my-2" v-text="__('Doctor')"></span>
                                 <select  v-model="activeItem.doctor_id" name="params[doctor_id]" class="form-checkbox p-2 px-3 w-full text-orange-600 border border-1 border-gray-400 rounded-lg" v-if="content.doctors">
