@@ -60,8 +60,8 @@
                         <div class="mb-6 p-4 rounded-lg shadow-lg bg-white dark:bg-gray-700 ">
                             <form action="/api/create" method="POST" data-refresh="1" id="add-device-form" class="action  py-0 m-auto rounded-lg max-w-xl pb-10">
                                 
-                                <input name="params[content][ar][title]" type="hidden" >
-                                <input name="params[content][en][title]" type="hidden" >
+                                <input name="params[content][ar][content]"  type="hidden"  value="-" >
+                                <input name="params[content][en][content]"  type="hidden"  value="-" >
 
                                 <div class="w-full flex">
                                     <h1 class="w-full m-auto max-w-xl text-base mb-10 ">{{__('ADD_NEW')}}</h1>

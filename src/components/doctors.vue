@@ -23,6 +23,8 @@
                                 </div>
                                 <input name="type" type="hidden" value="Doctor.create">
                                 <input name="params[status]" type="hidden" value="on">
+                                <input name="params[content][ar][content]"  type="hidden"  value="-" >
+                                <input name="params[content][en][content]"  type="hidden"  value="-" >
 
                                 <input name="params[content][ar][title]" required="" type="text" class="h-12 my-3 rounded w-full border px-3 text-gray-700  focus:border-blue-100 dark:bg-gray-800  dark:border-gray-600" :placeholder="__('Title')+' AR'" >
 
