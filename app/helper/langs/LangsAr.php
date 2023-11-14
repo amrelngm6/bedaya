@@ -399,6 +399,7 @@ class LangsAr
 		,'OUR_PROVIDERS' => 'مزودي الخدمة '
 		,'START_DATE' => 'Start date'
 		,'MOBILE' => 'الموبايل'
+		,'MOBILE_NUMBER' => 'رقم الموبايل'
 		,'PLUGINS' => 'Plugins'
 		,'CHECK' => 'مراجعة'
 		,'HOOKS' => 'Hooks'
