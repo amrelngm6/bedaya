@@ -25,7 +25,7 @@
                             {% endif %}
 
                             <img loading="lazy" src="/stream?image={{item.picture}}" alt="Doctor" class="w-full" />
-                                    {% if item.content.content is not empty %}
+                                    {% if item.content_item.content is not empty %}
 
                             <div id="brief"  class="relative my-6 p-6 lightcyan-bg  rounded-lg overflow-hidden">
                                 <img loading="lazy" src="/stream?image=/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
@@ -34,7 +34,7 @@
                                     <hr class="border-gray-400 my-4" />
                                     
                                     
-                                    {{item.content.content | raw}}
+                                    {{item.content_item.content | raw}}
 
                                 </div>
                             </div>
