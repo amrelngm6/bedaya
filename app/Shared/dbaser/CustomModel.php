@@ -55,6 +55,11 @@ class CustomModel extends Model
 		return $this->morphOne(Content::class, 'item')->where('lang', __('lang'));
 	}
 
+	public function content_item()
+	{
+		return $this->morphOne(Content::class, 'item')->where('lang', __('lang'));
+	}
+
 	public function en()
 	{
 		return $this->morphOne(Content::class, 'item')->where('lang', 'en');

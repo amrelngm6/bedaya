@@ -23,7 +23,7 @@ class Doctor extends CustomModel
 	];
 
 
-	public $appends = ['field'];
+	public $appends = ['field','content_item'];
 
 
 	public function getFieldAttribute() 
@@ -52,6 +52,11 @@ class Doctor extends CustomModel
 	}
 
 	public function content()
+	{
+		return $this->morphOne(Content::class, 'item')->where('lang', __('lang'));
+	}
+
+	public function getContentItemAttribute()
 	{
 		return $this->morphOne(Content::class, 'item')->where('lang', __('lang'));
 	}
