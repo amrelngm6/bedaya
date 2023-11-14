@@ -48,7 +48,9 @@
                         <a href="{{item.content.prefix}}" class="text-white text-xl font-bold">{{item.content.title}}</a>
                         <p class="text-sm text-white "> {{lang.__('lang') == 'en' ? item.field.short_name : item.field.short_name_ar}} </p>
                         <p class="text-sm text-white pt-2 gap-3 gap font-semibold">
+                            {% if item.content_item.content|raw is not empty %}
                             <a class="py-3 px-4 purple-bg text-white rounded-tl-lg rounded-br-lg" href="/{{item.content.prefix}}">{{lang.__('Profile CV')}}</a>
+                            {% endif %}
                             <a class="py-3 px-4 cyan-bg purple-color hover:text-gray-500 mx-2 " href="/book/{{item.id}}">{{lang.__('BOOK_NOW')}} </a>
                         </p>
                         <p class="text-sm text-white pt-4 ">
