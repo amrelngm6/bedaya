@@ -3,6 +3,7 @@
 namespace Medians\Blog\Domain;
 
 use Shared\dbaser\CustomModel;
+use Medians\Views\Domain\View;
 
 
 class Blog extends CustomModel
@@ -79,6 +80,11 @@ class Blog extends CustomModel
 	public function content()
 	{
 		return $this->morphOne(Content::class, 'item')->where('lang', __('lang'));
+	}
+
+	public function views()
+	{
+		return $this->morphMany(View::class, 'item');
 	}
 
 
