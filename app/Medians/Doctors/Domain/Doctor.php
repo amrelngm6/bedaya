@@ -58,7 +58,7 @@ class Doctor extends CustomModel
 
 	public function getContentItemAttribute()
 	{
-		return $this->morphOne(Content::class, 'item')->where('lang', __('lang'));
+		return $this->content;
 	}
 
 
