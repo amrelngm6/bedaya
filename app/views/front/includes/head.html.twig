@@ -2,7 +2,9 @@
 <html dir="{{lang.__('dir')}}" lang="{{lang_key}}">
 
 <head>
-    
+{% if noindex %}
+    <meta name="robots" content="noindex,nofollow">
+{% endif %}
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

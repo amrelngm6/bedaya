@@ -284,7 +284,7 @@ class PageController extends CustomController
 
 			if (isset($item->item_type))
 			{
-
+				
 		        switch ($item->item_type) 
 		        {
 		        	case \Medians\Specializations\Domain\Specialization::class:

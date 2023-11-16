@@ -39,6 +39,7 @@ class HomeController extends CustomController
 	        	'all_stories'=> $this->storiesRepo->get(),
 	        	'headerPosition'=> 'lg-fixed',
 		        'item' => $item,
+				'noindex' => (count(array_filter(explode('/', $_SERVER['REQUEST_URI']))) > 1) ? 1 : 2,
 	        	'story_dates'=> $this->storyDateRepo->get(10)
 	        ]);
 	        

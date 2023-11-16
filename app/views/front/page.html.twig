@@ -1,3 +1,4 @@
+{% set hasindex = 2 %}
 {% include 'views/front/includes/header.html.twig' %}
 
 {% if item.home == 0 %}
@@ -15,7 +16,7 @@
 {% endif %}
 <div class="blog-content ">
     <div class="mx-auto ">
-        {{app.renderTemplate(item.content.content, item).render( {'item':item, 'app':app, 'lang':lang, 'specializations':specializations, 'story_dates':story_dates, 'stories':stories, 'all_stories':all_stories, 'doctors': doctors, 'blog': blog, 'all_technologies': all_technologies }  )|raw}}
+        {{app.renderTemplate(item.content.content, item).render( {'item':item,  'hasindex':4, 'app':app, 'lang':lang, 'specializations':specializations, 'story_dates':story_dates, 'stories':stories, 'all_stories':all_stories, 'doctors': doctors, 'blog': blog, 'all_technologies': all_technologies }  )|raw}}
     </div>
 </div>
 {% include 'views/front/includes/navbar.html.twig' %}
