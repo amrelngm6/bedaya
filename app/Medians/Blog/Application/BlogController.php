@@ -141,6 +141,8 @@ class BlogController extends CustomController
 
         	$params['created_by'] = $this->app->auth()->id;
         	
+			$params['status'] = !empty($params['status']) ? 'on' : 0;
+        	
         	$this->validate($params);
 
             $returnData = (!empty($this->repo->store($params))) 
@@ -162,7 +164,7 @@ class BlogController extends CustomController
 
         try {
 
-        	$params['status'] = !empty($params['status']) ? $params['status'] : 0;
+        	$params['status'] = !empty($params['status']) ? 'on' : 0;
 
             if ($this->repo->update($params))
             {
