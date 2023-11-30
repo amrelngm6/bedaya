@@ -84,7 +84,7 @@ class CustomModel extends Model
 	public function addView()
 	{
 
-		View::create(['session'=>$this->sessionGuest(), 'item_type'=>get_class($this), 'item_id'=>$this->id]);
+		// View::create(['session'=>$this->sessionGuest(), 'item_type'=>get_class($this), 'item_id'=>$this->id]);
 
 	}
 
