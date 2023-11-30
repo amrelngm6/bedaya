@@ -39,7 +39,7 @@ class BlogRepository
 
 	public function find($id)
 	{
-		return Blog::with('content')->withSum('views','times')->find($id);
+		return Blog::with('content')->find($id);
 	}
 
 	public function get($limit = 500, $lang = null)
