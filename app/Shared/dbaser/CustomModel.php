@@ -83,8 +83,8 @@ class CustomModel extends Model
 
 	public function addView()
 	{
-		// $view = View::firstOrCreate(['item_type'=>get_class($this), 'item_id'=>$this->id]);
-		// $view->update(['session'=>$this->sessionGuest(), 'times'=>($view->times ? $view->times : 0)+1]);
+		$view = View::firstOrCreate(['item_type'=>get_class($this), 'item_id'=>$this->id]);
+		$view->update(['session'=>$this->sessionGuest(), 'times'=>($view->times ? $view->times : 0)+1]);
 	}
 
 
