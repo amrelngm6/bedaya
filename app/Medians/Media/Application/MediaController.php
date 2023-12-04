@@ -62,6 +62,7 @@ class MediaController extends CustomController
 	}
 
 
+
 	public function stream()
 	{
 		$this->app = new \config\APP;
@@ -69,21 +70,22 @@ class MediaController extends CustomController
 
 		if (strpos($filepath, 'uploads/') && is_file($_SERVER['DOCUMENT_ROOT'].$filepath))
 		{
+
+			$ext = explode('.', $filepath);
 			// Set the caching headers
 			$expires = 60 * 60 * 24 * 7; // 1 week (in seconds)
 			header("Cache-Control: public, max-age=$expires");
 			header("Expires: " . gmdate("D, d M Y H:i:s", time() + $expires) . " GMT");
 
 			// Serve the CSS file
-			header("Content-Type: text/css");
+			$extension = "text/".end($ext);
+			header("Content-Type: $extension");
 			readfile($_SERVER['DOCUMENT_ROOT'].$filepath);
 
 		} else {
-			echo 'Not found';
-			// echo $_SERVER['DOCUMENT_ROOT'].$filepath;
+			echo $_SERVER['DOCUMENT_ROOT'].$filepath;
 		} 
 	}
-
 
 	public function assets()
 	{
