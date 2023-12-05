@@ -40,17 +40,12 @@
                         <dd class="w-full mt-1 text-sm text-gray-900 sm:mt-0 ">
                             <p>{{lang.__('Mobile')}}</p>
                             <div class="flex ltr">
-                                <select class="bg-gray-200 text-gray-700 border border-gray-200 rounded  " name="params[custom_field][mobile_key]" id="countrieslist"></select>
+                                <input type="hidden" name="params[custom_field][mobile_country]" id="countrieslist-code" value="EG">
+                                <select class="w-20 bg-gray-200 text-gray-700 border border-gray-200 rounded  " name="params[custom_field][mobile_key]" id="countrieslist"></select>
                                 <input required="" maxlength="11" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4  leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="customer-mobile" type="tel" placeholder="{{lang.__('Mobile number')}}" name="params[custom_field][mobile]">
                             </div>
                         </dd>
                     </div>
-                    <!--- <div class=" hidden" >
-                        <dt class="text-sm font-medium text-gray-500 w-full">
-                            <p>{{lang.__('Date')}}</p>
-                            <input required class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-date" type="date" placeholder="{{lang.__('Date')}}" name="params[custom_field][date]">
-                        </dt>
-                    </div> --->
                 </dl>
             </div>
             <p class="p-2 px-6">{{lang.__('SELECT_PLATFORM')}}</p>

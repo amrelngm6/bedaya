@@ -972,6 +972,8 @@ class LangsAr
 		,'start_playing' => 'بدء التشغيل'
 		,'Order Summary' => 'ملخص الطلب'
 		,'User credentials not valid' => 'بيانات الدخول غير صحيحة'
+		,'Mobile number is not valid' => 'رقم الموبايل غير صحيح'
+		,'Mobile is required' => 'رقم الموبايل مطلوب'
 		,'User account is not active' => 'هذا الحساب غير نشط'
 		,'Email already found' => 'هذا البريد موجود بالفعل'
 		,'Logged in' => 'تم تسجيل الدخول'

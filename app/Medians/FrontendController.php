@@ -46,7 +46,7 @@ class FrontendController extends CustomController
 
 			if (empty($params['custom_field']['mobile']))
 			{
-				echo  json_encode(array('error'=>1, 'result'=>"Mobile is empty"));
+				echo  json_encode(array('error'=>1, 'result'=> __("Mobile is required")));
 				return ; 
 			}
 
@@ -65,7 +65,7 @@ class FrontendController extends CustomController
 
 				if (!$isValid)
 				{
-					$response = array('error'=>1,'result'=>"Mobile number is not valid");
+					$response = array('error'=>1,'result'=>__("Mobile number is not valid"));
 
 				}  else {
 
@@ -74,7 +74,8 @@ class FrontendController extends CustomController
 				}
 
 			} catch (\libphonenumber\NumberParseException $e) {
-				$response = array('error'=>"Error: " . $e->getMessage());
+				$response = array('error'=>1,'result'=>__('Mobile number is not valid') );
+				// $response = array('error'=>1,'result'=>$e->getMessage());
 			}
 
 

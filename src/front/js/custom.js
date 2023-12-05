@@ -161,7 +161,7 @@ jQuery(document).ready(function (e) {
 
 	jQuery.get( "/src/assets/countries.json", function( data ) {
 		
-		data.sort((a, b) => a.dial_code.localeCompare(b.dial_code));
+		// data.sort((a, b) => a.dial_code.localeCompare(b.dial_code));
 		var newdata = '';
 
 		/* Remove all options from the select list */
@@ -170,7 +170,7 @@ jQuery(document).ready(function (e) {
 		let selected;
 		for (let i = 0; i < data.length; i++) {
 			selected = data[i].code == 'EG' ? 'selected' : '';
-			newdata += '<option value="'+data[i].dial_code+'" '+selected+' >'+data[i].dial_code   +'</option>' ;
+			newdata += '<option value="'+data[i].dial_code+'" '+selected+' >'+data[i].name +" "+ data[i].dial_code   +'</option>' ;
 		}
 
 		$('#countrieslist').html(newdata);
