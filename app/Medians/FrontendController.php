@@ -65,7 +65,7 @@ class FrontendController extends CustomController
 
 				if (!$isValid)
 				{
-					$response = array('error'=>1,'result'=>__("Mobile number is not valid"));
+					$response = array('error'=>1,'result'=>__("MOBILE_ERR"));
 
 				}  else {
 
@@ -74,7 +74,7 @@ class FrontendController extends CustomController
 				}
 
 			} catch (\libphonenumber\NumberParseException $e) {
-				$response = array('error'=>1,'result'=>__('Mobile number is not valid') );
+				$response = array('error'=>1,'result'=>__('MOBILE_ERR') );
 				// $response = array('error'=>1,'result'=>$e->getMessage());
 			}
 
