@@ -15,29 +15,26 @@
  
 // require_once('../classes/configuration.php');
 
-if(!empty($_GET['img'])) {
 
-	$src = isset($_GET['src']) ? $_GET['src'] : '';
+$src = isset($_GET['src']) ? $_GET['src'] : '';
+$type = isset($_GET['img']) ? $_GET['img'] : '';
 
-	switch ($_GET['img']) 
-	{
-		case 'ch':
-			$type = 'library/channels';
-			$src = str_replace('channels/', '', $src);
-			break;
-		
-		case 'pic':
-			$type = 'library/photos';
-			break;
-		
-		default:
-			exit('Invalid parameter value');
-			break;
-	}
-		
-} else {
-	exit('The \'t\' parameter is not set.');
+switch ($type) 
+{
+	case 'ch':
+		$type = 'library/channels';
+		$src = str_replace('channels/', '', $src);
+		break;
+	
+	case 'pic':
+		$type = 'library/photos';
+		break;
+	
+	default:
+		$type= '';
+		break;
 }
+	
 
 // print_r($_SERVER);
 // Build up the src query
