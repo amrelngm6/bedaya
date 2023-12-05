@@ -34,6 +34,8 @@ class APP
 
 	public $capsule;
 
+	public $isMobileDevice;
+
 
 
 	function __construct()
