@@ -23,7 +23,7 @@
         data-status="{{app.request().get('load')}}"
         data-page="{{app.request().requestUri|slice(1)}}"
         data-menu="{{app.menu()|json_encode}}"
-        data-auth="{{app.auth|json_encode}}"
+        data-auth="{{app.auth()|json_encode}}"
         data-lang="{{lang.vueLang()|json_encode}}"
         data-setting="{{app.Settings|json_encode}}"
         data-conf="{{app.CONF|json_encode}}"
