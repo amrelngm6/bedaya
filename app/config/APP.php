@@ -168,8 +168,8 @@ class APP
 	{
 		$twig = new \Twig\Environment(new \Twig\Loader\FilesystemLoader('./app'), 
 		    [
-		        //'cache' => '/app/cache',
-		        'debug' => true,
+		        'cache' => 'cache',
+		        // 'debug' => true,
 		    ]
 		);
 

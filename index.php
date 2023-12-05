@@ -1,7 +1,8 @@
 <?php
 
-session_start(); error_reporting(E_ALL);
+session_start(); error_reporting(0);
 $_SESSION['startT'] = microtime(true);
+
 date_default_timezone_set('Africa/Cairo');
 
 file_exists(__DIR__.'/app/config/database.php') ?  require_once __DIR__.'/app/config/database.php' : header('Location: ./installer/index.php');
@@ -40,13 +41,3 @@ include('app/helper/methods.php');
 include('app/config/route.php');
 
 
-
-
-$_SESSION['end'] = microtime(true);
-
-$timeTaken = $_SESSION['end'] - $_SESSION['startT'];
-
-if (isset($_GET['test']))
-{
-    echo "Server responded in: " . round($timeTaken, 4) . " seconds";
-}
