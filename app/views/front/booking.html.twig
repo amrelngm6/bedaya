@@ -48,6 +48,7 @@
                         <dt class="w-full text-sm font-medium text-gray-500 pb-4">
                             <p>{{lang.__('Mobile')}}</p>
                             <div class="flex ltr">
+                                <input type="hidden" name="params[custom_field][mobile_country]" id="countrieslist-code" value="EG">
                                 <select class="w-20 bg-gray-200 text-gray-700 border border-gray-200  py-2 pb-3 " name="params[custom_field][mobile_key]" id="countrieslist"></select>
                                 <input required="" maxlength="11" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 " min="8" id="customer-mobile" type="tel" placeholder="{{lang.__('Mobile')}} " name="params[custom_field][mobile]">
                             </div>
