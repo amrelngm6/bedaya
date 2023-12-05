@@ -161,6 +161,7 @@ jQuery(document).ready(function (e) {
 
 	jQuery.get( "/src/assets/countries.json", function( data ) {
 		
+		data.sort((a, b) => a.dial_code.localeCompare(b.dial_code));
 		var newdata = '';
 
 		/* Remove all options from the select list */
@@ -175,6 +176,10 @@ jQuery(document).ready(function (e) {
 		$('#countrieslist').html(newdata);
 	});
 
+	jQuery('body').on('change', '#countrieslist', function(e){
+		jQuery('#countrieslist-code').val(e.target.value);
+	});
+		
 	jQuery('body').on('scroll', function(){
 		alert(1)
 	});

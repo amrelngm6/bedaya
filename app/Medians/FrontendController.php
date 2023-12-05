@@ -4,6 +4,10 @@ namespace Medians;
 
 use \Shared\dbaser\CustomController;
 
+use \libphonenumber\PhoneNumberUtil;
+use \libphonenumber\PhoneNumberFormat;
+use \libphonenumber\PhoneNumberType;
+
 class FrontendController extends CustomController 
 {
 
@@ -31,13 +35,48 @@ class FrontendController extends CustomController
 	public function form_submit($type)
 	{
 
-		$request = $this->app->request()->get('params');
+		$params = $this->app->request()->get('params');
 
 		try {
-			
-			$Object = $this->repo->store($request);
+				
+			// Create an instance of PhoneNumberUtil
+			$phoneNumberUtil = PhoneNumberUtil::getInstance();
 
-			$response = $Object ? array('success'=>1, 'result'=> __('BOOKING_NOTE'), 'title'=>__('BOOKING_THANKS')) : 'error' ;
+			$number = $params['custom_field']['mobile_key'] . $params['custom_field']['mobile'];
+
+			if (empty($params['custom_field']['mobile']))
+			{
+				echo  json_encode(array('error'=>1, 'result'=>"Mobile is empty"));
+				return ; 
+			}
+
+			try {
+				// Parse the phone number
+				$phoneNumber = $phoneNumberUtil->parse($number, $params['custom_field']['mobile_country']);
+
+				// Validate the phone number
+				$isValid = $phoneNumberUtil->isValidNumber($phoneNumber);
+
+				// Get the phone number in a standardized format
+				$formattedPhoneNumber = $phoneNumberUtil->format($phoneNumber, PhoneNumberFormat::INTERNATIONAL);
+
+				// Get the type of phone number (Mobile, Fixed Line, etc.)
+				$numberType = $phoneNumberUtil->getNumberType($phoneNumber);
+
+				if (!$isValid)
+				{
+					$response = array('error'=>1,'result'=>"Mobile number is not valid");
+
+				}  else {
+
+					$Object = $this->repo->store($params);
+					$response = $Object ? array('success'=>1, 'result'=> __('BOOKING_NOTE'), 'title'=>__('BOOKING_THANKS')) : 'error' ;
+				}
+
+			} catch (\libphonenumber\NumberParseException $e) {
+				$response = array('error'=>"Error: " . $e->getMessage());
+			}
+
 
 		} catch (Exception $e) {
 			$response  = array('error'=>$e->getMessage()) ;
