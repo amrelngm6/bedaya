@@ -1,4 +1,5 @@
 <?php
+$start = microtime(true);
 
 session_start(); error_reporting(E_ALL);
 date_default_timezone_set('Africa/Cairo');
@@ -41,3 +42,12 @@ include('app/config/route.php');
 
 
 
+$end = microtime(true);
+
+$timeTaken = $end - $start;
+
+if (isset($_GET['test']))
+{
+
+    echo "Server responded in: " . round($timeTaken, 4) . " seconds";
+}

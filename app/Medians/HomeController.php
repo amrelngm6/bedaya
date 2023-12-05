@@ -27,9 +27,8 @@ class HomeController extends CustomController
 	public function index()
 	{
 		try {
-
 			$item = $this->pagesRepo->homepage();
-			$item->addView();
+			// $item->addView();
 
 	        return  render('views/front/page.html.twig',[
 	        	'blog'=> $this->blogRepo->getFront(3),
