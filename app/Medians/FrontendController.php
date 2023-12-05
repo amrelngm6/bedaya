@@ -80,7 +80,7 @@ class FrontendController extends CustomController
 
 
 		} catch (Exception $e) {
-			$response  = array('error'=>$e->getMessage()) ;
+			$response  = array('error'=>1, 'result'=>$e->getMessage()) ;
 		}
 
 
