@@ -139,9 +139,9 @@ function isMobileDevice() {
 function a()
 {
 
-    $_SESSION['end'] = microtime(true);
+    $_SESSION['endT'] = microtime(true);
 
-    $timeTaken = $_SESSION['end'] - $_SESSION['startT'];
+    $timeTaken = $_SESSION['endT'] - $_SESSION['startT'];
 
     if (isset($_GET['test']))
     {
