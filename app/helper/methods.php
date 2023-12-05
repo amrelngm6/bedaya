@@ -41,12 +41,12 @@ function render($template, $data, $responseType = 'html')
     $app = new \config\APP;
     $data['component'] = $template;
     $data['app'] = $app;
-    $data['app']->auth = $app->auth();
-    $data['app']->branch = $app->branch;
-    $data['app']->Settings = $ettings;
+    // $data['app']->auth = $app->auth();
+    // $data['app']->branch = $app->branch;
+    // $data['app']->Settings = $ettings;
     // $data['app']->isMobileDevice = isMobileDevice();
-    $data['startdate'] = !empty($app->request()->get('start')) ? $app->request()->get('start') : date('Y-m-d');
-    $data['enddate'] = !empty($app->request()->get('end')) ? $app->request()->get('end') : date('Y-m-d');
+    // $data['startdate'] = !empty($app->request()->get('start')) ? $app->request()->get('start') : date('Y-m-d');
+    // $data['enddate'] = !empty($app->request()->get('end')) ? $app->request()->get('end') : date('Y-m-d');
     $data['lang'] = (new helper\Lang($_SESSION['lang']))->load();
     $data['lang_key'] = __('lang');
     
