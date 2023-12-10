@@ -13,10 +13,11 @@
     <title>{{item.content.title ? item.content.title : app.setting('sitename')}}</title>
     <meta name='description' content="{{item.content.seo_desc ? item.content.seo_desc : 'مجموعة مستشفيات بداية متخصصون فى علاج العقم وأمراض الذكورة وأطفال الانابيب وأمراض الجهاز التناسلي'}}">
     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-    <link rel='canonical' href='{{app.request.uri}}'>
+    {% set canonicalUrl = app.request.uri|trim('/') %}
+    <link rel='canonical' href='{{ canonicalUrl }}'>
     <!-- Open Graph / Facebook -->
     <meta property='og:type' content='website'>
-    <meta property='og:url' content='{{ app.request.uri}}'>
+    <meta property='og:url' content='{{ canonicalUrl}}'>
     <meta property='og:title' content="{{item.content.title ? item.content.title : app.setting('sitename')}}">
     <meta property='og:image' content='/route/image.php?src=1253926083_1828277228_581308477.jpg&img=pic&w=800'>
     <meta property='og:description' content="{{item.content.seo_desc ? item.content.seo_desc : app.setting('seo_desc')}}">
