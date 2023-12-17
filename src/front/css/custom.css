@@ -554,7 +554,7 @@ body a.cyan-bg:hover
 {
     .main-header-slider
     {
-        min-height: 450px;
+        min-height: 450px !important;
     }
     .hide-mobile
     {
