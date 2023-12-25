@@ -109,7 +109,6 @@ class SpecializationController extends CustomController
         	$params['created_by'] = $this->app->auth()->id;
         	$params['branch_id'] = $this->app->branch->id;
         	
-        	$this->validate($params);
 
             $returnData = (!empty($this->repo->store($params))) 
             ? array('success'=>1, 'result'=>__('Added'), 'reload'=>1)
@@ -172,10 +171,6 @@ class SpecializationController extends CustomController
 	public function validate($params) 
 	{
 
-		if (empty($params['name']))
-		{
-        	throw new \Exception(json_encode(array('result'=>__('NAME_EMPTY'), 'error'=>1)), 1);
-		}
 
 	}
 
