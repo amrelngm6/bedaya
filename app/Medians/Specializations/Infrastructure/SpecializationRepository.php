@@ -159,10 +159,12 @@ class SpecializationRepository
 	{
 		try {
 	
-			$delete = Content::where('item_type', Specialization::class)->where('item_id', $id)->delete();
+			$deleteContent = Content::where('item_type', Specialization::class)->where('item_id', $id)->delete();
 
 			
-			return Specialization::find($id)->delete();
+			$delete = Specialization::find($id)->delete();
+
+			return true;
 
 		} catch (\Exception $e) {
 
