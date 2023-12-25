@@ -40,6 +40,14 @@ class SpecializationRepository
 		->get();
 	}
 
+	public function getAll($limit = 100)
+	{
+		return Specialization::with('content','user','parent')
+		->withCount('childs')
+		->limit($limit)
+		->get();
+	}
+
 	public function filterSearchTitle($title)
 	{
 		$title = str_replace([ 'أ','', 'ا',"ى","ة",'ه'], ' ', $title);

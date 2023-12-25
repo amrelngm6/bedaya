@@ -88,7 +88,7 @@ class SpecializationController extends CustomController
 		        'load_vue' => true,
 		        'columns' => $this->columns(),
 		        'title' => __('specialization'),
-		        'items' => $this->repo->get(),
+		        'items' => $this->repo->getAll(),
 		    ]);
 		} catch (\Exception $e) {
 			throw new \Exception($e->getMessage(), 1);
