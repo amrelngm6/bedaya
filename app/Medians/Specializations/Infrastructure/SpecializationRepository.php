@@ -111,6 +111,8 @@ class SpecializationRepository
 			}
 		}		
 
+		$dataArray['title'] = Content::generatePrefix($data['content']['en']['title']);
+
 		// Return the FBUserInfo object with the new data
     	$Object = Specialization::create($dataArray);
     	$Object->update($dataArray);
