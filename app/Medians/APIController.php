@@ -237,6 +237,10 @@ class APIController
 					return (new OnlineConsultations\Application\OnlineConsultationController())->delete();
 					break;
 
+				case 'Specialization.delete':
+					return (new Specializations\Application\SpecializationController())->delete();
+					break;
+
 
 			}
 
