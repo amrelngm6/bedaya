@@ -115,7 +115,7 @@ class SpecializationRepository
     	$Object = Specialization::create($dataArray);
     	$Object->update($dataArray);
 
-    	$this->storeContent($data['content'], $data['id']);
+    	$this->storeContent($data['content'], $Object->id);
 
     	return $Object;
     }
