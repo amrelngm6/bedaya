@@ -185,7 +185,7 @@ class SpecializationController extends CustomController
 		try {
 			
 			$item = $this->repo->find($contentObject->item_id);
-			$item->addView();
+			// $item->addView();
 
 			return render('views/front/specialization.html.twig', [
 				'noindex' => (count(array_filter(explode('/', $_SERVER['REQUEST_URI']))) > 1) ? true : false,
