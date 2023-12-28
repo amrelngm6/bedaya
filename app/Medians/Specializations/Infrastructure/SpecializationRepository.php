@@ -27,7 +27,7 @@ class SpecializationRepository
 	public function find($id)
 	{
 		return Specialization::with('content')
-		->where('status', 'on')
+		// ->where('status', 'on')
 		->find($id);
 	}
  
