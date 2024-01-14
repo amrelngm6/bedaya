@@ -2,6 +2,25 @@
     
 {% include 'views/front/includes/navbar.html.twig' %}
     
+<script type="application/ld+json">
+[ 
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "{{lang.__('Homepage')}}",
+      "item": "{{app.CONF.url}}"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "{{lang.__('Blog')}}"
+    }]
+  }
+]
+</script>
+
 
     <div class="w-full cyan-bg pb-6 pt-20  relative ">
         <div class="relative pt-4">

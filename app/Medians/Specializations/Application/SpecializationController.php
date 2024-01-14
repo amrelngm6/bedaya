@@ -129,7 +129,7 @@ class SpecializationController extends CustomController
 
         try {
 
-        	$params['status'] = !empty($params['status']) ? $params['status'] : 0;
+        	// $params['status'] = !empty($params['status']) ? $params['status'] : 0;
 
             if ($this->repo->update($params))
             {
