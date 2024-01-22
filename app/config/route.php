@@ -39,18 +39,18 @@ Macaw::get('/switch-lang/(:all)', \Medians\FrontendController::class.'@switchLan
     
 // });
 
-Macaw::get('/builder', \Medians\Builders\Application\BuilderController::class.'@index'); 
-Macaw::get('/builder/load', \Medians\Builders\Application\BuilderController::class.'@load'); 
-Macaw::get('/builder/meta', \Medians\Builders\Application\BuilderController::class.'@meta'); 
-Macaw::post('/builder', \Medians\Builders\Application\BuilderController::class.'@submit'); 
-Macaw::post('/builder/submit', \Medians\Builders\Application\BuilderController::class.'@submit'); 
-
 /**
 * Return Dashboard 
 */
 if(empty($app->auth()->id))
 {
     
+Macaw::get('/builder', \Medians\Builders\Application\BuilderController::class.'@index'); 
+Macaw::get('/builder/load', \Medians\Builders\Application\BuilderController::class.'@load'); 
+Macaw::get('/builder/meta', \Medians\Builders\Application\BuilderController::class.'@meta'); 
+Macaw::post('/builder', \Medians\Builders\Application\BuilderController::class.'@submit'); 
+Macaw::post('/builder/submit', \Medians\Builders\Application\BuilderController::class.'@submit'); 
+
 
 /**
  * @return  Login page in case if not authorized 
