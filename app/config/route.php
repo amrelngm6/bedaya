@@ -45,12 +45,6 @@ Macaw::get('/switch-lang/(:all)', \Medians\FrontendController::class.'@switchLan
 if(empty($app->auth()->id))
 {
     
-Macaw::get('/builder', \Medians\Builders\Application\BuilderController::class.'@index'); 
-Macaw::get('/builder/load', \Medians\Builders\Application\BuilderController::class.'@load'); 
-Macaw::get('/builder/meta', \Medians\Builders\Application\BuilderController::class.'@meta'); 
-Macaw::post('/builder', \Medians\Builders\Application\BuilderController::class.'@submit'); 
-Macaw::post('/builder/submit', \Medians\Builders\Application\BuilderController::class.'@submit'); 
-
 
 /**
  * @return  Login page in case if not authorized 
@@ -64,6 +58,12 @@ Macaw::post('/', \Medians\Auth\Application\AuthService::class.'@userLogin');
 } else {
 
 
+Macaw::get('/builder', \Medians\Builders\Application\BuilderController::class.'@index'); 
+Macaw::get('/builder/load', \Medians\Builders\Application\BuilderController::class.'@load'); 
+Macaw::get('/builder/meta', \Medians\Builders\Application\BuilderController::class.'@meta'); 
+Macaw::post('/builder', \Medians\Builders\Application\BuilderController::class.'@submit'); 
+Macaw::post('/builder/submit', \Medians\Builders\Application\BuilderController::class.'@submit'); 
+    
 Macaw::get('/json/dashboard', \Medians\DashboardController::class.'@json'); 
 Macaw::get('/dashboard', \Medians\DashboardController::class.'@index'); 
 Macaw::get('/login', \Medians\DashboardController::class.'@index'); 
