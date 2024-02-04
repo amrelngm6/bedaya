@@ -314,8 +314,23 @@ class BlogRepository
 				$videoContent = $this->videoContent($video);
 				$output = str_replace($matches[0][$k] , $videoContent, $output); 
 			}
+
+			$output .= '
+			<script type="application/ld+json">
+			  {
+				"@context": "http://schema.org",
+				"@type": "VideoObject",
+				"name": "'.$item->content->title.'",
+				"description": "'.$item->content->seo_desc.'",
+				"embedUrl": "https://www.youtube.com/embed/_rrUGlO-Qy8",
+				"thumbnailUrl": "https://www.bedayahospitals.com/uploads/youtube/_rrUGlO-Qy8.jpg",
+				"uploadDate": "'.(date('Y-m-d', strtotime($item->content->created_at))).'",
+				"duration": "PT1M30S",  
+			  }
+			</script>';
 		}
 		
+
 		$item->content->content = $output;
 		return $item;
 	}
