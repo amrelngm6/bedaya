@@ -324,7 +324,7 @@ class BlogRepository
 				"description": "'.$item->content->seo_desc.'",
 				"embedUrl": "https://www.youtube.com/embed/_rrUGlO-Qy8",
 				"thumbnailUrl": "https://www.bedayahospitals.com/uploads/youtube/_rrUGlO-Qy8.jpg",
-				"uploadDate": "'.(date('Y-m-d', strtotime($item->content->created_at))).'",
+				"uploadDate": "'.$item->content->created_at.'",
 				"duration": "PT1M30S"
 			  }
 			</script>';
