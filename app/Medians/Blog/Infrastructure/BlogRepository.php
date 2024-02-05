@@ -310,6 +310,7 @@ class BlogRepository
 		if (isset($matches[1]))
 		{
 			foreach ($matches[1] as $k => $match) {
+
 				$video = str_replace('https://www.youtube.com/embed/' , '', $match); 
 				$videoContent = $this->videoContent($video, $item);
 				$output = str_replace($matches[0][$k] , $videoContent, $output); 
@@ -348,18 +349,6 @@ class BlogRepository
 			<img alt="Bedaya" width="800" height="570" class="mx-auto  lazy" src="'.$img.'">
 			<img loading="lazy" alt="Bedaya" class="cursor-pointer w-16 lg:w-24 bg-white rounded-full p-1 lg:p-3 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0 lazy" src="/stream?image=/uploads/img/play-button_en.webp">
 		</div>
-		<script type="application/ld+json">
-			{
-			"@context": "http://schema.org",
-			"@type": "VideoObject",
-			"name": "'.$item->content->title.'",
-			"description": "'.$item->content->seo_desc.'",
-			"embedUrl": "https://www.youtube.com/embed/_rrUGlO-Qy8",
-			"thumbnailUrl": "https://www.bedayahospitals.com/uploads/youtube/_rrUGlO-Qy8.jpg",
-			"uploadDate": "'.$item->content->created_at.'",
-			"duration": "PT1M30S"
-			}
-		</script>
 		';
 	}
 
