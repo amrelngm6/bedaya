@@ -30,6 +30,7 @@ class Content extends CustomModel
 		'seo_desc', 
 		'seo_keywords', 
 		'seo_tag', 
+		'seo_video', 
 		'inserted_by'
 	];
 
