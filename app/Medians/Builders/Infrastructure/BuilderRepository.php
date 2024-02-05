@@ -46,6 +46,7 @@ class BuilderRepository
 		$check->seo_keywords = $request->get('seo_keywords');
 		$check->seo_desc = $request->get('seo_desc');
 		$check->seo_tag = $request->get('seo_tag');
+		$check->seo_video = $request->get('seo_video');
 		$save = $check->save();
 		if ($save)
 		{
