@@ -26,7 +26,7 @@ class SpecializationRepository
 
 	public function find($id)
 	{
-		return Specialization::with('content')
+		return Specialization::with('content')->withSum('views', 'times')
 		// ->where('status', 'on')
 		->find($id);
 	}

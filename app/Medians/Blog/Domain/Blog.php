@@ -53,7 +53,7 @@ class Blog extends CustomModel
 	
 	public function getUpdateDateAttribute() 
 	{
-		return isset($this->updated_at) ? date('Y-m-d', strtotime($this->updated_at)) : '';
+		return isset($this->updated_at) ? date('M, d Y', strtotime($this->updated_at)) : '';
 	}
 
 

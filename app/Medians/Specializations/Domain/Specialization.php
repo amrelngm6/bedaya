@@ -3,6 +3,7 @@
 namespace Medians\Specializations\Domain;
 
 use Shared\dbaser\CustomModel;
+use Medians\Views\Domain\View;
 
 
 class Specialization extends CustomModel
@@ -68,5 +69,9 @@ class Specialization extends CustomModel
 	}
 
 
+	public function views()
+	{
+		return $this->morphMany(View::class, 'item');
+	}
 
 }
