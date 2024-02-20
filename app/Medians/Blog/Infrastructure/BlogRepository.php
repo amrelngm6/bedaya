@@ -346,8 +346,9 @@ class BlogRepository
 		$img = $this->videoFrame($video_id);
 		return '
 		<div class="video-center show-modal-iframe relative" data-youtube-link="'.$video_id.'">
-			<img alt="Bedaya" width="800" height="570" class="mx-auto  lazy" src="'.$img.'">
-			<img loading="lazy" alt="Bedaya" class="cursor-pointer w-16 lg:w-24 bg-white rounded-full p-1 lg:p-3 mx-auto absolute my-auto left-0 right-0 top-0 bottom-0 lazy" src="/stream?image=/uploads/img/play-button_en.webp">
+			<div class="iframe-container">
+				<iframe  class="w-full lazy-iframe" height="460" data-src="https://www.youtube.com/embed/'.$video_id.'" frameborder="0" allowfullscreen></iframe>
+			</div>
 		</div>
 		';
 	}

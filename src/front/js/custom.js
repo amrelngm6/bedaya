@@ -186,3 +186,33 @@ jQuery(document).ready(function (e) {
 
 
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+	// Function to lazy load iframes when they come into view
+	function lazyLoadIframes() {
+		var lazyIframes = document.querySelectorAll(".lazy-iframe");
+		lazyIframes.forEach(function(iframe) {
+			if (isInViewport(iframe)) {
+				iframe.setAttribute("src", iframe.getAttribute("data-src"));
+				iframe.classList.remove("lazy-iframe");
+			}
+		});
+	}
+
+	// Function to check if an element is in the viewport
+	function isInViewport(element) {
+		var rect = element.getBoundingClientRect();
+		return (
+			rect.top >= 0 &&
+			rect.left >= 0 &&
+			rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+			rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+		);
+	}
+
+	// Lazy load iframes when the page is scrolled
+	window.addEventListener("scroll", lazyLoadIframes);
+	window.addEventListener("resize", lazyLoadIframes);
+	window.addEventListener("orientationchange", lazyLoadIframes);
+	window.onload = lazyLoadIframes; // Load iframes when the page finishes loading
+});
