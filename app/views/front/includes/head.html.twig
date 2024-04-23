@@ -2,7 +2,10 @@
 <html dir="{{lang.__('dir')}}" lang='{{lang_key}}'>
 
 <head>
-{% if noindex %}
+{% set segments = app.request.pathInfo|split('/') %}
+{% if segments|length > 2 %}
+    <meta name="robots" content="noindex,nofollow">
+{% elseif noindex %}
     <meta name="robots" content="noindex,nofollow">
 {% else %}
     <meta name="robots" content="index,follow">
