@@ -648,3 +648,9 @@ body .wapp-side-icon {
 {
     padding: 10px 0 20px 0;
 }
+#article-content ul{
+    padding: 0 20px;
+}
+#article-content li {
+    list-style-type: square;
+}
