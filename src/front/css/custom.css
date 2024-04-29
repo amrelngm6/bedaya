@@ -654,3 +654,7 @@ body .wapp-side-icon {
 #article-content li {
     list-style-type: square;
 }
+#article-content li::marker
+{
+    color: #0399a8;
+}
