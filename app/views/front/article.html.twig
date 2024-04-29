@@ -99,8 +99,12 @@
         for (b = 0; b < a; b += 1) {
             title = $(h2[b]).text();
             link = $(h2[b]).attr('id');
-            if (!link) 
-                cLink = 'tag-'+(Math.random() * 1000);     
+            if (!link) {
+                cLink = 'tag-'+(Math.random() * 1000);   
+                $(h2[b]).attr('id', cLink)
+            }
+
+
             
             c += link ? '<p><a href="#'+link+'">'+title+'</a></p>' : '<p><a href="#'+cLink+'">'+title+'</a></p>';
         }
