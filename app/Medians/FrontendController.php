@@ -70,7 +70,7 @@ class FrontendController extends CustomController
 				}  else {
 
 					$Object = $this->repo->store($params);
-					$response = $Object ? array('success'=>1, 'result'=> __('BOOKING_NOTE'), 'title'=>__('BOOKING_THANKS')) : 'error' ;
+					$response = $Object ? array('success'=>1, 'result'=> __('BOOKING_NOTE'), 'title'=>__('BOOKING_THANKS')) : array('error'=>1 , 'result'=>__('Error')) ;
 				}
 
 			} catch (\libphonenumber\NumberParseException $e) {
@@ -83,6 +83,7 @@ class FrontendController extends CustomController
 			$response  = array('error'=>1, 'result'=>$e->getMessage()) ;
 		}
 
+		$response['redirect'] = (isset($response['success']) && isset($Object->class) && strtolower($Object->class) == 'booking') ? ('/bookings/'.$Object->id) : null;
 
 		echo json_encode($response);
 	} 

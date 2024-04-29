@@ -1055,6 +1055,7 @@ class LangsAr
 		,'show More' => 'عرض المزيد'
 		,'Medical Journey' => 'رحلة علاجك'
 		,'Latest Technologies' => 'أحدث التقنيات'
+		,'Page not found' => 'هذه الصفحة غير موجودة'
 
 		,'COPYRIGHTS' => 'جميع الحقوق محفوظة لمستشفي بداية'
 		);

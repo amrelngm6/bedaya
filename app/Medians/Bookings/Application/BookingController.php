@@ -253,14 +253,14 @@ class BookingController extends CustomController
 
 		try {
 
-			$item = $this->doctorRepo->find($id);
+			$item = $this->repo->find($id);
 			$this->repo->getModel()->addView();
 			
 			if (!empty($item))
 				$item->addView();
 			
-			return render('views/front/booking.html.twig', [
-		        'doctor' => $item,
+			return render('views/front/booking_details.html.twig', [
+		        'item' => $item,
 		    ]);
 
 		} catch (\Exception $e) {
@@ -281,6 +281,9 @@ class BookingController extends CustomController
 
         try {	
 
+			return  array('success'=>1, 'result'=>__('Added'), 'redirect'=>'/bookings/1');
+
+			return ;
         	$params['branch_id'] = $this->app->branch->id;
         	
         	$this->validate($params);

@@ -105,6 +105,13 @@ jQuery(document).ready(function (e) {
 		    		? Swal.fire('Error!',res.result, 'error')
 		    		: (Swal.fire(res.title,res.result,  'success'), form.reset());
 
+				setTimeout(function(){
+					if (res.redirect)
+					{
+						window.location.href = res.redirect;
+					}
+				}, 1000);	
+
 		    } else {
 		  		Swal.fire('Error!','Connection error','error')
 		    }
