@@ -42,10 +42,10 @@
 
   [ {{item.content.seo_video|raw}} ]
 </script>
-            <div class="mx-auto w-full relative z-10 mb-8 " id="article-content">
+            <div class="mx-auto w-full relative z-10 mb-8 " >
                 <div class="relative top-0  left-0 right-0 px-0 pt-2 pb-6  ">
                     <div class="lg:flex block w-full  gap-3 gap">
-                        <div class="lg:w-8/12 w-full bg-white border-1 border border-gray-100 rounded-lg px-4">
+                        <div class="lg:w-8/12 w-full bg-white border-1 border border-gray-100 rounded-lg px-4" id="article-content">
                             <h1 class="text-xl purple-color font-bold mb-4">{{item.content.title}}</h1>
                             <hr class="pb-2" />
                             <p class="lg:text-base text-sm flex gap-2"><span>{{lang.__('released_at')}}:{{item.updated_at | date('M, d Y')}}</span> • <span class=" hide-mobile">{{lang.__('views')}}: {{item.views_sum_times}}</span></p>
