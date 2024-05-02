@@ -279,7 +279,12 @@ class PageController extends CustomController
 			// if ($prefix && empty($item->home) && empty($_SERVER['HTTP_REFERER']))
 			if ($prefix && empty($item->home) )
 			{
-			    $_SESSION['site_lang'] = (isset($item->lang) && $item->lang == 'ar') ? 'arabic' : 'english';
+				if (isset($item->lang))
+				{
+					$_SESSION['site_lang'] = $item->lang == 'ar' ? 'arabic' : 'english';
+				} else {
+					// $_SESSION['site_lang'] = $item->lang == 'ar' ? 'arabic' : $_SESSION['site_lang'];
+				}
 			}
 
 			if (isset($item->item_type))
