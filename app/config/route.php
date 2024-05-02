@@ -28,7 +28,7 @@ Macaw::get('/stream', \Medians\Media\Application\MediaController::class.'@stream
 Macaw::get('/assets', \Medians\Media\Application\MediaController::class.'@assets'); 
 Macaw::get('/technologies', \Medians\Technologies\Application\TechnologyController::class.'@list'); 
 Macaw::get('/technologies/(:all)', \Medians\Technologies\Application\TechnologyController::class.'@item'); 
-Macaw::get('/bookings/(:all)', \Medians\Bookings\Application\BookingController::class.'@item'); 
+Macaw::get('/bookings_confirm/thanks', \Medians\Bookings\Application\BookingController::class.'@thanks_page'); 
 
 
 Macaw::get('/invoices/print/(:all)', \Medians\Orders\Application\OrderController::class.'@print');

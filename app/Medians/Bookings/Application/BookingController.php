@@ -270,6 +270,26 @@ class BookingController extends CustomController
 	} 
 
 
+	/**
+	 * Front page 
+	 * @var Int
+	 */
+	public function thanks_page()
+	{
+
+		try {
+
+			return render('views/front/booking_details.html.twig', [
+		        'item' => [],
+		    ]);
+
+		} catch (\Exception $e) {
+			throw new \Exception($e->getMessage(), 1);
+			
+		}
+	} 
+
+
 
 	/**
 	 * Booking form submit
