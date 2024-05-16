@@ -1,6 +1,6 @@
 <?php
 
-session_start(); error_reporting(E_ALL);
+session_start(); error_reporting(0);
 $_SESSION['startT'] = microtime(true);
 
 date_default_timezone_set('Africa/Cairo');
