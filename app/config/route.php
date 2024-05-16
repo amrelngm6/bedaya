@@ -31,6 +31,7 @@ Macaw::get('/technologies/(:all)', \Medians\Technologies\Application\TechnologyC
 Macaw::get('/booking_confirm/booking', \Medians\Bookings\Application\BookingController::class.'@thanks_page'); 
 Macaw::get('/booking_confirm/online_consultation', \Medians\Bookings\Application\BookingController::class.'@thanks_page'); 
 Macaw::get('/booking_confirm/offers', \Medians\Bookings\Application\BookingController::class.'@thanks_page'); 
+Macaw::get('/booking_confirm/contact', \Medians\Bookings\Application\BookingController::class.'@thanks_page'); 
 
 
 Macaw::get('/invoices/print/(:all)', \Medians\Orders\Application\OrderController::class.'@print');

@@ -86,6 +86,7 @@ class FrontendController extends CustomController
 		$response['redirect'] = (isset($response['success']) && isset($Object->class) && strtolower($Object->class) == 'booking') ? ('/booking_confirm/booking') : null;
 		$response['redirect'] = (isset($response['success']) && isset($Object->class) && strtolower($Object->class) == 'onlineconsultation') ? ('/booking_confirm/online_consultation') : $response['redirect'];
 		$response['redirect'] = (isset($response['success']) && isset($Object->class) && strtolower($Object->class) == 'offers') ? ('/booking_confirm/offers') : $response['redirect'];
+		$response['redirect'] = (isset($response['success']) && isset($Object->class) && strtolower($Object->class) == 'contact') ? ('/booking_confirm/contact') : $response['redirect'];
 
 		echo json_encode($response);
 	} 
