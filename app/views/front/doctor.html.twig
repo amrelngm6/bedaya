@@ -17,6 +17,11 @@
                             <div id="brief"  class="relative my-6 p-6 lightcyan-bg  rounded-lg overflow-hidden">
                                 <img loading="lazy" src="/stream?image=/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
                                 <div class="relative">
+                                    <span class="block w-full text-lg font-bold pb-2 purple-color"> {{lang.__('content table')}} </span>
+                                    <hr class="border-gray-400 my-4" />
+                                    <div id="content-table"></div>
+                                </div>
+                                <div class="relative">
                                     <span class="block w-full text-lg font-bold pb-2 purple-color">{{lang.__('summary')}}</span>
                                     <hr class="border-gray-400 my-4" />
                                     {{item.content_item.short | raw}}
