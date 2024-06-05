@@ -29,7 +29,7 @@
 
                             <div id="brief"  class="relative my-6 p-6 lightcyan-bg  rounded-lg overflow-hidden">
                                 <img loading="lazy" src="/stream?image=/uploads/img/light-network.webp" class="absolute left-0 top-0 w-full" style="opacity: .3;" />
-                                <div class="relative">
+                                <div class="relative my-10 text-lg" id="article-content">
                                     <span class="block w-full text-lg font-bold pb-2 purple-color">{{lang.__('Basic Details')}}</span>
                                     <hr class="border-gray-400 my-4" />
                                     
@@ -66,4 +66,29 @@
 {% include 'views/front/services_bottom.html.twig' %}
 
 
+<script>
+    jQuery(document).ready(function(){
+        var parent = document.getElementById("article-content"),
+        h2 = parent.getElementsByTagName("h2"),
+        a = h2.length,
+        b, link, title,
+        c='';
+        cLink='';
+        for (b = 0; b < a; b += 1) {
+            title = $(h2[b]).text();
+            link = $(h2[b]).attr('id');
+            if (!link) {
+                cLink = 'tag-'+(Math.random() * 1000);   
+                $(h2[b]).attr('id', cLink)
+            }
+
+
+            
+            c += link ? '<p><a href="#'+link+'">'+title+'</a></p>' : '<p><a href="#'+cLink+'">'+title+'</a></p>';
+        }
+        jQuery('#content-table').html(c)        
+
+
+    })
+</script>
 {% include 'views/front/includes/footer.html.twig' %}
