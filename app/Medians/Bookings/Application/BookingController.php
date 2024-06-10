@@ -255,9 +255,7 @@ class BookingController extends CustomController
 			$item = $this->doctorRepo->find($id);
 			$this->repo->getModel()->addView();
 			
-			$settings = $this->app->SystemSetting();
-
-			return render('views/front/'.($settings['template'] ?? 'default').'/doctor-booking.html.twig', [
+			return render('views/front/doctor-booking.html.twig', [
 		        'item' => $item,
 		    ]);
 
