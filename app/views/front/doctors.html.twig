@@ -51,7 +51,7 @@
                             {% if item.content_item.content|raw is not empty %}
                             <a class="py-3 px-4 purple-bg text-white rounded-tl-lg rounded-br-lg" href="/{{item.content.prefix}}">{{lang.__('Profile CV')}}</a>
                             {% endif %}
-                            <a class="py-3 px-4 cyan-bg purple-color hover:text-gray-500 mx-2 " href="/book/{{item.id}}">{{lang.__('BOOK_NOW')}} </a>
+                            <a class="py-3 px-4 cyan-bg purple-color hover:text-gray-500 mx-2 " href="/doctor_booking/{{item.id}}">{{lang.__('BOOK_NOW')}} </a>
                         </p>
                         <p class="text-sm text-white pt-4 ">
                             {{item.content.short|striptags|trim|raw}}

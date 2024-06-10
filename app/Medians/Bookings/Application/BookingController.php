@@ -243,6 +243,29 @@ class BookingController extends CustomController
 		}
 	}
 
+	/**
+	 * Front page 
+	 * @var Int
+	 */
+	public function doctor_booking($id)
+	{
+
+		try {
+
+			$item = $this->doctorRepo->find($id);
+			$this->repo->getModel()->addView();
+			
+			$settings = $this->app->SystemSetting();
+
+			return render('views/front/'.($settings['template'] ?? 'default').'/doctor-booking.html.twig', [
+		        'item' => $item,
+		    ]);
+
+		} catch (\Exception $e) {
+			throw new \Exception($e->getMessage(), 1);
+			
+		}
+	} 
 
 	/**
 	 * Front page 
