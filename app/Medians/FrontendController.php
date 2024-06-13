@@ -35,9 +35,10 @@ class FrontendController extends CustomController
 	 * 
 	 */
 	public function form_submit($type)
-	{
-
+	{	
+		
 		$params = $this->app->request()->get('params');
+		print_r($params);
 
 		try {
 				
