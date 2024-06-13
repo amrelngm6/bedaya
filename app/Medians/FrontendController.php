@@ -38,6 +38,7 @@ class FrontendController extends CustomController
 	{	
 		
 		$params = $this->app->request()->get('params');
+		print_r($type);
 		print_r($params);
 
 		try {
