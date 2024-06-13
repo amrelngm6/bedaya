@@ -20,6 +20,7 @@ Macaw::get('/book/(:all)', \Medians\Bookings\Application\BookingController::clas
 Macaw::get('/doctor_booking/(:all)', \Medians\Bookings\Application\BookingController::class.'@doctor_booking'); 
 Macaw::get('/bookings/(:all)', \Medians\Bookings\Application\BookingController::class.'@page'); 
 Macaw::post('/submit/(:all)', \Medians\FrontendController::class.'@form_submit'); 
+Macaw::post('/submit/(:all)', \Medians\FrontendController::class.'@form_submit2'); 
 Macaw::get('/blog', \Medians\Blog\Application\BlogController::class.'@list'); 
 Macaw::get('/blog/', \Medians\Blog\Application\BlogController::class.'@list'); 
 Macaw::get('/offer_booking/(:all)', \Medians\Offers\Application\OfferController::class.'@page'); 
