@@ -14,7 +14,7 @@ class FrontendController extends CustomController
 	/**
 	* @var Object
 	*/
-	protected $app;
+	public $app;
 	protected $repo;
 	protected $contentRepo ;
 
